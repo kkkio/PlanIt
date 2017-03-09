@@ -17,7 +17,12 @@ npm install
 
 ## Usage
 
-Launch:
+### Set up database for login:
+```
+node setdb.js
+```
+
+###Launch:
 ```
 DEBUG=myapp: & npm run devstart
 ```
