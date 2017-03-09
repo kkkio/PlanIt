@@ -10,8 +10,9 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var mongo = require('mongodb');
-var mongoose = require('mongoose');
+var mysql = require('mysql');
+
+require('./models/user')(passport); // pass passport for configuration
 
 var index = require('./routes/index');
 var users = require('./routes/users');

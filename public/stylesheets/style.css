@@ -40,6 +40,11 @@ body {
   margin-top: 40px;
 }
 
+.img-mine{
+  position: relative;
+  margin: auto;
+}
+
 /* Customize container */
 @media (min-width: 768px) {
   .container {

@@ -7,7 +7,7 @@ var LocalStrategy = require('passport-local').Strategy;
 /* GET users page. */
 router.get('/', function(req, res, next) {
   res.render('users', {
-    title: 'UsersApp',
+    title: 'PlanIt Users',
     projectname: 'PlanIt'
   });
 });
@@ -15,23 +15,57 @@ router.get('/', function(req, res, next) {
 /* GET user login page. */
 router.get('/login', function(req, res, next) {
   res.render('login', {
-    title: 'UsersApp',
-    projectname: 'PlanIt'
+    title: 'PlanIt Login',
+    projectname: 'PlanIt',
+    message: req.flash('loginMessage')
   });
+});
+
+/* POST user login page. */
+router.post('/login', passport.authenticate('local-login', {
+  successRedirect: '/users/profile',
+  failureRedirect: '/users/login',
+  failureFlash: true
+}),function(req, res, next){
+  res.redirect('/');
 });
 
 /* GET user register page. */
 router.get('/register', function(req, res, next) {
   var errors;
   res.render('register', {
-    title: 'UsersApp',
+    title: 'PlanIt Register',
     projectname: 'PlanIt',
-    errors:errors
+    message: req.flash('signupMessage'),
+    errors: errors
   });
 });
 
 /* POST user register page. */
-router.post('/register', function(req, res, next) {
+router.post('/register',isCompleted, passport.authenticate('local-signup', {
+  successRedirect : '/users/profile',
+  failureRedirect : '/users/register',
+  failureFlash : true
+}));
+
+router.get('/profile',isLoggedIn,function(req, res, next){
+  res.render('profile', {
+    title: 'PlanIt Login',
+    projectname: 'PlanIt',
+    user: req.user
+  });
+});
+
+router.get('/logout',isLoggedIn,function(req, res, next){
+  req.logout();
+  res.redirect('/');
+});
+
+
+
+
+// route middleware to make sure register form
+function isCompleted(req, res, next){
   var name = req.body.name;
   var email = req.body.email;
   var username = req.body.username;
@@ -51,29 +85,26 @@ router.post('/register', function(req, res, next) {
   if(errors){
     console.log(errors);
     res.render('register',{
-      title: 'UsersApp',
+      title: 'PlanIt Register',
       projectname: 'PlanIt',
       errors:errors
     });
   } else {
     console.log('PASSED');
-
-    var newUser = new User({
-      name: name,
-      email:email,
-      username: username,
-      password: password
-    });
-
-    User.createUser(newUser, function(err, user){
-      if(err) throw err;
-      console.log(user);
-    });
-
-    req.flash('success_msg', 'You are registered and can now login');
-
-    res.redirect('/users/login');
+    return next();
   }
-});
+
+}
+
+// route middleware to make sure
+function isLoggedIn(req, res, next) {
+
+	// if user is authenticated in the session, carry on
+	if (req.isAuthenticated())
+		return next();
+
+	// if they aren't redirect them to the home page
+	res.redirect('/');
+}
 
 module.exports = router;
