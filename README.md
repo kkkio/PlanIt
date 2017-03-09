@@ -24,7 +24,7 @@ node setdb.js
 
 ###Launch:
 ```
-DEBUG=myapp: & npm run devstart
+DEBUG=myapp: & npm start
 ```
 
 Launch in devstart mode:
