@@ -23,7 +23,8 @@ DEBUG=myapp: & npm run devstart
 ```
 
 Launch in devstart mode:
-note: app will restart within every file change 
+
+note: app will restart within every file change
 ```
 DEBUG=myapp: & npm run devstart
 ```
