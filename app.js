@@ -10,6 +10,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var mysql = require('mysql');
 
 require('./models/user')(passport); // pass passport for configuration

@@ -45,6 +45,42 @@ body {
   margin: auto;
 }
 
+.btn-facebook{
+  padding: 20px 32px;
+  background-color: #3b5998;
+  color: #FFFFFF;
+}
+
+.btn-google{
+  padding: 20px 32px;
+  background-color: #d34836;
+  color: #FFFFFF;
+}
+
+.btn-login{
+  padding: 20px 32px;
+  background-color: #bb0000;
+  color: #FFFFFF;
+}
+
+.seperator{
+  padding: 10px;
+  margin:auto;
+  text-align: center;
+  font-weight:lighter;
+  font-size: 16px;
+  display: block;
+  width: 100%;
+}
+
+.icon-container{
+  margin: auto;
+}
+
+.test-container{
+  margin: auto;
+}
+
 /* Customize container */
 @media (min-width: 768px) {
   .container {

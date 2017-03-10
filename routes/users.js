@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 
 /* GET users listing. */
 /* GET users page. */
@@ -47,6 +46,20 @@ router.post('/register',isCompleted, passport.authenticate('local-signup', {
   failureRedirect : '/users/register',
   failureFlash : true
 }));
+
+router.get('/login/facebook',
+  passport.authenticate('facebook',{ scope: ['email'] }));
+
+router.get('/login/facebook/callback',
+  passport.authenticate('facebook', {
+    successRedirect: '/users/profile',
+    failureRedirect: '/users/login',
+    failureFlash : true
+  }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
 
 router.get('/profile',isLoggedIn,function(req, res, next){
   res.render('profile', {
