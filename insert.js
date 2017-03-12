@@ -3,7 +3,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: '6629101jyl',
+	password: '00000000',
 	database: 'Individual_User_Info'
 });
 
@@ -27,4 +27,3 @@ var query = connection.query('insert into individual_user set ?', individual_use
 	}
 	console.error(result);
 });
-
