@@ -51,17 +51,18 @@ CREATE TABLE host_user(
 -- Individual_User_Profile database
 -- Table schedule stores all schedules of all individual users
 CREATE TABLE schedule(
-	schedule_id      INT  		     NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	user_id          INT 			 NOT NULL,
-	title            VARCHAR(100)    NOT NULL,
-	activity_id      INT,
-	s_date	         DATE 	   	     NOT NULL,
-	start_time       TIME,
-	end_time         TIME,
-	venue            VARCHAR(100),
-	privacy          VARCHAR(7)	     NOT NULL CHECK (privacy IN ('public', 'private', 'all followers', 'all friends'))
-					    			 DEFAULT 'all friends'
+	schedule_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	user_id INT NOT NULL,
+	title VARCHAR(100) NOT NULL,
+	activity_id INT,
+	s_date	DATE  NOT NULL
+	start_time TIME,
+	end_time TIME,
+	venue VARCHAR(100),
+	privacy VARCHAR(7) NOT NULL CHECK (privacy IN ('public', 'private', 'followers', 'friends')) DEFAULT 'friends'
+
 );
+
 
 -- Table moment stores all moments of all individual users
 CREATE TABLE moment(
@@ -73,8 +74,8 @@ CREATE TABLE moment(
 	moment_r         INT,
 	moment_g         INT,
 	moment_b         INT,
-	m_text           VARCHAR(500),
-	privacy          VARCHAR(13)	 NOT NULL CHECK (privacy IN ('public', 'private', 'all followers', 'all friends'))
+	m_text           VARCHAR(500))
+	privacy          VARCHAR(13)	 NOT NULL CHECK (privacy IN ('public', 'private', 'followers', 'friends'))
 				    				 DEFAULT 'public'
 );
 
@@ -112,7 +113,7 @@ CREATE TABLE activity_info(
 CREATE TABLE activity_comment(
 	comment_id    	 INT 			 NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	user_id		     INT 			 NOT NULL,
-	activity_id      INT 			 NOT NULL,			
+	activity_id      INT 			 NOT NULL,
 	comment_text     VARCHAR(300)	 NOT NULL,
 	post_date	     DATE 			 NOT NULL,
 	post_time	     TIME 			 NOT NULL,
