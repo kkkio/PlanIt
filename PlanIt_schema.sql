@@ -1,6 +1,7 @@
 -- Only used for PlanIt
--- Last modified: 05/03/2017 22:40
+-- Last modified: 13/03/2017 11:20
 -- @author: Lily Li Danli
+-- modified by Yilin Jiang
 
 -- Brief description
 -- There are totally 4 databases in PlanIt:
@@ -55,13 +56,27 @@ CREATE TABLE schedule(
 	user_id INT NOT NULL,
 	title VARCHAR(100) NOT NULL,
 	activity_id INT,
-	s_date	DATE  NOT NULL
+	s_date	DATE  NOT NULL,
 	start_time TIME,
 	end_time TIME,
 	venue VARCHAR(100),
 	privacy VARCHAR(7) NOT NULL CHECK (privacy IN ('public', 'private', 'followers', 'friends')) DEFAULT 'friends'
 
 );
+
+-- If error in adding table schedule, try the following (uncomment when using)
+--CREATE TABLE schedule(
+--	schedule_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+--	user_id INT NOT NULL,
+--	title VARCHAR(100) NOT NULL,
+--	activity_id INT,
+--	s_date	DATE  NOT NULL);
+
+-- ALTER TABLE schedule ADD start_time TIME;
+-- ALTER TABLE schedule ADD end_time TIME;
+-- ALTER TABLE schedule ADD venue VARCHAR(100);
+-- ALTER TABLE schedule ADD privacy VARCHAR(7) NOT NULL CHECK (privacy IN ('public', 'private', 'followers', 'friends'));
+-- ALTER TABLE schedule ALTER privacy SET DEFAULT 'friends';
 
 
 -- Table moment stores all moments of all individual users
@@ -74,10 +89,26 @@ CREATE TABLE moment(
 	moment_r         INT,
 	moment_g         INT,
 	moment_b         INT,
-	m_text           VARCHAR(500))
+	m_text           VARCHAR(500)
 	privacy          VARCHAR(13)	 NOT NULL CHECK (privacy IN ('public', 'private', 'followers', 'friends'))
 				    				 DEFAULT 'public'
 );
+
+-- If error in adding table moment, try the following (uncomment when using)
+--CREATE TABLE moment(
+--	moment_id        INT  		     NOT NULL PRIMARY KEY AUTO_INCREMENT,
+--	user_id		     INT 			 NOT NULL,
+--	m_date           DATE 		     NOT NULL,
+--	post_time        TIME 		     NOT NULL,
+--	location         VARCHAR(50),
+--	moment_r         INT,
+--	moment_g         INT,
+--	moment_b         INT,
+--	m_text           VARCHAR(500));
+
+-- ALTER TABLE moment ADD privacy VARCHAR(7) NOT NULL CHECK (privacy IN ('public', 'private', 'followers', 'friends'));
+-- ALTER TABLE moment ALTER privacy SET DEFAULT 'public';
+
 
 -- Table follow stores all "friends" & "followers" relationships among all individual users
 CREATE TABLE follow(
