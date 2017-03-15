@@ -13,7 +13,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var mysql = require('mysql');
 
-require('./models/user')(passport); // pass passport for configuration
+require('./models/login')(passport); // pass passport for configuration
 
 var index = require('./routes/index');
 var users = require('./routes/users');
