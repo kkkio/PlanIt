@@ -9,6 +9,7 @@ var bcrypt = require('bcryptjs');
 var db = require('./database');
 var passport = require('passport');
 var connection = mysql.createConnection(db.connection);
+//var user = require('./user')
 
 // connect database
 connection.query('USE '+db.database);
@@ -43,6 +44,7 @@ module.exports = function(passport) {
     }, function(req, username, password, done){
       console.log('Starting point: before any query');
       connection.query('SELECT * from user WHERE username = ?',[username],function(err,rows){
+      //user.findUserbyuserrname([username],function(err, rows){
         console.log('query done.');
         if(err){
           return done(err);
