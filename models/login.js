@@ -1,6 +1,8 @@
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+// this is the email Server
+var nodemailer= require('nodemailer');
 
 
 // load up the user model
@@ -34,6 +36,14 @@ module.exports = function(passport) {
     });
   });
 
+  // create emailserver through SMTP
+  var smtpTransport = nodemailer.createTransport({
+      service: "Gmail",
+      auth: {
+          user: "planitgroup4@gmail.com",
+          pass: "csci3100group4"
+      }
+  });
   // local register
   passport.use(
     'local-signup',
@@ -59,11 +69,30 @@ module.exports = function(passport) {
             if(rows.length){
               return done(null,false,req.flash('signupMessage','The email has already been taken.'));
             }else{
+              console.log(req.ip);
               // create a new user and insert into database
               var newUser = {
                 username: username,
                 password: bcrypt.hashSync(password,10)
               };
+              // mail operation to set the email receiver llink address to .
+              var host=req.hostname;
+              link="http://"+req.get('host')+"/users/verify";
+              console.log(link);
+              var mailOptions={
+                to:req.body.email,
+                subject : "Please confirm your Email account",
+            		html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
+              }
+              smtpTransport.sendMail(mailOptions, function(error, response){
+               	 if(error){
+                        console.log('do have an error');
+                    	  console.log(error);
+            	 }else{
+                    	console.log("Message sent: " + response.message);
+                	 }
+            });
+
 
               var insertQuery='INSERT INTO user ( username , password, email ) values (?,?,?)';
 

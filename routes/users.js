@@ -46,6 +46,10 @@ router.post('/register',isCompleted, passport.authenticate('local-signup', {
   failureRedirect : '/users/register',
   failureFlash : true
 }));
+//email verify
+router.get('/verify',function(req,res,next){
+  res.send('email verified');
+});
 
 router.get('/login/facebook',
   passport.authenticate('facebook',{ scope: ['email'] }));
@@ -73,7 +77,6 @@ router.get('/logout',isLoggedIn,function(req, res, next){
   req.logout();
   res.redirect('/');
 });
-
 
 
 
