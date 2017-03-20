@@ -1,5 +1,5 @@
 -- Only used for PlanIt
--- Last modified: 20/03/2017 03:00
+-- Last modified: 21/03/2017 00:00
 -- @author: Lily Li Danli
 -- modified by Yilin Jiang
 
@@ -33,7 +33,6 @@ CREATE TABLE individual_user(
 ALTER TABLE Individual_User_Info.individual_user
 ADD UNIQUE (username);
 
-
 ALTER TABLE Individual_User_Info.individual_user
 ADD UNIQUE (email);
 
@@ -57,7 +56,9 @@ CREATE TABLE host_user(
 
 -- username and email are unique
 ALTER TABLE Host_User_Info.host_user
-ADD UNIQUE (username)
+ADD UNIQUE (username);
+
+ALTER TABLE Host_User_Info.host_user
 ADD UNIQUE (email);
 
 -- Individual_User_Profile database
