@@ -81,7 +81,7 @@ ALTER TABLE Individual_User_Profile.schedule
 ADD url VARCHAR(100) AFTER privacy;
 
 -- If error in adding table schedule, try the following (uncomment when using)
---CREATE TABLE schedule(
+-- CREATE TABLE schedule(
 --	schedule_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 --	user_id INT NOT NULL,
 --	title VARCHAR(100) NOT NULL,
@@ -161,10 +161,10 @@ ALTER TABLE Activity.activity_info
 ADD end_time TIME AFTER start_time;
 
 -- Add Fulltext index
-ALTER TABLE Activity.activity_intro
+ALTER TABLE Activity.activity_info
 ADD FULLTEXT idx (activity_intro);
 
-ALTER TABLE Activity.activity_intro
+ALTER TABLE Activity.activity_info
 ADD FULLTEXT idx2 (activity_name);
 
 
