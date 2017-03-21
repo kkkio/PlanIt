@@ -2,7 +2,6 @@
 -- need to check what information has been entered
 -- if not summited,
 -- store ip1 only, and ignore other ip
---
 INSERT INTO Individual_User_Info.individual_user
 	(username, password, email, phone_number, num_of_followers, num_of_following, user_ip1)
 	values('username', 'password', 'phone_number','email', '0', '0', 'ip_address');
@@ -62,6 +61,7 @@ WHERE s.user_id = 'user_id';
 
 -- retrieve friend's schedule
 -- need to check privacy: input user_id and friend_id, return 1 if they are friends
+-- if condition: check whether two users are friends
 SELECT CASE WHEN EXISTS (
     SELECT *
     FROM Individual_User_Profile.follow f1
@@ -76,7 +76,7 @@ THEN 1
 ELSE 0
 END;
 
--- if 1
+-- if 1, then retrieve friend's schedule info 
 SELECT s.title, s.s_date, s.start_time, s.end_time, s.venue, s.url
 FROM Individual_User_Profile.schedule s
 WHERE s.user_id = 'friend_id' AND s.privacy <> 'private';
@@ -84,6 +84,7 @@ WHERE s.user_id = 'friend_id' AND s.privacy <> 'private';
 
 -- else
 -- need to check privacy: input user_id and friend_id, return 1 if user follows friend
+--     if condition: check whether the user is following the friend
 SELECT CASE WHEN EXISTS (
     SELECT *
     FROM Individual_User_Profile.follow f1
@@ -93,18 +94,18 @@ THEN 1
 ELSE 0
 END;
 
---    if 1
+--    if 1, then retrieve the schedule of people who the user is following
 SELECT s.title, s.s_date, s.start_time, s.end_time, s.venue, s.url
 FROM Individual_User_Profile.schedule s
 WHERE s.user_id = 'friend_id' AND (s.privacy = 'followers' or s.privacy = 'public');
 
---    else
+--    else, only retrieve schedules that are available to the public
 -- retrieve only schedule for public
 SELECT s.title, s.s_date, s.start_time, s.end_time, s.venue, s.url
 FROM Individual_User_Profile.schedule s
 WHERE s.user_id = 'friend_id' AND s.privacy = 'public';
---    fi
--- fi
+--    end if
+-- end if
 
 -- add past activity: input user_id, activity_id, current_date, current_time, and check existence in schedule
 -- if return 1, then insert
