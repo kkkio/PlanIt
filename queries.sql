@@ -1,8 +1,8 @@
 #register as individual user
 #need to check what information has been entered
 INSERT INTO Individual_User_Info.individual_user
-	(username, password, email, num_of_followers, num_of_following, user_ip1)
-	values('username', 'password', 'email', '0', '0', 'ip_address');
+	(username, password, email, phone_number, num_of_followers, num_of_following, user_ip1)
+	values('username', 'password', 'phone_number','email', '0', '0', 'ip_address');
 
 
 #individual user login: input username and retrieve password, username unique
