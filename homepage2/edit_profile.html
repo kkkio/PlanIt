@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<title>Account Overview - PlanIt</title>
+
+	<!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+
+
+    <!-- Theme CSS -->
+    <link href="css/agency.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Sidebar Toggle Menu -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+<style>
+.header-container{
+  width:100%;
+  height:600px;
+  border-left: none;
+  border-right: none;
+  position: relative;
+  padding: 20px;
+}
+.img-container1{
+  position:absolute;
+  top:0%;
+  left:0%;
+  height:100%;
+  width:100%;
+  overflow: hidden;
+}
+
+h1{
+  color:GoldenRod;
+  z-index:1;
+  text-align:center;
+  margin-right:auto;;
+  margin-left: auto;
+  margin-top: 15%;
+  border:3px ;
+  border-radius:15px;
+  width:700px;
+  letter-spacing: 3px;
+  font-size: 120px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.header-image{
+  position:absolute;
+  z-index:-1;
+  width:100%;
+}
+
+/* Sidebar */
+#sidebar-wrapper {
+    z-index: 2;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    overflow-x: hidden;
+    background: LightYellow;
+    border: 2px;
+    opacity: 0.9;
+}
+
+/* Always take up entire screen */
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding-top: 15px;
+    border: 5px;
+}
+
+
+/* Change with of sidebar from 0 to 250px */
+#wrapper.menuDisplayed #sidebar-wrapper {
+    width: 250px;
+}
+
+/* Since we added left padding, we need to shrink the width by 250px */
+#wrapper.menuDisplayed #page-content-wrapper {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper img{
+	 width:33%; 
+	 margin-top:15px; 
+	 margin-left:33%;
+	 margin-bottom: 20px;
+}
+
+#sidebar-wrapper span{
+	margin-left:15%;
+	font-size:20px;
+	font-family: Comic Sans MS;
+}
+
+.parallel-nav{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left:10px;
+	padding-right: 0;
+    list-style: none;
+}
+
+.parallel-nav li{
+	display: inline;
+}
+
+.parallel-nav li a{
+	padding-top: 20px;
+  	padding-right: 10%;
+  	padding-bottom: 20px;
+  	padding-left: 10%;
+}
+
+.parallel-nav li a:hover{
+	background: SandyBrown;
+	border-radius: 10px;
+}
+
+.sidebar-nav {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+	font-size: 1.17em;
+	font-family: Verdana;
+    text-indent: 10px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+
+.sidebar-nav li a:hover {
+    background: SandyBrown;
+}
+
+.sidebar-nav li a i{
+	margin-right: 10px;
+    padding-left: 0;
+}
+
+.btn{
+	  background-color: white; 
+    color: black; 
+    border: 2px solid MediumAquaMarine;
+}
+
+.btn:hover {
+    background-color: MediumAquaMarine;
+    color: white;
+}
+
+.btn-special{
+    background-color: white; 
+    color: black; 
+    border: 2px solid PowderBlue;
+}
+
+.btn-special:hover {
+    background-color: PowderBlue;
+    color: white;
+    border: 2px solid PowderBlue;
+}
+
+.btn-popup{
+    background-color: LightSalmon;
+    color: white;
+    border: 2px solid LightSalmon;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.btn-popup:hover {
+    background-color: white; 
+    color: black; 
+    border: 2px solid LightSalmon;
+}
+
+.intro-text {
+    text-transform: uppercase;
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+
+#page-content-wrapper h2{
+    text-transform: uppercase;
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.hide-text{
+  font:0/0 a;
+  color:transparent;
+  text-shadow:none;
+  background-color:
+  transparent;
+  border:0;
+}
+
+.input-block-level{
+  display:block;
+  width:100%;
+  min-height:30px;
+  -webkit-box-sizing:
+  border-box;
+  -moz-box-sizing:
+  border-box;
+  box-sizing:border-box;
+}
+
+.btn-file{
+  overflow:hidden;
+  position:relative;
+  vertical-align:middle;
+}
+
+.btn-file input{
+  position:absolute;
+  top:0;
+  right:0;
+  margin:0;
+  opacity:0;
+  filter:alpha(opacity=0);
+  transform:
+  translate(-300px, 0) 
+  scale(4);
+  font-size:23px;
+  direction:ltr;
+  cursor:pointer;
+}
+
+.fileupload{
+  margin-bottom:9px;
+}
+
+.fileupload .uneditable-input{
+  display:inline-block;
+  margin-bottom:0px;
+  vertical-align:middle;
+  cursor:text;
+}
+
+.fileupload .thumbnail{
+  overflow:hidden;
+  display:inline-block;
+  margin-bottom:5px;
+  vertical-align:middle;
+  text-align:center;
+}
+
+.fileupload .thumbnail img{
+  display:inline-block;
+  vertical-align:middle;
+  max-height:100%;
+}
+
+.fileupload .btn{
+  vertical-align:middle;
+}
+
+.fileupload-exists .fileupload-new,.fileupload-new .fileupload-exists{
+  display:none;
+}
+
+.fileupload-inline .fileupload-controls{
+  display:inline;
+}
+
+.fileupload-new .input-append .btn-file{
+  -webkit-border-radius:0 3px 3px 0;
+  -moz-border-radius:0 3px 3px 0;
+  border-radius:0 3px 3px 0;
+}
+
+.thumbnail-borderless .thumbnail{
+  border:none;
+  padding:0;
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  box-shadow:none;
+}
+
+.fileupload-new.thumbnail-borderless .thumbnail{
+  border:1px solid #ddd;
+}
+
+.form-group label{
+  color: DarkCyan;
+}
+
+.form-group label i{
+  margin-right: 5px;
+}
+
+.form-group input{
+  width:88%;
+}
+
+footer {
+  padding: 25px 0;
+  text-align: center;
+  width:100%;
+}
+
+footer span.copyright {
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+}
+
+footer ul.quicklinks {
+  margin-bottom: 0;
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+}
+
+
+ul.list-inline {
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+ul.list-inline li a{
+	  color:orange;
+}
+
+ul.social-buttons {
+  margin-bottom: 0;
+}
+ul.social-buttons li a {
+  display: block;
+  background-color: #222222;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: white;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+ul.social-buttons li a:hover,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:active {
+  background-color: #fed136;
+}
+
+
+</style>
+
+</head>
+<body class="account-mgnt">
+	<!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top" style="color:#083a5b">PlanIt</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about" style="color:#fca13f">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#explore" style="color:#f7ba34">Explore</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#schedule" style="color:#487bb4">Schedule</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#moments" style="color:#dc4937">Moments</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact" style="color:#3cbc8d">Contact</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="Acc_Mgnt.html" title="My Account"><img src="./img/acc_mgnt/profile.png" class="img-circle profile-margin" style="height:25px;width:25px" alt="Profile Icon"></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <div class="header-container" id="accHeader">
+        <div class="img-container1">
+             <img class="header-image" src="./img/acc_mgnt/party.png" style="width: 100%" alt="Let's party!">
+             <h1>Seize the Moment</h1>
+       </div>
+    </div>
+  
+
+  <!-- Content -->
+  <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+        	<img src="./img/acc_mgnt/profile.png" class="img-circle" alt="profile_icon">
+        	<span>Welcome, <strong>Michael</strong>!</span>
+        	<ul class="parallel-nav">
+        		<li><a href="#news" title="News"><i class="fa fa-envelope fa-2x" style="color:Sienna"></i></a></li>
+        		<li><a href="Acc_Mgnt.html" title="Account Overview"><i class="fa fa-user fa-2x" style="color:RoyalBlue"></i></a></li>
+        		<li><a href="#settings" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
+        	</ul> 
+        	<hr>
+            <ul class="sidebar-nav">
+            	<li style="margin-left:10px">My Account</li>
+                <li><a href="Acc_Mgnt.html"><i class="fa fa-home fa-fw"></i> Account Overview</a></li>
+                <li style="background-color: LightSkyBlue"><a href="edit_profile.html"><i class="fa fa-pencil fa-fw"></i> Edit Profile</a></li>
+                <li><a href="past_activities.html"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
+                <li><a href="#news"><i class="fa fa-bell fa-fw"></i> News</a></li>
+                <li><a href="#settings"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
+                <li><a href="#help_and_feedback"><i class="fa fa-heart fa-fw"></i> Help and Feedback</a></li>
+                <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                    <a href="Acc_Mgnt.html" class="btn" id="menu-toggle">Menu</a>
+                    </div>
+                </div>
+            </div>
+
+
+  <!-- Edit Profile Form -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 personal-info">
+        <div class="col-lg-12">
+            <hr>
+              <h2 class="intro-text text-center">Personal
+                 <strong style="color:Brown">Information</strong>
+              </h2>
+           <hr>
+        </div>
+    <div class="row">
+      <div class="col-lg-1"></div>   
+      <div class="col-lg-10" style="background-color: LightYellow; border-radius: 15px;">
+        <div class="text-center">
+          <img src="./img/acc_mgnt/profile.png" class="avatar img-circle" style="width:100px;margin-bottom: 20px;margin-top:20px" alt="profile icon">
+            <div class="fileupload fileupload-new" data-provides="fileupload">
+              <span class="btn btn-primary btn-file btn-special">
+              <span class="fileupload-new">Upload new icon</span>
+              <span class="fileupload-exists">Change</span>         
+              <input type="file" />
+              </span>
+              <span class="fileupload-preview"></span>
+              <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+          </div>
+        </div>
+        <br>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-lg-4 control-label"><i class="fa fa-user fa-fw"></i>Username:</label>
+            <div class="col-lg-5">
+              <input class="form-control" type="text" value="Michael">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-4 control-label">Password:</label>
+            <div class="col-lg-5">
+              <input class="form-control" type="password" value="11111122333">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-4 control-label"><i class="fa fa-envelope fa-fw"></i>Email:</label>
+            <div class="col-lg-5">
+              <input class="form-control" type="text" value="michaelsemail@gmail.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-4 control-label"><i class="fa fa-phone fa-fw"></i>Telephone:</label>
+            <div class="col-lg-5">
+              <input class="form-control" type="text" value="1234 5678">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-4 control-label"><i class="fa fa-info fa-fw"></i>Bio:</label>
+            <div class="col-lg-5">
+              <input class="form-control" type="text" value="Kindness makes you the most beautiful person in the world:)">
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label class="col-lg-3 control-label"></label>
+            <div class="col-lg-6 text-center">
+              <input type="button" class="btn btn-special" value="Save" style="width:80px">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-popup" data-toggle="modal" data-target="#myModal">Change Password</button>
+              <!-- Modal -->
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header" style="background-color: RoyalBlue;">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel" style="text-align: left;color: white">Change Password</h4>
+                    </div>
+                    <div class="modal-body" style="text-align: right;"">
+                      <form>
+                        <div class="row">
+                          <div class="form-group">
+                            <div class="col-md-5">
+                              <label for="recipient-name" class="control-label">Old password</label>
+                            </div>
+                            <div class="col-md-7">
+                              <input type="password" class="form-control" id="old-password" style="width: 50%">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group">
+                            <div class="col-md-5">
+                              <label for="message-text" class="control-label">New password</label>
+                            </div>
+                            <div class="col-md-7">
+                              <input type="passwordt" class="form-control" id="new-password" style="width: 50%">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group">
+                            <div class="col-md-5">
+                              <label for="text" class="control-label">Confirm password</label>
+                            </div>
+                            <div class="col-md-7">
+                              <input type="password" class="form-control" id="confirm-password" style="width: 50%">
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn">Save changes</button>
+                      <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="Acc_Mgnt.html"><input type="button" class="btn btn-special" value="Cancel" style="width:80px"></a>
+            </div>
+          </div>
+          <br>
+        </form>
+      </div>
+      <div class="col-lg-1"></div>  
+    </div>
+      
+     <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; PlanIt 2017</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+    <!-- /.container -->   
+
+
+
+  	
+
+    <!-- Menu toggle script -->
+    <script>
+        $("#menu-toggle").click( function (e){
+            e.preventDefault();
+            $("#wrapper").toggleClass("menuDisplayed");
+        });
+    </script>
+
+    <!-- Upload propic -->
+    <script>
+      var file = undefined;
+! function(e) {
+    var t = function(t, n) {
+        this.$element = e(t), this.type = this.$element.data("uploadtype") || (this.$element.find(".thumbnail").length > 0 ? "image" : "file"), this.$input = this.$element.find(":file");
+        if (this.$input.length === 0) return;
+        this.name = this.$input.attr("name") || n.name, this.$hidden = this.$element.find('input[type=hidden][name="' + this.name + '"]'), this.$hidden.length === 0 && (this.$hidden = e('<input type="hidden" />'), this.$element.prepend(this.$hidden)), this.$preview = this.$element.find(".fileupload-preview");
+        var r = this.$preview.css("height");
+        this.$preview.css("display") != "inline" && r != "0px" && r != "none" && this.$preview.css("line-height", r), this.original = {
+            exists: this.$element.hasClass("fileupload-exists"),
+            preview: this.$preview.html(),
+            hiddenVal: this.$hidden.val()
+        }, this.$remove = this.$element.find('[data-dismiss="fileupload"]'), this.$element.find('[data-trigger="fileupload"]').on("click.fileupload", e.proxy(this.trigger, this)), this.listen()
+    };
+    t.prototype = {
+        listen: function() {
+            this.$input.on("change.fileupload", e.proxy(this.change, this)), e(this.$input[0].form).on("reset.fileupload", e.proxy(this.reset, this)), this.$remove && this.$remove.on("click.fileupload", e.proxy(this.clear, this))
+        },
+        change: function(e, t) {
+            if (t === "clear") return;
+            var n = e.target.files !== undefined ? e.target.files[0] : e.target.value ? {
+                name: e.target.value.replace(/^.+\\/, ""),
+                size: e.target.value.size,
+            } : null;
+            if (!n) {
+                this.clear();
+                return
+            }
+            this.$hidden.val(""), 
+            this.$hidden.attr("name", ""), 
+            this.$input.attr("name", this.name);
+            if (typeof FileReader != "undefined") {
+                var r = new FileReader,
+                    i = this.$preview,
+                    s = this.$element;
+                r.onload = function(e) {
+                    var result = {
+                        name: n.name,
+                        data: e.target.result,
+                        size: n.size,
+                    }
+                    i.text(result.name), s.addClass("fileupload-exists").removeClass("fileupload-new")
+                }, r.readAsDataURL(n)
+            } else this.$preview.text(n.name), this.$element.addClass("fileupload-exists").removeClass("fileupload-new")
+        },
+        clear: function(e) {
+            this.$hidden.val(""), this.$hidden.attr("name", this.name), this.$input.attr("name", "");
+            if (navigator.userAgent.match(/msie/i)) {
+                var t = this.$input.clone(!0);
+                this.$input.after(t), this.$input.remove(), this.$input = t
+            } else this.$input.val("");
+            this.$preview.html(""), this.$element.addClass("fileupload-new").removeClass("fileupload-exists"), e && (this.$input.trigger("change", ["clear"]), e.preventDefault())
+            file = undefined;
+        },
+        reset: function(e) {
+            this.clear(), this.$hidden.val(this.original.hiddenVal), this.$preview.html(this.original.preview), this.original.exists ? this.$element.addClass("fileupload-exists").removeClass("fileupload-new") : this.$element.addClass("fileupload-new").removeClass("fileupload-exists")
+        },
+        trigger: function(e) {
+            this.$input.trigger("click"), e.preventDefault()
+        }
+    }, e.fn.fileupload = function(n) {
+        return this.each(function() {
+            var r = e(this),
+                i = r.data("fileupload");
+            i || r.data("fileupload", i = new t(this, n)), typeof n == "string" && i[n]()
+        })
+    }, e.fn.fileupload.Constructor = t, e(document).on("click.fileupload.data-api", '[data-provides="fileupload"]', function(t) {
+        var n = e(this);
+        if (n.data("fileupload")) return;
+        n.fileupload(n.data());
+        var r = e(t.target).closest('[data-dismiss="fileupload"],[data-trigger="fileupload"]');
+        r.length > 0 && (r.trigger("click.fileupload"), t.preventDefault())
+    })
+}(window.jQuery)
+  </script>
+
+
+
+</body>
+</html>
