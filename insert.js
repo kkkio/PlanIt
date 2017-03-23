@@ -16,21 +16,23 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
+
 //add new tuples
-var individual_user = ({
-	username: 'testing',
-	password: 	'123456',
-	email:	 	'testing@gmail.com',
-	phone_number: '85212345678',
-	self_intro: 'I am testing testing',
+var individual_user = function(req,res,err)
+{
+	username: req.username,
+	password: 	req.password,
+	email:	 	req.email,
+	phone_number: req.phone_number,
 	num_of_followers: '0',
-	num_of_following: '0'
-});
+	num_of_following: '0',
+	ip1: req.user_ip1
+};
 
 var query = connection.query('insert into individual_user set ?', individual_user, function (err, result){
 	if (err){
 		console.error(err);
 		return;
 	}
-	console.error(result);
+	console.log(result);
 });

@@ -1,5 +1,5 @@
 -- Only used for PlanIt
--- Last modified: 13/03/2017 11:20
+-- Last modified: 21/03/2017 00:00
 -- @author: Lily Li Danli
 -- modified by Yilin Jiang
 
@@ -29,6 +29,12 @@ CREATE TABLE individual_user(
 	user_ip3	     INT UNSIGNED
 );
 
+-- username and email are unique
+ALTER TABLE Individual_User_Info.individual_user
+ADD UNIQUE (username);
+
+ALTER TABLE Individual_User_Info.individual_user
+ADD UNIQUE (email);
 
 -- Host_User_Info database
 -- Table host_user stores basic host information of all host users
@@ -48,6 +54,12 @@ CREATE TABLE host_user(
 	host_ip3 		 INT UNSIGNED
 );
 
+-- username and email are unique
+ALTER TABLE Host_User_Info.host_user
+ADD UNIQUE (username);
+
+ALTER TABLE Host_User_Info.host_user
+ADD UNIQUE (email);
 
 -- Individual_User_Profile database
 -- Table schedule stores all schedules of all individual users
@@ -64,8 +76,12 @@ CREATE TABLE schedule(
 
 );
 
+-- Add url into schedule
+ALTER TABLE Individual_User_Profile.schedule
+ADD url VARCHAR(100) AFTER privacy;
+
 -- If error in adding table schedule, try the following (uncomment when using)
---CREATE TABLE schedule(
+-- CREATE TABLE schedule(
 --	schedule_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 --	user_id INT NOT NULL,
 --	title VARCHAR(100) NOT NULL,
@@ -137,8 +153,20 @@ CREATE TABLE activity_info(
 	activity_intro 	 VARCHAR(300),
 	url 			 VARCHAR(100),
 	category 		 VARCHAR(20)	 NOT NULL,
-	average_rating   DECIMAL(3,1)	 NOT NULL CHECK (rating <= 10.0)
+	average_rating   DECIMAL(3,1)	 CHECK (rating <= 10.0)
 );
+
+-- Add end time in activity_info
+ALTER TABLE Activity.activity_info
+ADD end_time TIME AFTER start_time;
+
+-- Add Fulltext index
+ALTER TABLE Activity.activity_info
+ADD FULLTEXT idx (activity_intro);
+
+ALTER TABLE Activity.activity_info
+ADD FULLTEXT idx2 (activity_name);
+
 
 -- Table activity_comment stores all comments from all individual users
 CREATE TABLE activity_comment(
