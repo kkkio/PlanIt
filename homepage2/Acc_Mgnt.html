@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<title>Account Overview - PlanIt</title>
+
+	<!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+
+
+    <!-- Theme CSS -->
+    <link href="css/agency.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Sidebar Toggle Menu -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+<style>
+.header-container{
+  width:100%;
+  height:600px;
+  border-left: none;
+  border-right: none;
+  position: relative;
+  padding: 20px;
+}
+.img-container1{
+  position:absolute;
+  top:0%;
+  left:0%;
+  height:100%;
+  width:100%;
+  overflow: hidden;
+}
+
+h1{
+  color:GoldenRod;
+  z-index:1;
+  text-align:center;
+  margin-right:auto;;
+  margin-left: auto;
+  margin-top: 15%;
+  border:3px ;
+  border-radius:15px;
+  width:700px;
+  letter-spacing: 3px;
+  font-size: 120px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.header-image{
+  position:absolute;
+  z-index:-1;
+  width:100%;
+}
+
+/* Sidebar */
+#sidebar-wrapper {
+    z-index: 2;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    overflow-x: hidden;
+    background: LightYellow;
+    border: 2px;
+    opacity: 0.9;
+}
+
+/* Always take up entire screen */
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding-top: 15px;
+    border: 5px;
+}
+
+
+/* Change with of sidebar from 0 to 250px */
+#wrapper.menuDisplayed #sidebar-wrapper {
+    width: 250px;
+}
+
+/* Since we added left padding, we need to shrink the width by 250px */
+#wrapper.menuDisplayed #page-content-wrapper {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper img{
+	 width:33%; 
+	 margin-top:15px; 
+	 margin-left:33%;
+	 margin-bottom: 20px;
+}
+
+#sidebar-wrapper span{
+	margin-left:15%;
+	font-size:20px;
+	font-family: Comic Sans MS;
+}
+
+.parallel-nav{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left:10px;
+	padding-right: 0;
+    list-style: none;
+}
+
+.parallel-nav li{
+	display: inline;
+}
+
+.parallel-nav li a{
+	padding-top: 20px;
+  	padding-right: 10%;
+  	padding-bottom: 20px;
+  	padding-left: 10%;
+}
+
+.parallel-nav li a:hover{
+	background: SandyBrown;
+	border-radius: 10px;
+}
+
+.sidebar-nav {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+	font-size: 1.17em;
+	font-family: Verdana;
+    text-indent: 10px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+
+.sidebar-nav li a:hover {
+    background: SandyBrown;
+}
+
+.sidebar-nav li a i{
+	margin-right: 10px;
+    padding-left: 0;
+}
+
+.btn{
+	background-color: white; 
+    color: black; 
+    border: 2px solid MediumAquaMarine;
+}
+
+.btn:hover {
+    background-color: MediumAquaMarine;
+    color: white;
+}
+
+.status-box{
+	margin-top:25px;
+}
+
+#page-content-wrapper textarea{
+	border:outset 3px orange;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photo-video{
+	margin-left:30%;
+	margin-right: 30%;
+}
+
+.photo-video li {
+	display: inline;
+
+}
+
+.photo-video li a{
+	padding-top: 10px;
+  	padding-bottom: 20px;
+  	margin-left: 20%;
+  	margin-right:20%;
+}
+
+.intro-text {
+    text-transform: uppercase;
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+
+#page-content-wrapper h2{
+    text-transform: uppercase;
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+.img-full {
+    min-width: 80%;
+}
+
+
+.img-border {
+    float: none;
+    margin: auto;
+    border: #999999 solid 1px;
+}
+
+
+.pager {
+  margin-top: 20px;
+  margin-bottom: : 20px;
+  margin-right:10%;
+  margin-left:10%;
+  order: 2px;
+}
+.pager li > a,
+.pager li > span {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 15px 25px;
+  background-color: white;
+  border-radius: 8px;
+}
+.pager li > a:hover,
+.pager li > a:focus {
+  color: white;
+  background-color: #0085A1;
+  border: 1px solid #0085A1;
+}
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span {
+  color: #777777;
+  background-color: #333333;
+  cursor: not-allowed;
+}
+
+footer {
+  padding: 25px 0;
+  text-align: center;
+  width:100%;
+}
+
+footer span.copyright {
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+}
+
+footer ul.quicklinks {
+  margin-bottom: 0;
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+}
+
+
+ul.list-inline {
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+ul.list-inline li a{
+	  color:orange;
+}
+
+ul.social-buttons {
+  margin-bottom: 0;
+}
+ul.social-buttons li a {
+  display: block;
+  background-color: #222222;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: white;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+ul.social-buttons li a:hover,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:active {
+  background-color: #fed136;
+}
+
+
+</style>
+
+</head>
+<body class="account-mgnt">
+	<!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top" style="color:#083a5b">PlanIt</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about" style="color:#fca13f">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#explore" style="color:#f7ba34">Explore</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#schedule" style="color:#487bb4">Schedule</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#moments" style="color:#dc4937">Moments</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact" style="color:#3cbc8d">Contact</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="Acc_Mgnt.html" title="My Account"><img src="./img/acc_mgnt/profile.png" class="img-circle profile-margin" style="height:25px;width:25px" alt="Profile Icon"></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <div class="header-container" id="accHeader">
+        <div class="img-container1">
+             <img class="header-image" src="./img/acc_mgnt/party.png" style="width: 100%" alt="Let's party!">
+             <h1>Seize the Moment</h1>
+       </div>
+    </div>
+  
+
+  <!-- Content -->
+  <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+        	<img src="./img/acc_mgnt/profile.png" class="img-circle" alt="profile_icon">
+        	<span>Welcome, <strong>Michael</strong>!</span>
+        	<ul class="parallel-nav">
+        		<li><a href="#news" title="News"><i class="fa fa-envelope fa-2x" style="color:Sienna"></i></a></li>
+        		<li><a href="Acc_Mgnt.html" title="Account Overview"><i class="fa fa-user fa-2x" style="color:RoyalBlue"></i></a></li>
+        		<li><a href="#settings" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
+        	</ul> 
+        	<hr>
+            <ul class="sidebar-nav">
+            	<li style="margin-left:10px">My Account</li>
+                <li style="background-color: LightSkyBlue"><a href="Acc_Mgnt.html"><i class="fa fa-home fa-fw"></i> Account Overview</a></li>
+                <li><a href="#edit_profile"><i class="fa fa-pencil fa-fw"></i> Edit Profile</a></li>
+                <li><a href="past_activities.html"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
+                <li><a href="#news"><i class="fa fa-bell fa-fw"></i> News</a></li>
+                <li><a href="#settings"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
+                <li><a href="#help_and_feedback"><i class="fa fa-heart fa-fw"></i> Help and Feedback</a></li>
+                <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="Acc_Mgnt.html" class="btn" id="menu-toggle">Menu</a>
+                        <!-- Facebook-like textarea -->
+                        <div class="status-box">
+                        	<textarea cols="100" rows="5" placeholder="What's your favorite moment today...?"></textarea> 
+                        	<ul class="photo-video">
+                        		<li><a href="#photos" title="Pictures"><i class="fa fa-picture-o fa-lg"></i></a></li>
+                        		<li><a href="#videos" title="Videos"><i class="fa fa-video-camera fa-lg"></i></a> </li>
+                        	</ul>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Past moments -->
+    <div class="container">
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">My Precious
+                        <strong style="color:LightCoral">Moments</strong>
+                    </h2>
+                    <hr>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <img class="img-responsive img-border img-full" src="img/acc_mgnt/slide-1.jpg" alt="">
+                    <h2>Post Title
+                        <br>
+                        <small>October 13, 2013</small>
+                    </h2>
+                    <p>Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <a href="#" class="btn btn-default btn-lg">Read More</a>
+                    <hr>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <img class="img-responsive img-border img-full" src="img/acc_mgnt/slide-2.jpg" alt="">
+                    <h2>Post Title
+                        <br>
+                        <small>October 13, 2013</small>
+                    </h2>
+                    <p>Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <a href="#" class="btn btn-default btn-lg">Read More</a>
+                    <hr>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <img class="img-responsive img-border img-full" src="img/acc_mgnt/slide-3.jpg" alt="">
+                    <h2>Post Title
+                        <br>
+                        <small>October 13, 2013</small>
+                    </h2>
+                    <p>Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <a href="#" class="btn btn-default btn-lg">Read More</a>
+                    <hr>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <ul class="pager">
+                        <li class="previous"><a href="#">&larr; Older</a>
+                        </li>
+                        <li class="next"><a href="#">Newer &rarr;</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+     <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; Your Website 2016</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+    <!-- /.container -->   
+
+
+
+  	
+
+    <!-- Menu toggle script -->
+    <script>
+        $("#menu-toggle").click( function (e){
+            e.preventDefault();
+            $("#wrapper").toggleClass("menuDisplayed");
+        });
+    </script>
+
+
+
+</body>
+</html>
