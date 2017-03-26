@@ -6,17 +6,19 @@ INSERT INTO Individual_User_Info.individual_user
 	(username, password, email, phone_number, num_of_followers, num_of_following, user_ip1)
 	values('username', 'password', 'phone_number','email', '0', '0', 'ip_address');
 
-
+-- DONE --
 -- individual user login: input username and retrieve password, username unique
 SELECT i.password
 FROM Individual_User_Info.individual_user i
 WHERE i.username = 'username';
 
+-- DONE --
 -- individual user login: input email and retrieve password, email unique
 SELECT i.password
 FROM Individual_User_Info.individual_user i
 WHERE i.email = 'email';
 
+-- DONE --
 -- ip check: input username and retrieve ip addresses, return 1 if the current_ip is in the recent 3 ip address
 SELECT CASE WHEN EXISTS (
     SELECT *
@@ -28,11 +30,13 @@ THEN 1
 ELSE 0
 END;
 
+-- DONE --
 -- reset password from "Forget Password" link: input email and update password
 UPDATE Individual_User_Info.individual_user
 SET password = 'new_password'
 WHERE email = 'email';
 
+-- NOT IN MODEL IN CONTROL LEVEL --
 -- follow people: input user_id, followed_id and update record
 INSERT INTO Individual_User_Profile.follow
 	(follower_id, followed_id)
@@ -76,7 +80,7 @@ THEN 1
 ELSE 0
 END;
 
--- if 1, then retrieve friend's schedule info 
+-- if 1, then retrieve friend's schedule info
 SELECT s.title, s.s_date, s.start_time, s.end_time, s.venue, s.url
 FROM Individual_User_Profile.schedule s
 WHERE s.user_id = 'friend_id' AND s.privacy <> 'private';
