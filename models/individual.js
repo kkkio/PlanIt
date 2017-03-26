@@ -59,6 +59,7 @@ var individualSchema = mongoose.Schema({
 
   // check admin
   admin : Boolean
+  pastActivityList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Activity' }]
 });
 
 // add an alias for define method
