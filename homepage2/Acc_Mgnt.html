@@ -173,9 +173,10 @@ h1{
 }
 
 .btn{
-  background-color: white; 
+    background-color: white; 
     color: black; 
     border: 2px solid MediumAquaMarine;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .btn:hover {
@@ -188,8 +189,8 @@ h1{
 }
 
 #page-content-wrapper textarea{
-  border:outset 3px orange;
-  display: block;
+   border:outset 3px orange;
+   display: block;
     margin-left: auto;
     margin-right: auto;
 }
@@ -213,7 +214,7 @@ h1{
 
 .intro-text {
     text-transform: uppercase;
-    font-size: 1.25em;
+    font-size: 2em;
     font-weight: 400;
     letter-spacing: 1px;
 }
@@ -236,6 +237,10 @@ h1{
     float: none;
     margin: auto;
     border: #999999 solid 1px;
+}
+
+.past-moment{
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 
@@ -410,9 +415,9 @@ ul.social-buttons li a:active {
         <!-- Page content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row"><br>
                     <div class="col-lg-12">
-                        <a href="Acc_Mgnt.html" class="btn" id="menu-toggle">Menu</a>
+                        <a href="Acc_Mgnt.html" class="btn" id="menu-toggle" style="padding-left: 30px;padding-right: 30px;margin-left:40px;margin-right: 40px;">Menu <span class="glyphicon glyphicon-chevron-right"></span></a>
                         <!-- Facebook-like textarea -->
                         <div class="status-box">
                           <textarea cols="100" rows="5" placeholder="What's your favorite moment today...?"></textarea> 
@@ -425,11 +430,10 @@ ul.social-buttons li a:active {
                 </div>
             </div>
 
-                        <!-- Past moments -->
-    <div class="container">
-
-        <div class="row">
-            <div class="box">
+          <!-- Past moments -->
+          <div class="container past-moment">
+            <div class="row">
+              <div class="box">
                 <div class="col-lg-12">
                     <hr>
                     <h2 class="intro-text text-center">My Precious
@@ -478,6 +482,7 @@ ul.social-buttons li a:active {
             </div>
         </div>
 
+     <!-- Footer -->
      <footer>
         <div class="container">
             <div class="row">
