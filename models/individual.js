@@ -1,16 +1,12 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
-/*
-String
-Number
-Date
-Buffer
-Boolean
-Mixed
-ObjectId -- auto created
-Array
-*/
+var assert = require('mongoose-assert')('mongoose');
+var autoIncrement = require('mongoose-auto-increment');
+var connection = mongoose.createConnection('mongodb://localhost/3100');
+
+autoIncrement.initialize(connection);
+
 var individualSchema = mongoose.Schema({
   local            : {
       email        : String,
@@ -38,32 +34,32 @@ var individualSchema = mongoose.Schema({
   // basic info
   username : String,
   phone_number : String,
+  password : String,
+  email : String,
   self_intro : String,
   age : Number,
   birth: Date,
   num_of_followers : Number,
   num_of_followers : Number,
 
+  followerList : {type: Array, 'default' : []},
+  followingList : {type: Array, 'default' : []},
+
 
   // for login safety
-  propic: {
-    propic_r : Number,
-    propic_g : Number,
-    propic_b : Number
-  }
+  propic: String,
   user_ip : {
-    user_ip1 : Number,
-    user_ip2 : Number,
-    user_ip3 : Number
-  },
+    type Array, 'default':[]},
 
   // check admin
   admin : Boolean
   pastActivityList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Activity' }]
 });
 
+individualSchema.plugin(autoIncrement.plugin, 'user');
+var user = connection.model('user', individualSchema);
 // add an alias for define method
-var user = individualSchema;
+//var user = individualSchema;
 
 
 // -- LOGIN --

@@ -1,4 +1,7 @@
 var mongoose = require('mongoose');
+var assert = require('mongoose-assert')('mongoose');
+var autoIncrement = require('mongoose-auto-increment');
+mongoose.createConnection('mongodb://localhost/3100');
 
 var momentSchema = mongoose.Schema({
   //user_id : Number,
@@ -7,11 +10,7 @@ var momentSchema = mongoose.Schema({
   m_date : Date,
   post_time : Date,
   location : String,
-  moment_rgb: {
-    moment_r : Number,
-    moment_g : Number,
-    moment_b : Number
-  },
+  moment_pic : String,
   m_text : String,
   // privacy 1: public, 2: private, 3: followers, 4: friends
   privacy : Number

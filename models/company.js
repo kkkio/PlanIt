@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
-// database
-mongoose.connect('mongodb://localhost/host_user');
+var assert = require('mongoose-assert')('mongoose');
+var autoIncrement = require('mongoose-auto-increment');
+var db = mongoose.connect('mongodb://localhost/3100');
 
-var db = mongoose.connection;
+//var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function(err) {
   if(err){
@@ -40,32 +41,28 @@ var hostSchema = mongoose.Schema({
   },
 
   // basic info
-  username : String,
+  username : {type: String, unique: true};
   company_name : String,
+  password : String,
+  email : String,
   phone_number : String,
-  self_intro : String,
-  num_of_followers : Number,
-  num_of_followers : Number,
-
+  intro : String,
 
   // for login safety
-  propic: {
-    propic_r : Number,
-    propic_g : Number,
-    propic_b : Number
-  },
-  user_ip : {
-    user_ip1 : Number,
-    user_ip2 : Number,
-    user_ip3 : Number
-  },
+  propic: String,
+  user_ip : { type: Array, 'default': []},
 
+
+  activityList: [{type: mongoose.Schema.Types.ObjectId, ref: 'activity' }]
   // check admin
   admin : Boolean
 });
 
+hostSchema.plugin(autoIncrement.plugin, 'user');
+var user = connection.model('user', hostSchema);
+
 // add an alias for define method
-var user = hostSchema;
+//var user = hostSchema;
 
 
 // -- LOGIN --
