@@ -1,7 +1,5 @@
 
 var mongoose = require('mongoose');
-var bcrypt = require('bcryptjs');
-var salt = bcrypt.genSaltSync(10);
 var assert = require('mongoose-assert')('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
 mongoose.connect('mongodb://localhost/3100');
