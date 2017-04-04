@@ -17,6 +17,7 @@ require('./models/login')(passport); // pass passport for configuration
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var activity = require('./routes/activity');
 
 var app = express();
 
@@ -73,10 +74,10 @@ app.use(function (req, res, next) {
   next();
 });
 
-
+//I add the activity function.
 app.use('/', index);
 app.use('/users', users);
-
+app.use('/activity',activyty);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
