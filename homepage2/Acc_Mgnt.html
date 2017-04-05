@@ -33,6 +33,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./Acc_Mgnt.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.uploadPreview.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -208,17 +210,6 @@ h1{
 
 .statistics-box a{
   text-align: center;
-}
-
-textarea{
-  resize:none;
-}
-
-#page-content-wrapper textarea{
-   border:outset 3px orange;
-   display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .intro-text {
@@ -412,6 +403,14 @@ ul.social-buttons li a:active {
   content: "" !important;
 }
 
+.post-edit{
+  color: SteelBlue;
+}
+
+.post-delete{
+  color:Gray;
+}
+
 .post-heart{
   color:LightCoral;
 }
@@ -459,7 +458,81 @@ ul.social-buttons li a:active {
 .more-moments a:hover {
     text-decoration: none;
 }
+.status-box-header{
+  background-color: #f7ba34;
+  padding: 15px 20px;
+  border:none;
+  margin:0;
+}
 
+.status-box-header h3{
+  color: white;
+}
+
+.new-moment-title{
+  width:100%;
+}
+
+.form-group input[type=text]{
+  box-sizing:border-box;
+  width:100%;
+  padding:8px 12px 12px 12px;
+  border: 2px solid LightGray;
+
+}
+
+.form-group select{
+  border: 2px solid LightGray;
+  box-sizing:border-box;
+  height:40px;
+  margin:auto;
+  width: 100%;
+}
+
+.form-group textarea{
+  padding:8px 12px;
+  resize:none;
+  border:outset 2px orange;
+  display: block;
+  width:100%;
+  box-sizing:border-box;
+}
+
+
+#image-preview {
+  margin-top:14px;
+  width: 100%;
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #ecf0f1;
+}
+#image-preview input {
+  line-height: 200px;
+  font-size: 200px;
+  position: absolute;
+  opacity: 0;
+  z-index: 10;
+}
+#image-preview label {
+  position: absolute;
+  z-index: 5;
+  opacity: 0.8;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+  background-image: url("./img/acc_mgnt/camera.png");
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size: 75px;
+}
 
 </style>
 
@@ -585,49 +658,79 @@ ul.social-buttons li a:active {
         <div id="page-content-wrapper">
             <div class="container">
                 <div class="row"><br>
-
                     <div class="col-lg-12">
                         <a href="Acc_Mgnt.html" class="btn" id="menu-toggle" style="padding-left: 30px;padding-right: 30px;margin-left:40px;margin-right: 40px;">Menu <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
 
                     <div class="col-lg-8">
                         <!-- Facebook-like textarea -->
-                        <div class="status-box">
-                              <div class="well"> 
-                                   <form class="form-horizontal" role="form">
-                                    <h4>What's New</h4>
-                                     <div class="form-group" style="padding:14px;">
-                                      <textarea class="form-control" cols="100" rows="5" placeholder="What's your favorite moment today...?"></textarea>
+                        <div class="status-box well" style="padding: 0px">
+                              <div class="status-box-header">
+                                  <h3>What's New</h3>
+                              </div> 
+                              <form class="form-horizontal col-lg-12" style="background: inherit;" method="post">
+                                <div class="col-lg-4">
+                                    <div id="image-preview">
+                                      <label for="image-upload" id="image-label"></label>
+                                      <input type="file" name="image" id="image-upload" />
                                     </div>
-                                    <button class="btn pull-right" type="button">Post</button>
-                                    <ul class="list-inline">
-                                      <li>
-                                          <input type="file" accept="image/*" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" id="tmpImgSaver" style="opacity: 0;position: absolute; top:-100px">
-                                          <a href="" id="moment-new-img"><i class="glyphicon glyphicon-camera"></i></a>
-                                          <img id="blah" alt="your image" width="100" height="100" >
-                                      </li>
-                                      <li>
-                                        <a href=""><i class="glyphicon glyphicon-map-marker"></i></a>
-                                      </li>
-                                    </ul>
-                                  </form>
-                              </div>
+                                </div>
+                                <div class="col-lg-8">
+                                  <div class="form-group">
+                                      <div class="col-lg-12">                 
+                                          <input type="text" id="newMomentTitle" name="title" placeholder="Title" style="margin-top:14px; ">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="col-lg-12"> 
+                                          <textarea class="form-element form-control" name="momentText" cols="50" rows="5" placeholder="What's your favorite moment today...?"></textarea>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="col-lg-8">
+                                          <input type="text" id="newLocation" name="location" placeholder="Location">
+                                      </div>
+                                      <div class="col-lg-4">
+                                          <select id="newPricacy" name="privacy">
+                                              <option value="public">Public</option>
+                                              <option value="followers">Followers</option>
+                                              <option value="friends">Friends</option>
+                                              <option value="private">Private</option>
+                                          </select>
+                                      </div>
+                                      <div class="col-lg-5">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="col-lg-6">
+                                      </div>
+                                      <div class="col-lg-3">
+                                          <button type="submit" class="btn">Submit</button>
+                                      </div>
+                                      <div class="col-lg-3">
+                                          <a href="Acc_Mgnt.html" class="btn">Cancel</a>
+                                      </div>
+                                  </div>
+                                </div>
+                              </form>
                         </div>                      
                     </div>
 
                     <div class="col-lg-3">
                         <div class="statistics-box">
                             <ul class="list-group">
-                                <a href="#" class="list-group-item" style="background-color: Khaki ; height:100px;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 35px;">405</p>
+                                <a href="#" class="list-group-item" style="background-color: Khaki ; height:133px;">
+                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;">405</p>
                                     <p class="list-group-item-text">followers</p>
                                 </a>
-                                <a href="#" class="list-group-item" style="background-color: Gold; height:100px;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 35px;">373</p>
+                                
+                                <a href="#" class="list-group-item" style="background-color: Gold; height:133px;">
+                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;">373</p>
                                     <p class="list-group-item-text">following</p>
                                 </a>
-                                <a href="#" class="list-group-item" style="background-color: Orange; height:100px;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 35px;">52</p>
+                                
+                                <a href="#" class="list-group-item" style="background-color: Orange; height:133px;">
+                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;">52</p>
                                     <p class="list-group-item-text">post</p>
                                 </a>
                             </ul>
@@ -660,9 +763,9 @@ ul.social-buttons li a:active {
 
                   <div class="col-lg-10">
                    <div class="post">
-                    <img class="img-responsive img-border img-full" src="img/acc_mgnt/slide-1.jpg" alt="">
+                    <img class="img-responsive img-border img-full" src="img/acc_mgnt/slide-1.jpg" alt="My Moment Image" id="myMomentImg1">
                     <div class="post-text">
-                        <h2 class="post-title">Webdesign</h2>
+                        <h2 class="post-title" id="myMomentTitle1">Webdesign</h2>
                         <div class="post-meta">
                             By <a href="#">Mike Fields</a><text>3 April 2015</text><text>127 Likes</text> <a href="#" class="comments">2 Comments</a>
                         </div>
@@ -670,7 +773,10 @@ ul.social-buttons li a:active {
                         <form>
                             <div class="input-group moment-input-group">
                                 <div class="input-group-btn post-button">
-                                     <button class="btn"><i class="glyphicon glyphicon-heart post-heart"></i></button><button class="btn"><i class="glyphicon glyphicon-comment post-comment"></i></button>
+                                    <button class="btn"><i class="glyphicon glyphicon-edit post-edit"></i></button>
+                                    <button class="btn" data-toggle="modal" data-target="#deleteModal"><i class="glyphicon glyphicon-trash post-delete"></i></button>
+                                    <button class="btn"><i class="glyphicon glyphicon-heart post-heart"></i></button>
+                                    <button class="btn"><i class="glyphicon glyphicon-comment post-comment"></i></button>
                                 </div>
                                 <input type="text" class="form-control" placeholder="Add a comment..">
                             </div>
@@ -679,7 +785,7 @@ ul.social-buttons li a:active {
                    </div>
 
                    <div class="post">
-                    <img class="img-responsive img-border img-full" src="img/acc_mgnt/slide-2.jpg" alt="">
+                    <img class="img-responsive img-border img-full" src="img/acc_mgnt/slide-2.jpg" alt="My Moment Image" id="myMomentImg2">
                     <div class="post-text">
                         <h2 class="post-title">Webdesign</h2>
                         <div class="post-meta">
@@ -769,6 +875,27 @@ ul.social-buttons li a:active {
     <!-- /.container -->  
 
    </div> 
+
+        <!-- Delete Moment Modal -->
+        <div class="modal fade" id="deleteModal" role="dialog">
+          <div class="modal-dialog modal-sm">  
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4>Delete This Moment <i class="fa fa-trash-o"></i></h4>
+              </div>
+              <div class="modal-body">
+                <i class="fa fa-question-circle"></i> Are you sure you want to delete this moment?
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn">Confirm</button>
+                  <button type="button" class="btn" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
    <a id="back-to-top" href="#" class="btn btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left">
    <span class="glyphicon glyphicon-chevron-up"></span></a>
