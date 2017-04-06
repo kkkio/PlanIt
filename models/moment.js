@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var assert = require('mongoose-assert')('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
-mongoose.createConnection('mongodb://localhost/3100');
 
 var momentSchema = mongoose.Schema({
   //user_id : Number,
@@ -49,7 +48,7 @@ moment.static.showFriendMoment=function(friend_id){
               m_location:query[i].location,
               m_moment_pic: query[i].pic,
               m_text:query[i].text
-    				});	
+    				});
 				}
 			}
 		}
@@ -64,11 +63,11 @@ moment.static.showFriendMoment=function(friend_id){
                 m_location:query[i].location,
                 m_moment_pic: query[i].pic,
                 m_text:query[i].text
-    				});	
+    				});
 				}
 			}
 		}
 	return m_moment;
-	
+
 };
-module.exports = mongoose.model('Moment', momentSchema);
+module.exports = mongoose.model('moment', momentSchema);

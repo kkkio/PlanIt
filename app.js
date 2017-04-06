@@ -9,11 +9,13 @@ var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var FacebookStrategy = require('passport-facebook').Strategy;
-var mysql = require('mysql');
+var mongoose = require('mongoose');
+var mongodb = require('mongodb');
+var config = require('./config/config');
 
-require('./models/login')(passport); // pass passport for configuration
+mongoose.connect(config.db);
+
+require('./config/passport')(passport,config); // pass passport for configuration
 
 var index = require('./routes/index');
 var users = require('./routes/users');

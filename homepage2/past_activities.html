@@ -9,9 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<title>Past Activities - PlanIt</title>
+  <title>Past Activities - PlanIt</title>
 
-	<!-- Bootstrap Core CSS -->
+  <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -72,7 +72,6 @@ h1{
   width:70%;
   letter-spacing: 3px;
   font-size: 120px;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .header-image{
@@ -86,7 +85,7 @@ h1{
     z-index: 2;
     position: absolute;
     width: 0;
-    height: 100%;
+    height: 2260px;
     overflow-x: hidden;
     background: LightYellow;
     border: 2px;
@@ -113,40 +112,40 @@ h1{
 }
 
 #sidebar-wrapper img{
-	 width:33%; 
-	 margin-top:15px; 
-	 margin-left:33%;
-	 margin-bottom: 20px;
+   width:33%; 
+   margin-top:15px; 
+   margin-left:33%;
+   margin-bottom: 20px;
 }
 
 #sidebar-wrapper span{
-	margin-left:15%;
-	font-size:20px;
-	font-family: Comic Sans MS;
+  margin-left:15%;
+  font-size:20px;
+  font-family: Comic Sans MS;
 }
 
 .parallel-nav{
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left:10px;
-	padding-right: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left:10px;
+  padding-right: 0;
     list-style: none;
 }
 
 .parallel-nav li{
-	display: inline;
+  display: inline;
 }
 
 .parallel-nav li a{
-	padding-top: 20px;
-  	padding-right: 10%;
-  	padding-bottom: 20px;
-  	padding-left: 10%;
+  padding-top: 20px;
+    padding-right: 10%;
+    padding-bottom: 20px;
+    padding-left: 10%;
 }
 
 .parallel-nav li a:hover{
-	background: SandyBrown;
-	border-radius: 10px;
+  background: SandyBrown;
+  border-radius: 10px;
 }
 
 .sidebar-nav {
@@ -155,8 +154,8 @@ h1{
 }
 
 .sidebar-nav li {
-	font-size: 1.17em;
-	font-family: Verdana;
+  font-size: 1.17em;
+  font-family: Verdana;
     text-indent: 10px;
     line-height: 40px;
 }
@@ -172,12 +171,12 @@ h1{
 }
 
 .sidebar-nav li a i{
-	margin-right: 10px;
+  margin-right: 10px;
     padding-left: 0;
 }
 
 .btn{
-	  background-color: white; 
+    background-color: white; 
     color: black; 
     border: 2px solid MediumAquaMarine;
 }
@@ -215,7 +214,7 @@ h1{
 }
 
 #page-content-wrapper hr{
-  width: 90%;
+  width: 85%;
 }
 
 
@@ -246,7 +245,6 @@ footer {
 
 footer span.copyright {
   line-height: 40px;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   text-transform: none;
 }
@@ -254,7 +252,6 @@ footer span.copyright {
 footer ul.quicklinks {
   margin-bottom: 0;
   line-height: 40px;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   text-transform: none;
 }
@@ -266,7 +263,7 @@ ul.list-inline {
 }
 
 ul.list-inline li a{
-	  color:orange;
+    color:orange;
 }
 
 ul.social-buttons {
@@ -348,13 +345,46 @@ ul.social-buttons li a:active {
   }
 }
 
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display:none;
+}
+
+#logoutModal {
+   margin-top:15%;
+   margin-left:auto;
+   margin-right:auto;
+}
+
+.modal-header{
+  background-color: RoyalBlue;
+}
+
+.modal-header h4{
+  font-size:20px;
+  text-align: left;
+  color: white;
+}
+
+#feedbackModal {
+   margin-top:12%;
+   margin-left:auto;
+   margin-right:auto;
+}
+
+textarea{
+  resize:none;
+}
 
 
 </style>
 
 </head>
 <body class="account-mgnt">
-	<!-- Navigation -->
+  <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -381,7 +411,7 @@ ul.social-buttons li a:active {
                         <a class="page-scroll" href="#schedule" style="color:#487bb4">Schedule</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#moments" style="color:#dc4937">Moments</a>
+                        <a class="page-scroll" href="moments.html" style="color:#dc4937">Moments</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact" style="color:#3cbc8d">Contact</a>
@@ -410,24 +440,64 @@ ul.social-buttons li a:active {
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-        	<img src="./img/acc_mgnt/profile.png" class="img-circle" alt="profile_icon">
-        	<span>Welcome, <strong>Michael</strong>!</span>
-        	<ul class="parallel-nav">
-        		<li><a href="#news" title="News"><i class="fa fa-envelope fa-2x" style="color:Sienna"></i></a></li>
-        		<li><a href="Acc_Mgnt.html" title="Account Overview"><i class="fa fa-user fa-2x" style="color:RoyalBlue"></i></a></li>
-        		<li><a href="#settings" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
-        	</ul> 
-        	<hr>
+          <img src="./img/acc_mgnt/profile.png" class="img-circle" alt="profile_icon">
+          <span>Welcome, <strong>Michael</strong>!</span>
+          <ul class="parallel-nav">
+            <li><a href="#news" title="News"><i class="fa fa-envelope fa-2x" style="color:Sienna"></i></a></li>
+            <li><a href="Acc_Mgnt.html" title="Account Overview"><i class="fa fa-user fa-2x" style="color:RoyalBlue"></i></a></li>
+            <li><a href="settings.html" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
+          </ul> 
+          <hr>
             <ul class="sidebar-nav">
-            	<li style="margin-left:10px">My Account</li>
+              <li style="margin-left:10px">My Account</li>
                 <li><a href="Acc_Mgnt.html"><i class="fa fa-home fa-fw"></i> Account Overview</a></li>
                 <li><a href="edit_profile.html"><i class="fa fa-pencil fa-fw"></i> Edit Profile</a></li>
                 <li style="background-color: LightSkyBlue"><a href="past_activities.html"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
                 <li><a href="#news"><i class="fa fa-bell fa-fw"></i> News</a></li>
-                <li><a href="#settings"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
-                <li><a href="#help_and_feedback"><i class="fa fa-heart fa-fw"></i> Help and Feedback</a></li>
-                <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                <li><a href="settings.html"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
+                <li><a href="" data-toggle="modal" data-target="#feedbackModal"><i class="fa fa-heart fa-fw"></i> Send Feedback</a></li>
+                <li><a href="" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
             </ul>
+        </div>
+
+        <!-- Help and Feedback Modal -->
+        <div class="modal fade" id="feedbackModal" role="dialog">
+          <div class="modal-dialog modal-md">  
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4>Send Feedback <i class="fa fa-send"></i></h4>
+              </div>
+              <div class="modal-body">
+                  <textarea type="text" cols="40" rows="5" style="width:100%" placeholder="Describe your issue or share your idea"></textarea>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn">Submit</button>
+                  <button type="button" class="btn" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logout Modal -->
+        <div class="modal fade" id="logoutModal" role="dialog">
+          <div class="modal-dialog modal-sm">  
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4>Logout <i class="fa fa-lock"></i></h4>
+              </div>
+              <div class="modal-body">
+                <i class="fa fa-question-circle"></i> Are you sure you want to log-off?
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn">Confirm</button>
+                  <button type="button" class="btn" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Page content -->
@@ -441,23 +511,22 @@ ul.social-buttons li a:active {
             </div>
   
             <!-- Past activities -->
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-lg-12">
-                  <hr>
-                  <h2 class="intro-text text-center">Past
-                  <strong style="color:Plum">Activities</strong>
-                  </h2>
-                  <hr>
+            <div class="container-fluid past-activity" id="myPastActivity">
+                <div class="row">
+                    <div class="col-lg-12">
+                      <hr>
+                      <h2 class="intro-text text-center">Past
+                      <strong style="color:Plum">Activities</strong>
+                      </h2>
+                      <hr>
+                    </div>
                 </div>
-              </div>
 
-        <!-- Project One -->
-        <div class="past-activity" id="myPastActivity">
-        <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-6">
-                <a href="#" class="portfolio-box">
+                <!-- Project One -->
+                <div class="row">
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-6">
+                    <a href="#" class="portfolio-box">
                     <img class="img-responsive" src="img/acc_mgnt/activity1.jpeg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -636,7 +705,6 @@ ul.social-buttons li a:active {
 
         <hr>             
 
-            </div>
 
 
             <!-- Footer --> 
@@ -672,8 +740,12 @@ ul.social-buttons li a:active {
     <!-- /.container -->   
 
 
+    <a id="back-to-top" href="#" class="btn btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left">
+   <span class="glyphicon glyphicon-chevron-up"></span></a>
 
-  	
+
+
+    
 
     <!-- Menu toggle script -->
     <script>
@@ -681,6 +753,30 @@ ul.social-buttons li a:active {
             e.preventDefault();
             $("#wrapper").toggleClass("menuDisplayed");
         });
+    </script>
+
+    <!-- Back to top -->
+    <script>
+    $(document).ready(function(){
+        $(window).scroll(function () {
+              if ($(this).scrollTop() > 50) {
+                  $('#back-to-top').fadeIn();
+              } else {
+                  $('#back-to-top').fadeOut();
+              }
+          });
+          // scroll body to 0px on click
+          $('#back-to-top').click(function () {
+              $('#back-to-top').tooltip('hide');
+              $('body,html').animate({
+                  scrollTop: 0
+              }, 800);
+              return false;
+          });
+        
+          $('#back-to-top').tooltip('show');
+
+    });
     </script>
 
 
