@@ -15,7 +15,7 @@ var scheduleSchema = mongoose.Schema({
   url : String,
   //activityList:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Activity' }]
 });
-
+/*
 // add an alias for define method
 var schedule = scheduleSchema;
 schedule.static.showMySchedule=function(userID){
@@ -69,5 +69,5 @@ schedule.static.showFriendSchedule=function(friend_id){
 
 };
 //INSTANCE METHODS
-
+*/
 module.exports = mongoose.model('schedule', scheduleSchema);

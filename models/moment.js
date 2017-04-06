@@ -12,7 +12,7 @@ var momentSchema = mongoose.Schema({
   // privacy 1: public, 2:followers, 3: friends, 4: private
   privacy : Number
 });
-
+/*
 // add an alias for define method
 var moment = momentSchema;
 moment.static.showMyMoment=function(userID){
@@ -68,4 +68,5 @@ moment.static.showFriendMoment=function(friend_id){
 	return m_moment;
 
 };
+*/
 module.exports = mongoose.model('moment', momentSchema);

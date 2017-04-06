@@ -12,10 +12,10 @@
     <title>Login - PlanIt</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="/stylesheets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@
 
 
     <!-- Theme CSS -->
-    <link href=".vendor/css/agency.min.css" rel="stylesheet">
+    <link href="/stylesheets/vendor/css/agency.min.css" rel="stylesheet">
 
     <!-- Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -122,7 +122,7 @@
   margin-left:auto;
   margin-right:auto;
   margin-bottom: 0;
-  margin-top: 0; 
+  margin-top: 0;
 }
 .container:before, .container:after {
   content: "";
@@ -141,7 +141,7 @@
   font-size: 80px;
   font-weight: 500;
   color: SteelBlue;
-  font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif; 
+  font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif;
   letter-spacing: 2px;
 }
 .container .info span {
@@ -159,7 +159,7 @@
 /* END Form */
 /* Demo Purposes */
 body {
-  background-image:url("./img/login/login_bg.jpg");
+  background-image:url("/images/login/login_bg.jpg");
   background-repeat:no-repeat;
   background-size:1500px;
   -webkit-font-smoothing: antialiased;
@@ -252,7 +252,7 @@ ul.social-buttons li a:active {
 
 
 <div class="form">
-  <div class="thumbnail"><img src="./image/img/login/avatar.png"/></div>
+  <div class="thumbnail"><img src="/images/login/avatar.png"/></div>
   <form class="login-form" method="post" action="#">
     <input type="text" name="username/email" placeholder="username/email"/>
     <input type="password" name="password" placeholder="password"/>
