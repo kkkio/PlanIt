@@ -42,8 +42,8 @@ var individualSchema = mongoose.Schema({
   num_of_followers : Number,
   num_of_followers : Number,
 
-  followerList : {type: Array, 'default' : []},
-  followingList : {type: Array, 'default' : []},
+  followerList : [this],
+  followingList : [this],
 
 
   // for login safety
@@ -86,6 +86,12 @@ user.statics.findByNameOrEmail = function findByNameOrEmail(input, callback){
     }
   });
 };
+
+// STATICS METHODS
+// signup - add a user
+user.statics.signup = function signup(email,password,done){
+
+}
 
 // INSTANCE METHODS
 // find frequent ip of user

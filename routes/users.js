@@ -112,6 +112,7 @@ function isCompleted(req, res, next){
 
 }
 
+
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
 

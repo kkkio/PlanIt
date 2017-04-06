@@ -56,7 +56,7 @@ var hostSchema = mongoose.Schema({
   activityList: [{type: mongoose.Schema.Types.ObjectId, ref: 'activity' }]
   // check admin
   admin : Boolean
-});
+},options);
 
 hostSchema.plugin(autoIncrement.plugin, 'user');
 var user = connection.model('user', hostSchema);
@@ -125,9 +125,3 @@ user.methods.updateIP = function updateIP(userip){
 };
 
 module.exports = Host = mongoose.model('Host', hostSchema);
-
-var airbnb = new Host({ username: 'Airbnb' });
-airbnb.save(function (err, fluffy) {
-  if (err) return console.error(err);
-  console.log('airbnb added');
-});
