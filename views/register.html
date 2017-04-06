@@ -12,7 +12,7 @@
     <title>Login - PlanIt</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@
 
 
     <!-- Theme CSS -->
-    <link href=".vendor/css/agency.min.css" rel="stylesheet">
+    <link href="css/agency.min.css" rel="stylesheet">
 
     <!-- Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -37,80 +37,15 @@
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 <style>
-
-.form {
-  position: relative;
-  z-index: 1;
-  background: Bisque;
-  opacity: 0.9;
-  max-width: 400px;
-  margin: 0 auto 30px;
-  padding: 30px;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  text-align: center;
+.btn{
+    background-color: MediumAquaMarine;
+    color: white; 
+    border: 2px solid MediumAquaMarine;
 }
-.form .thumbnail {
-  background: #EF3B3A;
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 30px;
-  padding: 30px 30px;
-  border-top-left-radius: 100%;
-  border-top-right-radius: 100%;
-  border-bottom-left-radius: 100%;
-  border-bottom-right-radius: 100%;
-}
-.form .thumbnail img {
-  display: block;
-  width: 100%;
-}
-.form input {
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-.form button{
-  outline: 0;
-  background: #EF3B3A;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-
-.form button:hover{
-  background: Azure !important;
-  color: black;
-}
-
-.form .message {
-  margin: 15px 0 0;
-  color: #b3b3b3;
-  font-size: 12px;
-}
-.form .message a {
-  color: #EF3B3A;
-  text-decoration: none;
+.btn:hover{
+    background-color: white; 
+    color: black; 
+    border: 2px solid MediumAquaMarine;
 }
 
 .container {
@@ -119,10 +54,7 @@
   max-width: 100%;
   padding-top:30px;
   padding-bottom: 0px;
-  margin-left:auto;
-  margin-right:auto;
-  margin-bottom: 0;
-  margin-top: 0; 
+  margin: 0 auto;
 }
 .container:before, .container:after {
   content: "";
@@ -132,15 +64,15 @@
 
 
 .container .info {
-  margin: 10px auto;
+  margin: 40px auto;
   text-align: center;
 }
 .container .info h1 {
-  margin: 0 0 0 0px;
+  margin: 0 0 0px;
   padding: 0;
-  font-size: 70px;
+  font-size: 80px;
   font-weight: 500;
-  color: SteelBlue;
+  color: DarkSlateGray;
   font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif; 
   letter-spacing: 2px;
 }
@@ -159,7 +91,7 @@
 /* END Form */
 /* Demo Purposes */
 body {
-  background-image:url("./images/img/login/login_bg.jpg");
+  background-image:url("./img/register/register_bg.jpg");
   background-repeat:no-repeat;
   background-size:1500px;
   -webkit-font-smoothing: antialiased;
@@ -182,9 +114,10 @@ body:before {
 }
 
 footer {
-  padding-top: 0;
+  bottom:20px;
+  left:0;
+  position: fixed;
   margin-top:0;
-  margin-bottom: 12px;
   text-align: center;
   width:100%;
 }
@@ -193,7 +126,7 @@ footer span.copyright {
   line-height: 40px;
   text-transform: uppercase;
   text-transform: none;
-  color:Bisque;
+  color:CadetBlue;
 }
 
 footer ul.quicklinks {
@@ -209,7 +142,7 @@ ul.list-inline {
 }
 
 ul.list-inline li a{
-    color:Sienna;
+    color:white;
 }
 
 ul.social-buttons {
@@ -235,32 +168,100 @@ ul.social-buttons li a:active {
   background-color: #fed136;
 }
 
+.colorgraph {
+  height: 5px;
+  border-top: 0;
+  background: #c4e17f;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+.nav li a{
+  color:white;
+}
+
+.nav li a:hover{
+  color:black;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: white;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  padding: 20px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.home{
+  background-color: white;
+  color:black !important;
+}
+
+
+
 </style>
 </head>
 
 <body>
-<div class="container">
+<div class="container" style="padding-top: 20px">
   <ul class="nav nav-pills navbar">
-    <li class="active"><a href="index.html">Home</a></li>
-    <li ><a href="#" class="text">About us</a></li>
+    <li ><a class="home" href="index.html">Home</a></li>
+    <li ><a href="login.html" class="text">Login</a></li>
     <li ><a href="#" class="text">Contact</a></li>
   </ul>
   <div class="info">
-    <h1>Welcome Back</h1><span>Continue your journey with <i class="fa fa-heart"></i> PlanIt</span>
+    <h1>Welcome Aboard</h1>
   </div>
 </div>
 
 
-<div class="form">
-  <div class="thumbnail"><img src="./image/img/login/avatar.png"/></div>
-  <form class="login-form" method="post" action="#">
-    <input type="text" name="username/email" placeholder="username/email"/>
-    <input type="password" name="password" placeholder="password"/>
-    <button type="submit">login</button>
-    <button type="submit" onclick="location.href='/users/login/facebook';" style="margin-top:2px;background-color: #3b5998">login with Facebook</button>
-    <p class="message">Not registered? <a href="/users/login/register">Create an account</a></p>
-  </form>
+
+<div class="container" style="padding-top: 0">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <form role="form" class="form">
+      <h2 style="color:MediumAquaMarine; text-align:left;">Sign Up <small style="color:Gold; font-size: 15px"> Start your journey with <i class="fa fa-heart" style="color:red"></i> PlanIt</small></h2>
+      <hr class="colorgraph">
+      <div class="form-group">
+        <input type="text" name="username" id="register-username" class="form-control input-lg" placeholder="Userame" tabindex="3">
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+          </div>
+        </div>
+      </div>
+      
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-12 col-md-6"></div>
+        <div class="col-xs-12 col-md-6"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+      </div>
+    </form>
+  </div>
 </div>
+
 
 <!-- Footer -->
 <footer>
