@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
-var assert = require('mongoose-assert')('mongoose');
-
+//var assert = require('mongoose-assert')('mongoose');
 var individualSchema = mongoose.Schema({
   local            : {
       email        : String,
@@ -28,10 +27,10 @@ var individualSchema = mongoose.Schema({
   },
 
   // basic info
-  username : String,
-  phone_number : String,
+  username : {type: String, sparse: true},
+  email : {type: String, sparse: true},
   password : String,
-  email : String,
+  phone_number : {type: String, sparse: true},
   intro : String,
   // only for individual
   age : Number,
@@ -62,31 +61,27 @@ var user = individualSchema;
 // STATICS METHODS
 // find by name
 user.statics.findByName = function findByName(name, callback){
-  return this.find({username: name}),callback);
+  console.log('try to find by name: ', name);
+  return this.findOne({username: name},callback);
 };
 
 // find by email
 user.statics.findByEmail = function findByEmail(email, callback){
-  return this.find({email: email}),callback);
-};
-
-user.statics.findByNameOrEmail = function findByNameOrEmail(input, callback){
-  this.findByEmail(input, function(err, result){
-    // if find not found by email
-    if(err){
-      return this.findByName(input, callback);
-    }
-    else{
-      return callback(err, result);
-    }
-  });
+  console.log('try to find by email: ', email);
+  return this.findOne({email: email},callback);
 };
 
 // STATICS METHODS
 // signup - add a user
-user.statics.signup = function signup(email,password,done){
+/*user.statics.signup = function signup(username,email,password,done){
+  var User = this;
+  User.create()
+}*/
 
-}
+// hash user password
+user.statics.generateHash = function generateHash(password) {
+  return bcrypt.hashSync(password, salt);
+};
 
 // INSTANCE METHODS
 // find frequent ip of user
@@ -94,10 +89,7 @@ user.methods.findIP = function getIP(callback){
   return this.userip;
 };
 
-// hash user password
-user.methods.generateHash = function generateHash(password) {
-  return bcrypt.hashSync(password, salt);
-};
+
 
 // compare password
 user.methods.checkVaildPassword = function checkVaildPassword(password) {

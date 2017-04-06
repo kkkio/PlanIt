@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var user=require('./individual');
 var assert = require('mongoose-assert')('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
-mongoose.createConnection('mongodb://localhost/3100');
 
 var scheduleSchema = mongoose.Schema({
   user_id : Number,
@@ -36,7 +35,7 @@ schedule.static.showMySchedule=function(userID){
 };
 //TODO
 schedule.static.showFriendSchedule=function(friend_id){
-	
+
 	var f_schedule=[];
   	var query=this.find({user_id:friend_id});
 	// if friend else not friend
@@ -49,7 +48,7 @@ schedule.static.showFriendSchedule=function(friend_id){
       					f_date:query[i].date,
       					f_start_time : query[i].start_time,
       					f_end_time : query[i].end_time
-    				});	
+    				});
 				}
 			}
 		}
@@ -62,12 +61,12 @@ schedule.static.showFriendSchedule=function(friend_id){
       					f_date:query[i].date,
       					f_start_time : query[i].start_time,
       					f_end_time : query[i].end_time
-    				});	
+    				});
 				}
 			}
 		}
 	return f_schedule;
-	
+
 };
 
-module.exports = mongoose.model('Schedule', scheduleSchema);
+module.exports = mongoose.model('schedule', scheduleSchema);

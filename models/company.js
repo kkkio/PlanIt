@@ -30,11 +30,11 @@ var hostSchema = mongoose.Schema({
   },
 
   // basic info
-  username : {type: String, unique: true},
+  username : {type: String, sparse: true},
+  email : {type: String, sparse: true},
   company_name : String,
   password : String,
-  email : String,
-  phone_number : String,
+  phone_number : {type: String, sparse: true},
   intro : String,
 
   // for login safety
@@ -56,23 +56,27 @@ var user = hostSchema;
 // STATICS METHODS
 // find by name
 user.statics.findByName = function findByName(name, callback){
-  return this.find({username: name},callback);
+  return this.findOne({username: name},callback);
 };
 
 // find by email
 user.statics.findByEmail = function findByEmail(email, callback){
-  return this.find({email: email},callback);
+  return this.findOne({email: email},callback);
 };
 
-user.statics.findByNameOrEmail = function findByNameOrEmail(input, callback){
-  this.findByEmail(input, function(err, result){
+user.statics.findByEmailOrName = function findByNameOrEmail(email, name, callback){
+  this.findByEmail(email, function(err, user){
     // if find not found by email
     if(err){
-      return this.findByName(input, callback);
+      throw err;
+    }
+    if(!user){
+      return this.findByName(name, callback);
     }
     else{
-      return callback(err, result);
+      return callback(err, user);
     }
+
   });
 };
 
@@ -106,4 +110,4 @@ user.methods.updatePhone = function updatePhone(phone){
 };
 
 
-module.exports = Host = mongoose.model('host', hostSchema);
+module.exports = mongoose.model('host', hostSchema);
