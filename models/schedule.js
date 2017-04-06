@@ -38,6 +38,7 @@ schedule.static.showMySchedule=function(userID){
 schedule.static.showFriendSchedule=function(friend_id){
 	
 	var f_schedule=[];
+  //TODO test if the function is asynchronous
   	var query=this.find({user_id:friend_id});
 	// if friend else not friend
 		if (true){
@@ -69,5 +70,6 @@ schedule.static.showFriendSchedule=function(friend_id){
 	return f_schedule;
 	
 };
+//INSTANCE METHODS
 
 module.exports = mongoose.model('Schedule', scheduleSchema);
