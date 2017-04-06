@@ -105,8 +105,8 @@ body {
 }
 body:before {
   content: "";
-  position: fixed;
-  top: 0;
+  position:absolute;
+  bottom: 0;
   left: 0;
   display: block;
   width: 100%;
@@ -212,7 +212,10 @@ ul.social-buttons li a:active {
   color:black !important;
 }
 
-
+.alert-danger{
+  padding:10px;
+  border-radius: 8px;
+}
 
 </style>
 </head>
@@ -232,8 +235,7 @@ ul.social-buttons li a:active {
 
 
 <div class="container" style="padding-top: 0">
-
-<div class="row" style="padding-bottom: 30px">
+  <div class="row" style="padding-bottom: 30px">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
     <form role="form" class="form" method="post" action="/users/register">
       <h2 style="color:MediumAquaMarine; text-align:left;">Sign Up <small style="color:Gold; font-size: 15px"> Start your journey with <i class="fa fa-heart" style="color:red"></i> PlanIt</small></h2>
@@ -268,6 +270,10 @@ ul.social-buttons li a:active {
           </div>
         </div>
       </div>
+      <!-- For alert -->
+      <div class = "alert-danger">
+          <strong>Invalid username!</strong> Please try again!
+      </div>
 
       <hr class="colorgraph">
       <div class="row">
@@ -277,6 +283,7 @@ ul.social-buttons li a:active {
     </form>
   </div>
 </div>
+
 
 
 <!-- Footer -->
