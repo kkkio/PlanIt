@@ -56,6 +56,7 @@ var User = require('../models/individual');
       function(req, username, password, done) {
         // check valid user and pwd
         // first find by name or email
+        console.log('in passport local-login');
         req.checkBody('username').isEmail();
         var error = req.validationErrors();
         if(error){
