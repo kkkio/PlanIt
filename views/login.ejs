@@ -253,8 +253,8 @@ ul.social-buttons li a:active {
 
 <div class="form">
   <div class="thumbnail"><img src="/images/login/avatar.png"/></div>
-  <form class="login-form" method="post" action="#">
-    <input type="text" name="username/email" placeholder="username/email"/>
+  <form class="login-form" method="post" action="/users/login">
+    <input type="text" name="username" placeholder="username/email"/>
     <input type="password" name="password" placeholder="password"/>
     <button type="submit">login</button>
     <button type="submit" onclick="location.href='/users/login/facebook';" style="margin-top:2px;background-color: #3b5998">login with Facebook</button>

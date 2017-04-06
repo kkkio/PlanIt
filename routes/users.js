@@ -19,8 +19,6 @@ router.get('/', function(req, res, next) {
 /* GET user login page. */
 router.get('/login', function(req, res, next) {
   res.render('login', {
-    title: 'PlanIt Login',
-    projectname: 'PlanIt',
     message: req.flash('loginMessage')
   });
 });
@@ -96,7 +94,7 @@ router.get('/profile',isLoggedIn,function(req, res, next){
 //view my schedule
 router.get('/myschedule',function(req,res,next){
   //TODO the u_id has not set yet.
-    
+
     res.render('myschedule',Schedule.showMySchedule(req.cookies.u_id));
 });
 //TODO debug insert1,make sure activity_id in the req.body?
