@@ -12,7 +12,7 @@
     <title>Login - PlanIt</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@
 
 
     <!-- Theme CSS -->
-    <link href="css/agency.min.css" rel="stylesheet">
+    <link href=".vendor/css/agency.min.css" rel="stylesheet">
 
     <!-- Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -119,7 +119,10 @@
   max-width: 100%;
   padding-top:30px;
   padding-bottom: 0px;
-  margin: 0 auto;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom: 0;
+  margin-top: 0; 
 }
 .container:before, .container:after {
   content: "";
@@ -129,11 +132,11 @@
 
 
 .container .info {
-  margin: 20px auto;
+  margin: 10px auto;
   text-align: center;
 }
 .container .info h1 {
-  margin: 0 0 0px;
+  margin: 0 0 0 0px;
   padding: 0;
   font-size: 70px;
   font-weight: 500;
@@ -156,7 +159,7 @@
 /* END Form */
 /* Demo Purposes */
 body {
-  background-image:url("./images/login/login_bg.jpg");
+  background-image:url("./images/img/login/login_bg.jpg");
   background-repeat:no-repeat;
   background-size:1500px;
   -webkit-font-smoothing: antialiased;
@@ -249,7 +252,7 @@ ul.social-buttons li a:active {
 
 
 <div class="form">
-  <div class="thumbnail"><img src="./images/login/avatar.png"/></div>
+  <div class="thumbnail"><img src="./image/img/login/avatar.png"/></div>
   <form class="login-form" method="post" action="#">
     <input type="text" name="username/email" placeholder="username/email"/>
     <input type="password" name="password" placeholder="password"/>
