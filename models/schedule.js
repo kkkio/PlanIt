@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var user=require('./individual');
+var user=require('./user');
 
 
 var scheduleSchema = mongoose.Schema({
