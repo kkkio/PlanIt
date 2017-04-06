@@ -1,6 +1,4 @@
 var mongoose = require('mongoose');
-var assert = require('mongoose-assert')('mongoose');
-var autoIncrement = require('mongoose-auto-increment');
 
 var momentSchema = mongoose.Schema({
   //user_id : Number,
