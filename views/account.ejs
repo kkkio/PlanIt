@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	  <title>Account Overview - PlanIt</title>
+
+	  <!-- Bootstrap Core CSS -->
+    <link href="/stylesheets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/stylesheets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Dosis:400,300,500,700" rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600,700" rel='stylesheet' type='text/css'>
+
+
+    <!-- Theme CSS -->
+    <link href="css/agency.min.css" rel="stylesheet">
+
+    <!-- Script -->
+    <link href="/stylesheets/vendor/css/agency.min.css" rel="stylesheet">
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/account_overview.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/javascripts/assets/js/jquery.uploadPreview.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+<style>
+
+body{
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.header-container{
+  width:100%;
+  height:600px;
+  border-left: none;
+  border-right: none;
+  position: relative;
+  padding: 20px;
+}
+.img-container1{
+  position:absolute;
+  top:0%;
+  left:0%;
+  height:100%;
+  width:100%;
+  overflow: hidden;
+}
+
+h1{
+  color:GoldenRod;
+  z-index:1;
+  text-align:center;
+  margin-right:auto;;
+  margin-left: auto;
+  margin-top: 15%;
+  border:3px ;
+  border-radius:15px;
+  width:700px;
+  letter-spacing: 3px;
+  font-size: 120px;
+}
+
+.header-image{
+  position:absolute;
+  z-index:-1;
+  width:100%;
+}
+
+/* Sidebar */
+#sidebar-wrapper {
+    z-index: 3;
+    position: absolute;
+    width: 0;
+    height: 2820px;
+    overflow-x: hidden;
+    background-color: LightYellow;
+    border: 2px;
+    opacity: 0.9;
+}
+
+/* Always take up entire screen */
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding-top: 15px;
+    border: 5px;
+}
+
+
+/* Change with of sidebar from 0 to 250px */
+#wrapper.menuDisplayed #sidebar-wrapper {
+    width: 250px;
+}
+
+/* Since we added left padding, we need to shrink the width by 250px */
+#wrapper.menuDisplayed #page-content-wrapper {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper img{
+	 width:33%; 
+	 margin-top:15px; 
+	 margin-left:33%;
+	 margin-bottom: 20px;
+}
+
+#sidebar-wrapper span{
+	margin-left:15%;
+	font-size:20px;
+	font-family: Comic Sans MS;
+}
+
+.parallel-nav{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left:10px;
+	padding-right: 0;
+    list-style: none;
+}
+
+.parallel-nav li{
+	display: inline;
+}
+
+.parallel-nav li a{
+	padding-top: 20px;
+  	padding-right: 10%;
+  	padding-bottom: 20px;
+  	padding-left: 10%;
+}
+
+.parallel-nav li a:hover{
+	background: SandyBrown;
+	border-radius: 10px;
+}
+
+.sidebar-nav {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+	font-size: 1.17em;
+	font-family: Verdana;
+    text-indent: 10px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    outline:none;
+}
+
+.sidebar-nav li a:hover {
+    background: SandyBrown;
+}
+
+.sidebar-nav li a i{
+	margin-right: 10px;
+    padding-left: 0;
+}
+
+.btn{
+	background-color: white; 
+    color: black; 
+    border: 2px solid MediumAquaMarine;
+}
+
+.btn:hover {
+    background-color: MediumAquaMarine;
+    color: white;
+}
+
+.status-box{
+	margin-top:25px;
+  width:85%;
+  margin-left: auto;
+  margin-right:0;
+}
+
+.status-box i{
+  font-size: 25px;
+  padding-right: 10px;
+}
+
+.statistics-box{
+  margin-top:25px;
+  width:90%;
+  margin-left: 0;
+  margin-right:auto;
+}
+
+.statistics-box a{
+  text-align: center;
+}
+
+.intro-text {
+    text-transform: uppercase;
+    font-size: 2em;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+
+#page-content-wrapper h2{
+    text-transform: uppercase;
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+.img-full {
+    width: 100%;
+}
+
+
+.img-border {
+    float: none;
+    margin: auto;
+    border: #999999 solid 1px;
+}
+
+
+
+footer {
+  padding: 25px 0;
+  text-align: center;
+  width:100%;
+}
+
+footer span.copyright {
+  line-height: 40px;
+  text-transform: uppercase;
+  text-transform: none;
+}
+
+footer ul.quicklinks {
+  margin-bottom: 0;
+  text-transform: uppercase;
+  text-transform: none;
+}
+
+
+ul.list-inline {
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+ul.list-inline li a{
+	  color:orange;
+}
+
+ul.social-buttons {
+  margin-bottom: 0;
+}
+ul.social-buttons li a {
+  display: block;
+  background-color: #222222;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: white;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+ul.social-buttons li a:hover,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:active {
+  background-color: #fed136;
+}
+
+#logoutModal {
+   margin-top:15%;
+   margin-left:auto;
+   margin-right:auto;
+}
+
+#deleteModal {
+   margin-top:12%;
+   margin-left:auto;
+   margin-right:auto;
+}
+
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display:none;
+}
+
+.modal-header{
+  background-color: RoyalBlue;
+}
+
+.modal-header h4{
+  font-size:20px;
+  text-align: left;
+  color: white;
+}
+
+#feedbackModal {
+   margin-top:12%;
+   margin-left:auto;
+   margin-right:auto;
+}
+
+.blog-grid{
+  overflow:hidden;
+}
+
+.post{
+  padding-top:10px;
+  margin-top:5px;
+  margin-bottom:15px;
+}
+
+
+.post-text{
+  background:WhiteSmoke;
+  clear:both;
+  display:table;
+  width:100%
+  padding-top:10px;
+  padding: 20px;
+  font-size:14px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+
+.post-title{
+  font-size:28px;
+  font-family: "Dosis",arial !important;
+  margin-top:5px;
+  margin-bottom:0px;
+  height:30px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  text-transform:uppercase;
+  line-height:20px;
+  font-weight:500;
+  letter-spacing: 1px;
+    color: #6B6B6B;
+    box-sizing: border-box;
+    -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0.2em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    display: block;
+    text-decoration: none;
+    color:SaddleBrown;
+}
+
+.post-meta{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    color: #ADADAD;
+    text-transform: uppercase;
+    font-size: 12px;
+    display: block;
+    font-family: 'Open Sans',sans-serif;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+.post-meta a{
+  color: #6A6A6A;
+  text-decoration: none;
+  text-transform: uppercase;
+    font-size: 12px;
+    line-height: 28px;
+    font-weight: 400;
+}
+
+.post-meta a::after, .post-meta text::after{
+    content: "•";
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 7px;
+    color: #C1C1C1;
+}
+
+.post-meta a.comments::after{
+  content: "" !important;
+}
+
+.post-edit{
+  color: SteelBlue;
+}
+
+.post-delete{
+  color:Gray;
+}
+
+.post-heart{
+  color:LightCoral;
+}
+
+.post-unlike{
+  color:DarkGrey;
+}
+
+.post-comment{
+  color:LightBlue;
+}
+
+.post-button a{
+  border: 1px solid MediumAquaMarine;
+}
+
+.moment-input-group{
+  width:100%;
+}
+
+
+
+#loadMore {
+    padding: 10px;
+    text-align: center;
+    background-color: #33739E;
+    color: #fff;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #fff;
+    box-shadow: 0 1px 1px #ccc;
+    transition: all 600ms ease-in-out;
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    -o-transition: all 600ms ease-in-out;
+}
+#loadMore:hover {
+    background-color: #fff;
+    color: #33739E;
+}
+
+.more-moments a, .more-moments a:visited {
+    color: #33739E;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+}
+
+.more-moments a:hover {
+    text-decoration: none;
+}
+.status-box-header{
+  background-color: #f7ba34;
+  padding: 15px 20px;
+  border:none;
+  margin:0;
+}
+
+.status-box-header h3{
+  color: white;
+}
+
+.new-moment-title{
+  width:100%;
+}
+
+.form-group input[type=text]{
+  box-sizing:border-box;
+  width:100%;
+  padding:8px 12px 12px 12px;
+  border: 2px solid LightGray;
+
+}
+
+.form-group select{
+  border: 2px solid LightGray;
+  box-sizing:border-box;
+  height:40px;
+  margin:auto;
+  width: 100%;
+}
+
+.form-group textarea{
+  padding:8px 12px;
+  resize:none;
+  border:outset 2px orange;
+  display: block;
+  width:100%;
+  box-sizing:border-box;
+}
+
+
+#image-preview {
+  margin-top:14px;
+  width: 100%;
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #ecf0f1;
+}
+#image-preview input {
+  line-height: 200px;
+  font-size: 200px;
+  position: absolute;
+  opacity: 0;
+  z-index: 10;
+}
+#image-preview label {
+  position: absolute;
+  z-index: 5;
+  opacity: 0.8;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+  background-image: url("/images/acc_mgnt/camera.png");
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size: 75px;
+}
+
+.moment-text textarea{
+  width:100%;
+  resize: none;
+  background-color: inherit;
+  border:none;
+  overflow: hidden;
+  display: block;
+}
+
+
+</style>
+
+</head>
+<body class="account-mgnt">
+	  <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top" style="color:#083a5b">PlanIt</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about" style="color:#fca13f">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#explore" style="color:#f7ba34">Explore</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#schedule" style="color:#487bb4">Schedule</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="moments.html" style="color:#dc4937">Moments</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact" style="color:#3cbc8d">Contact</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="Acc_Mgnt.html" title="My Account"><img src="/images/acc_mgnt/profile.png" class="img-circle profile-margin" style="height:25px;width:25px" alt="Profile Icon"></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <div class="header-container" id="accHeader">
+        <div class="img-container1">
+             <img class="header-image" src="/images/acc_mgnt/party.png" style="width: 100%" alt="Let's party!">
+             <h1>Seize the Moment</h1>
+       </div>
+    </div>
+  
+
+  <!-- Content -->
+  <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+        	<img src="/images/acc_mgnt/profile.png" class="img-circle" alt="profile_icon">
+        	<span>Welcome, <strong>Michael</strong>!</span>
+        	<ul class="parallel-nav">
+        		<li><a href="#news" title="News"><i class="fa fa-envelope fa-2x" style="color:Sienna"></i></a></li>
+        		<li><a href="Acc_Mgnt.html" title="Account Overview"><i class="fa fa-user fa-2x" style="color:RoyalBlue"></i></a></li>
+        		<li><a href="settings.html" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
+        	</ul> 
+        	<hr>
+            <ul class="sidebar-nav">
+            	<li style="margin-left:10px">My Account</li>
+                <li style="background-color: LightSkyBlue"><a href="Acc_Mgnt.html"><i class="fa fa-home fa-fw"></i> Account Overview</a></li>
+                <li><a href="edit_profile.html"><i class="fa fa-pencil fa-fw"></i> Edit Profile</a></li>
+                <li><a href="past_activities.html"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
+                <li><a href="#news"><i class="fa fa-bell fa-fw"></i> News</a></li>
+                <li><a href="settings.html"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
+                <li><a href="" data-toggle="modal" data-target="#feedbackModal"><i class="fa fa-heart fa-fw"></i> Send Feedback</a></li>
+                <li><a href="" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Help and Feedback Modal -->
+        <div class="modal fade" id="feedbackModal" role="dialog">
+          <div class="modal-dialog modal-md">  
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4>Send Feedback <i class="fa fa-send"></i></h4>
+              </div>
+              <div class="modal-body">
+                  <textarea type="text" cols="40" rows="5" style="width:100%" placeholder="Describe your issue or share your idea"></textarea>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn">Submit</button>
+                  <button type="button" class="btn" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logout Modal -->
+        <div class="modal fade" id="logoutModal" role="dialog">
+          <div class="modal-dialog modal-sm">  
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4>Logout <i class="fa fa-lock"></i></h4>
+              </div>
+              <div class="modal-body">
+                <i class="fa fa-question-circle"></i> Are you sure you want to log-off?
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn">Confirm</button>
+                  <button type="button" class="btn" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <div class="container">
+                <div class="row"><br>
+                    <div class="col-lg-12">
+                        <a href="Acc_Mgnt.html" class="btn" id="menu-toggle" style="padding-left: 30px;padding-right: 30px;margin-left:40px;margin-right: 40px;">Menu <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <!-- Facebook-like textarea -->
+                        <div class="status-box well" style="padding: 0px">
+                              <div class="status-box-header">
+                                  <h3>What's New</h3>
+                              </div> 
+                              <form class="form-horizontal col-lg-12" style="background: inherit;" method="post">
+                                <div class="col-lg-4">
+                                    <div id="image-preview">
+                                      <label for="image-upload" id="image-label"></label>
+                                      <input type="file" name="image" id="image-upload" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                  <div class="form-group">
+                                      <div class="col-lg-12">                 
+                                          <input type="text" id="newMomentTitle" name="title" placeholder="Title" style="margin-top:14px; ">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="col-lg-12"> 
+                                          <textarea class="form-element form-control" name="momentText" cols="50" rows="5" placeholder="What's your favorite moment today...?"></textarea>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="col-lg-8">
+                                          <input type="text" id="newLocation" name="location" placeholder="Location">
+                                      </div>
+                                      <div class="col-lg-4">
+                                          <select id="newPricacy" name="privacy">
+                                              <option value="public">Public</option>
+                                              <option value="followers">Followers</option>
+                                              <option value="friends">Friends</option>
+                                              <option value="private">Private</option>
+                                          </select>
+                                      </div>
+                                      <div class="col-lg-5">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="col-lg-6">
+                                      </div>
+                                      <div class="col-lg-3">
+                                          <button type="submit" class="btn">Submit</button>
+                                      </div>
+                                      <div class="col-lg-3">
+                                          <a href="Acc_Mgnt.html" class="btn">Cancel</a>
+                                      </div>
+                                  </div>
+                                </div>
+                              </form>
+                        </div>                      
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="statistics-box">
+                            <ul class="list-group">
+                                <a href="#" class="list-group-item" style="background-color: Khaki ; height:133px;">
+                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;">405</p>
+                                    <p class="list-group-item-text">followers</p>
+                                </a>
+                                
+                                <a href="#" class="list-group-item" style="background-color: Gold; height:133px;">
+                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;">373</p>
+                                    <p class="list-group-item-text">following</p>
+                                </a>
+                                
+                                <a href="#" class="list-group-item" style="background-color: Orange; height:133px;">
+                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;">52</p>
+                                    <p class="list-group-item-text">post</p>
+                                </a>
+                            </ul>
+                        </div>                       
+                    </div>
+
+                    <div class="col-lg-1"></div>
+
+                </div>
+            </div>
+
+          <!-- Past moments -->
+          <div class="container past-moment">
+            <div class="row">
+              <div class="box">
+                <div class="col-lg-12">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                      <hr>
+                      <h2 class="intro-text text-center">My Precious
+                        <strong style="color:LightCoral">Moments</strong>
+                      </h2>
+                      <hr>
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+
+                <div class="col-lg-12 text-center">
+                  <div class="col-lg-1"></div>
+
+                  <div class="col-lg-10">
+                   <div class="post" id="myMoment1">
+                    <img class="img-responsive img-border img-full" src="/images/acc_mgnt/slide-1.jpg" alt="My Moment Image" id="myMomentImg1">
+                    <div class="post-text">
+                        <h2 class="post-title" id="myMomentTitle1">Webdesign</h2>
+                        <div class="post-meta">
+                            By <a href="#">Mike Fields</a><text>3 April 2015</text><text id="myMomentLike1">127 Likes</text> <a href="#" class="comments" id="myMomentComment1">2 Comments</a>
+                        </div>
+                        <div class="moment-text">
+                          <textarea disabled id="myMomentText1" rows="5" cols="500">Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</textarea>
+                        </div>
+                        <br>
+                        <form>
+                            <div class="input-group moment-input-group">
+                                <div class="input-group-btn post-button">
+                                    <a class="btn" id="editBtn1"><i class="glyphicon glyphicon-edit post-edit"></i></a>
+                                    <a class="btn" data-toggle="modal" data-target="#deleteModal" id="deleteBtn1"><i class="glyphicon glyphicon-trash post-delete"></i></a>
+                                    <a class="btn" id="likeBtn1"><i class="glyphicon glyphicon-heart post-unlike"></i></a>
+                                    <a class="btn" id="commentBtn1"><i class="glyphicon glyphicon-comment post-comment"></i></a>
+                                </div>                               
+                                <input type="text" class="form-control" id="myMomentCommentInput1" placeholder="Add a comment..">
+                            </div>
+                        </form>
+                        <p id="myNewComment1"></p>
+                    </div>
+                   </div>
+
+                   <div class="post" id="myMoment2">
+                    <img class="img-responsive img-border img-full" src="/images/acc_mgnt/slide-2.jpg" alt="My Moment Image" id="myMomentImg2">
+                    <div class="post-text">
+                        <h2 class="post-title">Webdesign</h2>
+                        <div class="post-meta">
+                            By <a href="#">Mike Fields</a><text>3 April 2015</text><text id="myMomentLike2">127 Likes</text> <a href="#" class="comments" id="myMomentComment2">2 Comments</a>
+                        </div>
+                        <div class="moment-text">
+                          <textarea disabled id="myMomentText2" rows="5" cols="500">Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</textarea>
+                        </div>
+                        <br>
+                        <form>
+                            <div class="input-group moment-input-group">
+                                <div class="input-group-btn post-button">
+                                    <a class="btn" id="editBtn2"><i class="glyphicon glyphicon-edit post-edit"></i></a>
+                                    <a class="btn" data-toggle="modal" data-target="#deleteModal" id="deleteBtn2"><i class="glyphicon glyphicon-trash post-delete"></i></a>
+                                    <a class="btn" id="likeBtn2" class="btn"><i class="glyphicon glyphicon-heart post-unlike"></i></a>
+                                    <a class="btn" id="commentBtn2"><i class="glyphicon glyphicon-comment post-comment"></i></a>
+                                </div>
+                                <input type="text" class="form-control" id="myMomentCommentInput2" placeholder="Add a comment..">
+                            </div>
+                        </form>
+                    </div>
+                  </div>                  
+
+                   <div class="post" id="myMoment3">
+                    <img class="img-responsive img-border img-full" src="/images/acc_mgnt/slide-3.jpg" alt="">
+                    <div class="post-text">
+                        <h2 class="post-title">Webdesign</h2>
+                        <div class="post-meta">
+                            By <a href="#">Mike Fields</a><text>3 April 2015</text><text id="myMomentLike3">127 Likes</text> <a class="comments" id="myMomentComment3">2 Comments</a>
+                        </div>
+                        <div class="moment-text">
+                          <textarea disabled id="myMomentText3" rows="5" cols="500">Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</textarea>
+                        </div>
+                        <br>
+                        <form>
+                            <div class="input-group moment-input-group">
+                                <div class="input-group-btn post-button">
+                                    <a class="btn" id="editBtn3"><i class="glyphicon glyphicon-edit post-edit"></i></a>
+                                    <a class="btn" data-toggle="modal" data-target="#deleteModal" id="deleteBtn3"><i class="glyphicon glyphicon-trash post-delete"></i></a>
+                                    <a class="btn" id="likeBtn3"><i class="glyphicon glyphicon-heart post-unlike"></i></a>
+                                    <a class="btn" id="likeBtn3"><i class="glyphicon glyphicon-comment post-comment"></i></a>
+                                </div>
+                                <input type="text" class="form-control" id="myMomentCommentInput3" placeholder="Add a comment..">
+                            </div>
+                        </form>
+                    </div>
+                  </div>                 
+
+                  <div class="more-moments">
+                      <a href="#" id="loadMore">Load More</a>
+                  </div>
+
+
+                </div>
+
+                <!-- Delete Moment Modal -->
+                <div class="modal fade" id="deleteModal" role="dialog">
+                  <div class="modal-dialog modal-md">  
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4>Delete This Moment <i class="fa fa-trash-o"></i></h4>
+                        </div>
+                        <div class="modal-body" style="text-align: left;">
+                          <i class="fa fa-question-circle"></i> Are you sure you want to delete this moment?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn" id="confirmDeleteBtn" data-dismiss="modal">Confirm</button>
+                          <button type="button" class="btn" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                  </div>
+                </div>                 
+
+                  <div class="col-lg-1"></div>
+                </div>
+
+
+            </div>
+     	  <div class="row">
+          	<div class="col-lg-12">
+          		<hr>
+      		</div>
+    	  </div>
+        </div>
+       </div>
+
+     <!-- Footer -->
+     <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; PlanIt 2017</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+    <!-- /.container -->  
+
+   </div> 
+
+
+   <a id="back-to-top" href="#" class="btn btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left">
+   <span class="glyphicon glyphicon-chevron-up"></span></a>
+
+
+</body>
+</html>
