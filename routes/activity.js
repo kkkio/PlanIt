@@ -1,4 +1,4 @@
-var express = require('express');
+/*var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var activity=require('../models/activity');
@@ -11,7 +11,7 @@ router.get('/',function(req,res,next){
 //The search page under the explore
 router.get('/search',function(req,res,next){
 	//keyword is what to search
-	
+
 	res.render('search');
 });
 //The recommendation page and catagory page under the explore
@@ -26,3 +26,4 @@ router.get('/result/keyword=:keyword',function(req,res,next){
 });
 
 //Host to post the activities
+*/
