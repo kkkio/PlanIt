@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var user=require('./individual');
-var assert = require('mongoose-assert')('mongoose');
-var autoIncrement = require('mongoose-auto-increment');
+
 
 var scheduleSchema = mongoose.Schema({
   user_id : Number,

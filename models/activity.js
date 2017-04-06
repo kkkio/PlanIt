@@ -1,7 +1,5 @@
 
 var mongoose = require('mongoose');
-var assert = require('mongoose-assert')('mongoose');
-var autoIncrement = require('mongoose-auto-increment');
 
 var activitySchema = mongoose.Schema({
 	activity_name : String,
@@ -38,12 +36,12 @@ activity.static.search=function(keyword){
 				a_url : query[i].url,
 				a_average_rating : query[i].average_rating,
 				a_comments[] : query[i].comments
-    		});	
+    		});
 	return activity;
-	
+
 };
 //INSTANCED METHOD
-	
+
 module.exports = mongoose.model('activity', activitySchema);
 
 
