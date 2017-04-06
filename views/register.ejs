@@ -97,6 +97,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow:hidden;
 
 }
 body:before {
@@ -114,10 +115,10 @@ body:before {
 }
 
 footer {
-  bottom:12px;
   left:0;
-  position: fixed;
-  margin-top:0;
+  position: relative;
+  padding-top:3%;
+  padding-bottom: 1%;
   text-align: center;
   width:100%;
 }
@@ -192,7 +193,7 @@ ul.social-buttons li a:active {
   z-index: 1;
   background: white;
   opacity: 0.9;
-  max-width: 600px;
+  max-width: 100%;
   margin: 0 auto 20px;
   padding: 20px;
   border-top-left-radius: 3px;
@@ -229,7 +230,7 @@ ul.social-buttons li a:active {
 
 <div class="container" style="padding-top: 0">
 
-<div class="row">
+<div class="row" style="padding-bottom: 30px">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
     <form role="form" class="form" method="post" action="/users/register">
       <h2 style="color:MediumAquaMarine; text-align:left;">Sign Up <small style="color:Gold; font-size: 15px"> Start your journey with <i class="fa fa-heart" style="color:red"></i> PlanIt</small></h2>
