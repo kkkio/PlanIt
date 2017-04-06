@@ -23,9 +23,7 @@ var User = require('../models/individual');
       passReqToCallback: true
     },
     function(req, username, password, done) {
-      console.log('np');
       User.findByEmail(req.body.email, function(err,user){
-        console.log('yp');
         if(err) return done(err);
         // if already taken
         if(user) return done(null,false,req.flash('signupMessage','Email has been taken'));
