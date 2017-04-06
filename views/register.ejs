@@ -256,11 +256,24 @@ ul.social-buttons li a:active {
             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
           </div>
         </div>
+
       </div>
-      <!-- For alert -->
+      <!-- For alert
       <div class = "alert-danger">
           <strong>Invalid username!</strong> Please try again!
       </div>
+    -->
+    <% if (errors) { %>
+    <% for(var i=0; i<errors.length; i++) { %>
+      <div class = "alert-danger">
+          <strong><%= errors[i]%></strong> Please try again!
+      </div>
+    <% }} %>
+    <% if (message.length > 0) { %>
+      <div class = "alert-danger">
+          <strong><%= message%></strong> Please try again!
+      </div>
+    <% } %>
 
       <hr class="colorgraph">
       <div class="row">
