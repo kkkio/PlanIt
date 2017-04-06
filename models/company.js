@@ -2,18 +2,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 var assert = require('mongoose-assert')('mongoose');
-var autoIncrement = require('mongoose-auto-increment');
-var db = mongoose.connect('mongodb://localhost/3100');
 
-//var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function(err) {
-  if(err){
-    console.log(err);
-  }
-  console.log('We are connnected');
-  // we're connected!
-});
 
 
 var hostSchema = mongoose.Schema({
@@ -41,7 +30,7 @@ var hostSchema = mongoose.Schema({
   },
 
   // basic info
-  username : {type: String, unique: true};
+  username : {type: String, unique: true},
   company_name : String,
   password : String,
   email : String,
@@ -50,16 +39,13 @@ var hostSchema = mongoose.Schema({
 
   // for login safety
   propic: String,
-  user_ip : { type: Array, 'default': []},
+  user_ip : [Number],
 
 
   activityList: [{type: mongoose.Schema.Types.ObjectId, ref: 'activity' }]
-  // check admin
-  admin : Boolean
-},options);
+});
 
-hostSchema.plugin(autoIncrement.plugin, 'user');
-var user = connection.model('user', hostSchema);
+var user = hostSchema;
 
 // add an alias for define method
 //var user = hostSchema;
@@ -119,9 +105,5 @@ user.methods.updatePhone = function updatePhone(phone){
   this.phone_number = phone;
 };
 
-// TODO : FOR ZZC
-user.methods.updateIP = function updateIP(userip){
 
-};
-
-module.exports = Host = mongoose.model('Host', hostSchema);
+module.exports = Host = mongoose.model('host', hostSchema);
