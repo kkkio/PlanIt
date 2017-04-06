@@ -71,12 +71,6 @@ user.statics.findByEmail = function findByEmail(email, callback){
   return this.findOne({email: email},callback);
 };
 
-// STATICS METHODS
-// signup - add a user
-/*user.statics.signup = function signup(username,email,password,done){
-  var User = this;
-  User.create()
-}*/
 
 // hash user password
 user.statics.generateHash = function generateHash(password) {
