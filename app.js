@@ -11,9 +11,10 @@ var session = require('express-session');
 var passport = require('passport');
 var mongoose = require('mongoose');
 var mongodb = require('mongodb');
-var config = requrie('./config/config');
+var config = require('./config/config');
 
-mongoose.connect('config.db');
+mongoose.connect(config.db);
+
 require('./config/passport')(passport,config); // pass passport for configuration
 
 var index = require('./routes/index');
