@@ -6,15 +6,10 @@ var nodemailer= require('nodemailer');
 
 
 // load up the user model
-var mysql = require('mysql');
+var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
-var db = require('./database');
 var passport = require('passport');
-var connection = mysql.createConnection(db.connection);
-//var user = require('./user')
-
-// connect database
-connection.query('USE '+db.database);
+var individual = requrie('./individual');
 
 module.exports = function(passport) {
 
@@ -27,6 +22,7 @@ module.exports = function(passport) {
   // used to serialize the user for the session
   passport.serializeUser(function(user, done) {
     done(null, user.id);
+    //done(null,user.id);
   });
 
   // used to deserialize the user
