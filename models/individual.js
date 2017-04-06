@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
-//var assert = require('mongoose-assert')('mongoose');
+
 var individualSchema = mongoose.Schema({
   local            : {
       email        : String,
