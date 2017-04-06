@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var Schedule=require('../models/schedule');
-var moment==require('../models/moment');
+var moment=require('../models/moment');
 //build the connection to the database
 
 
@@ -30,7 +30,6 @@ router.post('/login', function(req,res,next){
   //set the username in the cookie
   // TODO need to set the userid to the cookie
   res.cookie('u_name',req.body.username);
-  );
   console.log('out');
   next();
 },passport.authenticate('local-login', {
@@ -57,7 +56,7 @@ router.post('/register',isCompleted, function(req,res,next){
   //set the username in the cookie
   res.cookie('u_name',req.body.username);
   // TODO res.cookie('u_id',result[0].user_id);
-);
+
   console.log('out');
   next();
 },passport.authenticate('local-signup', {
@@ -166,7 +165,8 @@ router.post('/myschedule/update', function(req, res, next) {
 //view others schedules
 router.get('/schedule/:id', function(req, res, next) {
   	var friend_id=req.params.id;
-	var data[]=Schedule.showFriendSchedule(friend_id);
+  //data[] data is the array of objects
+	var data=Schedule.showFriendSchedule(friend_id);
     res.render('otherschedule',data);
 });
 /*SCHEDULE FINISHED*/
