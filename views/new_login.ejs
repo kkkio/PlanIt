@@ -43,8 +43,8 @@
   z-index: 1;
   background: Bisque;
   opacity: 0.9;
-  max-width: 350px;
-  margin: 0 auto 100px;
+  max-width: 400px;
+  margin: 0 auto 30px;
   padding: 30px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -81,7 +81,7 @@
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+.form button{
   outline: 0;
   background: #EF3B3A;
   width: 100%;
@@ -99,8 +99,8 @@
 }
 
 .form button:hover{
-  background: white;
-  color: Azure;
+  background: Azure !important;
+  color: black;
 }
 
 .form .message {
@@ -129,13 +129,13 @@
 
 
 .container .info {
-  margin: 30px auto;
+  margin: 20px auto;
   text-align: center;
 }
 .container .info h1 {
-  margin: 0 0 15px;
+  margin: 0 0 0px;
   padding: 0;
-  font-size: 80px;
+  font-size: 70px;
   font-weight: 500;
   color: SteelBlue;
   font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif; 
@@ -178,7 +178,59 @@ body:before {
   padding-right: 10px;
 }
 
+footer {
+  padding-top: 0;
+  margin-top:0;
+  margin-bottom: 12px;
+  text-align: center;
+  width:100%;
+}
 
+footer span.copyright {
+  line-height: 40px;
+  text-transform: uppercase;
+  text-transform: none;
+  color:Bisque;
+}
+
+footer ul.quicklinks {
+  margin-bottom: 0;
+  text-transform: uppercase;
+  text-transform: none;
+}
+
+
+ul.list-inline {
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+ul.list-inline li a{
+    color:Sienna;
+}
+
+ul.social-buttons {
+  margin-bottom: 0;
+}
+ul.social-buttons li a {
+  display: block;
+  background-color: #222222;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: white;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+ul.social-buttons li a:hover,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:active {
+  background-color: #fed136;
+}
 
 </style>
 </head>
@@ -191,35 +243,50 @@ body:before {
     <li ><a href="#" class="text">Contact</a></li>
   </ul>
   <div class="info">
-    <h1>Welcome Back</h1><span>Start your journey with <i class="fa fa-heart"></i> PlanIt</span>
+    <h1>Welcome Back</h1><span>Continue your journey with <i class="fa fa-heart"></i> PlanIt</span>
   </div>
-<<<<<<< HEAD
-=======
-  </div>
-<div class="container">
-  <div class="jumbotron" >
-    <h2 class="text-center"> Login with your account.</h2><br>
-    <form class="text-center" method="post" action="/login">
-      Username: <input type="text" name="Username" value=""><br><br>
-      Password: <input type="password" name="Password" value=""><br><br>
-      <input type="checkbox" name="remember"> remember password<br><br>
-
-      <input type="submit"  value="login"><br><br>
-      <a href="#" class="text">forget password</a>
-    </form>
->>>>>>> cd26da64fc5d2952347c8248d4dea5ab835d0e99
 </div>
 
 
-<div class="form" method="post">
+<div class="form">
   <div class="thumbnail"><img src="./img/login/avatar.png"/></div>
-  <form class="login-form">
+  <form class="login-form" method="post" action="#">
     <input type="text" name="username/email" placeholder="username/email"/>
     <input type="password" name="password" placeholder="password"/>
     <button type="submit">login</button>
+    <button type="submit" onclick="location.href='/users/login/facebook';" style="margin-top:2px;background-color: #3b5998">login with Facebook</button>
     <p class="message">Not registered? <a href="register.html">Create an account</a></p>
   </form>
 </div>
+
+<!-- Footer -->
+<footer>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <span class="copyright">Copyright &copy; PlanIt 2017</span>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          <li><a href="#"><i class="fa fa-twitter"></i></a>
+          </li>
+          <li><a href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li><a href="#"><i class="fa fa-linkedin"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li><a href="#">Privacy Policy</a>
+          </li>
+          <li><a href="#">Terms of Use</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 
 
 </body>
