@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 
-var individualSchema = mongoose.Schema({
+var userSchema = mongoose.Schema({
   local            : {
       email        : String,
       password     : String,
@@ -32,6 +32,12 @@ var individualSchema = mongoose.Schema({
   password : String,
   phone_number : {type: String, sparse: true},
   intro : String,
+
+  // check user type:
+  // 1 - individual
+  // 2 - host
+  user_type: Number,
+
   // only for individual
   age : Number,
   birth: Date,
@@ -40,7 +46,7 @@ var individualSchema = mongoose.Schema({
 
   followerList : [this],
   followingList : [this],
-
+  // end individual
 
   // for login safety
   propic: String,
@@ -51,7 +57,7 @@ var individualSchema = mongoose.Schema({
   pastActivityList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'activity' }]
 });
 
-var user = individualSchema;
+var user = userSchema;
 // add an alias for define method
 //var user = individualSchema;
 
@@ -115,4 +121,4 @@ user.methods.updateIP = function updateIP(userip){
 
 };
 
-module.exports = mongoose.model('individual', individualSchema);
+module.exports = mongoose.model('user', userSchema);
