@@ -55,28 +55,20 @@ var user = hostSchema;
 // STATICS METHODS
 // find by name
 user.statics.findByName = function findByName(name, callback){
+  console.log('try to find by name: ', name);
   return this.findOne({username: name},callback);
 };
 
 // find by email
 user.statics.findByEmail = function findByEmail(email, callback){
+  console.log('try to find by email: ', email);
   return this.findOne({email: email},callback);
 };
 
-user.statics.findByEmailOrName = function findByNameOrEmail(email, name, callback){
-  this.findByEmail(email, function(err, user){
-    // if find not found by email
-    if(err){
-      throw err;
-    }
-    if(!user){
-      return this.findByName(name, callback);
-    }
-    else{
-      return callback(err, user);
-    }
 
-  });
+// hash user password
+user.statics.generateHash = function generateHash(password) {
+  return bcrypt.hashSync(password, salt);
 };
 
 // INSTANCE METHODS
@@ -84,6 +76,7 @@ user.statics.findByEmailOrName = function findByNameOrEmail(email, name, callbac
 user.methods.findIP = function getIP(callback){
   return this.userip;
 };
+
 
 // hash user password
 user.methods.generateHash = function generateHash(password) {

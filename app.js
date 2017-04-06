@@ -16,6 +16,7 @@ var config = require('./config/config');
 mongoose.connect(config.db);
 
 require('./config/passport')(passport,config); // pass passport for configuration
+//require('./config/passport')(passport,config); // pass passport for configuration
 
 var index = require('./routes/index');
 var users = require('./routes/users');
