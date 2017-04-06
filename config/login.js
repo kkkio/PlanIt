@@ -97,7 +97,6 @@ module.exports = function(passport) {
                   throw(err);
                 }
                 newUser.id = rows.insertId;
-
                 return done(null, newUser);
               });
               console.log('Create User done.');
