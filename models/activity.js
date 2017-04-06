@@ -2,7 +2,6 @@
 var mongoose = require('mongoose');
 var assert = require('mongoose-assert')('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
-mongoose.connect('mongodb://localhost/3100');
 
 var activitySchema = mongoose.Schema({
 	activity_name : String,
@@ -19,6 +18,7 @@ var activitySchema = mongoose.Schema({
 	average_rating: Number,
 	comments: {type: String, ref: 'comment'}
 });
+<<<<<<< HEAD
 
 activitySchema.plugin(autoIncrement.plugin, 'activity');
 var activity = connection.model('activity', activitySchema);
@@ -47,3 +47,5 @@ activity.static.search=function(keyword){
 module.exports = mongoose.model('activity', activitySchema);
 
 
+=======
+>>>>>>> 041d80b4c0b8412605d723c3522fa31c5dc0674b

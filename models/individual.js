@@ -1,12 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
-var assert = require('mongoose-assert')('mongoose');
-var autoIncrement = require('mongoose-auto-increment');
-var connection = mongoose.createConnection('mongodb://localhost/3100');
-
-autoIncrement.initialize(connection);
-
+//var assert = require('mongoose-assert')('mongoose');
 var individualSchema = mongoose.Schema({
   local            : {
       email        : String,
@@ -32,32 +27,31 @@ var individualSchema = mongoose.Schema({
   },
 
   // basic info
-  username : String,
-  phone_number : String,
+  username : {type: String, sparse: true},
+  email : {type: String, sparse: true},
   password : String,
-  email : String,
-  self_intro : String,
+  phone_number : {type: String, sparse: true},
+  intro : String,
+  // only for individual
   age : Number,
   birth: Date,
   num_of_followers : Number,
   num_of_followers : Number,
 
-  followerList : {type: Array, 'default' : []},
-  followingList : {type: Array, 'default' : []},
+  followerList : [this],
+  followingList : [this],
 
 
   // for login safety
   propic: String,
-  user_ip : {
-    type Array, 'default':[]},
+  user_ip : [Number],
 
   // check admin
-  admin : Boolean
-  pastActivityList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Activity' }]
+  //admin : Boolean
+  pastActivityList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'activity' }]
 });
 
-individualSchema.plugin(autoIncrement.plugin, 'user');
-var user = connection.model('user', individualSchema);
+var user = individualSchema;
 // add an alias for define method
 //var user = individualSchema;
 
@@ -67,24 +61,26 @@ var user = connection.model('user', individualSchema);
 // STATICS METHODS
 // find by name
 user.statics.findByName = function findByName(name, callback){
-  return this.find({username: name}),callback);
+  console.log('try to find by name: ', name);
+  return this.findOne({username: name},callback);
 };
 
 // find by email
 user.statics.findByEmail = function findByEmail(email, callback){
-  return this.find({email: email}),callback);
+  console.log('try to find by email: ', email);
+  return this.findOne({email: email},callback);
 };
 
-user.statics.findByNameOrEmail = function findByNameOrEmail(input, callback){
-  this.findByEmail(input, function(err, result){
-    // if find not found by email
-    if(err){
-      return this.findByName(input, callback);
-    }
-    else{
-      return callback(err, result);
-    }
-  });
+// STATICS METHODS
+// signup - add a user
+/*user.statics.signup = function signup(username,email,password,done){
+  var User = this;
+  User.create()
+}*/
+
+// hash user password
+user.statics.generateHash = function generateHash(password) {
+  return bcrypt.hashSync(password, salt);
 };
 
 // INSTANCE METHODS
@@ -93,10 +89,7 @@ user.methods.findIP = function getIP(callback){
   return this.userip;
 };
 
-// hash user password
-user.methods.generateHash = function generateHash(password) {
-  return bcrypt.hashSync(password, salt);
-};
+
 
 // compare password
 user.methods.checkVaildPassword = function checkVaildPassword(password) {
@@ -128,4 +121,4 @@ user.methods.updateIP = function updateIP(userip){
 
 };
 
-module.exports = mongoose.model('Individual', individualSchema);
+module.exports = mongoose.model('individual', individualSchema);

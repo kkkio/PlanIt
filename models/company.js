@@ -2,18 +2,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 var assert = require('mongoose-assert')('mongoose');
-var autoIncrement = require('mongoose-auto-increment');
-var db = mongoose.connect('mongodb://localhost/3100');
 
-//var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function(err) {
-  if(err){
-    console.log(err);
-  }
-  console.log('We are connnected');
-  // we're connected!
-});
 
 
 var hostSchema = mongoose.Schema({
@@ -41,25 +30,22 @@ var hostSchema = mongoose.Schema({
   },
 
   // basic info
-  username : {type: String, unique: true};
+  username : {type: String, sparse: true},
+  email : {type: String, sparse: true},
   company_name : String,
   password : String,
-  email : String,
-  phone_number : String,
+  phone_number : {type: String, sparse: true},
   intro : String,
 
   // for login safety
   propic: String,
-  user_ip : { type: Array, 'default': []},
+  user_ip : [Number],
 
 
   activityList: [{type: mongoose.Schema.Types.ObjectId, ref: 'activity' }]
-  // check admin
-  admin : Boolean
 });
 
-hostSchema.plugin(autoIncrement.plugin, 'user');
-var user = connection.model('user', hostSchema);
+var user = hostSchema;
 
 // add an alias for define method
 //var user = hostSchema;
@@ -70,23 +56,27 @@ var user = connection.model('user', hostSchema);
 // STATICS METHODS
 // find by name
 user.statics.findByName = function findByName(name, callback){
-  return this.find({username: name},callback);
+  return this.findOne({username: name},callback);
 };
 
 // find by email
 user.statics.findByEmail = function findByEmail(email, callback){
-  return this.find({email: email},callback);
+  return this.findOne({email: email},callback);
 };
 
-user.statics.findByNameOrEmail = function findByNameOrEmail(input, callback){
-  this.findByEmail(input, function(err, result){
+user.statics.findByEmailOrName = function findByNameOrEmail(email, name, callback){
+  this.findByEmail(email, function(err, user){
     // if find not found by email
     if(err){
-      return this.findByName(input, callback);
+      throw err;
+    }
+    if(!user){
+      return this.findByName(name, callback);
     }
     else{
-      return callback(err, result);
+      return callback(err, user);
     }
+
   });
 };
 
@@ -119,15 +109,5 @@ user.methods.updatePhone = function updatePhone(phone){
   this.phone_number = phone;
 };
 
-// TODO : FOR ZZC
-user.methods.updateIP = function updateIP(userip){
 
-};
-
-module.exports = Host = mongoose.model('Host', hostSchema);
-
-var airbnb = new Host({ username: 'Airbnb' });
-airbnb.save(function (err, fluffy) {
-  if (err) return console.error(err);
-  console.log('airbnb added');
-});
+module.exports = mongoose.model('host', hostSchema);
