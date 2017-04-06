@@ -42,8 +42,6 @@ router.post('/login', function(req,res,next){
 router.get('/register', function(req, res, next) {
   var errors;
   res.render('register', {
-    title: 'PlanIt Register',
-    projectname: 'PlanIt',
     message: req.flash('signupMessage'),
     errors: errors
   });
@@ -240,13 +238,11 @@ router.get('/logout',isLoggedIn,function(req, res, next){
 
 // route middleware to make sure register form
 function isCompleted(req, res, next){
-  var name = req.body.name;
   var email = req.body.email;
   var username = req.body.username;
   var password = req.body.password;
   var password2 = req.body.password2;
 
-  req.checkBody('name', 'Name is requeired').notEmpty();
   req.checkBody('email', 'Email is required').notEmpty();
   req.checkBody('email', 'Email is not valid').isEmail();
   req.checkBody('username', 'Username is required').notEmpty();
@@ -259,8 +255,6 @@ function isCompleted(req, res, next){
   if(errors){
     console.log(errors);
     res.render('register',{
-      title: 'PlanIt Register',
-      projectname: 'PlanIt',
       errors:errors
     });
   } else {
