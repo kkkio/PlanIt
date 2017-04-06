@@ -23,7 +23,7 @@ schedule.static.showMySchedule=function(userID){
   var s_schedule=[];
   for(var i=0;i<query.length;i++){
     s_schedule.push({
-      s_id=query[i].id,
+      s_id:query[i].id,
       s_title:query[i].title,
       s_date:query[i].date,
       s_start_time : query[i].start_time,
@@ -43,7 +43,7 @@ schedule.static.showFriendSchedule=function(friend_id){
 			for (var i=0;i<query.length;i++){
 				if(query[i].privacy<4){
 					f_schedule.push({
-      					f_id=query[i].id,
+      					f_id:query[i].id,
       					f_title:query[i].title,
       					f_date:query[i].date,
       					f_start_time : query[i].start_time,
@@ -56,7 +56,7 @@ schedule.static.showFriendSchedule=function(friend_id){
 			for (var i=0;i<query.length;i++){
 				if(query[i].privacy<3){
 					f_schedule.push({
-      					f_id=query[i].id,
+      					f_id:query[i].id,
       					f_title:query[i].title,
       					f_date:query[i].date,
       					f_start_time : query[i].start_time,

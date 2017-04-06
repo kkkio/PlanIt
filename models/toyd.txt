@@ -1,0 +1,4 @@
+we need to add username and userid to cookie when login.
+No moment_id in moment.
+I change some name of attribute.
+the function to check if the friend

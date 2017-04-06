@@ -20,7 +20,7 @@ moment.static.showMyMoment=function(userID){
   var m_moment=[];
   for(var i=0;i<query.length;i++){
     m_moment.push({
-      m_id=query[i].id,
+      m_id:query[i].id,
       m_title:query[i].title,
       m_date:query[i].date,
       m_posttime:query[i].post_time,
@@ -39,13 +39,13 @@ moment.static.showFriendMoment=function(friend_id){
 			for (var i=0;i<query.length;i++){
 				if(query[i].privacy<4){
 					m_moment.push({
-      				m_id=query[i].id,
-              m_title:query[i].title,
-              m_date:query[i].date,
-              m_posttime:query[i].post_time,
-              m_location:query[i].location,
-              m_moment_pic: query[i].pic,
-              m_text:query[i].text
+      					m_id:query[i].id,
+              			m_title:query[i].title,
+              			m_date:query[i].date,
+              			m_posttime:query[i].post_time,
+              			m_location:query[i].location,
+              			m_moment_pic: query[i].pic,
+              			m_text:query[i].text
     				});
 				}
 			}
@@ -54,13 +54,13 @@ moment.static.showFriendMoment=function(friend_id){
 			for (var i=0;i<query.length;i++){
 				if(query[i].privacy<3){
 				  m_moment.push({
-      					m_id=query[i].id,
-                m_title:query[i].title,
-                m_date:query[i].date,
-                m_posttime:query[i].post_time,
-                m_location:query[i].location,
-                m_moment_pic: query[i].pic,
-                m_text:query[i].text
+      					m_id:query[i].id,
+                		m_title:query[i].title,
+                		m_date:query[i].date,
+                		m_posttime:query[i].post_time,
+                		m_location:query[i].location,
+                		m_moment_pic: query[i].pic,
+                		m_text:query[i].text
     				});
 				}
 			}

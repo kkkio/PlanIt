@@ -16,14 +16,13 @@ var activitySchema = mongoose.Schema({
 	average_rating: Number,
 	comments: {type: String, ref: 'comment'}
 });
-<<<<<<< HEAD
 
-activitySchema.plugin(autoIncrement.plugin, 'activity');
-var activity = connection.model('activity', activitySchema);
+
+var activity = activitySchema;
 //STATIC METHOD
 activity.static.search=function(keyword){
 	var query=this.find({"activity_name":{$regex: keyword, $options: 'i'}});
-	var activity[];
+	var activity=[];
 	for (var i=0;i<query.length;i++){
 			activity.push({
       			a_name : query[i].activity_name,
@@ -35,8 +34,9 @@ activity.static.search=function(keyword){
 				a_intro : query[i].intro,
 				a_url : query[i].url,
 				a_average_rating : query[i].average_rating,
-				a_comments[] : query[i].comments
+				a_comments : query[i].comments
     		});
+	}
 	return activity;
 
 };
@@ -45,5 +45,4 @@ activity.static.search=function(keyword){
 module.exports = mongoose.model('activity', activitySchema);
 
 
-=======
->>>>>>> 041d80b4c0b8412605d723c3522fa31c5dc0674b
+

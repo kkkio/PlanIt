@@ -21,8 +21,9 @@ router.get('/recommendation',function(req,res,next){
 //The result page for paticular keyword
 router.get('/result/keyword=:keyword',function(req,res,next){
 	var keyword=req.params.keyword;
-	var activities[]=activity.search(keyword);//activities is the array of the activities found
+	var activities=activity.search(keyword);//activities is the array of the activities found
 	res.render('result',activities);//result is view file.(name maybe change)
 });
 
 //Host to post the activities
+module.exports = router;

@@ -68,7 +68,7 @@ CREATE TABLE schedule(
 	user_id INT NOT NULL,
 	title VARCHAR(100) NOT NULL,
 	activity_id INT,
-	s_date	DATE  NOT NULL,
+	s_date	     DATE  NOT NULL,
 	start_time TIME,
 	end_time TIME,
 	venue VARCHAR(100),
@@ -82,7 +82,7 @@ ADD url VARCHAR(100) AFTER privacy;
 
 -- If error in adding table schedule, try the following (uncomment when using)
 -- CREATE TABLE schedule(
---	schedule_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+--	 schedule_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 --	user_id INT NOT NULL,
 --	title VARCHAR(100) NOT NULL,
 --	activity_id INT,
