@@ -43,14 +43,15 @@
   z-index: 1;
   background: Bisque;
   opacity: 0.9;
-  max-width: 450px;
-  margin: 0 auto 30px;
+  max-width: 33%;
+  margin: 0px auto 1%;
   padding: 20px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   text-align: center;
+  border-radius: 8px;
 }
 .form .thumbnail {
   background: #EF3B3A;
@@ -146,7 +147,7 @@
 }
 .container .info span {
   color: #4d4d4d;
-  font-size: 18px;
+  font-size: 15px;
 }
 .container .info span a {
   color: #000000;
@@ -165,6 +166,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow: hidden;
 }
 body:before {
   content: "";
@@ -181,10 +183,10 @@ body:before {
 }
 
 footer {
-  bottom:12px;
   left:0;
-  position: fixed;
-  margin-top:0;
+  position: relative;
+  padding-top:2%;
+  padding-bottom: 1%;
   text-align: center;
   width:100%;
 }
@@ -240,7 +242,7 @@ ul.social-buttons li a:active {
 
 <body>
 <div class="container">
-  <ul class="nav nav-pills navbar">
+  <ul class="nav nav-pills navbar" style="margin-bottom: 0;">
     <li class="active"><a href="index.html">Home</a></li>
     <li ><a href="#" class="text">About us</a></li>
     <li ><a href="#" class="text">Contact</a></li>
