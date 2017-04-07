@@ -34,10 +34,6 @@
 
 </head>
 <style>
-.col-centered{
-    float: none;
-    margin: 0 auto;
-}
 .header-container{
   width:100%;
   height:800px;
@@ -45,6 +41,7 @@
   border-right: none;
   position: relative;
   padding: 20px;
+
 }
 .video-container1{
   position:absolute;
@@ -52,30 +49,6 @@
   left:0%;
   height:100%;
   width:100%;
-  overflow: hidden;
-}
-.video-container2{
-  position:absolute;
-  top:0%;
-  left:50%;
-  height:900px;
-  width:50%;
-  overflow: hidden;
-}
-.video-container3{
-  position:absolute;
-  top:50%;
-  left:0%;
-  height:450px;
-  width:50%;
-  overflow: hidden;
-}
-.video-container4{
-  position:absolute;
-  top:50%;
-  left:50%;
-  height:450px;
-  width:50%;
   overflow: hidden;
 }
 video{
@@ -100,6 +73,10 @@ h1{
   letter-spacing: 3px;
   font-size: 40px;
   font-family: 'Pacifico',cursive;
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
 }
 
 </style>
@@ -130,17 +107,13 @@ h1{
                     <li>
                         <a class="page-scroll" href="#explore" style="color:#f7ba34">Explore</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="/schedule" style="color:#487bb4" id="enter_schedule">Schedule</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#moments" style="color:#dc4937">Moments</a>
-                    </li>
+
+
                     <li>
                         <a class="page-scroll" href="#contact" style="color:#3cbc8d">Contact</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/account" style="color:#006699" id="enter_account">Account</a>
+                        <a class="page-scroll" href="/users/login" style="color:#006699">Login</a>
                     </li>
                 </ul>
             </div>
@@ -149,23 +122,24 @@ h1{
         <!-- /.container-fluid -->
     </nav>
 
-    <!-- Header -->
+    <!-- vidoe Header -->
     <div class="header-container">
       <div class="video-container1">
         <video preload="true" autoplay="autoplay" loop="loop" volume="0">
           <source src = "video/concert1.mp4" type="video/mp4">
           </video>
-         <h1> Your favorite site for exploring and sharing activities!</h1>
+         <h1>Your favorite site for <br>exploring and sharing activities!</h1>
 
       </div>
     </div>
 
-    <!-- Services Section -->
+
+    <!-- about Section -->
     <section id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">PlanIt</h2>
+                    <h2 class="section-heading" style="color:#fca13f">PlanIt</h2>
                     <h3 class="section-subheading text-muted">A great website for activity lovers!</h3>
                 </div>
             </div>
@@ -184,6 +158,7 @@ h1{
                         <i class="fa fa-search fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Ready to explore</h4>
+
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
                 <div class="col-md-4">
@@ -198,6 +173,7 @@ h1{
         </div>
     </section>
 
+    <br><br>
     <!-- explore Section -->
     <section id="explore" class="bg-light-gray">
         <div class="container">
@@ -266,16 +242,19 @@ h1{
                 </div>
             </div><br>
             <div class="row">
-               <div class="col-lg-1 col-sm-1 col-md-1 col-xl-1 col-centered"><a class="btn btn-lg btn-info" href="/Explore" id="enter_explore">More</a></div>
+               <div class="col-lg-1 col-sm-1 col-md-1 col-xl-1 col-centered"><a class="btn btn-lg btn-info" href="/Explore" id="enter_explore" >More</a></div>
             </div>
     </section>
+
+
+<br><br>
 
     <!-- Team Section -->
     <section id="team" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Our Amazing Team</h2>
+                    <h2 class="section-heading" style="color:#3cbc8d">Our Amazing Team</h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
@@ -334,7 +313,7 @@ h1{
         </div>
     </section>
 
-    <!-- Clients Aside -->
+    <!-- Clients Aside
     <aside class="clients">
         <div class="container">
             <div class="row">
@@ -361,6 +340,7 @@ h1{
             </div>
         </div>
     </aside>
+    -->
 
     <!-- Contact Section -->
     <section id="contact">
@@ -478,6 +458,10 @@ h1{
 
 
     <!-- Portfolio Modal 3 -->
+
+
+
+
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
