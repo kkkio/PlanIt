@@ -60,6 +60,7 @@ router.post('/register',isCompleted, function(req,res,next){
   failureRedirect : '/users/register',
   failureFlash : true
 }));
+
 //email verify
 router.get('/verify',function(req,res,next){
   res.send('email verified');
