@@ -677,22 +677,22 @@ hr.footer-hr{
 
         <!-- Help and Feedback Modal -->
         <div class="modal fade" id="feedbackModal" role="dialog">
-          <div class="modal-dialog modal-md">
+          <div class="modal-dialog modal-md">  
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                   <h4>Send Feedback <i class="fa fa-send"></i></h4>
               </div>
-              <div class="modal-body">
-                  <form method="post">
+              <form method="post" action="/users/account/profile">
+                <div class="modal-body">
                     <textarea type="text" cols="40" rows="5" style="width:100%" placeholder="Describe your issue or share your idea"></textarea>
-                  </form>
-              </div>
-              <div class="modal-footer">
+                </div>
+                <div class="modal-footer">
                   <button type="submit" class="btn">Submit</button>
                   <button type="button" class="btn" data-dismiss="modal">Close</button>
-              </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -731,7 +731,7 @@ hr.footer-hr{
                               <div class="status-box-header">
                                   <h3>What's New</h3>
                               </div>
-                              <form class="form-horizontal col-lg-12" style="background: inherit;" method="post">
+                              <form class="form-horizontal col-lg-12" style="background: inherit;" method="post" action="/users/account">
                                 <div class="col-lg-4">
                                     <div id="image-preview">
                                       <label for="image-upload" id="image-label"></label>
