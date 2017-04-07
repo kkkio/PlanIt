@@ -31,7 +31,7 @@ exports.isCompleted = function isCompleted(req, res, next){
 };
 
 exports.redirect = passport.authenticate('local-signup', {
-  successRedirect : '/users/profile',
+  successRedirect : '/users/account',
   failureRedirect : '/users/register',
   failureFlash : true
 });

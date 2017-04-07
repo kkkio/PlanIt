@@ -13,12 +13,7 @@ var account = require('../controller/account');
 
 /* GET users listing. */
 /* GET users page. */
-router.get('/', function(req, res, next) {
-  res.render('users', {
-    title: 'PlanIt Users',
-    projectname: 'PlanIt'
-  });
-});
+router.get('/', isLoggedIn, account.getaccpage);
 
 /* GET user login page. */
 router.get('/login', function(req, res, next) {
@@ -35,7 +30,7 @@ router.post('/login', function(req,res,next){
   console.log('out');
   next();
 },passport.authenticate('local-login', {
-  successRedirect: '/users/profile',
+  successRedirect: '/users/account',
   failureRedirect: '/users/login',
   failureFlash: true
 }),function(req, res, next){
@@ -234,7 +229,7 @@ function isLoggedIn(req, res, next) {
 		return next();
 
 	// if they aren't redirect them to the home page
-	res.redirect('/users');
+	res.redirect('/users/login');
 }
 
 module.exports = router;
