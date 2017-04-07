@@ -32,7 +32,11 @@ router.post('/register',register.isCompleted,register.redirect);
 
 /* GET account home page. */
 router.get('/account',isLoggedIn, account.gethome);
-
+/* for lilili test*/
+router.get('/account/past',isLoggedIn,function(req,res,next){
+	console.log("come here");
+	res.render('past_activity');
+});
 /* GET account management page. */
 router.get('/account/profile',isLoggedIn, account.getprofile);
 
