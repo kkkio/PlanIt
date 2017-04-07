@@ -727,7 +727,7 @@ hr.heart-hr-bottom{
           <div class="form-group">
             <label class="col-lg-3 control-label"></label>
             <div class="col-lg-6 text-center">
-              <input type="button" class="btn btn-special" value="Save" style="width:80px">
+              <input type="submit" class="btn btn-special" value="Save" style="width:80px">
               <!-- Button trigger modal -->
               <button type="button" class="btn btn-popup" data-toggle="modal" data-target="#passwordModal">Change Password</button>
               
@@ -740,7 +740,7 @@ hr.heart-hr-bottom{
                       <h4 class="modal-title" id="myModalLabel">Change Password</h4>
                     </div>
                     <div class="modal-body" style="text-align: right;">
-                      <form method="post">
+                      <form method="post" action="/users/account/profile">
                         <div class="row">
                           <div class="form-group">
                             <div class="col-md-5">
@@ -757,7 +757,7 @@ hr.heart-hr-bottom{
                               <label for="message-text" class="control-label">New password</label>
                             </div>
                             <div class="col-md-7">
-                              <input type="passwordt" class="form-control" id="new-password" style="width: 50%">
+                              <input type="password" class="form-control" id="new-password" style="width: 50%">
                             </div>
                           </div>
                         </div>
@@ -774,7 +774,7 @@ hr.heart-hr-bottom{
                       </form>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn">Save changes</button>
+                      <button type="submit" class="btn">Save changes</button>
                       <button type="button" class="btn" data-dismiss="modal">Cancel</button>
                     </div>
                   </div>
