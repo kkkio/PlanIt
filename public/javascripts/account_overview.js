@@ -125,15 +125,7 @@ $(document).ready(function(){
 
     $("input[id^='myMomentCommentInput']").keypress(function(e) {
         if(e.which == 13) {
-          var currentInputId = $(this).attr('id');
-          var num = parseInt(currentInputId.match(/(\d+)$/)[0], 10);
-          var momentCommentId = "myMomentComment"+num;
-          var newId = "myNewComment"+num;
-          var comment = document.getElementById(momentCommentId);
-          var numOfComment = parseInt($(comment).text());
-          numOfComment += 1;
-          $(comment).text(numOfComment+" Comments");
-          $("#"+newId).text($(this).val());  
+          e.preventDefault(); 
         }
     });
 });
