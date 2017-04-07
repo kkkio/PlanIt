@@ -41,27 +41,10 @@ router.post('/login', function(req,res,next){
 });
 
 /* GET user register page. */
-router.get('/register', function(req, res, next) {
-  var errors;
-  res.render('register', {
-    message: req.flash('signupMessage'),
-    errors: errors
-  });
-});
+router.get('/register', register.getregpage);
 
 /* POST user register page. */
-router.post('/register',register.isCompleted, function(req,res,next){
-  //set the username in the cookie
-  res.cookie('u_name',req.body.username);
-  // TODO res.cookie('u_id',result[0].user_id);
-
-  console.log('out');
-  next();
-},passport.authenticate('local-signup', {
-  successRedirect : '/users/profile',
-  failureRedirect : '/users/register',
-  failureFlash : true
-}));
+router.post('/register',register.isCompleted,register.redirect);
 
 //email verify
 router.get('/verify',function(req,res,next){
