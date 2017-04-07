@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var activitySchema = mongoose.Schema({
 	activity_name : String,
-	host_id : mongoose.Schema.Types.ObjectId,
+	_user_id : mongoose.Schema.Types.ObjectId,
 	a_date: Date,
 	start_time: Date,
 	end_time: Date,
@@ -24,7 +24,7 @@ activity.static.search = function(keyword){
 	for (var i=0;i<query.length;i++){
 			activity.push({
       			a_name : query[i].activity_name,
-      			a_host_id : query[i].host_id,
+      			a_host_id : query[i]._user_id,
 				a_data : query[i].a_data,
       			a_start_time : query[i].start_time,
       			a_end_time : query[i].end_time,
