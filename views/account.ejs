@@ -587,6 +587,12 @@ hr.footer-hr{
   border-color:#86592d;
 }
 
+.logo-container{
+  width:130px;
+  top:0;
+  left:0;
+}
+
 </style>
 
 </head>
@@ -599,7 +605,7 @@ hr.footer-hr{
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="/" style="color:#083a5b">PlanIt</a>
+                <a class="navbar-brand page-scroll" href="/" style="color:#083a5b"><img src="/images/acc_mgnt/PlanIt_logo.jpg" class="logo-container" alt="PlanIt Logo"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -624,7 +630,7 @@ hr.footer-hr{
                         <a class="page-scroll" href="#contact" style="color:#3cbc8d">Contact</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/users/account" title="My Account"><img src="/images/acc_mgnt/profile.png" class="img-circle profile-margin" style="height:25px;width:25px" alt="Profile Icon"></a>
+                        <a class="page-scroll" href="/users/account" title="My Account"><img src=<%= user.propic %> class="img-circle profile-margin" style="height:25px;width:25px" alt="Profile Icon"></a>
                     </li>
                 </ul>
             </div>
@@ -647,12 +653,12 @@ hr.footer-hr{
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-        	<img src="/images/acc_mgnt/profile.png" class="img-circle" alt="profile_icon">
+        	<img src=<%= user.propic %> class="img-circle" alt="profile_icon">
         	<span>Welcome, <strong><%= user.username %></strong>!</span>
         	<ul class="parallel-nav">
-            <li><a href="settings.html" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
+            <li><a href="/users/account/profile" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
         		<li><a href="/users/account" title="Account Overview"><i class="fa fa-user fa-2x" style="color:RoyalBlue"></i></a></li>
-        		<li><a href="#news" title="News"><i class="fa fa-sign-out fa-2x" style="color:Sienna"></i></a></li>
+        		<li><a href="" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out fa-2x" style="color:Sienna"></i></a></li>
         	</ul>
         	<hr>
             <ul class="sidebar-nav">

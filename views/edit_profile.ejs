@@ -87,7 +87,7 @@ h1{
     z-index: 2;
     position: absolute;
     width: 0;
-    height: 940px;
+    height: 100%;
     overflow-x: hidden;
     background: LightYellow;
     border: 2px;
@@ -131,7 +131,7 @@ h1{
 	padding-bottom: 10px;
 	padding-left:10px;
 	padding-right: 0;
-    list-style: none;
+  list-style: none;
 }
 
 .parallel-nav li{
@@ -504,6 +504,12 @@ hr.heart-hr-bottom{
   text-align: center;
 }
 
+.logo-container{
+  width:130px;
+  top:0;
+  left:0;
+}
+
 </style>
 
 </head>
@@ -516,7 +522,7 @@ hr.heart-hr-bottom{
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="/users/account" style="color:#083a5b">PlanIt</a>
+                <a class="navbar-brand page-scroll" href="/users/account" style="color:#083a5b"><img src="/images/acc_mgnt/PlanIt_logo.jpg" class="logo-container" alt="PlanIt Logo"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -564,19 +570,19 @@ hr.heart-hr-bottom{
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-        	<img src="/images/acc_mgnt/profile.png" class="img-circle" alt="profile_icon">
+        	<img src=<%= user.propic %> class="img-circle" alt="profile_icon">
         	<span>Welcome, <strong><%= user.username %></strong>!</span>
         	<ul class="parallel-nav">
-        		<li><a href="#news" title="News"><i class="fa fa-envelope fa-2x" style="color:Sienna"></i></a></li>
-        		<li><a href="/users/account" title="Account Overview"><i class="fa fa-user fa-2x" style="color:RoyalBlue"></i></a></li>
-        		<li><a href="settings.html" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
+            <li><a href="/users/account/profile" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
+            <li><a href="/users/account" title="Account Overview"><i class="fa fa-user fa-2x" style="color:RoyalBlue"></i></a></li>
+            <li><a href="" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out fa-2x" style="color:Sienna"></i></a></li>
         	</ul> 
         	<hr>
             <ul class="sidebar-nav">
             	<li style="margin-left:10px">My Account</li>
                 <li><a href="/users/account"><i class="fa fa-home fa-fw"></i> Account Overview</a></li>
-                <li style="background-color: LightSkyBlue"><a href="edit_profile.html"><i class="fa fa-pencil fa-fw"></i> Edit Profile</a></li>
-                <li><a href="past_activities.html"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
+                <li style="background-color: LightSkyBlue"><a href="/users/account/profile"><i class="fa fa-pencil fa-fw"></i> Edit Profile and Settings</a></li>
+                <li><a href="/users/account/past_activities"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
                 <!-- Future Dev
                 <li><a href="#news"><i class="fa fa-bell fa-fw"></i> News</a></li>                
                 <li><a href="settings.html"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
