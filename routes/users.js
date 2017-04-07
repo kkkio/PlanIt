@@ -4,7 +4,9 @@ var passport = require('passport');
 var Schedule = require('../models/schedule');
 var moment = require('../models/moment');
 
+/* CONTROLLER */
 var register = require('../controller/register');
+var account = require('../controller/account');
 //build the connection to the database
 
 
@@ -45,6 +47,9 @@ router.get('/register', register.getregpage);
 
 /* POST user register page. */
 router.post('/register',register.isCompleted,register.redirect);
+
+/* GET user register page. */
+router.get('/account',isLoggedIn, account.getaccpage);
 
 //email verify
 router.get('/verify',function(req,res,next){
