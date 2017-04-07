@@ -41,7 +41,7 @@ moment.statics.showFriendMoment=function(friend_id){
 			for (var i=0;i<query.length;i++){
 				if(query[i].privacy<4){
 					m_moment.push({
-						m_id :			query[i].id,
+						m_id :			query[i]._id,
 						m_title :		query[i].title,
 						m_date :		query[i].date,
 						m_posttime :	query[i].post_time,

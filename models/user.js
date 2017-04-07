@@ -98,7 +98,7 @@ user.methods.findIP = function getIP(callback){
 
 // follow someone by id, update followingList
 user.methods.followId = function followId(id, callback){
-   return this.update(
+   return this.findByIdAndUpdate(this._id,
      {
        $push: {"followingList": id},
        $inc: {"followings_num": 1}
@@ -108,19 +108,25 @@ user.methods.followId = function followId(id, callback){
 
 // followed by someone by id, update followerList
 user.methods.followedById = function followededById(id, callback){
-  return this.update(
+  return this.findByIdAndUpdate(this._id,
     {
       $push: {"followerList": id},
       $inc: {"followers_num": 1}
+    },
+    {
+      new : true
     },
     callback);
 };
 
 user.methods.unfollowId = function unfollowId(id, callback){
-   return this.update(
+   return this.findByIdAndUpdate(
      {
        $pop: {"followingList": id},
        $inc: {"followings_num": -1}
+     },
+     {
+       new : true
      },
      callback);
 };
@@ -155,6 +161,29 @@ user.methods.getFollowings = function getFollowings(callback){
   if(err) return handleError;
   console.log(person);
   })*/
+};
+
+// A is following id? / A is a follower of id
+user.methods.isFollowerOfId = function isFollowerOfId(id){
+  var i;
+  for(i =0; i<followingList.length;i++){
+    if(followingList[i] == id){
+      return true;
+    }
+  }
+  return false;
+};
+user.methods.isFolowingId = user.methods.isFollowerOfId;
+
+// A is followed by id?
+user.methods.isFollowedById = function isFollowedById(id){
+  var i;
+  for(i = 0; i<followerList.length;i++){
+    if(followerList[i] == id){
+      return true;
+    }
+  }
+  return false;
 };
 
 // post a moment
