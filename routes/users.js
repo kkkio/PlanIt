@@ -7,6 +7,7 @@ var moment = require('../models/moment');
 /* CONTROLLER */
 var register = require('../controller/register');
 var account = require('../controller/account');
+var login=require('../controller/login');
 //build the connection to the database
 
 
@@ -18,26 +19,10 @@ router.get('/', isLoggedIn,function(req, res, next){
 });
 
 /* GET user login page. */
-router.get('/login', function(req, res, next) {
-  res.render('login', {
-    message: req.flash('loginMessage')
-  });
-});
+router.get('/login', login.logget);
 
 /* POST user login page. */
-router.post('/login', function(req,res,next){
-  //set the username in the cookie
-  // TODO need to set the userid to the cookie
-  res.cookie('u_name',req.body.username);
-  console.log('out');
-  next();
-},passport.authenticate('local-login', {
-  successRedirect: '/users/account',
-  failureRedirect: '/users/login',
-  failureFlash: true
-}),function(req, res, next){
-  res.redirect('/');
-});
+router.post('/login', login.logpost);
 
 /* GET user register page. */
 router.get('/register', register.getregpage);
