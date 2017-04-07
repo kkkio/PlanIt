@@ -44,8 +44,8 @@ var userSchema = mongoose.Schema({
   num_of_followers : Number,
   num_of_followers : Number,
 
-  followerList : [this],
-  followingList : [this],
+  followerList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],
+  followingList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],,
   // end individual
 
   // for login safety
@@ -89,7 +89,15 @@ user.methods.findIP = function getIP(callback){
   return this.userip;
 };
 
+user.methods.followById = function followById(id, callback){
+   this.findByIdAndUpdate(id,{
+    $push: {"followerList": {this}}
+  },)
+}
 
+user.methods.followedById = function followededById(id, callback){
+
+}
 
 // compare password
 user.methods.checkVaildPassword = function checkVaildPassword(password) {
@@ -116,9 +124,5 @@ user.methods.updateBirth = function updateBirth(year,month,day){
   this.age = Date.now().year - year;
 };
 
-// TODO : FOR ZZC
-user.methods.updateIP = function updateIP(userip){
-
-};
 
 module.exports = mongoose.model('user', userSchema);
