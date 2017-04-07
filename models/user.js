@@ -31,7 +31,7 @@ var userSchema = mongoose.Schema({
   email : {type: String, sparse: true},
   password : String,
   phone_number : {type: String, sparse: true},
-  intro : {type: String, default: 'Hello World'},
+  intro : {type: String, default: 'Hello World:)'},
 
   // for login safety
   propic: {type: String, default: '/images/acc_mgnt/not_upload.png'},
