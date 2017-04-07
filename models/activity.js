@@ -1,8 +1,4 @@
-
 var mongoose = require('mongoose');
-var assert = require('mongoose-assert')('mongoose');
-var autoIncrement = require('mongoose-auto-increment');
-mongoose.connect('mongodb://localhost/3100');
 
 var activitySchema = mongoose.Schema({
 	activity_name : String,
@@ -19,9 +15,34 @@ var activitySchema = mongoose.Schema({
 	average_rating: Number,
 	comments: {type: String, ref: 'comment'}
 });
+/*
+<<<<<<< HEAD
 
 activitySchema.plugin(autoIncrement.plugin, 'activity');
 var activity = connection.model('activity', activitySchema);
+//STATIC METHOD
+activity.static.search=function(keyword){
+	var query=this.find({"activity_name":{$regex: keyword, $options: 'i'}});
+	var activity[];
+	for (var i=0;i<query.length;i++){
+			activity.push({
+      			a_name : query[i].activity_name,
+      			a_host_id : query[i].host_id,
+				a_data : query[i].a_data,
+      			a_start_time : query[i].start_time,
+      			a_end_time : query[i].end_time,
+				a_venue : query[i].venue,
+				a_intro : query[i].intro,
+				a_url : query[i].url,
+				a_average_rating : query[i].average_rating,
+				a_comments[] : query[i].comments
+    		});
+	return activity;
 
+};
+//INSTANCED METHOD
 
-
+=======
+>>>>>>> 041d80b4c0b8412605d723c3522fa31c5dc0674b
+*/
+module.exports = mongoose.model('activity', activitySchema);

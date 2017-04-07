@@ -1,7 +1,5 @@
 var mongoose = require('mongoose');
-var assert = require('mongoose-assert')('mongoose');
-var autoIncrement = require('mongoose-auto-increment');
-mongoose.connect('mongodb://localhost/3100');
+
 
 var commentSchema = mongoose.Schema({
 	activity_id : Number,
@@ -12,3 +10,5 @@ var commentSchema = mongoose.Schema({
 	num_of_useful: Number,
 	num_of_nonuseful: Number
 });
+
+module.exports = mongoose.model('comment', commentSchema);
