@@ -121,7 +121,8 @@ h1{
 }
 
 #sidebar-wrapper span{
-	margin-left:15%;
+	display:table;
+  margin:0 auto;
 	font-size:20px;
 	font-family: Comic Sans MS;
 }
@@ -529,7 +530,7 @@ hr.heart-hr-bottom{
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
-                        <a href="#page-top"></a>
+                        <a href="/"></a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#about" style="color:#fca13f">About</a>
@@ -639,7 +640,11 @@ hr.heart-hr-bottom{
             <div class="container-fluid">
                 <div class="row"><br>
                     <div class="col-lg-12">
-                    <a href="/users/account" class="btn" id="menu-toggle" style="padding-left: 30px;padding-right: 30px;margin-left:40px;margin-right: 40px">Menu <span class="glyphicon glyphicon-chevron-right"></span></a>
+                      <div class="col-lg-1"></div>
+                      <div class="col-lg-10" style="padding-left:0;">
+                        <a href="/users/account" class="btn" id="menu-toggle" style="padding-left: 30px;padding-right: 30px;"">Menu <span class="glyphicon glyphicon-chevron-right"></span></a>
+                      </div>
+                      <div class="col-lg-1"></div>
                     </div>
                 </div>
             </div>
