@@ -32,7 +32,11 @@ router.post('/register',register.isCompleted,register.redirect);
 
 /* GET account home page. */
 router.get('/account',isLoggedIn, account.gethome);
-
+/* for lilili test*/
+router.get('/account/past',isLoggedIn,function(req,res,next){
+	console.log("come here");
+	res.render('past_activity');
+});
 /* GET account management page. */
 router.get('/account/profile',isLoggedIn, account.getprofile);
 
@@ -56,8 +60,6 @@ router.get('/login/facebook/callback',
 /* SCHEDULE*/
 //view my schedule
 router.get('/myschedule',function(req,res,next){
-  //TODO the u_id has not set yet.
-
     res.render('myschedule',Schedule.showMySchedule(req.cookies.u_id));
 });
 //TODO debug insert1,make sure activity_id in the req.body?

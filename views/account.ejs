@@ -567,11 +567,11 @@ body{
 hr.special-hr { 
   height: 20px; 
   border-style: solid; 
-  border-color: #c68c53; 
+  border-color: #e5bf9a; 
   border-width: 1px 0 0 0; 
-  border-radius: 20px; 
-  box-shadow: 0 10px 10px -10px #8c8b8b inset;
-} 
+  border-radius: 30px; 
+ }
+
 hr.special-hr:before { 
   display: block; 
   content: ""; 
@@ -580,7 +580,7 @@ hr.special-hr:before {
   border-style: solid; 
   border-color: #c68c53; 
   border-width: 0 0 1px 0; 
-  border-radius: 20px; 
+  border-radius: 30px; 
 }
 
 hr.footer-hr{
@@ -685,10 +685,12 @@ hr.footer-hr{
                   <h4>Send Feedback <i class="fa fa-send"></i></h4>
               </div>
               <div class="modal-body">
-                  <textarea type="text" cols="40" rows="5" style="width:100%" placeholder="Describe your issue or share your idea"></textarea>
+                  <form method="post">
+                    <textarea type="text" cols="40" rows="5" style="width:100%" placeholder="Describe your issue or share your idea"></textarea>
+                  </form>
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn">Submit</button>
+                  <button type="submit" class="btn">Submit</button>
                   <button type="button" class="btn" data-dismiss="modal">Close</button>
               </div>
             </div>
