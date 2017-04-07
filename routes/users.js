@@ -14,7 +14,7 @@ var account = require('../controller/account');
 /* GET users listing. */
 /* GET users page. */
 router.get('/', isLoggedIn,function(req, res, next){
-  res.redirect('/account');
+  res.redirect('/users/account');
 });
 
 /* GET user login page. */
@@ -49,7 +49,10 @@ router.post('/register',register.isCompleted,register.redirect);
 router.get('/account',isLoggedIn, account.gethome);
 
 /* GET account management page. */
-router.get('/account/management',isLoggedIn, account.getmanange);
+router.get('/account/profile',isLoggedIn, account.getprofile);
+
+/* GET account management page. */
+router.post('/account/profile',isLoggedIn, account.updateInfo);
 
 //email verify
 router.get('/verify',function(req,res,next){
@@ -210,8 +213,7 @@ router.get('/moment/:id', function(req, res, next) {
 /*MOMENT FINISHED*/
 
 router.get('/logout',isLoggedIn,function(req, res, next){
-  res.clearCookie('u_name');
-  res.clearCookie('u_id');
+  console.log('LOGING OUT');
   req.logout();
   res.redirect('/');
 });
