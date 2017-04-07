@@ -10,6 +10,8 @@ exports.gethome = function getacchome (req, res, next) {
 };
 
 exports.getprofile = function getaccprofile (req, res, next) {
+  console.log(req.user.birth);
+  console.log(req.user.birth.year);
   res.render('edit_profile', {
     user : req.user
   });

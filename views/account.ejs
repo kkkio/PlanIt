@@ -545,6 +545,10 @@ ul.social-buttons li a:active {
   bottom: 0;
   margin: auto;
   text-align: center;
+  background-image: url("/images/acc_mgnt/camera.png");
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size: 75px;
 }
 
 .moment-text textarea{
@@ -644,7 +648,7 @@ hr.footer-hr{
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
         	<img src="/images/acc_mgnt/profile.png" class="img-circle" alt="profile_icon">
-        	<span>Welcome, <strong>Michael</strong>!</span>
+        	<span>Welcome, <strong><%= user.username %></strong>!</span>
         	<ul class="parallel-nav">
             <li><a href="settings.html" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
         		<li><a href="/users/account" title="Account Overview"><i class="fa fa-user fa-2x" style="color:RoyalBlue"></i></a></li>
@@ -771,17 +775,17 @@ hr.footer-hr{
                         <div class="statistics-box">
                             <ul class="list-group">
                                 <a href="#" class="list-group-item" style="background-color: Khaki ; height:133px;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;">405</p>
+                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.followers_num %></p>
                                     <p class="list-group-item-text">followers</p>
                                 </a>
 
                                 <a href="#" class="list-group-item" style="background-color: Gold; height:133px;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;">373</p>
+                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.followings_num %></p>
                                     <p class="list-group-item-text">following</p>
                                 </a>
 
                                 <a href="#" class="list-group-item" style="background-color: Orange; height:133px;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;">52</p>
+                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.mement_num %></p>
                                     <p class="list-group-item-text">moments</p>
                                 </a>
                             </ul>
