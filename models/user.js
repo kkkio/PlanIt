@@ -116,6 +116,25 @@ user.methods.followedById = function followededById(id, callback){
     callback);
 };
 
+user.methods.unfollowId = function unfollowId(id, callback){
+   return this.update(
+     {
+       $pop: {"followingList": id},
+       $inc: {"followings_num": -1}
+     },
+     callback);
+};
+
+// followed by someone by id, update followerList
+user.methods.unfollowedById = function unfollowededById(id, callback){
+  return this.update(
+    {
+      $pop: {"followerList": id},
+      $inc: {"followers_num": -1}
+    },
+    callback);
+};
+
 // get all followers
 user.methods.getFollowers = function getFollowers(callback){
   return this
