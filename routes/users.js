@@ -45,8 +45,11 @@ router.get('/register', register.getregpage);
 /* POST user register page. */
 router.post('/register',register.isCompleted,register.redirect);
 
-/* GET user register page. */
-router.get('/account',isLoggedIn, account.getaccpage);
+/* GET account home page. */
+router.get('/account',isLoggedIn, account.gethome);
+
+/* GET account management page. */
+router.get('/account/management',isLoggedIn, account.getmanange);
 
 //email verify
 router.get('/verify',function(req,res,next){
