@@ -279,7 +279,7 @@ ul.social-buttons li a:active {
     <% if (errors) { %>
     <% for(var i=0; i<errors.length; i++) { %>
       <div class = "alert-danger">
-          <strong><%= errors[i]%></strong> Please try again!
+          <strong><%= errors[i].msg%></strong> Please try again!
       </div>
     <% }} %>
     <% if (message.length > 0) { %>
