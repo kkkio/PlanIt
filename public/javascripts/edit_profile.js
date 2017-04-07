@@ -28,6 +28,45 @@ $(document).ready(function(){
 
 });
 
+
+
+
+// Birthday Option Insertion
+$(document).ready(function(){
+    
+    // Year
+    var min = 1950, max = 2017, select = document.getElementById("edit-year");
+
+    for (var i = min; i<=max; i++){
+        var opt = document.createElement('option');
+        opt.value = i;
+        opt.innerHTML = i;
+        select.appendChild(opt);
+    }
+
+
+    // Month
+    var min = 1, max = 12, select = document.getElementById("edit-month");
+
+    for (var i = min; i<=max; i++){
+        var opt = document.createElement('option');
+        opt.value = i;
+        opt.innerHTML = i;
+        select.appendChild(opt);
+    } 
+    
+    // Day
+    var min = 1, max = 31, select = document.getElementById("edit-day");
+
+    for (var i = min; i<=max; i++){
+        var opt = document.createElement('option');
+        opt.value = i;
+        opt.innerHTML = i;
+        select.appendChild(opt);
+    }
+
+});
+
 // Upload photos for new moments
 $(document).ready(function() {
   $.uploadPreview({

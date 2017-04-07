@@ -193,6 +193,7 @@ h1{
   width:85%;
   margin-left: auto;
   margin-right:0;
+  background-color: #e6e6e6;
 }
 
 .status-box i{
@@ -346,7 +347,7 @@ ul.social-buttons li a:active {
 
 
 .post-text{
-  background:WhiteSmoke;
+  background:#e6e6e6;
   clear:both;
   display:table;
   width:100%
@@ -544,10 +545,6 @@ ul.social-buttons li a:active {
   bottom: 0;
   margin: auto;
   text-align: center;
-  background-image: url("/images/acc_mgnt/camera.png");
-  background-repeat:no-repeat;
-  background-position: center;
-  background-size: 75px;
 }
 
 .moment-text textarea{
@@ -559,6 +556,32 @@ ul.social-buttons li a:active {
   display: block;
 }
 
+body{
+  background-image: url("/images/acc_mgnt/bg1.png");
+}
+
+hr.special-hr { 
+  height: 20px; 
+  border-style: solid; 
+  border-color: #c68c53; 
+  border-width: 1px 0 0 0; 
+  border-radius: 20px; 
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
+} 
+hr.special-hr:before { 
+  display: block; 
+  content: ""; 
+  height: 20px; 
+  margin-top: -21px; 
+  border-style: solid; 
+  border-color: #c68c53; 
+  border-width: 0 0 1px 0; 
+  border-radius: 20px; 
+}
+
+hr.footer-hr{
+  border-color:#86592d;
+}
 
 </style>
 
@@ -692,7 +715,7 @@ ul.social-buttons li a:active {
 
                     <div class="col-lg-8">
                         <!-- Facebook-like textarea -->
-                        <div class="status-box well" style="padding: 0px">
+                        <div class="status-box" style="padding: 0px">
                               <div class="status-box-header">
                                   <h3>What's New</h3>
                               </div>
@@ -759,7 +782,7 @@ ul.social-buttons li a:active {
 
                                 <a href="#" class="list-group-item" style="background-color: Orange; height:133px;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 40px;">52</p>
-                                    <p class="list-group-item-text">post</p>
+                                    <p class="list-group-item-text">moments</p>
                                 </a>
                             </ul>
                         </div>
@@ -777,11 +800,11 @@ ul.social-buttons li a:active {
                 <div class="col-lg-12">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-10">
-                      <hr>
+                      <hr class="special-hr">
                       <h2 class="intro-text text-center">My Precious
                         <strong style="color:LightCoral">Moments</strong>
                       </h2>
-                      <hr>
+                      <hr class="special-hr">
                     </div>
                     <div class="col-lg-1"></div>
                 </div>
@@ -904,9 +927,11 @@ ul.social-buttons li a:active {
 
             </div>
      	  <div class="row">
-          	<div class="col-lg-12">
-          		<hr>
-      		</div>
+            <div class="col-lg-1"></div>
+          	<div class="col-lg-10">
+          		<hr class="footer-hr">
+      		  </div>
+            <div class="col-lg-1"></div>
     	  </div>
         </div>
        </div>
@@ -915,6 +940,8 @@ ul.social-buttons li a:active {
      <footer>
         <div class="container">
             <div class="row">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-10"></div>
                 <div class="col-md-4">
                     <span class="copyright">Copyright &copy; PlanIt 2017</span>
                 </div>
@@ -936,6 +963,8 @@ ul.social-buttons li a:active {
                         </li>
                     </ul>
                 </div>
+              </div>
+              <div class="col-lg-1"></div>
             </div>
         </div>
     </footer>
