@@ -34,7 +34,7 @@ var userSchema = mongoose.Schema({
   intro : {type: String, default: 'Hello World'},
 
   // for login safety
-  propic: String,
+  propic: {type: String, default: '/images/acc_mgnt/not_upload.png'},
   user_ip : [Number],
 
   // check admin
