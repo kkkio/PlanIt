@@ -39,7 +39,7 @@ exports.umoment = function updatemoment(req,res,next){
 		doc.text=req.body.text;
 		doc.save();
 	}
-  })
+});
 };
 
 exports.fmoment = function friendmoment(req,res,next){

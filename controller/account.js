@@ -2,13 +2,14 @@ var User = require('../models/user');
 
 exports = module.exports = {};
 
-
+// get account homepage
 exports.gethome = function getacchome (req, res, next) {
   res.render('account', {
     user : req.user
   });
 };
 
+// get profile page
 exports.getprofile = function getaccprofile (req, res, next) {
   console.log(req.user);
   //console.log(req.user.birth);
@@ -18,6 +19,7 @@ exports.getprofile = function getaccprofile (req, res, next) {
 
 };
 
+// update user profile
 exports.updateInfo = function updateInfo (req, res, next){
   //console.log(req.body);
   User.findById(req.user._id,function(err, doc){
