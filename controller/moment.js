@@ -1,30 +1,34 @@
 var express = require('express');
 var moment = require('../models/moment');
 exports = module.exports = {};
-
+exports.test=function(){
+	console.log("test");	
+};
 exports.mymoment=function mymoment(req,res,next){
 	var data=[];
+	console.log(req.user._id);
+	console.log("the id");
 	data=moment.showMyMoment(req.user._id);
-    return data;
+	return data;
 };
 //add moment
 exports.amoment = function addmoment(req,res,next){
 	var insert_data={
     	title :  	req.body.title,
-      	user_id :	req.user._id,
+      	_user_id :	req.user._id,
     	date :	   	req.body.date,
     	post_time :	req.body.post_time,
     	location : 	req.body.location,
     	pic : 		req.body.pic,
       	text : 		req.body.text,
     	privacy : 	req.body.privacy
-    };
-    var data=new Schedule(insert_data);
+    };	
+    var data=new moment(insert_data);
     data.save();
 };
 
 exports.dmoment = function deletemoment(req,res,next){
-	var id=req.user.id;
+	var id=req.user._id;
     Schedule.findByIdAndRemove(id).exec();
 };
 
@@ -39,7 +43,7 @@ exports.umoment = function updatemoment(req,res,next){
 		doc.text=req.body.text;
 		doc.save();
 	}
-  })
+});
 };
 
 exports.fmoment = function friendmoment(req,res,next){
