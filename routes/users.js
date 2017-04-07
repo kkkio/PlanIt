@@ -37,6 +37,9 @@ router.get('/account/past',isLoggedIn,function(req,res,next){
 	console.log("come here");
 	res.render('past_activity');
 });
+router.get('/activity',isLoggedIn,function(req,res,next){
+  res.render('single_activity');
+});
 /* GET account management page. */
 router.get('/account/profile',isLoggedIn, account.getprofile);
 

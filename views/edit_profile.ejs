@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	  <title>Edit Profile - PlanIt</title>
+	  <title><%= user.username %> - Edit Profile - PlanIt</title>
 
 	<!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -628,7 +628,7 @@ hr.heart-hr-bottom{
                 <i class="fa fa-question-circle"></i> Are you sure you want to log-off?
               </div>
               <div class="modal-footer">
-                  <button type="submit" class="btn">Confirm</button>
+                  <a type="button" href="/users/login" class="btn">Confirm</a>
                   <button type="button" class="btn" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -693,9 +693,9 @@ hr.heart-hr-bottom{
             <label class="col-lg-4 control-label"><i class="fa fa-phone fa-fw"></i>Telephone:</label>
             <div class="col-lg-5">
               <% if (user.phone_number) { %>
-              <input class="form-control" type="text" value=<%= user.phone_number %> disabled>
+              <input class="form-control" type="text" value=<%= user.phone_number %> >
               <% }else {%>
-              <input class="form-control" type="text" value=<%= 'null' %> disabled>
+              <input class="form-control" type="text" value=<%= 'null' %> >
               <% }%>
 
             </div>
