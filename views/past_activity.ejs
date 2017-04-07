@@ -432,6 +432,15 @@ hr{
   border-color:#d9d9d9;
 }
 
+.row{
+    overflow: hidden; 
+}
+
+[class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
 .activity-info{
   background-color: white;
 }
@@ -590,7 +599,7 @@ hr{
                 </div>
 
                 <!-- Activity One -->
-                <div class="row activity-info">
+                <div class="row">
                   <div class="col-lg-1"></div>
                   <div class="col-lg-6">
                     <a href="#" class="portfolio-box">
@@ -607,7 +616,7 @@ hr{
                         </div>
                     </a>
                   </div>
-                  <div class="col-lg-4">
+                  <div class="col-lg-4 activity-info">
                     <h3>Mayday Just Rock It 2017</h3>
                     <h4>Hong Kong</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
