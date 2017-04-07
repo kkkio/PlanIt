@@ -5,3 +5,8 @@ exports.getaccpage = function getaccpage (req, res, next) {
     user : req.user
   });
 };
+
+
+exports.updateInfo = function updateInfo (req, res, next){
+  return;
+};

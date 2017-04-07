@@ -13,7 +13,9 @@ var account = require('../controller/account');
 
 /* GET users listing. */
 /* GET users page. */
-router.get('/', isLoggedIn, account.getaccpage);
+router.get('/', isLoggedIn,function(req, res, next){
+  res.redirect('/account');
+});
 
 /* GET user login page. */
 router.get('/login', function(req, res, next) {
@@ -65,15 +67,6 @@ router.get('/login/facebook/callback',
     res.redirect('/');
   });
 
-router.get('/profile',isLoggedIn,function(req, res, next){
-  console.log('req.cookie');
-  console.log(req.cookies);
-  res.render('profile', {
-    title: 'PlanIt Login',
-    projectname: 'PlanIt',
-    user: req.user
-  });
-});
 /* SCHEDULE*/
 //view my schedule
 router.get('/myschedule',function(req,res,next){
