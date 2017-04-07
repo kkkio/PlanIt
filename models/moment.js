@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var momentSchema = mongoose.Schema({
   //user_id : Number,
   title : String,
-  user_id : Number,
+  user_id : mongoose.Schema.Types.ObjectId,
   date : Date,
   post_time : Date,
   location : String,

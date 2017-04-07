@@ -193,6 +193,7 @@ h1{
   width:85%;
   margin-left: auto;
   margin-right:0;
+  background-color: #e6e6e6;
 }
 
 .status-box i{
@@ -346,7 +347,7 @@ ul.social-buttons li a:active {
 
 
 .post-text{
-  background:WhiteSmoke;
+  background:#e6e6e6;
   clear:both;
   display:table;
   width:100%
@@ -559,6 +560,38 @@ ul.social-buttons li a:active {
   display: block;
 }
 
+body{
+  background-image: url("/images/acc_mgnt/bg1.png");
+}
+
+hr.special-hr { 
+  height: 20px; 
+  border-style: solid; 
+  border-color: #c68c53; 
+  border-width: 1px 0 0 0; 
+  border-radius: 20px; 
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
+} 
+hr.special-hr:before { 
+  display: block; 
+  content: ""; 
+  height: 20px; 
+  margin-top: -21px; 
+  border-style: solid; 
+  border-color: #c68c53; 
+  border-width: 0 0 1px 0; 
+  border-radius: 20px; 
+}
+
+hr.footer-hr{
+  border-color:#86592d;
+}
+
+.logo-container{
+  width:130px;
+  top:0;
+  left:0;
+}
 
 </style>
 
@@ -572,7 +605,7 @@ ul.social-buttons li a:active {
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="/" style="color:#083a5b">PlanIt</a>
+                <a class="navbar-brand page-scroll" href="/" style="color:#083a5b"><img src="/images/acc_mgnt/PlanIt_logo.jpg" class="logo-container" alt="PlanIt Logo"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -597,7 +630,7 @@ ul.social-buttons li a:active {
                         <a class="page-scroll" href="#contact" style="color:#3cbc8d">Contact</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/users/account" title="My Account"><img src="/images/acc_mgnt/profile.png" class="img-circle profile-margin" style="height:25px;width:25px" alt="Profile Icon"></a>
+                        <a class="page-scroll" href="/users/account" title="My Account"><img src=<%= user.propic %> class="img-circle profile-margin" style="height:25px;width:25px" alt="Profile Icon"></a>
                     </li>
                 </ul>
             </div>
@@ -620,12 +653,12 @@ ul.social-buttons li a:active {
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-        	<img src="/images/acc_mgnt/profile.png" class="img-circle" alt="profile_icon">
-        	<span>Welcome, <strong>Michael</strong>!</span>
+        	<img src=<%= user.propic %> class="img-circle" alt="profile_icon">
+        	<span>Welcome, <strong><%= user.username %></strong>!</span>
         	<ul class="parallel-nav">
-            <li><a href="settings.html" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
+            <li><a href="/users/account/profile" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
         		<li><a href="/users/account" title="Account Overview"><i class="fa fa-user fa-2x" style="color:RoyalBlue"></i></a></li>
-        		<li><a href="#news" title="News"><i class="fa fa-sign-out fa-2x" style="color:Sienna"></i></a></li>
+        		<li><a href="" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out fa-2x" style="color:Sienna"></i></a></li>
         	</ul>
         	<hr>
             <ul class="sidebar-nav">
@@ -692,7 +725,7 @@ ul.social-buttons li a:active {
 
                     <div class="col-lg-8">
                         <!-- Facebook-like textarea -->
-                        <div class="status-box well" style="padding: 0px">
+                        <div class="status-box" style="padding: 0px">
                               <div class="status-box-header">
                                   <h3>What's New</h3>
                               </div>
@@ -748,18 +781,18 @@ ul.social-buttons li a:active {
                         <div class="statistics-box">
                             <ul class="list-group">
                                 <a href="#" class="list-group-item" style="background-color: Khaki ; height:133px;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;">405</p>
+                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.followers_num %></p>
                                     <p class="list-group-item-text">followers</p>
                                 </a>
 
                                 <a href="#" class="list-group-item" style="background-color: Gold; height:133px;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;">373</p>
+                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.followings_num %></p>
                                     <p class="list-group-item-text">following</p>
                                 </a>
 
                                 <a href="#" class="list-group-item" style="background-color: Orange; height:133px;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;">52</p>
-                                    <p class="list-group-item-text">post</p>
+                                    <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.mement_num %></p>
+                                    <p class="list-group-item-text">moments</p>
                                 </a>
                             </ul>
                         </div>
@@ -777,11 +810,11 @@ ul.social-buttons li a:active {
                 <div class="col-lg-12">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-10">
-                      <hr>
+                      <hr class="special-hr">
                       <h2 class="intro-text text-center">My Precious
                         <strong style="color:LightCoral">Moments</strong>
                       </h2>
-                      <hr>
+                      <hr class="special-hr">
                     </div>
                     <div class="col-lg-1"></div>
                 </div>
@@ -904,9 +937,11 @@ ul.social-buttons li a:active {
 
             </div>
      	  <div class="row">
-          	<div class="col-lg-12">
-          		<hr>
-      		</div>
+            <div class="col-lg-1"></div>
+          	<div class="col-lg-10">
+          		<hr class="footer-hr">
+      		  </div>
+            <div class="col-lg-1"></div>
     	  </div>
         </div>
        </div>
@@ -915,6 +950,8 @@ ul.social-buttons li a:active {
      <footer>
         <div class="container">
             <div class="row">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-10"></div>
                 <div class="col-md-4">
                     <span class="copyright">Copyright &copy; PlanIt 2017</span>
                 </div>
@@ -936,6 +973,8 @@ ul.social-buttons li a:active {
                         </li>
                     </ul>
                 </div>
+              </div>
+              <div class="col-lg-1"></div>
             </div>
         </div>
     </footer>

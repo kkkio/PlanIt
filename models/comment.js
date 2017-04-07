@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 
 
 var commentSchema = mongoose.Schema({
-	activity_id : Number,
+	activity_id : mongoose.Schema.Types.ObjectId,
 	user_id : Number,
-	comment_text: String,
+	content: String,
 	post_date: Date,
 	post_time: Date,
 	num_of_useful: Number,

@@ -19,6 +19,7 @@ function isLoggedIn(req, res, next) {
   res.render('explore', {
     user : req.user
    });
+
 }
 
 

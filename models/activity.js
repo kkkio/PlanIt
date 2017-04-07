@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var activitySchema = mongoose.Schema({
 	activity_name : String,
-	host_id : Number,
+	host_id : mongoose.Schema.Types.ObjectId,
 	a_date: Date,
 	start_time: Date,
 	end_time: Date,
@@ -13,7 +13,7 @@ var activitySchema = mongoose.Schema({
 	category: Number,
 	// Can I save an array of rating and calculate the average rating?
 	average_rating: Number,
-	comments: {type: String, ref: 'comment'}
+	commentsList: [{type: mongoose.Schema.Types.ObjectId, ref: 'comment'}]
 });
 /*
 <<<<<<< HEAD

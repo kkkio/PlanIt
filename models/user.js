@@ -31,30 +31,38 @@ var userSchema = mongoose.Schema({
   email : {type: String, sparse: true},
   password : String,
   phone_number : {type: String, sparse: true},
-  intro : String,
-
-  // check user type:
-  // 1 - individual
-  // 2 - host
-  user_type: Number,
-
-  // only for individual
-  age : Number,
-  birth: Date,
-  num_of_followers : Number,
-  num_of_followers : Number,
-
-  followerList : [this],
-  followingList : [this],
-  // end individual
+  intro : {type: String, default: 'Hello World:)'},
 
   // for login safety
-  propic: String,
+  propic: {type: String, default: '/images/acc_mgnt/not_upload.png'},
   user_ip : [Number],
 
   // check admin
   //admin : Boolean
-  pastActivityList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'activity' }]
+
+  // check user type:
+  // 1 - individual
+  // 2 - host
+  user_type: {type: Number, default: 1},
+
+  // only for individual
+  //age : {type: Number, default: 0},
+  birth: {type: Date, default: Date.now},
+
+  followers_num : {type: Number, default: 0},
+  followings_num :{type: Number, default: 0},
+  followerList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],
+  followingList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],
+
+  activity_num: {type: Number, default: 0},
+  moment_num: {type: Number, default: 0},
+  schedule_num: {type: Number, default: 0},
+  // end individual
+
+
+  pastActivityList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'activity'}],
+  momentList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'moment'}],
+  scheduleList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'schedule'}]
 });
 
 var user = userSchema;
@@ -67,7 +75,6 @@ var user = userSchema;
 // STATICS METHODS
 // find by name
 user.statics.findByName = function findByName(name, callback){
-  console.log('try to find by name: ', name);
   return this.findOne({username: name},callback);
 };
 
@@ -89,7 +96,89 @@ user.methods.findIP = function getIP(callback){
   return this.userip;
 };
 
+// follow someone by id, update followingList
+user.methods.followId = function followId(id, callback){
+   return this.update(
+     {
+       $push: {"followingList": id},
+       $inc: {"followings_num": 1}
+     },
+     callback);
+};
 
+// followed by someone by id, update followerList
+user.methods.followedById = function followededById(id, callback){
+  return this.update(
+    {
+      $push: {"followerList": id},
+      $inc: {"followers_num": 1}
+    },
+    callback);
+};
+
+// get all followers
+user.methods.getFollowers = function getFollowers(callback){
+  return this
+  .populate('followerList')
+  .exec(callback);
+  /* exec(function (err, user){
+  if(err) return handleError;
+  console.log(person);
+  })*/
+};
+
+// get all followings
+user.methods.getFollowings = function getFollowings(callback){
+  return this
+  .populate('followingList')
+  .exec(callback);
+  /* exec(function (err, user){
+  if(err) return handleError;
+  console.log(person);
+  })*/
+};
+
+// post a moment
+user.methods.postMoment = function postMoment(callback){
+  return this.update(
+    {
+      $push: {"momentList": id},
+      $inc: {"moment_num": 1}
+    },
+    callback);
+}
+
+// get all moments
+user.methods.getMoments = function getMoments(callback){
+  return this
+  .populate('momentList')
+  .exec(callback);
+  /* exec(function (err, user){
+  if(err) return handleError;
+  console.log(person);
+  })*/
+};
+
+// post a activity - host
+user.methods.postorgetActivity = function postorgetActivity(callback){
+  return this.update(
+    {
+      $push: {"activityList": id},
+      $inc: {"activity_num": 1}
+    },
+    callback);
+}
+
+// get all activities
+user.methods.getActivities = function getActivities(callback){
+  return this
+  .populate('activityList')
+  .exec(callback);
+  /* exec(function (err, user){
+  if(err) return handleError;
+  console.log(person);
+  })*/
+};
 
 // compare password
 user.methods.checkVaildPassword = function checkVaildPassword(password) {
@@ -98,9 +187,10 @@ user.methods.checkVaildPassword = function checkVaildPassword(password) {
 
 // for user to update something
 user.methods.updatePassword = function updatePassword(password){
-  this.password = this.generateHash(password);
+  this.password = bcrypt.hashSync(password, salt);
 };
 
+// for update
 user.methods.updateIntro = function updateIntro(intro){
   this.self_intro = intro;
 };
@@ -116,9 +206,7 @@ user.methods.updateBirth = function updateBirth(year,month,day){
   this.age = Date.now().year - year;
 };
 
-// TODO : FOR ZZC
-user.methods.updateIP = function updateIP(userip){
+// defind a pre
 
-};
 
 module.exports = mongoose.model('user', userSchema);
