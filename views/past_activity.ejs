@@ -9,9 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	  <title>Edit Profile - PlanIt</title>
+	  <title>Past Activities - PlanIt</title>
 
-	<!-- Bootstrap Core CSS -->
+	  <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -33,14 +33,12 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/javascripts/edit_profile.js"></script>
-    <script type="text/javascript" src="/javascripts/assets/js/jquery.uploadPreview.min.js"></script>
+    <script src="/javascripts/past_activity.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 <style>
-
 body{
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -71,7 +69,7 @@ h1{
   margin-top: 15%;
   border:3px ;
   border-radius:15px;
-  width:700px;
+  width:70%;
   letter-spacing: 3px;
   font-size: 120px;
 }
@@ -87,7 +85,7 @@ h1{
     z-index: 2;
     position: absolute;
     width: 0;
-    height: 100%;
+    height: 2260px;
     overflow-x: hidden;
     background: LightYellow;
     border: 2px;
@@ -131,7 +129,7 @@ h1{
 	padding-bottom: 10px;
 	padding-left:10px;
 	padding-right: 0;
-  list-style: none;
+    list-style: none;
 }
 
 .parallel-nav li{
@@ -166,7 +164,6 @@ h1{
     display: block;
     text-decoration: none;
     color: #000;
-    outline:none;
 }
 
 .sidebar-nav li a:hover {
@@ -189,38 +186,16 @@ h1{
     color: white;
 }
 
-
-.btn:focus, .btn:active, .btn.active, .btn:focus:active{
-  background-image: none;
-  outline: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+.btn-past{
+    background-color: MediumAquaMarine;
+    color: white;
+    border: 2px solid MediumAquaMarine;
 }
 
-.btn-special{
+.btn-past:hover{
     background-color: white; 
     color: black; 
-    border: 2px solid PowderBlue;
-}
-
-.btn-special:hover {
-    background-color: PowderBlue;
-    color: white;
-    border: 2px solid PowderBlue;
-}
-
-.btn-popup{
-    background-color: LightSalmon;
-    color: white!important;
-    border: 2px solid LightSalmon;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.btn-popup:hover {
-    background-color: white; 
-    color: black!important; 
-    border: 2px solid LightSalmon;
+    border: 2px solid MediumAquaMarine;
 }
 
 .intro-text {
@@ -238,116 +213,28 @@ h1{
     letter-spacing: 1px;
 }
 
-.hide-text{
-  font:0/0 a;
-  color:transparent;
-  text-shadow:none;
-  background-color:
-  transparent;
-  border:0;
+#page-content-wrapper hr{
+  width: 85%;
 }
 
-.input-block-level{
-  display:block;
-  width:100%;
-  min-height:30px;
-  -webkit-box-sizing:
-  border-box;
-  -moz-box-sizing:
-  border-box;
-  box-sizing:border-box;
+
+.img-full {
+    min-width: 80%;
 }
 
-.btn-file{
-  overflow:hidden;
-  position:relative;
-  vertical-align:middle;
+
+.img-border {
+    float: none;
+    margin: auto;
+    border: #999999 solid 1px;
 }
 
-.btn-file input{
-  position:absolute;
-  top:0;
-  right:0;
-  margin:0;
-  opacity:0;
-  filter:alpha(opacity=0);
-  transform:
-  translate(-300px, 0) 
-  scale(4);
-  font-size:23px;
-  direction:ltr;
-  cursor:pointer;
+.past-activity img{
+  max-width:100%;
 }
 
-.fileupload{
-  margin-bottom:9px;
-}
-
-.fileupload .uneditable-input{
-  display:inline-block;
-  margin-bottom:0px;
-  vertical-align:middle;
-  cursor:text;
-}
-
-.fileupload .thumbnail{
-  overflow:hidden;
-  display:inline-block;
-  margin-bottom:5px;
-  vertical-align:middle;
-  text-align:center;
-}
-
-.fileupload .thumbnail img{
-  display:inline-block;
-  vertical-align:middle;
-  max-height:100%;
-}
-
-.fileupload .btn{
-  vertical-align:middle;
-}
-
-.fileupload-exists .fileupload-new,.fileupload-new .fileupload-exists{
-  display:none;
-}
-
-.fileupload-inline .fileupload-controls{
-  display:inline;
-}
-
-.fileupload-new .input-append .btn-file{
-  -webkit-border-radius:0 3px 3px 0;
-  -moz-border-radius:0 3px 3px 0;
-  border-radius:0 3px 3px 0;
-}
-
-.thumbnail-borderless .thumbnail{
-  border:none;
-  padding:0;
-  -webkit-border-radius:0;
-  -moz-border-radius:0;
-  border-radius:0;
-  -webkit-box-shadow:none;
-  -moz-box-shadow:none;
-  box-shadow:none;
-}
-
-.fileupload-new.thumbnail-borderless .thumbnail{
-  border:1px solid #ddd;
-}
-
-.form-group label{
-  color: SteelBlue;
-  font-size: 18px;
-}
-
-.form-group label i{
-  margin-right: 5px;
-}
-
-.form-group input{
-  width:88%;
+.past-activity h4{
+  color:SteelBlue;
 }
 
 footer {
@@ -364,6 +251,7 @@ footer span.copyright {
 
 footer ul.quicklinks {
   margin-bottom: 0;
+  line-height: 40px;
   text-transform: uppercase;
   text-transform: none;
 }
@@ -402,10 +290,59 @@ ul.social-buttons li a:active {
 }
 
 
-#logoutModal {
-   margin-top:15%;
-   margin-left:auto;
-   margin-right:auto;
+.portfolio-box {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.portfolio-box .portfolio-box-caption {
+  color: white;
+  opacity: 0;
+  display: block;
+  background: rgba(240, 95, 64, 0.9);
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
+}
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  padding: 0 15px;
+}
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+}
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+  font-size: 18px;
+}
+.portfolio-box:hover .portfolio-box-caption {
+  opacity: 1;
+}
+.portfolio-box:focus {
+  outline: none;
+}
+@media (min-width: 768px) {
+  .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
+    font-size: 25px;
+  }
+  .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+    font-size: 35px;
+  }
 }
 
 .back-to-top {
@@ -414,6 +351,12 @@ ul.social-buttons li a:active {
     bottom: 20px;
     right: 20px;
     display:none;
+}
+
+#logoutModal {
+   margin-top:15%;
+   margin-left:auto;
+   margin-right:auto;
 }
 
 .modal-header{
@@ -443,71 +386,14 @@ textarea{
   resize:none;
 }
 
-body{
-  background-image: url("/images/acc_mgnt/bg1.png");
-}
-
-hr.heart-hr {
-  border-top: 4px double #e5bf9a;
-  text-align: center;
-  width:87%
-}
-hr.heart-hr:after {
-  content: '\002665';
-  display: inline-block;
-  position: relative;
-  top: -25px;
-  padding: 0 10px;
-  color: LightCoral;
-  font-size: 30px;
-}
-
-hr.heart-hr-bottom{
-  border-top: 4px double #e5bf9a;
-  text-align: center;
-  width:87%
-}
-
-#image-preview {
-  margin-top:14px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 120px;
-  height: 120px;
-  position: relative;
-  overflow: hidden;
-  background-color: #ffffff;
-  color: #ecf0f1;
-  border-radius: 50%;
-}
-#image-preview input {
-  line-height: 200px;
-  font-size: 200px;
-  position: absolute;
-  opacity: 0;
-  z-index: 20;
-}
-#image-preview label {
-  padding-top: 45px;
-  color:SteelBlue;
-  position: absolute;
-  z-index: 5;
-  opacity: 0.8;
-  cursor: pointer;
-  width: 100px;
-  height: 100px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  text-align: center;
-}
-
 .logo-container{
   width:130px;
   top:0;
   left:0;
+}
+
+body{
+  background-image: url("/images/acc_mgnt/bg1.png");
 }
 
 </style>
@@ -547,7 +433,7 @@ hr.heart-hr-bottom{
                         <a class="page-scroll" href="#contact" style="color:#3cbc8d">Contact</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/users/account" title="My Account"><img src=<%= user.propic %> class="img-circle profile-margin" style="height:25px;width:25px" alt="Profile Icon"></a>   
+                        <a class="page-scroll" href="/users/account" title="My Account"><img src=<%= user.propic %> class="img-circle profile-margin" style="height:25px;width:25px" alt="Profile Icon"></a>
                     </li>
                 </ul>
             </div>
@@ -570,8 +456,8 @@ hr.heart-hr-bottom{
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-        	<img src=<%= user.propic %> class="img-circle" alt="profile_icon">
-        	<span>Welcome, <strong><%= user.username %></strong>!</span>
+        	<img src="/images/acc_mgnt/profile.png" class="img-circle" alt="profile_icon">
+        	<span>Welcome, <strong>Michael</strong>!</span>
         	<ul class="parallel-nav">
             <li><a href="/users/account/profile" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
             <li><a href="/users/account" title="Account Overview"><i class="fa fa-user fa-2x" style="color:RoyalBlue"></i></a></li>
@@ -580,9 +466,10 @@ hr.heart-hr-bottom{
         	<hr>
             <ul class="sidebar-nav">
             	<li style="margin-left:10px">My Account</li>
+              <li style="margin-left:10px">My Account</li>
                 <li><a href="/users/account"><i class="fa fa-home fa-fw"></i> Account Overview</a></li>
-                <li style="background-color: LightSkyBlue"><a href="/users/account/profile"><i class="fa fa-pencil fa-fw"></i> Edit Profile and Settings</a></li>
-                <li><a href="/users/account/past_activities"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
+                <li><a href="/users/account/profile"><i class="fa fa-pencil fa-fw"></i> Edit Profile and Settings</a></li>
+                <li style="background-color: LightSkyBlue"><a href="/users/account/past_activities"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
                 <!-- Future Dev
                 <li><a href="#news"><i class="fa fa-bell fa-fw"></i> News</a></li>                
                 <li><a href="settings.html"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
@@ -627,7 +514,7 @@ hr.heart-hr-bottom{
                 <i class="fa fa-question-circle"></i> Are you sure you want to log-off?
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn">Confirm</button>
+                  <button type="submit" class="btn">Confirm</button>
                   <button type="button" class="btn" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -643,196 +530,216 @@ hr.heart-hr-bottom{
                     </div>
                 </div>
             </div>
-
-
-  <!-- Edit Profile Form -->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12 personal-info">
-        <div class="col-lg-12">
-            <hr class="heart-hr">
-              <h2 class="intro-text text-center">Personal
-                 <strong style="color:MediumAquaMarine">Information</strong>
-              </h2>
-           <hr class="heart-hr-bottom">
-        </div>
-      </div>
-   <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-1"></div>   
-      <div class="col-lg-10" style="background-color: LightYellow; border-radius: 15px;">
-        <form class="form-horizontal" role="form">
-          <div class="text-center">
-            <div id="image-preview">
-                <label for="image-upload" id="image-label">Upload Icon</label>
-                <input type="file" name="image" id="image-upload">
-            </div>
-          </div>
-          <br>
-          <div class="form-group">
-            <label class="col-lg-4 control-label"><i class="fa fa-user fa-fw"></i>Username:</label>
-            <div class="col-lg-5">
-              <input class="form-control" type="text" value=<%= user.username %> disabled>
-            </div>
-            <div class="col-lg-3"></div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-4 control-label"><i class="fa fa-envelope fa-fw"></i>Email:</label>
-            <div class="col-lg-5">
-              <input class="form-control" type="text" value=<%= user.email %> disabled>
-            </div>
-            <div class="col-lg-3"></div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-4 control-label"><i class="fa fa-phone fa-fw"></i>Telephone:</label>
-            <div class="col-lg-5">
-              <% if (user.phone_number) { %>
-              <input class="form-control" type="text" value=<%= user.phone_number %> disabled>
-              <% }else {%>
-              <input class="form-control" type="text" value=<%= 'null' %> disabled>
-              <% }%>
-
-            </div>
-            <div class="col-lg-3"></div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-4 control-label"><i class="fa fa-info fa-fw"></i>Bio:</label>
-            <div class="col-lg-5">
-              <textarea class="form-control" type="text" cols="40" rows="5" style="width:88%"><%= user.intro %></textarea>
-            </div>
-            <div class="col-lg-3"></div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-4 control-label"><i class="fa fa-birthday-cake fa-fw"></i>Birthday:</label>
-            <div class="col-lg-2">
-              <select class="form-control" name="year" id="edit-year">
-                  <option><%= user.birth.getFullYear() %></option>
-              </select>
-            </div>
-            <div class="col-lg-1" style="padding: 0;width:9%">            
-              <select class="form-control" name="month" id="edit-month">
-                  <option value="month"><%= user.birth.getMonth() + 1 %></option>
-              </select>
-            </div>
-            <div class="col-lg-1" style="padding-right: 0; width:10%">
-              <select class="form-control" name="day" id="edit-day">
-                  <option value="day"><%= user.birth.getDate() %></option>
-              </select>  
-            </div>                         
-            <div class="col-lg-3"></div>
-          </div>
-
-          <br>
-          <div class="form-group">
-            <label class="col-lg-3 control-label"></label>
-            <div class="col-lg-6 text-center">
-              <input type="button" class="btn btn-special" value="Save" style="width:80px">
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-popup" data-toggle="modal" data-target="#passwordModal">Change Password</button>
-              
-              <!-- Modal -->
-              <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+  
+            <!-- Past activities -->
+            <div class="container-fluid past-activity" id="myPastActivity">
+                <div class="row">
+                    <div class="col-lg-12">
+                      <hr>
+                      <h2 class="intro-text text-center">Past
+                      <strong style="color:Plum">Activities</strong>
+                      </h2>
+                      <hr>
                     </div>
-                    <div class="modal-body" style="text-align: right;">
-                      <form method="post">
-                        <div class="row">
-                          <div class="form-group">
-                            <div class="col-md-5">
-                              <label for="recipient-name" class="control-label">Old password</label>
+                </div>
+
+                <!-- Activity One -->
+                <div class="row">
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-6">
+                    <a href="#" class="portfolio-box">
+                        <img class="img-responsive" src="img/acc_mgnt/activity1.jpeg" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Music
+                                </div>
+                                <div class="project-name">
+                                    Mayday Just Rock It 2017
+                                </div>
                             </div>
-                            <div class="col-md-7">
-                              <input type="password" class="form-control" id="old-password" style="width: 50%">
-                            </div>
-                          </div>
                         </div>
-                        <div class="row">
-                          <div class="form-group">
-                            <div class="col-md-5">
-                              <label for="message-text" class="control-label">New password</label>
-                            </div>
-                            <div class="col-md-7">
-                              <input type="passwordt" class="form-control" id="new-password" style="width: 50%">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="form-group">
-                            <div class="col-md-5">
-                              <label for="text" class="control-label">Confirm password</label>
-                            </div>
-                            <div class="col-md-7">
-                              <input type="password" class="form-control" id="confirm-password" style="width: 50%">
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn">Save changes</button>
-                      <button type="button" class="btn" data-dismiss="modal">Cancel</button>
-                    </div>
+                    </a>
                   </div>
+                  <div class="col-lg-4">
+                    <h3>Mayday Just Rock It 2017</h3>
+                    <h4>Hong Kong</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                    <a class="btn btn-past" href="#">View Activity <span class="glyphicon glyphicon-chevron-right"></span></a>
+                  </div>
+                  <div class="col-lg-1"></div>
                 </div>
-              </div>
+                <!-- End Activity One -->
 
-              <a href="/users/account"><input type="button" class="btn btn-special" value="Cancel" style="width:80px"></a>
-            </div>
-          </div>
-          <br>
-        </form>
-      </div>
-      <div class="col-lg-1"></div>  
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-          <hr style="width:85%">
-      </div>
-    </div>
-  </div>
+                <hr>
 
-      
-     <!-- Footer -->
-     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; PlanIt 2017</span>
+                <!-- Acitivity Two -->
+                <div class="row">
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-6">
+                    <a href="#" class="portfolio-box">
+                        <img class="img-responsive" src="img/acc_mgnt/activity2.jpg" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Cultural
+                                </div>
+                                <div class="project-name">
+                                    UC GOAL Program
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-4">
+                    <h3>UC GOAL Program</h3>
+                    <h4>Sydney, Australia</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                    <a class="btn btn-past" href="#">View Activity <span class="glyphicon glyphicon-chevron-right"></span></a>
+                 </div>
+                  <div class="col-lg-1"></div>
                 </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
+                <!-- End Activity Two -->
+
+                <hr>
+
+                <!-- Project Three -->
+                <div class="row">
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-6">
+                    <a href="#" class="portfolio-box">
+                    <img class="img-responsive" src="img/acc_mgnt/activity3.jpg" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Food
+                                </div>
+                                <div class="project-name">
+                                    French Food Festival
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-4">
+                    <h3>French Food Festival</h3>
+                    <h4>Hong Kong</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                    <a class="btn btn-past" href="#">View Activity <span class="glyphicon glyphicon-chevron-right"></span></a>
+                  </div>
+                  <div class="col-lg-1"></div>
+                </div>
+                <!-- End Activity Three -->
+
+                <hr>
+
+                <!-- Activity Four -->
+                <div class="row">
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-6">
+                    <a href="#" class="portfolio-box">
+                    <img class="img-responsive" src="img/acc_mgnt/activity4.jpg" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Sports
+                                </div>
+                                <div class="project-name">
+                                    Olympic Games
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-4">
+                    <h3>Olympic Games</h3>
+                    <h4>Tokyo, Japan</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                    <a class="btn btn-past" href="#">View Activity <span class="glyphicon glyphicon-chevron-right"></span></a>
+                  </div>
+                  <div class="col-lg-1"></div>
+                </div>
+                <!-- End Activity Four -->
+
+                <hr>
+
+                <!-- Actiivity Five -->
+                <div class="row">
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-6">
+                    <a href="#" class="portfolio-box">
+                    <img class="img-responsive" src="img/acc_mgnt/activity5.jpg" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Sports
+                                </div>
+                                <div class="project-name">
+                                    Standard Chartered Marathon
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-4">
+                    <h3>Standard Chartered Marathon</h3>
+                    <h4>Hong Kong</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                    <a class="btn btn-past" href="#">View Activity <span class="glyphicon glyphicon-chevron-right"></span></a>
+                  </div>
+                  <div class="col-lg-1"></div>
+                </div>
+                <!-- End Activity Five -->
+
+                <hr>
+                  
+                <!-- Load More -->
+                <div class="more-moments">
+                    <a href="#" id="loadMore">Load More</a>
+                </div>
+                <!-- End Load More -->
+
+               <hr>
+            </div>             
+
+
+
+            <!-- Footer --> 
+            <footer>
+              <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                      <span class="copyright">Copyright &copy; PlanIt 2017</span>
+                    </div>
+                    <div class="col-md-4">
+                      <ul class="list-inline social-buttons">
                         <li><a href="#"><i class="fa fa-twitter"></i></a>
                         </li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a>
                         </li>
                         <li><a href="#"><i class="fa fa-linkedin"></i></a>
                         </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
+                      </ul>
+                    </div>
+                    <div class="col-md-4">
+                      <ul class="list-inline quicklinks">
                         <li><a href="#">Privacy Policy</a>
                         </li>
                         <li><a href="#">Terms of Use</a>
                         </li>
-                    </ul>
+                      </ul>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </footer>
+              </div>
+            </footer>
 
-    </div>
+        </div>
     <!-- /.container -->   
 
-  </div>
-</div>
-</div>
 
-    <a id="back-to-top" href="#" class="btn btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+    <a id="back-to-top" href="#" class="btn btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left">
+   <span class="glyphicon glyphicon-chevron-up"></span></a>
+
 
 
 
