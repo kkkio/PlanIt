@@ -1,8 +1,9 @@
+var express = require('express');
+var passport = require('passport');
 exports = module.exports = {};
 
 // route middleware to make sure register form
-exports.isCompleted =
-function isCompleted(req, res, next){
+exports.isCompleted = function isCompleted(req, res, next){
   var email = req.body.email;
   var username = req.body.username;
   var password = req.body.password;
@@ -19,9 +20,25 @@ function isCompleted(req, res, next){
 
   if(errors){
     console.log(errors);
-    return next();
+    res.render('register', {
+      message: req.flash('signupMessage'),
+      errors: errors
+    });
   } else {
     console.log('PASSED');
     return next();
   }
-}
+};
+
+exports.redirect = passport.authenticate('local-signup', {
+  successRedirect : '/users/profile',
+  failureRedirect : '/users/register',
+  failureFlash : true
+});
+
+exports.getregpage = function getregpage (req, res, next) {
+  res.render('register', {
+    message: req.flash('signupMessage'),
+    errors: req.validationErrors()
+  });
+};
