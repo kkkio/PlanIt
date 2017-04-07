@@ -73,7 +73,7 @@ h1{
   border-radius:15px;
   width:700px;
   letter-spacing: 3px;
-  font-size: 120px;
+  font-size: 10vw;
 }
 
 .header-image{
@@ -105,7 +105,7 @@ h1{
 
 /* Change with of sidebar from 0 to 250px */
 #wrapper.menuDisplayed #sidebar-wrapper {
-    width: 250px;
+    width: 260px;
 }
 
 /* Since we added left padding, we need to shrink the width by 250px */
@@ -582,7 +582,7 @@ hr.heart-hr-bottom{
             	<li style="margin-left:10px">My Account</li>
                 <li><a href="/users/account"><i class="fa fa-home fa-fw"></i> Account Overview</a></li>
                 <li style="background-color: LightSkyBlue"><a href="/users/account/profile"><i class="fa fa-pencil fa-fw"></i> Edit Profile and Settings</a></li>
-                <li><a href="/users/account/past_activities"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
+                <li><a href="/users/account/past"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
                 <!-- Future Dev
                 <li><a href="#news"><i class="fa fa-bell fa-fw"></i> News</a></li>                
                 <li><a href="settings.html"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
@@ -661,7 +661,8 @@ hr.heart-hr-bottom{
     <div class="row">
       <div class="col-lg-1"></div>   
       <div class="col-lg-10" style="background-color: LightYellow; border-radius: 15px;">
-        <form class="form-horizontal" role="form">
+        
+        <form class="form-horizontal" role="form" method="post" action="/users/account/profile">
           <div class="text-center">
             <div id="image-preview">
                 <label for="image-upload" id="image-label">Upload Icon</label>
@@ -785,6 +786,7 @@ hr.heart-hr-bottom{
           </div>
           <br>
         </form>
+
       </div>
       <div class="col-lg-1"></div>  
     </div>

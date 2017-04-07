@@ -69,9 +69,9 @@ h1{
   margin-top: 15%;
   border:3px ;
   border-radius:15px;
-  width:70%;
+  width:700px;
   letter-spacing: 3px;
-  font-size: 120px;
+  font-size: 10vw;
 }
 
 .header-image{
@@ -103,7 +103,7 @@ h1{
 
 /* Change with of sidebar from 0 to 250px */
 #wrapper.menuDisplayed #sidebar-wrapper {
-    width: 250px;
+    width: 260px;
 }
 
 /* Since we added left padding, we need to shrink the width by 250px */
@@ -396,6 +396,41 @@ body{
   background-image: url("/images/acc_mgnt/bg1.png");
 }
 
+
+#loadMore {
+    padding: 10px;
+    text-align: center;
+    background-color: #33739E;
+    color: #fff;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #fff;
+    box-shadow: 0 1px 1px #ccc;
+    transition: all 600ms ease-in-out;
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    -o-transition: all 600ms ease-in-out;
+}
+#loadMore:hover {
+    background-color: #fff;
+    color: #33739E;
+}
+
+.more-activity a, .more-activity a:visited {
+    color: #33739E;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+}
+
+.more-activity a:hover {
+    text-decoration: none;
+}
+
+hr{
+  border-color:#d9d9d9;
+}
+
 </style>
 
 </head>
@@ -408,7 +443,7 @@ body{
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="/users/account" style="color:#083a5b"><img src="/images/acc_mgnt/PlanIt_logo.jpg" class="logo-container" alt="PlanIt Logo"></a>
+                <a class="navbar-brand page-scroll" href="/" style="color:#083a5b"><img src="/images/acc_mgnt/PlanIt_logo.jpg" class="logo-container" alt="PlanIt Logo"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -456,8 +491,10 @@ body{
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-        	<img src="/images/acc_mgnt/profile.png" class="img-circle" alt="profile_icon">
-        	<span>Welcome, <strong>Michael</strong>!</span>
+        	<img src=<%= user.propic %> class="img-circle" alt="profile_icon">
+          <div style="margin-left:auto;margin-right: auto;">
+        	   <span style="">Welcome, <strong><%= user.username %></strong>!</span>
+          </div>
         	<ul class="parallel-nav">
             <li><a href="/users/account/profile" title="Settings"><i class="fa fa-cog fa-2x" style="color:LightSlateGray"></i></a></li>
             <li><a href="/users/account" title="Account Overview"><i class="fa fa-user fa-2x" style="color:RoyalBlue"></i></a></li>
@@ -466,7 +503,6 @@ body{
         	<hr>
             <ul class="sidebar-nav">
             	<li style="margin-left:10px">My Account</li>
-              <li style="margin-left:10px">My Account</li>
                 <li><a href="/users/account"><i class="fa fa-home fa-fw"></i> Account Overview</a></li>
                 <li><a href="/users/account/profile"><i class="fa fa-pencil fa-fw"></i> Edit Profile and Settings</a></li>
                 <li style="background-color: LightSkyBlue"><a href="/users/account/past_activities"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
@@ -548,7 +584,7 @@ body{
                   <div class="col-lg-1"></div>
                   <div class="col-lg-6">
                     <a href="#" class="portfolio-box">
-                        <img class="img-responsive" src="img/acc_mgnt/activity1.jpeg" alt="">
+                        <img class="img-responsive" src="/images/acc_mgnt/activity1.jpeg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -578,7 +614,7 @@ body{
                   <div class="col-lg-1"></div>
                   <div class="col-lg-6">
                     <a href="#" class="portfolio-box">
-                        <img class="img-responsive" src="img/acc_mgnt/activity2.jpg" alt="">
+                        <img class="img-responsive" src="/images/acc_mgnt/activity2.jpg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -608,7 +644,7 @@ body{
                   <div class="col-lg-1"></div>
                   <div class="col-lg-6">
                     <a href="#" class="portfolio-box">
-                    <img class="img-responsive" src="img/acc_mgnt/activity3.jpg" alt="">
+                    <img class="img-responsive" src="/images/acc_mgnt/activity3.jpg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -638,7 +674,7 @@ body{
                   <div class="col-lg-1"></div>
                   <div class="col-lg-6">
                     <a href="#" class="portfolio-box">
-                    <img class="img-responsive" src="img/acc_mgnt/activity4.jpg" alt="">
+                    <img class="img-responsive" src="/images/acc_mgnt/activity4.jpg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -668,7 +704,7 @@ body{
                   <div class="col-lg-1"></div>
                   <div class="col-lg-6">
                     <a href="#" class="portfolio-box">
-                    <img class="img-responsive" src="img/acc_mgnt/activity5.jpg" alt="">
+                    <img class="img-responsive" src="/images/acc_mgnt/activity5.jpg" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -694,8 +730,8 @@ body{
                 <hr>
                   
                 <!-- Load More -->
-                <div class="more-moments">
-                    <a href="#" id="loadMore">Load More</a>
+                <div class="more-activity">
+                    <a href="#" id="loadMoreActivity">Load More</a>
                 </div>
                 <!-- End Load More -->
 
