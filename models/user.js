@@ -31,21 +31,22 @@ var userSchema = mongoose.Schema({
   email : {type: String, sparse: true},
   password : String,
   phone_number : {type: String, sparse: true},
-  intro : String,
+  intro : {type: String, default: 'Hello World'},
 
   // check user type:
   // 1 - individual
   // 2 - host
-  user_type: Number,
+  user_type: {type: Number, default: 1},
 
   // only for individual
-  age : Number,
-  birth: Date,
-  num_of_followers : Number,
-  num_of_followers : Number,
+  //age : {type: Number, default: 0},
+  birth: {type: Date, default: Date.now},
 
+  followers_num : {type: Number, default: 0},
+  followings_num :{type: Number, default: 0},
   followerList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],
-  followingList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],,
+  followingList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],
+
   // end individual
 
   // for login safety
@@ -54,7 +55,9 @@ var userSchema = mongoose.Schema({
 
   // check admin
   //admin : Boolean
-  pastActivityList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'activity' }]
+  pastActivityList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'activity'}],
+  momentList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'moment'}],
+  scheduleList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'schedule'}]
 });
 
 var user = userSchema;
@@ -67,7 +70,6 @@ var user = userSchema;
 // STATICS METHODS
 // find by name
 user.statics.findByName = function findByName(name, callback){
-  console.log('try to find by name: ', name);
   return this.findOne({username: name},callback);
 };
 
@@ -89,15 +91,47 @@ user.methods.findIP = function getIP(callback){
   return this.userip;
 };
 
-user.methods.followById = function followById(id, callback){
-   this.findByIdAndUpdate(id,{
-    $push: {"followerList": {this}}
-  },)
-}
+// follow someone by id, update followingList
+user.methods.followId = function followId(id, callback){
+   return this.update(
+     {
+       $push: {"followingList": id},
+       $inc: {"followings_num": 1}
+     },
+     callback);
+};
 
+// followed by someone by id, update followerList
 user.methods.followedById = function followededById(id, callback){
+  return this.update(
+    {
+      $push: {"followerList": id},
+      $inc: {"followers_num": 1}
+    },
+    callback);
+};
 
-}
+// get all followers
+user.methods.getfollowers = function getfollowers(callback){
+  return this
+  .populate('followerList')
+  .exec(callback);
+  /* exec(function (err, user){
+  if(err) return handleError;
+  console.log(person);
+  })*/
+};
+
+// get all followings
+user.methods.getfollowings = function getfollowings(callback){
+  return this
+  .populate('followingList')
+  .exec(callback);
+  /* exec(function (err, user){
+  if(err) return handleError;
+  console.log(person);
+  })*/
+};
 
 // compare password
 user.methods.checkVaildPassword = function checkVaildPassword(password) {
@@ -106,7 +140,7 @@ user.methods.checkVaildPassword = function checkVaildPassword(password) {
 
 // for user to update something
 user.methods.updatePassword = function updatePassword(password){
-  this.password = this.generateHash(password);
+  this.password = bcrypt.hashSync(password, salt);
 };
 
 user.methods.updateIntro = function updateIntro(intro){
@@ -123,6 +157,8 @@ user.methods.updateBirth = function updateBirth(year,month,day){
   this.birth.day = day;
   this.age = Date.now().year - year;
 };
+
+// defind a pre
 
 
 module.exports = mongoose.model('user', userSchema);
