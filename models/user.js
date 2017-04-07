@@ -33,6 +33,13 @@ var userSchema = mongoose.Schema({
   phone_number : {type: String, sparse: true},
   intro : {type: String, default: 'Hello World'},
 
+  // for login safety
+  propic: String,
+  user_ip : [Number],
+
+  // check admin
+  //admin : Boolean
+
   // check user type:
   // 1 - individual
   // 2 - host
@@ -47,14 +54,12 @@ var userSchema = mongoose.Schema({
   followerList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],
   followingList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],
 
+  activity_num: {type: Number, default: 0},
+  moment_num: {type: Number, default: 0},
+  schedule_num: {type: Number, default: 0},
   // end individual
 
-  // for login safety
-  propic: String,
-  user_ip : [Number],
 
-  // check admin
-  //admin : Boolean
   pastActivityList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'activity'}],
   momentList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'moment'}],
   scheduleList : [{ type: mongoose.Schema.Types.ObjectId, ref: 'schedule'}]
@@ -112,7 +117,7 @@ user.methods.followedById = function followededById(id, callback){
 };
 
 // get all followers
-user.methods.getfollowers = function getfollowers(callback){
+user.methods.getFollowers = function getFollowers(callback){
   return this
   .populate('followerList')
   .exec(callback);
@@ -123,9 +128,51 @@ user.methods.getfollowers = function getfollowers(callback){
 };
 
 // get all followings
-user.methods.getfollowings = function getfollowings(callback){
+user.methods.getFollowings = function getFollowings(callback){
   return this
   .populate('followingList')
+  .exec(callback);
+  /* exec(function (err, user){
+  if(err) return handleError;
+  console.log(person);
+  })*/
+};
+
+// post a moment
+user.methods.postMoment = function postMoment(callback){
+  return this.update(
+    {
+      $push: {"momentList": id},
+      $inc: {"moment_num": 1}
+    },
+    callback);
+}
+
+// get all moments
+user.methods.getMoments = function getMoments(callback){
+  return this
+  .populate('momentList')
+  .exec(callback);
+  /* exec(function (err, user){
+  if(err) return handleError;
+  console.log(person);
+  })*/
+};
+
+// post a activity - host
+user.methods.postorgetActivity = function postorgetActivity(callback){
+  return this.update(
+    {
+      $push: {"activityList": id},
+      $inc: {"activity_num": 1}
+    },
+    callback);
+}
+
+// get all activities
+user.methods.getActivities = function getActivities(callback){
+  return this
+  .populate('activityList')
   .exec(callback);
   /* exec(function (err, user){
   if(err) return handleError;
@@ -143,6 +190,7 @@ user.methods.updatePassword = function updatePassword(password){
   this.password = bcrypt.hashSync(password, salt);
 };
 
+// for update
 user.methods.updateIntro = function updateIntro(intro){
   this.self_intro = intro;
 };
