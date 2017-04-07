@@ -61,8 +61,6 @@ router.get('/login/facebook/callback',
 /* SCHEDULE*/
 //view my schedule
 router.get('/myschedule',function(req,res,next){
-  //TODO the u_id has not set yet.
-
     res.render('myschedule',Schedule.showMySchedule(req.cookies.u_id));
 });
 //TODO debug insert1,make sure activity_id in the req.body?
