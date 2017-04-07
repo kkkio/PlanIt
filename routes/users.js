@@ -39,11 +39,6 @@ router.get('/account/profile',isLoggedIn, account.getprofile);
 /* GET account management page. */
 router.post('/account/profile',isLoggedIn, account.updateInfo);
 
-//email verify
-router.get('/verify',function(req,res,next){
-  res.send('email verified');
-});
-
 router.get('/login/facebook',
   passport.authenticate('facebook',{ scope: ['email'] }));
 

@@ -3,6 +3,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var User = require('../models/user');
+var nodemailer = require('nodemailer');
 
   module.exports = function (passport, config) {
 
@@ -15,6 +16,14 @@ var User = require('../models/user');
   			done(err, user);
   		});
   	});
+
+    var smtpTransport = nodemailer.createTransport({
+      service: config.gmailTransport.service,
+      auth:{
+        user: config.gmailTransport.username,
+        pass: config.gmailTransport.password
+      }
+    });
 
 
     passport.use('local-signup',new LocalStrategy({
@@ -39,6 +48,18 @@ var User = require('../models/user');
                 password: User.generateHash(req.body.password)
               },function(err,user){
                 if(err) return done(err);
+                // if register success, send a email
+                var mailOptions = {
+                  to: req.body.email,
+                  subject: "Welcome to PlanIt",
+                  html:'FUCK YOU!'
+                };
+                smtpTransport.sendMail(mailOptions,function(err, res){
+                  if(err){
+                    console.log(err);
+                  }
+                  console.log(res);
+                });
                 return done(null, user);
               });
             }

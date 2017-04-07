@@ -1,6 +1,5 @@
 var express = require('express');
 var passport = require('passport');
-
 exports = module.exports = {};
 
 // route middleware to make sure register form
