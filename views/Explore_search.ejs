@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>PlanIt - Explore</title>
+
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="/css/agency.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+    <![endif]$-->
+    <script>
+        $(document).ready(function(){
+          $("#search_button").click(function(){
+            $("#show_results").text("Search results for: \""+$("#search_text").val()+"\"");
+            $("#thum1").hide();
+            $("#thum2").hide();
+            $("#thum3").hide();
+            $("#thum4").hide();
+            $("#thum5").hide();
+            $("#thum6").hide();
+            $("#thum7").hide();
+            $("#thum8").fadeIn(400);
+            $("#thum1").fadeIn(500);
+            $("#thum2").fadeIn(600);
+            $("#thum3").fadeIn(700);
+            $("#thum4").fadeIn(800);
+            $("#thum5").fadeIn(900);
+            $("#thum6").fadeIn(1000);
+            $("#thum7").fadeIn(1100);
+            $("#thum8").fadeIn(1200);
+          });
+
+        });
+
+    </script>
+
+</head>
+<style>
+#searchBG{
+  background-image: url('img/explore/handsInAir.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+
+.th-fade{
+  background-color: rgba(255,255,255,0.6);
+}
+.ct-nav{
+  background-color: rgba(250,255,255,0.6);
+}
+.jumbotron{
+    background-color:#2E2D88;
+    color:white;
+}
+/* Adds borders for tabs */
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+.nav-tabs {
+    margin-bottom: 0;
+}
+</style>
+<body id="searchBG">
+  <!-- Collapsible Navigation Bar -->
+<div class="container">
+
+<!-- .navbar-fixed-top, or .navbar-fixed-bottom can be added to keep the nav bar fixed on the screen -->
+<nav class="navbar navbar-default  ct-nav">
+  <div class="container-fluid ">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+
+      <!-- Button that toggles the navbar on and off on small screens -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+
+      <!-- Hides information from screen readers -->
+        <span class="sr-only"></span>
+
+        <!-- Draws 3 bars in navbar button when in small mode -->
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <!-- You'll have to add padding in your image on the top and right of a few pixels (CSS Styling will break the navbar) -->
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li ><a href="/Explore" id="back_explore">Explore</a></li>
+        <li class="active"><a href="#">Search</a></li>
+        <li><a href="#">Contact</a><li>
+      </ul>
+      <!-- navbar-left will move the search to the left -->
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" id="search_text" placeholder="Search">
+        </div>
+        <button id="search_button" class="btn" type="submit" >Search</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+<br>
+<h1 style="text-align:center;" id="show_results"></h1>
+<br><br>
+<div class="container">
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+    <div class="thumbnail th-fade">
+      <img src="img/concert/9.jpg" alt="...">
+      <div class="caption">
+        <h3>Concert1</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
+      </div>
+      </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum2">
+    <div class="thumbnail th-fade">
+      <img src="img/concert/10.jpg" alt="...">
+      <div class="caption">
+        <h3>Concert2</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum3">
+    <div class="thumbnail th-fade">
+      <img src="img/concert/16.png" alt="...">
+      <div class="caption">
+        <h3>Concert3</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum4">
+    <div class="thumbnail th-fade">
+      <img src="img/concert/piano.jpg" alt="...">
+      <div class="caption">
+        <h3>Concert4</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum5">
+    <div class="thumbnail th-fade">
+      <img src="img/concert/9.jpg" alt="...">
+      <div class="caption">
+        <h3>Concert1</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
+      </div>
+      </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum6">
+    <div class="thumbnail th-fade">
+      <img src="img/concert/10.jpg" alt="...">
+      <div class="caption">
+        <h3>Concert2</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum7">
+    <div class="thumbnail th-fade">
+      <img src="img/concert/16.png" alt="...">
+      <div class="caption">
+        <h3>Concert3</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum8">
+    <div class="thumbnail th-fade">
+      <img src="img/concert/piano.jpg" alt="...">
+      <div class="caption">
+        <h3>Concert4</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="container">
+<nav style="text-align:center;">
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</div><br>
+<!--  Modals -->
+<!-- Use the modals below to showcase details about concerts  -->
+
+<!-- Modal 1 -->
+<div class="portfolio-modal modal fade" id="Modal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 ">
+                        <div class="modal-body">
+                            <!-- Concert Details Go Here -->
+                            <h2>Concert Title</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-responsive img-centered" src="img/concert/piano.jpg" alt="">
+                            <p> Here is the description </p>
+
+                            <ul class="list-inline">
+                                <li><strong>Date:</strong> April 2017</li>
+                                <li><strong>Location:</strong> Royal opera house
+                                <li><strong>Performer:</strong> Tuna</li>
+                                <li><strong>Category:</strong> Classic</li>
+
+                            </ul>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

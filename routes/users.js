@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var Schedule=require('../models/schedule');
-var moment=require('../models/moment');
+var Schedule = require('../models/schedule');
+var moment = require('../models/moment');
+
+var register = require('../controller/register');
 //build the connection to the database
 
 
@@ -39,27 +41,11 @@ router.post('/login', function(req,res,next){
 });
 
 /* GET user register page. */
-router.get('/register', function(req, res, next) {
-  var errors;
-  res.render('register', {
-    message: req.flash('signupMessage'),
-    errors: errors
-  });
-});
+router.get('/register', register.getregpage);
 
 /* POST user register page. */
-router.post('/register',isCompleted, function(req,res,next){
-  //set the username in the cookie
-  res.cookie('u_name',req.body.username);
-  // TODO res.cookie('u_id',result[0].user_id);
+router.post('/register',register.isCompleted,register.redirect);
 
-  console.log('out');
-  next();
-},passport.authenticate('local-signup', {
-  successRedirect : '/users/profile',
-  failureRedirect : '/users/register',
-  failureFlash : true
-}));
 //email verify
 router.get('/verify',function(req,res,next){
   res.send('email verified');
@@ -235,34 +221,6 @@ router.get('/logout',isLoggedIn,function(req, res, next){
 });
 
 
-
-// route middleware to make sure register form
-function isCompleted(req, res, next){
-  var email = req.body.email;
-  var username = req.body.username;
-  var password = req.body.password;
-  var password_confirmation = req.body.password_confirmation;
-
-  req.checkBody('email', 'Email is required').notEmpty();
-  req.checkBody('email', 'Email is not valid').isEmail();
-  req.checkBody('username', 'Username is required').notEmpty();
-  req.checkBody('password', 'Password is required').notEmpty();
-  req.checkBody('password_confirmation', 'Passwords do not match').equals(req.body.password);
-
-
-  var errors = req.validationErrors();
-
-  if(errors){
-    console.log(errors);
-    return next();
-  } else {
-    console.log('PASSED');
-    return next();
-  }
-
-}
-
-
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
 
@@ -271,7 +229,7 @@ function isLoggedIn(req, res, next) {
 		return next();
 
 	// if they aren't redirect them to the home page
-	res.redirect('/');
+	res.redirect('/users');
 }
 
 module.exports = router;
