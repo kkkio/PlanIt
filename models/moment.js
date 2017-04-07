@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+
 var momentSchema = mongoose.Schema({
   //user_id : Number,
   title : String,
