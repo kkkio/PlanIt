@@ -55,7 +55,9 @@ router.post('/account/updateMoment', isLoggedIn, moment.updateMoment);
 /*router for moment*/
 // easy version for lilili test
 router.get('/moment',isLoggedIn,function(req,res,next){
-	res.render('moment');
+	res.render('moment',{
+    isLogin : req.isAuthenticated()
+  });
 })
 /* for lilili test*/
 router.get('/account/past',isLoggedIn,function(req,res,next){
