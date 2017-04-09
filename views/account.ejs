@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	  <title><%= user.username %> - Account Overview - PlanIt</title>
+	  <title>Account Overview - PlanIt</title>
 
 	  <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -530,23 +530,23 @@ body{
   background-image: url("/images/acc_mgnt/bg1.png");
 }
 
-hr.special-hr { 
-  height: 20px; 
-  border-style: solid; 
-  border-color: #e5bf9a; 
-  border-width: 1px 0 0 0; 
-  border-radius: 30px; 
+hr.special-hr {
+  height: 20px;
+  border-style: solid;
+  border-color: #e5bf9a;
+  border-width: 1px 0 0 0;
+  border-radius: 30px;
  }
 
-hr.special-hr:before { 
-  display: block; 
-  content: ""; 
-  height: 20px; 
-  margin-top: -21px; 
-  border-style: solid; 
-  border-color: #c68c53; 
-  border-width: 0 0 1px 0; 
-  border-radius: 30px; 
+hr.special-hr:before {
+  display: block;
+  content: "";
+  height: 20px;
+  margin-top: -21px;
+  border-style: solid;
+  border-color: #c68c53;
+  border-width: 0 0 1px 0;
+  border-radius: 30px;
 }
 
 hr.footer-hr{
@@ -712,7 +712,7 @@ header .intro-text .intro-lead-in {
 
         <!-- Help and Feedback Modal -->
         <div class="modal fade" id="feedbackModal" role="dialog">
-          <div class="modal-dialog modal-md">  
+          <div class="modal-dialog modal-md">
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
@@ -745,7 +745,7 @@ header .intro-text .intro-lead-in {
                 <i class="fa fa-question-circle"></i> Are you sure you want to log-off?
               </div>
               <div class="modal-footer">
-                  <a type="button" href="/users/login" class="btn">Confirm</a>
+                  <a type="button" href="/users/logout" class="btn">Confirm</a>
                   <button type="button" class="btn" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -767,10 +767,10 @@ header .intro-text .intro-lead-in {
                     <div class="col-lg-8">
                         <!-- Facebook-like textarea -->
                         <div class="status-box" style="padding: 0px">
-                              <div class="status-box-header">
+                              <div class="status-box-header" id="momentInput">
                                   <h3>What's New</h3>
                               </div>
-                              <form class="form-horizontal col-lg-12" style="background: inherit;" method="post" action="/users/account">
+                              <form class="form-horizontal col-lg-12" style="background: inherit;" method="post" action="/users/account/addMoment">
                                 <div class="col-lg-4">
                                     <div id="image-preview">
                                       <label for="image-upload" id="image-label"></label>
@@ -809,8 +809,9 @@ header .intro-text .intro-lead-in {
                                       <div class="col-lg-3 col-md-3 col-sm-3">
                                           <button type="submit" class="btn">Submit</button>
                                       </div>
-                                      <div class="col-lg-3 col-md-3 col-sm-3">
-                                          <a href="/users/account" class="btn">Cancel</a>
+
+                                      <div class="col-lg-3">
+                                          <a href="/users/account#momentInput" class="btn">Cancel</a>
                                       </div>
                                   </div>
                                 </div>
@@ -821,17 +822,17 @@ header .intro-text .intro-lead-in {
                     <div class="col-lg-3">
                         <div class="statistics-box">
                             <ul class="list-group">
-                                <a class="list-group-item" style="background-color: Khaki ; height:133px;">
+                                <a href="#" class="list-group-item" style="background-color: Khaki ; height:133px;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.followers_num %></p>
                                     <p class="list-group-item-text">followers</p>
                                 </a>
 
-                                <a class="list-group-item" style="background-color: Gold; height:133px;">
+                                <a href="#" class="list-group-item" style="background-color: Gold; height:133px;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.followings_num %></p>
                                     <p class="list-group-item-text">following</p>
                                 </a>
 
-                                <a class="list-group-item" style="background-color: Orange; height:133px;">
+                                <a href="#" class="list-group-item" style="background-color: Orange; height:133px;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.mement_num %></p>
                                     <p class="list-group-item-text">moments</p>
                                 </a>

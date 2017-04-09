@@ -203,13 +203,23 @@ user.methods.isFollowedById = function isFollowedById(id){
 };
 
 // post a moment
-user.methods.postMoment = function postMoment(callback){
+user.methods.postMoment = function postMoment(id){
   return this.update(
     {
       $push: {"momentList": id},
       $inc: {"moment_num": 1}
-    },
-    callback);
+    })
+    .exec();
+}
+
+// delete a moment
+user.methods.deleteMoment = function deleteMoment(id){
+  return this.update(
+    {
+      $pull: {"momentList": id},
+      $inc: {"moment_num": -1}
+    })
+    .exec();
 }
 
 // get all moments

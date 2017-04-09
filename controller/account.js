@@ -6,14 +6,24 @@ exports = module.exports = {};
 
 // get account homepage
 exports.gethome = function getacchome (req, res, next) {
-	res.mydata={};
-	res.mydata.moment=[];
+	// always check params
+	if(req.params.id != req.user._id){
+		var err = new Error('Not Found');
+		err.status = 404;
+		throw(err);
+	}
+	//res.mydata={};
+	//res.mydata.moment=[];
 	moment.mymoment(req, res, next);
-	
 };
 
 // get profile page
 exports.getprofile = function getaccprofile (req, res, next) {
+	if(req.params.id != req.user._id){
+		var err = new Error('Not Found');
+		err.status = 404;
+		throw(err);
+	}
 	var updateError = req.flash('updateError');
 	console.log('updateError',updateError);
 	var errors = new Array();;
@@ -72,6 +82,7 @@ exports.updateInfo = function updateInfo (req, res, next){
   });
 };
 
+// check validate password form
 exports.validatePasswordForm = function validatePasswordForm(req,res,next){
 	var old_password = req.body.old_password;
 	var new_password = req.body.new_password;
@@ -89,10 +100,10 @@ exports.validatePasswordForm = function validatePasswordForm(req,res,next){
       console.log('PASSED');
       return next();
     }
-
   });
 }
 
+// update password
 exports.updatePassword = function updatePassword(req, res, next){
 	User.findById(req.user._id, function(err, doc){
 		if(err){

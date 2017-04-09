@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var activitySchema = mongoose.Schema({
 	activity_name : String,
 	_user_id : mongoose.Schema.Types.ObjectId,
-	a_date: Date,
+	//a_date: Date,
 	start_time: Date,
 	end_time: Date,
 	venue: Date,

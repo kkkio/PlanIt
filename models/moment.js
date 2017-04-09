@@ -6,7 +6,6 @@ var momentSchema = mongoose.Schema({
   title : String,
   _user_id : {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
   date : Date,
-  post_time : Date,
   location : String,
   pic : String,
   text : String,
@@ -21,7 +20,7 @@ var moment = momentSchema;
 moment.statics.showMyMoment=function(userID,callback){
   	this.find({_user_id: userID},function(err,doc){
 		if (err){
-			console.err("error, no entry found");
+			console.err("error");
 		}
 		else{
 			/*var m_moment=[];
@@ -44,8 +43,8 @@ moment.statics.showMyMoment=function(userID,callback){
 			return callback(doc);
 		}
 	});
-  
-  
+
+
 };
 moment.statics.showFriendMoment=function(friend_id){
 	var m_moment=[];
@@ -85,37 +84,34 @@ moment.statics.showFriendMoment=function(friend_id){
 
 };
 /*INSTANCE METHODS*/
-moment.method.addMoment= function(data){
-	
-};
 
-//module.exports 
+//module.exports
 module.exports=mongoose.model('moment',momentSchema);
 /*
 var moment= mongoose.model('moment', momentSchema);
 var data={
 	title : "aaaaaaaaa",
-  	_user_id : "58e764b429c4280f4d7a0960", 
+  	_user_id : "58e764b429c4280f4d7a0960",
   date : Date.now(),
   post_time : Date.now(),
   text: "22222222",
   privacy : 1
 }
 
-var test= new moment(data); 
+var test= new moment(data);
 test.save();
 */
 /*
 var moment= mongoose.model('moment', momentSchema);
 var data={
 	title : "May Day 2017",
-  	_user_id : "58e764b429c4280f4d7a0960", 
+  	_user_id : "58e764b429c4280f4d7a0960",
   date : Date.now(),
   post_time : Date.now(),
   text: "happy birthday :P",
   privacy : 1
 }
 
-var test= new moment(data); 
+var test= new moment(data);
 test.save();
 */
