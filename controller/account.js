@@ -6,14 +6,24 @@ exports = module.exports = {};
 
 // get account homepage
 exports.gethome = function getacchome (req, res, next) {
+	// always check params
+	if(req.params.id != req.user._id){
+		var err = new Error('Not Found');
+		err.status = 404;
+		throw(err);
+	}
 	res.mydata={};
 	res.mydata.moment=[];
 	moment.mymoment(req, res, next);
-	
 };
 
 // get profile page
 exports.getprofile = function getaccprofile (req, res, next) {
+	if(req.params.id != req.user._id){
+		var err = new Error('Not Found');
+		err.status = 404;
+		throw(err);
+	}
 	var updateError = req.flash('updateError');
 	console.log('updateError',updateError);
 	var errors = new Array();;

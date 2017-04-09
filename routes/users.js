@@ -15,7 +15,7 @@ var login=require('../controller/login');
 /* GET users listing. */
 /* GET users page. */
 router.get('/', isLoggedIn,function(req, res, next){
-  res.redirect('/users/account');
+  res.send('/');
 });
 
 /* GET user login page. */
@@ -31,8 +31,16 @@ router.get('/register', register.getregpage);
 router.post('/register',register.isCompleted,register.redirect);
 
 /* GET account home page. */
-router.get('/account',isLoggedIn, account.gethome);
-/* for lilili test*/
+router.get('/account',isLoggedIn, function(req,res,next){
+  res.redirect('/users/'+req.user._id);
+});
+
+/* GET account management page. */
+router.get('/account/profile',isLoggedIn, function(req,res,next){
+  res.redirect('/users/'+req.user._id+'/profile');
+});
+
+/* GET account home page */
 router.get('/account/past',isLoggedIn,function(req,res,next){
 	console.log("come here");
 	res.render('past_activity');
@@ -40,8 +48,7 @@ router.get('/account/past',isLoggedIn,function(req,res,next){
 router.get('/activity',isLoggedIn,function(req,res,next){
   res.render('single_activity');
 });
-/* GET account management page. */
-router.get('/account/profile',isLoggedIn, account.getprofile);
+
 
 /* GET account management page. */
 router.post('/account/profile',isLoggedIn, account.updateInfo);
@@ -200,11 +207,19 @@ router.get('/moment/:id', function(req, res, next) {
 });
 /*MOMENT FINISHED*/
 
-router.get('/logout',isLoggedIn,function(req, res, next){
+
+
+router.get('/logout',isLoggedIn,function(req, res){
   console.log('LOGING OUT');
   req.logout();
   res.redirect('/');
 });
+
+/* GET account home page. */
+router.get('/:id',isLoggedIn, account.gethome);
+
+/* GET account management page. */
+router.get('/:id/profile',isLoggedIn, account.getprofile);
 
 
 // route middleware to make sure

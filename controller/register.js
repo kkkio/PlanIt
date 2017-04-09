@@ -34,11 +34,16 @@ exports.isCompleted = function isCompleted(req, res, next){
   });
 };
 
-exports.redirect = passport.authenticate('local-signup', {
-  successRedirect : '/users/account',
-  failureRedirect : '/users/register',
-  failureFlash : true
-});
+exports.redirect = function redirect(req, res, next){
+  passport.authenticate('local-signup', function(err, user, info){
+    if(err) return next(err);
+    if(!user) return res.redirect('/register');
+    req.logIn(user, function(err){
+      if(err) return next(err);
+      return res.redirect('/users/'+user._id);
+    });
+  }) (req, res, next);
+};
 
 
 exports.getregpage = function getregpage (req, res, next) {

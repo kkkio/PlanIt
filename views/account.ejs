@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	  <title><%= user.username %> - Account Overview - PlanIt</title>
+	  <title>Account Overview - PlanIt</title>
 
 	  <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -565,23 +565,23 @@ body{
   background-image: url("/images/acc_mgnt/bg1.png");
 }
 
-hr.special-hr { 
-  height: 20px; 
-  border-style: solid; 
-  border-color: #e5bf9a; 
-  border-width: 1px 0 0 0; 
-  border-radius: 30px; 
+hr.special-hr {
+  height: 20px;
+  border-style: solid;
+  border-color: #e5bf9a;
+  border-width: 1px 0 0 0;
+  border-radius: 30px;
  }
 
-hr.special-hr:before { 
-  display: block; 
-  content: ""; 
-  height: 20px; 
-  margin-top: -21px; 
-  border-style: solid; 
-  border-color: #c68c53; 
-  border-width: 0 0 1px 0; 
-  border-radius: 30px; 
+hr.special-hr:before {
+  display: block;
+  content: "";
+  height: 20px;
+  margin-top: -21px;
+  border-style: solid;
+  border-color: #c68c53;
+  border-width: 0 0 1px 0;
+  border-radius: 30px;
 }
 
 hr.footer-hr{
@@ -678,7 +678,7 @@ hr.footer-hr{
 
         <!-- Help and Feedback Modal -->
         <div class="modal fade" id="feedbackModal" role="dialog">
-          <div class="modal-dialog modal-md">  
+          <div class="modal-dialog modal-md">
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
@@ -711,7 +711,7 @@ hr.footer-hr{
                 <i class="fa fa-question-circle"></i> Are you sure you want to log-off?
               </div>
               <div class="modal-footer">
-                  <a type="button" href="/users/login" class="btn">Confirm</a>
+                  <a type="button" href="/users/logout" class="btn">Confirm</a>
                   <button type="button" class="btn" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -787,17 +787,17 @@ hr.footer-hr{
                     <div class="col-lg-3">
                         <div class="statistics-box">
                             <ul class="list-group">
-                                <a class="list-group-item" style="background-color: Khaki ; height:133px;">
+                                <a href="#" class="list-group-item" style="background-color: Khaki ; height:133px;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.followers_num %></p>
                                     <p class="list-group-item-text">followers</p>
                                 </a>
 
-                                <a class="list-group-item" style="background-color: Gold; height:133px;">
+                                <a href="#" class="list-group-item" style="background-color: Gold; height:133px;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.followings_num %></p>
                                     <p class="list-group-item-text">following</p>
                                 </a>
 
-                                <a class="list-group-item" style="background-color: Orange; height:133px;">
+                                <a href="#" class="list-group-item" style="background-color: Orange; height:133px;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.mement_num %></p>
                                     <p class="list-group-item-text">moments</p>
                                 </a>
