@@ -45,7 +45,8 @@ exports.getprofile = function getaccprofile (req, res, next) {
 	console.log(errors);
   res.render('edit_profile', {
     user : req.user,
-		errors: errors
+		errors: errors,
+		isLogin: req.isAuthenticated()
   });
 
 };

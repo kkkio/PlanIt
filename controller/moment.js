@@ -13,7 +13,8 @@ exports.mymoment=function mymoment(req,res,next){
 		console.log(doc);
 		var test={
 			user : req.user,
-			moment : doc
+			moment : doc,
+			isLogin: req.isAuthenticated()
 		};
 		console.log(test);
 		res.render('account', test);

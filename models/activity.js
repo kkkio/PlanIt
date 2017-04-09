@@ -11,6 +11,7 @@ var activitySchema = mongoose.Schema({
 	url: String,
 	//1: music concert; 2: movies; 3: art exibition; 4: others
 	category: Number,
+	comment_num : Number,
 	// Can I save an array of rating and calculate the average rating?
 	average_rating: Number,
 	commentsList: [{type: mongoose.Schema.Types.ObjectId, ref: 'comment'}]
@@ -18,7 +19,8 @@ var activitySchema = mongoose.Schema({
 
 var acitivity = activitySchema;
 //STATIC METHOD
-activity.statics.search = function(keyword){
+activity.statics.search = function search (keyword){
+	
 	/*
 	var query=this.find({"activity_name":{$regex: keyword, $options: 'i'}});
 	var activity[];
@@ -40,7 +42,15 @@ activity.statics.search = function(keyword){
 };
 
 
+// get an activity by id
+activity.statics.getOneById = function getOneById(id, callback){
+	this
+	.findById(id)
+	.populate('commentList')
+	.exec(callback);
+};
+
 //INSTANCED METHOD
-activity.static.
+activity.methods.
 
 module.exports = mongoose.model('activity', activitySchema);

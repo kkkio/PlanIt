@@ -10,6 +10,7 @@ var momentSchema = mongoose.Schema({
   pic : String,
   text : String,
   like : Number,
+  comment_num : Number,
   commentList :[{type:mongoose.Schema.Types.ObjectId, ref: 'comment'}],
   // privacy 1: public, 2:followers, 3: friends, 4: private
   privacy : Number
