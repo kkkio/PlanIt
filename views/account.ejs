@@ -756,15 +756,16 @@ header .intro-text .intro-lead-in {
         <div id="page-content-wrapper">
             <div class="container">
                 <div class="row"><br>
-                    <div class="col-lg-12">
-                      <div class="col-lg-1"></div>
-                      <div class="col-lg-10" >
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                      <div class="col-lg-10 col-md-10 col-sm-10" >
                         <a href="/users/account" class="btn" id="menu-toggle" style="padding-left: 30px;padding-right: 30px;"">Menu <span class="glyphicon glyphicon-chevron-right"></span></a>
                       </div>
-                      <div class="col-lg-1"></div>
+                      <div class="col-lg-1 col-md-1 col-sm-1"></div>
                     </div>
 
-                    <div class="col-lg-8">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="col-lg-8 col-md-7 col-sm-7">
                         <!-- Facebook-like textarea -->
                         <div class="status-box" style="padding: 0px">
                               <div class="status-box-header" id="momentInput">
@@ -804,22 +805,23 @@ header .intro-text .intro-lead-in {
                                       </div>
                                   </div>
                                   <div class="form-group">
-                                      <div class="col-lg-6 col-md-6 col-sm-6">
+                                      <div class="col-lg-6 col-md-2 col-sm-2">
                                       </div>
-                                      <div class="col-lg-3 col-md-3 col-sm-3">
+                                      <div class="col-lg-3 col-md-5 col-sm-5">
                                           <button type="submit" class="btn">Submit</button>
                                       </div>
 
-                                      <div class="col-lg-3">
+                                      <div class="col-lg-3 col-md-5 col-sm-5">
                                           <a href="/users/account#momentInput" class="btn">Cancel</a>
                                       </div>
                                   </div>
                                 </div>
                               </form>
                         </div>
-                    </div>
+                      </div>
+                    
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-md-4 col-sm-4">
                         <div class="statistics-box">
                             <ul class="list-group">
                                 <a href="#" class="list-group-item" style="background-color: Khaki ; height:133px;">
@@ -840,7 +842,8 @@ header .intro-text .intro-lead-in {
                         </div>
                     </div>
 
-                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                  </div>
 
                 </div>
             </div>
@@ -864,15 +867,15 @@ header .intro-text .intro-lead-in {
                 <div class="col-lg-12 text-center">
                   <div class="col-lg-1"></div>
 
-                  <div class="col-lg-10">
+                  <div class="col-lg-10" id="myMomentList">
 
                     <% for (var i=0; i < moment.length; i++) { %>
-                      <div class="post" id="myMoment">
+                      <div class="post" id=<%= "myMoment"+i %>>
                           <img class="img-responsive img-border img-full" src="/images/acc_mgnt/slide-1.jpg" alt="My Moment Image" id="myMomentImg">
                           <div class="post-text">
-                              <h2 class="post-title" id="myMomentTitle"><%= moment[i].title %></h2>
+                              <h2 class="post-title" id=<%="myMomentTitle"+i%>><%= moment[i].title %></h2>
                               <div class="post-meta">
-                                  By <a href="/users/account"><%= user.username %></a><text><%= moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %></text><text id="myMomentLike">127 Likes</text> <a href="#" class="comments" id="myMomentComment">2 Comments</a>
+                                  By <a href="/users/account"><%= user.username %></a><text><%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %></text><text id=<%="myMomentLike"+i%>>127 Likes</text> <a href="#" class="comments" id="myMomentComment">2 Comments</a>
                               </div>
                               <div class="moment-text">
                                   <textarea disabled id="myMomentText" rows="5" cols="500"><%= moment[i].text %></textarea>
@@ -881,12 +884,12 @@ header .intro-text .intro-lead-in {
                               <form>
                                   <div class="input-group moment-input-group">
                                       <div class="input-group-btn post-button">
-                                          <a class="btn" id="editBtn"><i class="glyphicon glyphicon-edit post-edit"></i></a>
-                                          <a class="btn" data-toggle="modal" data-target="#deleteModal" id="deleteBtn"><i class="glyphicon glyphicon-trash post-delete"></i></a>
-                                          <a class="btn" id="likeBtn"><i class="glyphicon glyphicon-heart post-unlike"></i></a>
-                                          <a class="btn" id="commentBtn"><i class="glyphicon glyphicon-comment post-comment"></i></a>
+                                          <a class="btn" id=<%="editBtn"%>><i class="glyphicon glyphicon-edit post-edit"></i></a>
+                                          <a class="btn" data-toggle="modal" data-target="#deleteModal" id=<%="deleteBtn"+i%>><i class="glyphicon glyphicon-trash post-delete"></i></a>
+                                          <a class="btn" id=<%="likeBtn"+i%>><i class="glyphicon glyphicon-heart post-unlike"></i></a>
+                                          <a class="btn" id=<%="commentBtn"+i%>><i class="glyphicon glyphicon-comment post-comment"></i></a>
                                       </div>
-                                      <input type="text" class="form-control" id="myMomentCommentInput1" placeholder="Add a comment..">
+                                      <input type="text" class="form-control" id=<%="myMomentCommentInput1"+i%> placeholder="Add a comment..">
                                   </div>
                               </form>
                               <div class="moment-comment"></div>
