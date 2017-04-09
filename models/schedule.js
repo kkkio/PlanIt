@@ -6,7 +6,7 @@ var scheduleSchema = mongoose.Schema({
   _user_id : mongoose.Schema.Types.ObjectId,
   title : String,
   //activity info
-  s_date : Date,
+  //s_date : Date,
   start_time : Date,
   end_time : Date,
   venue : String,

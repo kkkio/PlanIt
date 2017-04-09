@@ -640,7 +640,7 @@ hr.footer-hr{
         <!-- /.container-fluid -->
     </nav>
 
-    <!-- Header 
+    <!-- Header
     <header>
         <div class="container" id="maincontent" tabindex="-1">
             <div class="row">
@@ -749,10 +749,10 @@ hr.footer-hr{
                     <div class="col-lg-8">
                         <!-- Facebook-like textarea -->
                         <div class="status-box" style="padding: 0px">
-                              <div class="status-box-header">
+                              <div class="status-box-header" id="momentInput">
                                   <h3>What's New</h3>
                               </div>
-                              <form class="form-horizontal col-lg-12" style="background: inherit;" method="post" action="/users/account">
+                              <form class="form-horizontal col-lg-12" style="background: inherit;" method="post" action="/users/account/addMoment">
                                 <div class="col-lg-4">
                                     <div id="image-preview">
                                       <label for="image-upload" id="image-label"></label>
@@ -792,7 +792,7 @@ hr.footer-hr{
                                           <button type="submit" class="btn">Submit</button>
                                       </div>
                                       <div class="col-lg-3">
-                                          <a href="/users/account" class="btn">Cancel</a>
+                                          <a href="/users/account#momentInput" class="btn">Cancel</a>
                                       </div>
                                   </div>
                                 </div>
@@ -853,7 +853,7 @@ hr.footer-hr{
                           <div class="post-text">
                               <h2 class="post-title" id="myMomentTitle"+i><%= moment[i].title %></h2>
                               <div class="post-meta">
-                                  By <a href="/users/account"><%= user.username %></a><text><%= moment[i].post_time.getDate()+"/"+(moment[i].post_time.getMonth() +1)+"/"+moment[i].post_time.getFullYear() %></text><text id="myMomentLike">127 Likes</text> <a href="#" class="comments" id="myMomentComment">2 Comments</a>
+                                  By <a href="/users/account"><%= user.username %></a><text><%= moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %></text><text id="myMomentLike">127 Likes</text> <a href="#" class="comments" id="myMomentComment">2 Comments</a>
                               </div>
                               <div class="moment-text">
                                   <textarea disabled id="myMomentText" rows="5" cols="500"><%= moment[i].text %></textarea>

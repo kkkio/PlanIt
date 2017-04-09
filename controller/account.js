@@ -12,8 +12,8 @@ exports.gethome = function getacchome (req, res, next) {
 		err.status = 404;
 		throw(err);
 	}
-	res.mydata={};
-	res.mydata.moment=[];
+	//res.mydata={};
+	//res.mydata.moment=[];
 	moment.mymoment(req, res, next);
 };
 
@@ -82,6 +82,7 @@ exports.updateInfo = function updateInfo (req, res, next){
   });
 };
 
+// check validate password form
 exports.validatePasswordForm = function validatePasswordForm(req,res,next){
 	var old_password = req.body.old_password;
 	var new_password = req.body.new_password;
@@ -99,10 +100,10 @@ exports.validatePasswordForm = function validatePasswordForm(req,res,next){
       console.log('PASSED');
       return next();
     }
-
   });
 }
 
+// update password
 exports.updatePassword = function updatePassword(req, res, next){
 	User.findById(req.user._id, function(err, doc){
 		if(err){

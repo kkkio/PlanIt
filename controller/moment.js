@@ -14,7 +14,7 @@ exports.mymoment=function mymoment(req,res,next){
 		var test={
 			user : req.user,
 			moment : doc
-		}
+		};
 		console.log(test);
 		res.render('account', test);
 		console.log("finish rendering data");
@@ -30,7 +30,6 @@ exports.addMoment = function addMoment(req,res,next){
     	title :  	req.body.title,
       	_user_id :	req.user._id,
     	date :	   	date,
-    	post_time :	req.body.post_time,
     	location : 	req.body.location,
     	pic : 		req.body.pic,
      	text : 		req.body.text,
@@ -42,7 +41,6 @@ exports.addMoment = function addMoment(req,res,next){
 			doc.postMoment(data._id);
 		});
 		res.redirect('/users/account');
-
 };
 
 exports.deleteMoment = function deletemoment(req,res,next){
