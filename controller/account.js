@@ -8,16 +8,7 @@ exports = module.exports = {};
 exports.gethome = function getacchome (req, res, next) {
 	res.mydata={};
 	res.mydata.moment=[];
-	moment.mymoment(req, res, next,function(res){
-		console.log("in account controller");
-		console.log(res.mydata.moment);
-		//console.log(data);
-		console.log(req.user._id);
-		res.render('account', {
-			user : req.user,
-			data : res.mydata.moment
-		});	
-	});
+	moment.mymoment(req, res, next);
 	
 };
 

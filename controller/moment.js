@@ -5,7 +5,6 @@ exports = module.exports = {};
 exports.mymoment=function mymoment(req,res,next){
 	var data=[];
 	console.log("in my moment");
-	console.log(req.user._id);
 	
 	moment.showMyMoment(req.user._id,function(doc){
 		//console.log("in callback of mymoment");
