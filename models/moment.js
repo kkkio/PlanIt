@@ -31,7 +31,7 @@ moment.statics.showMyMoment=function(userID,callback){
 		}
 	});
 };
-
+/*
 moment.statics.showFriendMoment=function(friend_id){
 	var m_moment=[];
   	var query=this.find({_user_id:friend_id});
@@ -68,6 +68,7 @@ moment.statics.showFriendMoment=function(friend_id){
 		}
 	return m_moment;
 };
+*/
 
 moment.statics.getOneById = function getOneById(id, callback){
 	this

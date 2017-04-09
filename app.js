@@ -14,6 +14,7 @@ var mongodb = require('mongodb');
 var config = require('./config/config');
 
 mongoose.connect(config.db);
+mongoose.Promise = require('bluebird');
 
 require('./config/passport')(passport,config); // pass passport for configuration
 //require('./config/passport')(passport,config); // pass passport for configuration

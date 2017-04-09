@@ -20,8 +20,6 @@ exports.mymoment=function mymoment(req,res,next){
 		res.render('account', test);
 		console.log("finish rendering data");
 	});
-
-
 };
 //add moment
 exports.addMoment = function addMoment(req,res,next){
