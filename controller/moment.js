@@ -1,11 +1,12 @@
 var express = require('express');
 var moment = require('../models/moment');
+var User = require('../models/user');
 exports = module.exports = {};
 
 exports.mymoment=function mymoment(req,res,next){
 	var data=[];
 	console.log("in my moment");
-	
+
 	moment.showMyMoment(req.user._id,function(doc){
 		//console.log("in callback of mymoment");
 		console.log("doc==");
@@ -13,11 +14,11 @@ exports.mymoment=function mymoment(req,res,next){
 		res.render('account', {
 			user : req.user,
 			data : doc
-		});	
+		});
 		console.log("finish rendering data");
 	});
 
-	
+
 };
 //add moment
 exports.addMoment = function addmoment(req,res,next){
@@ -32,12 +33,17 @@ exports.addMoment = function addmoment(req,res,next){
     	privacy : 	req.body.privacy
     };
     var data=new moment(insert_data);
-    data.save();
+		data.save();
+		User.findById(data._user_id,function(err, doc){
+			doc.postMoment(data._id);
+		});
+
+
 };
 
 exports.deleteMoment = function deletemoment(req,res,next){
 	var id=req.body.id;
-    Schedule.findByIdAndRemove(id).exec();
+    moment.findByIdAndRemove(id).exec();
 };
 
 exports.updateMoment = function updatemoment(req,res,next){
@@ -46,6 +52,9 @@ exports.updateMoment = function updatemoment(req,res,next){
     if (err) {
       	console.error('error, no entry found');
     }
+		if (!doc){
+			console.error('error, no entry found');
+		}
 	else{
 		doc.title  = req.body.title;
 		doc.text = req.body.text;
