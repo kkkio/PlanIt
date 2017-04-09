@@ -3,7 +3,7 @@ var user=require('./user');
 
 
 var scheduleSchema = mongoose.Schema({
-  _user_id : mongoose.Schema.Types.ObjectId,
+  _user_id : {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
   title : String,
   //activity info
   //s_date : Date,
