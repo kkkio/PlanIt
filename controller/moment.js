@@ -47,6 +47,7 @@ exports.addMoment = function addMoment(req,res,next){
 exports.deleteMoment = function deletemoment(req,res,next){
 	var id=req.body.id;
     moment.findByIdAndRemove(id).exec();
+	//res.redirect('/users/account');
 };
 
 exports.updateMoment = function updatemoment(req,res,next){
@@ -63,6 +64,7 @@ exports.updateMoment = function updatemoment(req,res,next){
 		doc.text = req.body.text;
 		doc.save();
 	}
+	res.redirect('/users/account');
 });
 };
 
