@@ -21,7 +21,7 @@ var moment = momentSchema;
 
 /*STATIC METHODS*/
 moment.statics.showMyMoment=function(userID,callback){
-  	this.find({_user_id: userID}).sort({date: -1}).exec(function(err,doc){
+  	this.find({_user_id: userID}).populate('commentList').sort({date: -1}).exec(function(err,doc){
 		if (err){
 			console.err("error");
 		}
@@ -30,9 +30,8 @@ moment.statics.showMyMoment=function(userID,callback){
 			return callback(doc);
 		}
 	});
-
-
 };
+
 moment.statics.showFriendMoment=function(friend_id){
 	var m_moment=[];
   	var query=this.find({_user_id:friend_id});
@@ -68,7 +67,13 @@ moment.statics.showFriendMoment=function(friend_id){
 			}
 		}
 	return m_moment;
+};
 
+moment.statics.getOneById = function getOneById(id, callback){
+	this
+	.findById(id)
+	.populate('commentList')
+	.exec(callback);
 };
 /*INSTANCE METHODS*/
 

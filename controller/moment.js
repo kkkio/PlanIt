@@ -46,11 +46,11 @@ exports.addMoment = function addMoment(req,res,next){
 exports.deleteMoment = function deletemoment(req,res,next){
 	console.log("in delete Moment");
 	var id=req.body.momentid; // TODO: can be change
-	console.log(id);
-    moment.findByIdAndRemove(id).exec();
-		User.findById(req.user._id,function(err, user){
-			user.deleteMoment(data._id);
-		});
+	console.log("momentId", id);
+  moment.findByIdAndRemove(id).exec();
+	User.findById(req.user._id,function(err, user){
+		user.deleteMoment(data._id);
+	});
 };
 
 exports.updateMoment = function updatemoment(req,res,next){
@@ -63,14 +63,59 @@ exports.updateMoment = function updatemoment(req,res,next){
 		if (!doc){
 			console.error('error, no entry found');
 		}
-	else{
+		else{
 		doc.title  = req.body.title;
 		doc.text = req.body.text;
 		doc.save();
-	}
+	 }
 	res.redirect('/users/account');
-});
+ });
 };
+
+exports.likeMoment = function likeMoment(req,res,next){
+
+}
+exports.postComment = function postComment(req,res,next){
+  // add one comment & update comment list in activity & user
+  moment.getOneById(req.body.momentId, function(err, doc){
+      // store an comment
+      var data = {
+        _moment_id : doc._id,
+        _user_id : doc._user_id,
+        // type : acitivity - 1; moment - 2
+        content: comment,
+        post_time: Date.now,
+        num_of_useful: 0,
+        num_of_nonuseful: 0
+      };
+      var com = new mComment(data);
+      com.save();
+      // update commentList of moment
+      doc.update({
+        $push: {"commentList": com._id},
+        $inc: {"comment_num": 1}
+      }).exec();
+      User.findById(doc._user_id, function(err, user){
+        user
+        .update({
+          $push: {"commentList": com._id},
+          $inc: {"comment_num": 1}
+        }).exec();
+      });
+
+			res.redirect('/users/account');
+    });
+};
+
+exports.deleteComment = function deleteComment(req, res, next){
+  var id = req.body.commentId;
+  mComment.findByIdAndRemove(id).exec();
+	moment.findById(req.body.momentId,function(err, doc){
+		doc.deleteMoment(data._id);
+	});
+};
+
+
 
 exports.friendMoment = function friendmoment(req,res,next){
 	var friend_id=req.params.id;
