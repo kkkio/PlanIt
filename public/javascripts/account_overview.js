@@ -43,6 +43,11 @@ $(document).ready(function(){
 	});
 });
 
+// Hide and Store moment id list
+$(document).ready(function() {
+    $("#hiddenMomentId").hide();
+});
+
 // Upload photos for new moments
 $(document).ready(function() {
   $.uploadPreview({
@@ -64,6 +69,7 @@ $(document).ready(function(){
         var momentId = "myMoment"+num;
         $("#confirmDeleteBtn").click(function(){
           $("#"+momentId).remove();
+
         });
     });
 });
