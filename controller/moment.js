@@ -10,10 +10,12 @@ exports.mymoment=function mymoment(req,res,next){
 		//console.log("in callback of mymoment");
 		console.log("doc==");
 		console.log(doc);
-		res.render('account', {
+		var test={
 			user : req.user,
-			data : doc
-		});	
+			moment : doc
+		}
+		console.log(test);
+		res.render('account', test);	
 		console.log("finish rendering data");
 	});
 
