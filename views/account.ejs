@@ -683,7 +683,7 @@ header .intro-text .intro-lead-in {
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                   <h4>Send Feedback <i class="fa fa-send"></i></h4>
               </div>
-              <form method="post" action="/users/account/profile">
+              <form method="post" action="/users/account/feedback">
                 <div class="modal-body">
                     <textarea type="text" cols="40" rows="5" style="width:100%" placeholder="Describe your issue or share your idea"></textarea>
                 </div>
@@ -723,7 +723,7 @@ header .intro-text .intro-lead-in {
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <div class="col-lg-1 col-md-1 col-sm-1"></div>
                       <div class="col-lg-10 col-md-10 col-sm-10" >
-                        <a href="/users/account" class="btn" id="menu-toggle" style="padding-left: 30px;padding-right: 30px;"">Menu <span class="glyphicon glyphicon-chevron-right"></span></a>
+                        <a href="/users/account" class="btn" id="menu-toggle" style="padding-left: 30px;padding-right: 30px;">Menu <span class="glyphicon glyphicon-chevron-right"></span></a>
                       </div>
                       <div class="col-lg-1 col-md-1 col-sm-1"></div>
                     </div>
@@ -783,7 +783,7 @@ header .intro-text .intro-lead-in {
                               </form>
                         </div>
                       </div>
-                    
+
 
                     <div class="col-lg-3 col-md-4 col-sm-4">
                         <div class="statistics-box">
@@ -848,7 +848,7 @@ header .intro-text .intro-lead-in {
                               <form>
                                   <div class="input-group moment-input-group">
                                       <div class="input-group-btn post-button">
-                                          <a class="btn" id=<%="editBtn"%>><i class="glyphicon glyphicon-edit post-edit"></i></a>            
+                                          <a class="btn" id=<%="editBtn"%>><i class="glyphicon glyphicon-edit post-edit"></i></a>
                                           <a class="btn" data-toggle="modal" data-target="#deleteModal" id=<%="deleteBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-trash post-delete"></i></a>
                                           <a class="btn" id=<%="likeBtn"+i%>><i class="glyphicon glyphicon-heart post-unlike"></i> 127</a>
                                           <a class="btn" id=<%="commentBtn"+i%>><i class="glyphicon glyphicon-comment post-comment"></i></a>

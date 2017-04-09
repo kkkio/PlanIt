@@ -45,7 +45,11 @@ router.get('/account/profile',isLoggedIn, function(req,res,next){
 
 /*Add moment,delete moment and update moment*/
 router.post('/account/addMoment',isLoggedIn,moment.addMoment);
-router.post('/account/deleteMoment', isLoggedIn, moment.deleteMoment);
+router.post('/account/deleteMoment', isLoggedIn,function(res,req,next){
+  console.log('FUCK YOU');
+  next();
+}, moment.deleteMoment);
+
 /*
 router.post('/account/deleteMoment', isLoggedIn, function(req,res,next){
 	console.log("in the delete");
