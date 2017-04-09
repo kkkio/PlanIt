@@ -70,7 +70,7 @@ $(document).ready(function(){
         var momentId = "myMoment"+num;
         $("#confirmDeleteBtn").click(function(){
           $("#"+momentId).remove();
-          $('#confirmDeleteBtn').attr('value', to_be_posted);
+          $('#tmpMomentId').attr('value', to_be_posted);
         });
     });
 });
@@ -104,11 +104,13 @@ $(document).ready(function(){
         var numOfLike = parseInt($(like).text());
         if(!($(this).find("i").hasClass("post-unlike"))){
             $(this).find('i').toggleClass('post-heart').toggleClass('post-unlike');
+            $(this).css('color', 'DarkGrey');
             numOfLike -= 1;
             $(like).text(numOfLike+" Likes");
         }
         else{
             $(this).find('i').toggleClass('post-unlike').toggleClass('post-heart');
+            $(this).css('color', 'LightCoral');
             numOfLike += 1;
             $(like).text(numOfLike+" Likes");
         }

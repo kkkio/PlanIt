@@ -52,7 +52,11 @@ router.post('/account/deleteMoment', isLoggedIn, function(req,res,next){
 });
 */
 router.post('/account/updateMoment', isLoggedIn, moment.updateMoment);
-
+/*router for moment*/
+// easy version for lilili test
+router.get('/moment',isLoggedIn,function(req,res,next){
+	res.render('moment');
+})
 /* for lilili test*/
 router.get('/account/past',isLoggedIn,function(req,res,next){
 	console.log("come here");
