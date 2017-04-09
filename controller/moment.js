@@ -44,7 +44,9 @@ exports.addMoment = function addMoment(req,res,next){
 };
 
 exports.deleteMoment = function deletemoment(req,res,next){
-	var id=req.query.momentid;
+	console.log("in delete Moment");
+	var id=req.query.momentid; // TODO: can be change
+	console.log(id);
     moment.findByIdAndRemove(id).exec();
 		User.findById(req.user._id,function(err, user){
 			user.deleteMoment(data._id);
@@ -52,7 +54,8 @@ exports.deleteMoment = function deletemoment(req,res,next){
 };
 
 exports.updateMoment = function updatemoment(req,res,next){
-	var id = req.body.id;
+	console.log("in updateMoment");
+	var id = req.body.momentId;
   	moment.findById(id, function(err, doc) {
     if (err) {
       	console.error('error, no entry found');
@@ -65,6 +68,7 @@ exports.updateMoment = function updatemoment(req,res,next){
 		doc.text = req.body.text;
 		doc.save();
 	}
+	res.redirect('/users/account');
 });
 };
 

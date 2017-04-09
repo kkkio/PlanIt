@@ -41,8 +41,12 @@ router.get('/account/profile',isLoggedIn, function(req,res,next){
   res.redirect('/users/'+req.user._id+'/profile');
 });
 
-/* GET account home page */
+
+
+/*Add moment,delete moment and update moment*/
 router.post('/account/addMoment',isLoggedIn,moment.addMoment);
+router.post('/account/deleteMoment', isLoggedIn, moment.deleteMoment);
+router.post('/account/updateMoment', isLoggedIn, moment.updateMoment);
 
 /* for lilili test*/
 router.get('/account/past',isLoggedIn,function(req,res,next){
