@@ -45,7 +45,7 @@ exports.addMoment = function addMoment(req,res,next){
 
 exports.deleteMoment = function deletemoment(req,res,next){
 	console.log("in delete Moment");
-	var id=req.query.momentid; // TODO: can be change
+	var id=req.body.momentid; // TODO: can be change
 	console.log(id);
     moment.findByIdAndRemove(id).exec();
 		User.findById(req.user._id,function(err, user){

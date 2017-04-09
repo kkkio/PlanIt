@@ -19,7 +19,7 @@ exports.getSearchResults = function getSearchResults (req, res, next){
 
 // to display an activity
 exports.getActivity =function getActivity(req, res, next){
-  Activity.getOneById(req.body.activity_id, function(err, doc){
+  Activity.getOneById(req.body.activityId, function(err, doc){
     var results={
       user : req.user,
       activity : doc,
@@ -31,7 +31,7 @@ exports.getActivity =function getActivity(req, res, next){
 
 exports.postComment = function postComment(req,res,next){
   // add one comment & update comment list in activity & user
-  Activity.getOneById(req.body.activity_id, function(err, doc){
+  Activity.getOneById(req.body.activityId, function(err, doc){
       // store an comment
       var data = {
         _activity_id : doc._id,
@@ -67,6 +67,6 @@ exports.postComment = function postComment(req,res,next){
 };
 
 exports.deleteComment = function deleteComment(req, res, next){
-  var id = req.query.commentid;
+  var id = req.body.commentId;
   mComment.findByIdAndRemove(id).exec();
 };
