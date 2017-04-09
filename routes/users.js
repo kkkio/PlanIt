@@ -47,7 +47,9 @@ router.post('/account/addMoment',isLoggedIn,moment.addMoment);
 /* for lilili test*/
 router.get('/account/past',isLoggedIn,function(req,res,next){
 	console.log("come here");
-	res.render('past_activity');
+	res.render('past_activity',{
+    isLogin : req.isAuthenticated()
+  });
 });
 router.get('/activity',isLoggedIn,function(req,res,next){
   res.render('single_activity');
