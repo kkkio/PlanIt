@@ -11,34 +11,43 @@ exports.mymoment=function mymoment(req,res,next){
 		//console.log("in callback of mymoment");
 		console.log("doc==");
 		console.log(doc);
-		res.render('account', {
+		var test={
 			user : req.user,
-			data : doc
-		});
+			moment : doc
+		}
+		console.log(test);
+		res.render('account', test);
 		console.log("finish rendering data");
 	});
 
 
 };
 //add moment
-exports.addMoment = function addmoment(req,res,next){
+exports.addMoment = function addMoment(req,res,next){
+	var date= new Date();
+
 	var insert_data={
     	title :  	req.body.title,
-      _user_id :	req.user._id,
-    	date :	   	req.body.date,
+      	_user_id :	req.user._id,
+    	date :	   	date,
     	post_time :	req.body.post_time,
     	location : 	req.body.location,
     	pic : 		req.body.pic,
-      text : 		req.body.text,
+     	text : 		req.body.text,
     	privacy : 	req.body.privacy
     };
     var data=new moment(insert_data);
+<<<<<<< HEAD
 		data.save();
 		User.findById(data._user_id,function(err, doc){
 			doc.postMoment(data._id);
 		});
 
 
+=======
+    data.save();
+	res.redirect('/users/account');
+>>>>>>> 9d4c107d0330881e08b1028fb3a5f6bf5bfede70
 };
 
 exports.deleteMoment = function deletemoment(req,res,next){

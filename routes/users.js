@@ -8,6 +8,7 @@ var moment = require('../models/moment');
 var register = require('../controller/register');
 var account = require('../controller/account');
 var login=require('../controller/login');
+var moment=require('../controller/moment');
 //build the connection to the database
 
 
@@ -41,6 +42,8 @@ router.get('/account/profile',isLoggedIn, function(req,res,next){
 });
 
 /* GET account home page */
+router.post('/account/addMoment',isLoggedIn,moment.addMoment);
+/* for lilili test*/
 router.get('/account/past',isLoggedIn,function(req,res,next){
 	console.log("come here");
 	res.render('past_activity');

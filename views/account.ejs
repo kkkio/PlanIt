@@ -46,7 +46,7 @@ body{
 
 .header-container{
   width:100%;
-  height:600px;
+  height: 600px;
   border-left: none;
   border-right: none;
   position: relative;
@@ -640,6 +640,22 @@ hr.footer-hr{
         <!-- /.container-fluid -->
     </nav>
 
+    <!-- Header 
+    <header>
+        <div class="container" id="maincontent" tabindex="-1">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/profile.png" alt="">
+                    <div class="intro-text">
+                        <h1 class="name">Start Bootstrap</h1>
+                        <hr class="star-light">
+                        <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header> -->
+
     <!-- Header -->
     <div class="header-container" id="accHeader">
         <div class="img-container1">
@@ -831,85 +847,34 @@ hr.footer-hr{
 
                   <div class="col-lg-10">
 
-                   <!-- Moment 1 -->
-                   <div class="post" id="myMoment1">
-                    <img class="img-responsive img-border img-full" src="/images/acc_mgnt/slide-1.jpg" alt="My Moment Image" id="myMomentImg1">
-                    <div class="post-text">
-                        <h2 class="post-title" id="myMomentTitle1">Webdesign</h2>
-                        <div class="post-meta">
-                            By <a href="#">Mike Fields</a><text>3 April 2015</text><text id="myMomentLike1">127 Likes</text> <a href="#" class="comments" id="myMomentComment1">2 Comments</a>
-                        </div>
-                        <div class="moment-text">
-                          <textarea disabled id="myMomentText1" rows="5" cols="500">Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</textarea>
-                        </div>
-                        <br>
-                        <form>
-                            <div class="input-group moment-input-group">
-                                <div class="input-group-btn post-button">
-                                    <a class="btn" id="editBtn1"><i class="glyphicon glyphicon-edit post-edit"></i></a>
-                                    <a class="btn" data-toggle="modal" data-target="#deleteModal" id="deleteBtn1"><i class="glyphicon glyphicon-trash post-delete"></i></a>
-                                    <a class="btn" id="likeBtn1"><i class="glyphicon glyphicon-heart post-unlike"></i></a>
-                                    <a class="btn" id="commentBtn1"><i class="glyphicon glyphicon-comment post-comment"></i></a>
-                                </div>
-                                <input type="text" class="form-control" id="myMomentCommentInput1" placeholder="Add a comment..">
-                            </div>
-                        </form>
-                        <!--<div id="myNewComment1"></div>-->
-                        <div class="moment-comment">
-                    </div>
-                   </div>
+                    <% for (var i=0; i < moment.length; i++) { %>
+                      <div class="post" id="myMoment">
+                          <img class="img-responsive img-border img-full" src="/images/acc_mgnt/slide-1.jpg" alt="My Moment Image" id="myMomentImg">
+                          <div class="post-text">
+                              <h2 class="post-title" id="myMomentTitle"+i><%= moment[i].title %></h2>
+                              <div class="post-meta">
+                                  By <a href="/users/account"><%= user.username %></a><text><%= moment[i].post_time.getDate()+"/"+(moment[i].post_time.getMonth() +1)+"/"+moment[i].post_time.getFullYear() %></text><text id="myMomentLike">127 Likes</text> <a href="#" class="comments" id="myMomentComment">2 Comments</a>
+                              </div>
+                              <div class="moment-text">
+                                  <textarea disabled id="myMomentText" rows="5" cols="500"><%= moment[i].text %></textarea>
+                              </div>
+                              <br>
+                              <form>
+                                  <div class="input-group moment-input-group">
+                                      <div class="input-group-btn post-button">
+                                          <a class="btn" id="editBtn"><i class="glyphicon glyphicon-edit post-edit"></i></a>
+                                          <a class="btn" data-toggle="modal" data-target="#deleteModal" id="deleteBtn"><i class="glyphicon glyphicon-trash post-delete"></i></a>
+                                          <a class="btn" id="likeBtn"><i class="glyphicon glyphicon-heart post-unlike"></i></a>
+                                          <a class="btn" id="commentBtn"><i class="glyphicon glyphicon-comment post-comment"></i></a>
+                                      </div>
+                                      <input type="text" class="form-control" id="myMomentCommentInput1" placeholder="Add a comment..">
+                                  </div>
+                              </form>
+                              <div class="moment-comment"></div>
+                          </div>
+                      </div>
+                    <% } %>
 
-                   <!-- Moment 2 -->
-                   <div class="post" id="myMoment2">
-                    <img class="img-responsive img-border img-full" src="/images/acc_mgnt/slide-2.jpg" alt="My Moment Image" id="myMomentImg2">
-                    <div class="post-text">
-                        <h2 class="post-title">Webdesign</h2>
-                        <div class="post-meta">
-                            By <a href="#">Mike Fields</a><text>3 April 2015</text><text id="myMomentLike2">127 Likes</text> <a href="#" class="comments" id="myMomentComment2">2 Comments</a>
-                        </div>
-                        <div class="moment-text">
-                          <textarea disabled id="myMomentText2" rows="5" cols="500">Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</textarea>
-                        </div>
-                        <br>
-                        <form>
-                            <div class="input-group moment-input-group">
-                                <div class="input-group-btn post-button">
-                                    <a class="btn" id="editBtn2"><i class="glyphicon glyphicon-edit post-edit"></i></a>
-                                    <a class="btn" data-toggle="modal" data-target="#deleteModal" id="deleteBtn2"><i class="glyphicon glyphicon-trash post-delete"></i></a>
-                                    <a class="btn" id="likeBtn2" class="btn"><i class="glyphicon glyphicon-heart post-unlike"></i></a>
-                                    <a class="btn" id="commentBtn2"><i class="glyphicon glyphicon-comment post-comment"></i></a>
-                                </div>
-                                <input type="text" class="form-control" id="myMomentCommentInput2" placeholder="Add a comment..">
-                            </div>
-                        </form>
-                    </div>
-                  </div>
-
-                   <!-- Moment 3 -->
-                   <div class="post" id="myMoment3">
-                    <img class="img-responsive img-border img-full" src="/images/acc_mgnt/slide-3.jpg" alt="">
-                    <div class="post-text">
-                        <h2 class="post-title">Webdesign</h2>
-                        <div class="post-meta">
-                            By <a href="#">Mike Fields</a><text>3 April 2015</text><text id="myMomentLike3">127 Likes</text> <a class="comments" id="myMomentComment3">2 Comments</a>
-                        </div>
-                        <div class="moment-text">
-                          <textarea disabled id="myMomentText3" rows="5" cols="500">Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</textarea>
-                        </div>
-                        <br>
-                        <form>
-                            <div class="input-group moment-input-group">
-                                <div class="input-group-btn post-button">
-                                    <a class="btn" id="editBtn3"><i class="glyphicon glyphicon-edit post-edit"></i></a>
-                                    <a class="btn" data-toggle="modal" data-target="#deleteModal" id="deleteBtn3"><i class="glyphicon glyphicon-trash post-delete"></i></a>
-                                    <a class="btn" id="likeBtn3"><i class="glyphicon glyphicon-heart post-unlike"></i></a>
-                                    <a class="btn" id="likeBtn3"><i class="glyphicon glyphicon-comment post-comment"></i></a>
-                                </div>
-                                <input type="text" class="form-control" id="myMomentCommentInput3" placeholder="Add a comment..">
-                            </div>
-                        </form>
-                    </div>
-                  </div>
 
                   <div class="more-moments">
                       <a href="#" id="loadMore">Load More</a>
