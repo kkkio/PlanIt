@@ -735,7 +735,7 @@ hr.heart-hr-bottom{
               <input type="submit" class="btn btn-special" value="Save" style="width:80px">
               <!-- Button trigger modal -->
               <button type="button" class="btn btn-popup" data-toggle="modal" data-target="#passwordModal">Change Password</button>
-
+            </form>
               <!-- Modal -->
               <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
@@ -745,14 +745,14 @@ hr.heart-hr-bottom{
                       <h4 class="modal-title" id="myModalLabel">Change Password</h4>
                     </div>
                     <div class="modal-body" style="text-align: right;">
-                      <form method="post" action="/users/account/profile">
+                      <form method="post" action="/users/account/editPassword">
                         <div class="row">
                           <div class="form-group">
                             <div class="col-md-5">
                               <label for="recipient-name" class="control-label">Old password</label>
                             </div>
                             <div class="col-md-7">
-                              <input type="password" class="form-control" id="old-password" style="width: 50%">
+                              <input type="password" class="form-control" name = "old_password"id="old-password" style="width: 50%">
                             </div>
                           </div>
                         </div>
@@ -762,7 +762,7 @@ hr.heart-hr-bottom{
                               <label for="message-text" class="control-label">New password</label>
                             </div>
                             <div class="col-md-7">
-                              <input type="password" class="form-control" id="new-password" style="width: 50%">
+                              <input type="password" class="form-control" name = "new_password" id="new-password" style="width: 50%">
                             </div>
                           </div>
                         </div>
@@ -772,15 +772,23 @@ hr.heart-hr-bottom{
                               <label for="text" class="control-label">Confirm password</label>
                             </div>
                             <div class="col-md-7">
-                              <input type="password" class="form-control" id="confirm-password" style="width: 50%">
+                              <input type="password" class="form-control" name = "new_password_confirmation" id="confirm-password" style="width: 50%">
                             </div>
                           </div>
                         </div>
+                        <div class="row">
+                          <% if (errors) { %>
+                          <% for(var i=0; i< errors.length; i++) { %>
+                            <div class = "alert-danger col-md-12">
+                                <strong><%= errors[i].msg%></strong> Please try again!
+                            </div>
+                          <% }} %>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn">Save changes</button>
+                          <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                        </div>
                       </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="submit" class="btn">Save changes</button>
-                      <button type="button" class="btn" data-dismiss="modal">Cancel</button>
                     </div>
                   </div>
                 </div>
@@ -790,7 +798,7 @@ hr.heart-hr-bottom{
             </div>
           </div>
           <br>
-        </form>
+
 
       </div>
       <div class="col-lg-1"></div>

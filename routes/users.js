@@ -48,6 +48,9 @@ router.get('/account/profile',isLoggedIn, account.getprofile);
 /* GET account management page. */
 router.post('/account/profile',isLoggedIn, account.updateInfo);
 
+/* GET account management page. */
+router.post('/account/editPassword',isLoggedIn, account.validatePasswordForm, account.updatePassword);
+
 router.get('/login/facebook',
   passport.authenticate('facebook',{ scope: ['email'] }));
 

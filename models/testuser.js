@@ -24,20 +24,23 @@ User.findOne({username : 'zsb'},function(err, user){
   if(err) return console.log(err);
   if(!user) return console.log('no user');
   console.log(user.username);
-  console.log(user._id);
+  //console.log(user._id);
   user.followings_num = 1;
   user.save();
   console.log('----check zsb end----');
 
-  //user.unfollowId("58e789273804d31d74faa821");
+  //user.followId("58e789273804d31d74faa821");
+  user.getFollowings(function(err, result){
+    console.log(result.followingList);
+  });
 });
 
 User.findOne({username : '123'},function(err, user){
   if(err) return console.log(err);
   if(!user) return console.log('no user');
   console.log(user.username);
-  console.log(user._id);
+  //console.log(user._id);
   console.log('----check 123 end----');
 
-  //user.unfollowedById("58e7c344934af73f430ae238")
+  //user.followedById("58e7c344934af73f430ae238")
 });
