@@ -12,22 +12,26 @@ exports.isCompleted = function isCompleted(req, res, next){
   req.checkBody('email', 'Email is required').notEmpty();
   req.checkBody('email', 'Email is not valid').isEmail();
   req.checkBody('username', 'Username is required').notEmpty();
+  req.checkBody('username', 'Username is not valid').isValidUsername();
   req.checkBody('password', 'Password is required').notEmpty();
   req.checkBody('password_confirmation', 'Passwords do not match').equals(req.body.password);
 
 
-  var errors = req.validationErrors();
-
-  if(errors){
+  req.getValidationResult().then(function(result){
+    var errors = result.array();
     console.log(errors);
-    res.render('register', {
-      message: req.flash('signupMessage'),
-      errors: errors
-    });
-  } else {
-    console.log('PASSED');
-    return next();
-  }
+    if(errors.length){
+      console.log(errors);
+      res.render('register', {
+        //message: req.flash('signupMessage'),
+        errors: errors
+      });
+    } else {
+      console.log('PASSED validation');
+      return next();
+    }
+
+  });
 };
 
 exports.redirect = passport.authenticate('local-signup', {
@@ -36,9 +40,20 @@ exports.redirect = passport.authenticate('local-signup', {
   failureFlash : true
 });
 
+
 exports.getregpage = function getregpage (req, res, next) {
+  var signupMessage = req.flash('signupMessage');
+  var errors;
+  if(signupMessage.length>0){
+    errors = new Array();
+    errors.push({
+      param: "signupMessage",
+      msg: signupMessage,
+      value: "N/A"
+    });
+  }
   res.render('register', {
-    message: req.flash('signupMessage'),
-    errors: req.validationErrors()
+    //message: req.flash('signupMessage'),
+    errors: errors
   });
 };

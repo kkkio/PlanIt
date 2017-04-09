@@ -84,11 +84,28 @@ user.statics.findByEmail = function findByEmail(email, callback){
   return this.findOne({email: email},callback);
 };
 
+user.statics.getFollowingsById = function getFollowingsById (id,callback){
+  return
+  this
+  .findById(id)
+  .populate('followingList')
+  .exec(callback);
+};
+
+user.statics.getFollowersById = function getFollowingsById(id,callback){
+  return
+  this
+  .findById(id)
+  .populate('followerList')
+  .exec(callback);
+};
+
 
 // hash user password
 user.statics.generateHash = function generateHash(password) {
   return bcrypt.hashSync(password, salt);
 };
+
 
 // INSTANCE METHODS
 // find frequent ip of user
@@ -144,8 +161,7 @@ user.methods.unfollowedById = function unfollowedById(id){
 // get all followers
 user.methods.getFollowers = function getFollowers(callback){
   return this
-  .populate('followerList')
-  .exec(callback);
+  .populate('followerList',callback);
   /* exec(function (err, user){
   if(err) return handleError;
   console.log(person);
@@ -155,8 +171,7 @@ user.methods.getFollowers = function getFollowers(callback){
 // get all followings
 user.methods.getFollowings = function getFollowings(callback){
   return this
-  .populate('followingList')
-  .exec(callback);
+  .populate('followingList',callback);
   /* exec(function (err, user){
   if(err) return handleError;
   console.log(person);
@@ -237,25 +252,7 @@ user.methods.checkVaildPassword = function checkVaildPassword(password) {
 // for user to update something
 user.methods.updatePassword = function updatePassword(password){
   this.password = bcrypt.hashSync(password, salt);
+  this.save();
 };
-
-// for update
-user.methods.updateIntro = function updateIntro(intro){
-  this.self_intro = intro;
-};
-
-user.methods.updatePhone = function updatePhone(phone){
-  this.phone_number = phone;
-};
-
-user.methods.updateBirth = function updateBirth(year,month,day){
-  this.birth.year = year;
-  this.birth.month = month;
-  this.birth.day = day;
-  this.age = Date.now().year - year;
-};
-
-// defind a pre
-
 
 module.exports = mongoose.model('user', userSchema);
