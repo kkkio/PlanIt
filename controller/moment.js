@@ -4,7 +4,6 @@ var User = require('../models/user');
 exports = module.exports = {};
 
 exports.mymoment=function mymoment(req,res,next){
-	var data=[];
 	console.log("in my moment");
 
 	moment.showMyMoment(req.user._id,function(doc){
@@ -38,15 +37,18 @@ exports.addMoment = function addMoment(req,res,next){
     };
     var data=new moment(insert_data);
 		data.save();
-		User.findById(data._user_id,function(err, doc){
-			doc.postMoment(data._id);
+		User.findById(req.user._id,function(err, user){
+			user.postMoment(data._id);
 		});
 		res.redirect('/users/account');
 };
 
 exports.deleteMoment = function deletemoment(req,res,next){
-	var id=req.body.id;
+	var id=req.query.momentid;
     moment.findByIdAndRemove(id).exec();
+		User.findById(req.user._id,function(err, user){
+			user.deleteMoment(data._id);
+		});
 };
 
 exports.updateMoment = function updatemoment(req,res,next){

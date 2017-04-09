@@ -1,12 +1,15 @@
 var mongoose = require('mongoose');
 
 var activitySchema = mongoose.Schema({
-	activity_name : String,
+	title : String,
 	_user_id : mongoose.Schema.Types.ObjectId,
 	//a_date: Date,
 	start_time: Date,
 	end_time: Date,
-	venue: Date,
+	venue: {
+		country : String,
+		city : String
+	},
 	intro: String,
 	url: String,
 	//1: music concert; 2: movies; 3: art exibition; 4: others
@@ -18,29 +21,44 @@ var activitySchema = mongoose.Schema({
 });
 
 var acitivity = activitySchema;
+
+// create indice for search
+activity.index({
+	title: 'text',
+	intro: 'text'
+});
+activity.index({
+	venue.country: 'location',
+	venue.city: 'location'
+});
+
 //STATIC METHOD
-activity.statics.search = function search (keyword){
-	
-	/*
-	var query=this.find({"activity_name":{$regex: keyword, $options: 'i'}});
-	var activity[];
-	for (var i=0;i<query.length;i++){
-			activity.push({
-      			a_name : query[i].activity_name,
-      			a_host_id : query[i]._user_id,
-				a_data : query[i].a_data,
-      			a_start_time : query[i].start_time,
-      			a_end_time : query[i].end_time,
-				a_venue : query[i].venue,
-				a_intro : query[i].intro,
-				a_url : query[i].url,
-				a_average_rating : query[i].average_rating,
-				a_comments[] : query[i].comments
-    		});
-	return activity;
-	*/
+
+// 1. take query 2.keywords are a list of keywords
+activity.statics.searchBy = function searchBy (keywords, callback){
+	this
+	.find({$text: {$search: keywords}})
+	.exec(callback);
 };
 
+// NOT USED NOW
+activity.statics.exactSearchBy = function exactSearchBy (keywords, callback){
+	this
+	.find({$text: {$search: keywords}})
+	.exec(callback);
+};
+
+activity.statics.searchByLocation = function searchBy (keywords, callback){
+	this
+	.find({$location: {$search: keywords}})
+	.exec(callback);
+};
+
+activity.statics.viewByCat = function viewByCat(cat, callback){
+	this
+	.find({category: cat})
+	.exec(callback);
+}
 
 // get an activity by id
 activity.statics.getOneById = function getOneById(id, callback){
@@ -51,6 +69,5 @@ activity.statics.getOneById = function getOneById(id, callback){
 };
 
 //INSTANCED METHOD
-activity.methods.
 
 module.exports = mongoose.model('activity', activitySchema);

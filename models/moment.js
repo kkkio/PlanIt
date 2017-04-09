@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var momentSchema = mongoose.Schema({
   //user_id : Number,
   title : String,
-  _user_id : {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
+  _user_id : {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
   date : Date,
   location : String,
   pic : String,

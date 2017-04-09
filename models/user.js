@@ -234,7 +234,7 @@ user.methods.getMoments = function getMoments(callback){
 };
 
 // post a activity - host
-user.methods.postorgetActivity = function postorgetActivity(callback){
+user.methods.postActivity = function postActivity(callback){
   return this.update(
     {
       $push: {"activityList": id},
