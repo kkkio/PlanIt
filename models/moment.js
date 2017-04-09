@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var momentSchema = mongoose.Schema({
   //user_id : Number,
   title : String,
-  _user_id : mongoose.Schema.Types.ObjectId,
+  _user_id : {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
   date : Date,
   post_time : Date,
   location : String,
@@ -17,21 +17,35 @@ var momentSchema = mongoose.Schema({
 // add an alias for define method
 var moment = momentSchema;
 
-moment.statics.showMyMoment=function(userID){
-  var query=this.find({user_id: userID});
-  var m_moment=[];
-  for(var i=0;i<query.length;i++){
-    m_moment.push({
-      m_id :		query[i]._id,
-      m_title :		query[i].title,
-      m_date :		query[i].date,
-      m_posttime :	query[i].post_time,
-      m_location :	query[i].location,
-      m_moment_pic: query[i].pic,
-      m_text :		query[i].text
-    });
-  }
-  return m_moment;
+/*STATIC METHODS*/
+moment.statics.showMyMoment=function(userID,callback){
+  	this.find({_user_id: userID},function(err,doc){
+		if (err){
+			console.err("error, no entry found");
+		}
+		else{
+			/*var m_moment=[];
+			for(var i=0;i<doc.length;i++){
+				m_moment.push({
+					m_id :			doc[i]._id,
+					m_title :		doc[i].title,
+					m_date :		doc[i].date,
+					m_posttime :	doc[i].post_time,
+					m_location :	doc[i].location,
+					m_moment_pic: 	doc[i].pic,
+					m_text :		doc[i].text
+				});
+			}
+			return m_moment;*/
+			console.log("finish in find");
+			//console.log("userID");
+			//console.log(userID);
+			//console.log(doc[0]);
+			return callback(doc);
+		}
+	});
+  
+  
 };
 moment.statics.showFriendMoment=function(friend_id){
 	var m_moment=[];
@@ -70,5 +84,24 @@ moment.statics.showFriendMoment=function(friend_id){
 	return m_moment;
 
 };
+/*INSTANCE METHODS*/
+moment.method.addMoment= function(data){
+	
+};
 
-module.exports = mongoose.model('moment', momentSchema);
+//module.exports 
+module.exports=mongoose.model('moment',momentSchema);
+/*
+var moment= mongoose.model('moment', momentSchema);
+var data={
+	title : "aaaaaaaaa",
+  	_user_id : "58e72eb7a87f904b8a245f90", 
+  date : Date.now(),
+  post_time : Date.now(),
+  text: "22222222",
+  privacy : 1
+}
+
+var test= new moment(data); 
+test.save();
+*/

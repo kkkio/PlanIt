@@ -1,26 +1,15 @@
 var User = require('../models/user');
-try{
-	var moment = require('./moment');
-	moment.test;
-} catch(ex){
-	if (ex instanceof Error && ex.code === "MODULE_NOT_FOUND"){
-		console.log("can't load foo");
-	}
-}
+var moment = require('./moment');
 
-	exports = module.exports = {};
+
+exports = module.exports = {};
 
 // get account homepage
 exports.gethome = function getacchome (req, res, next) {
-	moment.test;
-	var data=moment.mymoment(req, res, next);
-	console.log(data);
-	//console.log(data);
-  	console.log(req.user._id);
-	res.render('account', {
-    	user : req.user,
-		data : data
-  	});
+	res.mydata={};
+	res.mydata.moment=[];
+	moment.mymoment(req, res, next);
+	
 };
 
 // get profile page
