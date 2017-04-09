@@ -21,28 +21,12 @@ var moment = momentSchema;
 
 /*STATIC METHODS*/
 moment.statics.showMyMoment=function(userID,callback){
-  	this.find({_user_id: userID},function(err,doc){
+  	this.find({_user_id: userID}).sort({date: -1}).exec(function(err,doc){
 		if (err){
 			console.err("error");
 		}
 		else{
-			/*var m_moment=[];
-			for(var i=0;i<doc.length;i++){
-				m_moment.push({
-					m_id :			doc[i]._id,
-					m_title :		doc[i].title,
-					m_date :		doc[i].date,
-					m_posttime :	doc[i].post_time,
-					m_location :	doc[i].location,
-					m_moment_pic: 	doc[i].pic,
-					m_text :		doc[i].text
-				});
-			}
-			return m_moment;*/
 			console.log("finish in find");
-			//console.log("userID");
-			//console.log(userID);
-			//console.log(doc[0]);
 			return callback(doc);
 		}
 	});
