@@ -46,8 +46,17 @@ router.get('/account/profile',isLoggedIn, function(req,res,next){
 /*Add moment,delete moment and update moment*/
 router.post('/account/addMoment',isLoggedIn,moment.addMoment);
 router.post('/account/deleteMoment', isLoggedIn, moment.deleteMoment);
+/*
+router.post('/account/deleteMoment', isLoggedIn, function(req,res,next){
+	console.log("in the delete");
+});
+*/
 router.post('/account/updateMoment', isLoggedIn, moment.updateMoment);
-
+/*router for moment*/
+// easy version for lilili test
+router.get('/moment',isLoggedIn,function(req,res,next){
+	res.render('moment');
+})
 /* for lilili test*/
 router.get('/account/past',isLoggedIn,function(req,res,next){
 	console.log("come here");
