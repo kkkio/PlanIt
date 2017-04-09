@@ -24,10 +24,11 @@ exports.mymoment=function mymoment(req,res,next){
 //add moment
 exports.addMoment = function addMoment(req,res,next){
 	var date= new Date();
+		
 	var insert_data={
     	title :  	req.body.title,
       	_user_id :	req.user._id,
-    	date :	   	date.now(),
+    	date :	   	date,
     	post_time :	req.body.post_time,
     	location : 	req.body.location,
     	pic : 		req.body.pic,
