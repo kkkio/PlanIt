@@ -37,17 +37,12 @@ exports.addMoment = function addMoment(req,res,next){
     	privacy : 	req.body.privacy
     };
     var data=new moment(insert_data);
-<<<<<<< HEAD
 		data.save();
 		User.findById(data._user_id,function(err, doc){
 			doc.postMoment(data._id);
 		});
+		res.redirect('/users/account');
 
-
-=======
-    data.save();
-	res.redirect('/users/account');
->>>>>>> 9d4c107d0330881e08b1028fb3a5f6bf5bfede70
 };
 
 exports.deleteMoment = function deletemoment(req,res,next){

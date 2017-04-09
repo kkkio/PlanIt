@@ -43,6 +43,7 @@ router.get('/account/profile',isLoggedIn, function(req,res,next){
 
 /* GET account home page */
 router.post('/account/addMoment',isLoggedIn,moment.addMoment);
+
 /* for lilili test*/
 router.get('/account/past',isLoggedIn,function(req,res,next){
 	console.log("come here");
