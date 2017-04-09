@@ -97,42 +97,48 @@ user.methods.findIP = function getIP(callback){
 };
 
 // follow someone by id, update followingList
-user.methods.followId = function followId(id, callback){
+user.methods.followId = function followId(id){
+  if(this.isFolowingId(id)) return;
+  console.log(this.username);
    return this.update(
      {
        $push: {"followingList": id},
        $inc: {"followings_num": 1}
-     },
-     callback);
+     }
+   ).exec();
 };
 
 // followed by someone by id, update followerList
-user.methods.followedById = function followededById(id, callback){
+user.methods.followedById = function followededById(id){
+  if(this.isFollowedById(id)) return;
   return this.update(
     {
       $push: {"followerList": id},
       $inc: {"followers_num": 1}
-    },
-    callback);
+    }
+  ).exec();
 };
 
-user.methods.unfollowId = function unfollowId(id, callback){
+user.methods.unfollowId = function unfollowId(id){
+  // not following, then cannot unfollow
+  if(!this.isFolowingId(id)) return;
    return this.update(
      {
-       $pop: {"followingList": id},
+       $pull: {"followingList": id},
        $inc: {"followings_num": -1}
-     },
-     callback);
+     }
+   ).exec();
 };
 
 // followed by someone by id, update followerList
-user.methods.unfollowedById = function unfollowededById(id, callback){
+user.methods.unfollowedById = function unfollowedById(id){
+  if(!this.isFollowedById(id)) return;
   return this.update(
     {
-      $pop: {"followerList": id},
+      $pull: {"followerList": id},
       $inc: {"followers_num": -1}
-    },
-    callback);
+    }
+  ).exec();
 };
 
 // get all followers
@@ -155,6 +161,30 @@ user.methods.getFollowings = function getFollowings(callback){
   if(err) return handleError;
   console.log(person);
   })*/
+};
+
+// A is following id? / A is a follower of id
+user.methods.isFollowerOfId = function isFollowerOfId(id){
+  var i;
+  for(i =0; i<this.followingList.length;i++){
+    if(this.followingList[i] == id){
+      console.log('true');
+      return true;
+    }
+  }
+  return false;
+};
+user.methods.isFolowingId = user.methods.isFollowerOfId;
+
+// A is followed by id?
+user.methods.isFollowedById = function isFollowedById(id){
+  var i;
+  for(i = 0; i<this.followerList.length;i++){
+    if(this.followerList[i] == id){
+      return true;
+    }
+  }
+  return false;
 };
 
 // post a moment

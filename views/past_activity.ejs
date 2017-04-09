@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	  <title>Past Activities - PlanIt</title>
+	  <title><%= user.username %> - Past Activities - PlanIt</title>
 
 	  <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -432,18 +432,7 @@ hr{
   border-color:#d9d9d9;
 }
 
-.row{
-    overflow: hidden; 
-}
 
-[class*="col-"]{
-    margin-bottom: -99999px;
-    padding-bottom: 99999px;
-}
-
-.activity-info{
-  background-color: white;
-}
 
 
 </style>
@@ -565,7 +554,7 @@ hr{
                 <i class="fa fa-question-circle"></i> Are you sure you want to log-off?
               </div>
               <div class="modal-footer">
-                  <button type="submit" class="btn">Confirm</button>
+                  <a type="button" href="/users/login" class="btn">Confirm</a>
                   <button type="button" class="btn" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -616,7 +605,7 @@ hr{
                         </div>
                     </a>
                   </div>
-                  <div class="col-lg-4 activity-info">
+                  <div class="col-lg-4">
                     <h3>Mayday Just Rock It 2017</h3>
                     <h4>Hong Kong</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>

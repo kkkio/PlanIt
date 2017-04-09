@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	  <title>Account Overview - PlanIt</title>
+	  <title><%= user.username %> - Account Overview - PlanIt</title>
 
 	  <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -787,17 +787,17 @@ hr.footer-hr{
                     <div class="col-lg-3">
                         <div class="statistics-box">
                             <ul class="list-group">
-                                <a href="#" class="list-group-item" style="background-color: Khaki ; height:133px;">
+                                <a class="list-group-item" style="background-color: Khaki ; height:133px;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.followers_num %></p>
                                     <p class="list-group-item-text">followers</p>
                                 </a>
 
-                                <a href="#" class="list-group-item" style="background-color: Gold; height:133px;">
+                                <a class="list-group-item" style="background-color: Gold; height:133px;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.followings_num %></p>
                                     <p class="list-group-item-text">following</p>
                                 </a>
 
-                                <a href="#" class="list-group-item" style="background-color: Orange; height:133px;">
+                                <a class="list-group-item" style="background-color: Orange; height:133px;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 40px;"><%= user.mement_num %></p>
                                     <p class="list-group-item-text">moments</p>
                                 </a>

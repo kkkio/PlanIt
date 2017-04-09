@@ -2,7 +2,7 @@ var express = require('express');
 var moment = require('../models/moment');
 exports = module.exports = {};
 
-exports.mymoment=function mymoment(req,res,next,callback){
+exports.mymoment=function mymoment(req,res,next){
 	var data=[];
 	console.log("in my moment");
 	console.log(req.user._id);
@@ -24,14 +24,14 @@ exports.mymoment=function mymoment(req,res,next,callback){
 exports.addMoment = function addmoment(req,res,next){
 	var insert_data={
     	title :  	req.body.title,
-      	_user_id :	req.user._id,
+      _user_id :	req.user._id,
     	date :	   	req.body.date,
     	post_time :	req.body.post_time,
     	location : 	req.body.location,
     	pic : 		req.body.pic,
-      	text : 		req.body.text,
+      text : 		req.body.text,
     	privacy : 	req.body.privacy
-    };	
+    };
     var data=new moment(insert_data);
     data.save();
 };
