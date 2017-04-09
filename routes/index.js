@@ -4,6 +4,7 @@ var router = express.Router();
 /* GET login-homepage. */
 router.get('/', isLoggedIn,function(req, res, next) {
   res.render('index', {
+    isLogin : req.isAuthenticated()
    });
 });
 
@@ -28,7 +29,7 @@ function isLoggedIn(req, res, next) {
 
 	// if they aren't redirect them to the home page
 	res.render('index_before_login',{
-
+    isLogin : req.isAuthenticated()
   });
 }
 
