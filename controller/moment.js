@@ -37,6 +37,7 @@ exports.addMoment = function addMoment(req,res,next){
     };
     var data=new moment(insert_data);
     data.save();
+	res.redirect('/users/account');
 };
 
 exports.deleteMoment = function deletemoment(req,res,next){
