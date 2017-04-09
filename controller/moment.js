@@ -45,13 +45,16 @@ exports.addMoment = function addMoment(req,res,next){
 };
 
 exports.deleteMoment = function deletemoment(req,res,next){
-	var id=req.body.id;
+	console.log("in delete Moment");
+	var id=req.body.momentId;
+	console.log(id);
     moment.findByIdAndRemove(id).exec();
 	//res.redirect('/users/account');
 };
 
 exports.updateMoment = function updatemoment(req,res,next){
-	var id = req.body.id;
+	console.log("in updateMoment");
+	var id = req.body.momentId;
   	moment.findById(id, function(err, doc) {
     if (err) {
       	console.error('error, no entry found');
