@@ -8,6 +8,10 @@ router.get('/', isLoggedIn,function(req, res, next) {
    });
 });
 
+router.get('/about', function(req,res,next){
+  res.render('about');
+});
+
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
 
@@ -17,8 +21,10 @@ function isLoggedIn(req, res, next) {
 
 	// if they aren't redirect them to the home page
 	res.render('index_before_login',{
-    
+
   });
 }
+
+
 
 module.exports = router;

@@ -9,6 +9,8 @@ var momentSchema = mongoose.Schema({
   location : String,
   pic : String,
   text : String,
+  like : Number,
+  commentList :[{type:mongoose.Schema.Types.ObjectId, ref: 'comment'}],
   // privacy 1: public, 2:followers, 3: friends, 4: private
   privacy : Number
 });
