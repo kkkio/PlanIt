@@ -43,6 +43,11 @@ $(document).ready(function(){
 	});
 });
 
+// Hide and Store moment id list
+$(document).ready(function() {
+    $("#hiddenMomentId").hide();
+});
+
 // Upload photos for new moments
 $(document).ready(function() {
   $.uploadPreview({
@@ -60,10 +65,12 @@ $(document).ready(function() {
 $(document).ready(function(){
     $("a[id^='deleteBtn']").click(function(){
         var currentBtnId = $(this).attr('id');
+        var to_be_posted = $(this).attr('name');
         var num = parseInt(currentBtnId.match(/(\d+)$/)[0], 10);
         var momentId = "myMoment"+num;
         $("#confirmDeleteBtn").click(function(){
           $("#"+momentId).remove();
+          $('#confirmDeleteBtn').attr('value', to_be_posted);
         });
     });
 });
