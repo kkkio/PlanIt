@@ -847,11 +847,8 @@ header .intro-text .intro-lead-in {
                               <form>
                                   <div class="input-group moment-input-group">
                                       <div class="input-group-btn post-button">
-                                          <a class="btn" id=<%="editBtn"%>><i class="glyphicon glyphicon-edit post-edit"></i></a>
-                                          <form method="post" action="/users/account/deleteMoment">
-                                              <input type="text" id="hiddenMomentId" name="momentId" value=<%= moment[i]._id %>>
-                                              <a class="btn" data-toggle="modal" data-target="#deleteModal" id=<%="deleteBtn"+i%>><i class="glyphicon glyphicon-trash post-delete"></i></a>
-                                          </form>
+                                          <a class="btn" id=<%="editBtn"%>><i class="glyphicon glyphicon-edit post-edit"></i></a>            
+                                          <a class="btn" data-toggle="modal" data-target="#deleteModal" id=<%="deleteBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-trash post-delete"></i></a>
                                           <a class="btn" id=<%="likeBtn"+i%>><i class="glyphicon glyphicon-heart post-unlike"></i></a>
                                           <a class="btn" id=<%="commentBtn"+i%>><i class="glyphicon glyphicon-comment post-comment"></i></a>
                                       </div>
@@ -884,8 +881,10 @@ header .intro-text .intro-lead-in {
                           <i class="fa fa-question-circle"></i> Are you sure you want to delete this moment?
                         </div>
                         <div class="modal-footer">
-                          <button type="submit" class="btn" id="confirmDeleteBtn" data-dismiss="modal">Confirm</button>
-                          <button type="button" class="btn" data-dismiss="modal">Close</button>
+                          <form method="post" action="/users/account/deleteMoment">
+                            <button type="submit" class="btn" id="confirmDeleteBtn" name="momentId" value="" data-dismiss="modal">Confirm</button>
+                            <button type="button" class="btn" data-dismiss="modal">Close</button>
+                          </form>
                         </div>
                     </div>
                   </div>
