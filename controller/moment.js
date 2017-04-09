@@ -9,13 +9,13 @@ exports.mymoment=function mymoment(req,res,next){
 	moment.showMyMoment(req.user._id,function(doc){
 		//console.log("in callback of mymoment");
 		console.log("doc==");
-		console.log(doc);
+		//console.log(doc);
 		var test={
 			user : req.user,
 			moment : doc,
 			isLogin: req.isAuthenticated()
 		};
-		console.log(test);
+		//console.log(test);
 		res.render('account', test);
 		console.log("finish rendering data");
 	});

@@ -365,9 +365,9 @@ ul.social-buttons li a:active {
   color: #6A6A6A;
   text-decoration: none;
   text-transform: uppercase;
-    font-size: 12px;
-    line-height: 28px;
-    font-weight: 400;
+  font-size: 12px;
+  line-height: 28px;
+  font-weight: 400;
 }
 
 .post-meta a::after, .post-meta text::after{
@@ -404,6 +404,7 @@ ul.social-buttons li a:active {
 
 .post-button a{
   border: 1px solid MediumAquaMarine;
+  color:DarkGrey;
 }
 
 .moment-input-group{
@@ -849,7 +850,7 @@ header .intro-text .intro-lead-in {
                                       <div class="input-group-btn post-button">
                                           <a class="btn" id=<%="editBtn"%>><i class="glyphicon glyphicon-edit post-edit"></i></a>            
                                           <a class="btn" data-toggle="modal" data-target="#deleteModal" id=<%="deleteBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-trash post-delete"></i></a>
-                                          <a class="btn" id=<%="likeBtn"+i%>><i class="glyphicon glyphicon-heart post-unlike"></i></a>
+                                          <a class="btn" id=<%="likeBtn"+i%>><i class="glyphicon glyphicon-heart post-unlike"></i> 127</a>
                                           <a class="btn" id=<%="commentBtn"+i%>><i class="glyphicon glyphicon-comment post-comment"></i></a>
                                       </div>
                                       <input type="text" class="form-control" id=<%="myMomentCommentInput1"+i%> placeholder="Add a comment..">
@@ -882,7 +883,8 @@ header .intro-text .intro-lead-in {
                         </div>
                         <div class="modal-footer">
                           <form method="post" action="/users/account/deleteMoment">
-                            <button type="submit" class="btn" id="confirmDeleteBtn" name="momentId" value="" data-dismiss="modal">Confirm</button>
+                            <input type="hidden" id="tmpMomentId" name="momentId" value="">
+                            <button type="submit" class="btn" id="confirmDeleteBtn" data-dismiss="modal">Confirm</button>
                             <button type="button" class="btn" data-dismiss="modal">Close</button>
                           </form>
                         </div>
