@@ -18,7 +18,8 @@ var activitySchema = mongoose.Schema({
 
 var acitivity = activitySchema;
 //STATIC METHOD
-activity.static.search = function(keyword){
+activity.statics.search = function(keyword){
+	/*
 	var query=this.find({"activity_name":{$regex: keyword, $options: 'i'}});
 	var activity[];
 	for (var i=0;i<query.length;i++){
@@ -35,9 +36,11 @@ activity.static.search = function(keyword){
 				a_comments[] : query[i].comments
     		});
 	return activity;
-
+	*/
 };
-//INSTANCED METHOD
 
+
+//INSTANCED METHOD
+activity.static.
 
 module.exports = mongoose.model('activity', activitySchema);
