@@ -8,6 +8,7 @@ var moment = require('../models/moment');
 var register = require('../controller/register');
 var account = require('../controller/account');
 var login=require('../controller/login');
+var moment=require('../controller/moment');
 //build the connection to the database
 
 
@@ -32,6 +33,7 @@ router.post('/register',register.isCompleted,register.redirect);
 
 /* GET account home page. */
 router.get('/account',isLoggedIn, account.gethome);
+router.post('/account',isLoggedIn,moment.addMoment);
 /* for lilili test*/
 router.get('/account/past',isLoggedIn,function(req,res,next){
 	console.log("come here");
@@ -45,6 +47,9 @@ router.get('/account/profile',isLoggedIn, account.getprofile);
 
 /* GET account management page. */
 router.post('/account/profile',isLoggedIn, account.updateInfo);
+
+/* GET account management page. */
+router.post('/account/editPassword',isLoggedIn, account.validatePasswordForm, account.updatePassword);
 
 router.get('/login/facebook',
   passport.authenticate('facebook',{ scope: ['email'] }));

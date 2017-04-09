@@ -22,15 +22,15 @@ exports.mymoment=function mymoment(req,res,next){
 	
 };
 //add moment
-exports.addMoment = function addmoment(req,res,next){
+exports.addMoment = function addMoment(req,res,next){
 	var insert_data={
     	title :  	req.body.title,
-      _user_id :	req.user._id,
+      	_user_id :	req.user._id,
     	date :	   	req.body.date,
     	post_time :	req.body.post_time,
     	location : 	req.body.location,
     	pic : 		req.body.pic,
-      text : 		req.body.text,
+     	text : 		req.body.text,
     	privacy : 	req.body.privacy
     };
     var data=new moment(insert_data);

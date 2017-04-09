@@ -50,6 +50,11 @@ app.use(passport.session());
 
 // Express Validator
 app.use(expressValidator({
+  customValidators:{
+    isValidUsername: function(value){
+      return !expressValidator.isEmail(value);
+    }
+  },
   errorFormatter: function(param, msg, value) {
       var namespace = param.split('.')
       , root    = namespace.shift()
