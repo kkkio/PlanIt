@@ -6,28 +6,6 @@ $(document).ready(function(){
 	});
 });
 
-// Back to top
-$(document).ready(function(){
-   $(window).scroll(function () {
-   		if ($(this).scrollTop() > 50) {
-        	$('#back-to-top').fadeIn();
-        } else {
-            $('#back-to-top').fadeOut();
-        }
-    });
-    // scroll body to 0px on click
-    $('#back-to-top').click(function () {
-        $('#back-to-top').tooltip('hide');
-        $('body,html').animate({
-        	scrollTop: 0
-        }, 800);
-     	return false;
-    });
-
-    $('#back-to-top').tooltip('show');
-
-});
-
 // Count animation
 $(document).ready(function(){
 	$('.acc-count').each(function () {
@@ -84,11 +62,13 @@ $(document).ready(function(){
         var momentTextId = "myMomentText"+num;
         var text = document.getElementById(momentTextId);
         if (!($(text).is(':disabled'))) {
+          $(this).find('strong').text('Re-edit');
           $(this).find('i').toggleClass('glyphicon-ok').toggleClass('glyphicon-edit');
           $(text).prop('disabled', true);
           $(text).blur();
         } else {
-          $(this).find('i').toggleClass('glyphicon-edit').toggleClass('glyphicon-ok');
+          $(this).find('strong').text('Confirm');
+          $(this).find('i').toggleClass('glyphicon-edit').toggleClass('glyphicon-ok');         
           $(text).prop('disabled', false);
           $(text).focus();
         }
