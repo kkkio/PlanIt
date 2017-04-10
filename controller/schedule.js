@@ -13,48 +13,46 @@ exports.myschedule= function mymoment(req,res,next){
 			isLogin: req.isAuthenticated()
 		};
 		//console.log(test);
-		// TODO: CHNAGE 	res.render('myschedule',data);
+		// TODO: CHNAGE 	res.render('schedule',data);
 		console.log("finish rendering data");
 	});
 };
 
-exports.insert_our_activity = function insert1(req, res, next){
-	  var insert_data={
-    	user_id :req.user._id,
-    	title: req.body.title,
-    	activity_id: req.body.activity_id,
-    	date:	   req.body.s_date,
-    	start_time: req.body.start_time,
-    	end_time: req.body.end_time ,
-    	venue: req.body.venue,
-    	privacy: req.body.privacy
-    };
+exports.addMySchedule = function addMySchedule(req, res, next){
+	var insert_data = {
+		_user_id : req.user._id,
+		title : req.body.title,
+		venue:{
+			country : req.body.country,
+			city : req.body.city
+		},
+		content : req.body.conent,
+	};
     var data=new Schedule(insert_data);
     data.save();
-	res.redirect('/myschedule');
-};
-
-exports.insert_own_activity = function insert2(req, res, next){
-	  var insert_data={
-    //TODO the u_id is invalid now.need to set.
-    	user_id :req.cookie.u_id,
-    	title: req.body.title,
-    	activity_id: -1,
-    	date:	   req.body.s_date,
-    	start_time: req.body.start_time,
-    	end_time: req.body.end_time ,
-    	venue: req.body.venue,
-    	privacy: req.body.privacy
-    };
-  var data=new Schedule(insert_data);
-  data.save();
-  res.redirect('/myschedule');
+		User.findById(req.user._id, function(err, doc){
+			doc.update(
+				{
+					$push: {"scheduleList": id},
+					$inc: {"schedule_num": 1}
+				}
+			).exec();
+		});
+	res.redirect('/users/account/schedule');
 };
 
 exports.delete = function delete(req,res,next){
 	var id=req.body.id;
     Schedule.findByIdAndRemove(id).exec();
-    res.redirect('/myschedule');
+		User.findById(req.user._id, function(err, doc){
+			doc.update(
+				{
+					$pull: {"scheduleList": id},
+					$inc: {"schedule_num": -1}
+				}
+			).exec();
+		});
+    res.redirect('/users/account/schedule');
 };
 
 exports.update_event = function update(req,res,next){

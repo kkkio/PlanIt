@@ -14,9 +14,10 @@ var scheduleSchema = mongoose.Schema({
 		country : String,
 		city : String
 	},
+  content : String,
   // privacy 1: public, 2:followers, 3: friends, 4: private
-  privacy : Number,
-  url : String,
+  privacy : {type: Number, default : 1},
+  url : String
   //activityList:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Activity' }]
 });
 /*

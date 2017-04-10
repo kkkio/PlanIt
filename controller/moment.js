@@ -26,7 +26,6 @@ exports.mymoment=function mymoment(req,res,next){
 //add moment
 exports.addMoment = function addMoment(req,res,next){
 	var date= new Date();
-
 	var insert_data={
     	title :  	req.body.title,
       	_user_id :	req.user._id,
@@ -76,7 +75,16 @@ exports.updateMoment = function updatemoment(req,res,next){
 };
 
 exports.likeMoment = function likeMoment(req,res,next){
-
+	moment.findById(id, function(err, doc){
+		if(err){
+			throw(err);
+		}
+		if(!doc){
+			console.error('error, no entry found');
+		}
+		doc.like += 1;
+		doc.save();
+	});
 }
 exports.postComment = function postComment(req,res,next){
   // add one comment & update comment list in activity & user

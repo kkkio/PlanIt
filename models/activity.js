@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 var activitySchema = mongoose.Schema({
 	title : String,
-	_user_id : mongoose.Schema.Types.ObjectId,
+	// host id
+	_user_id : {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
 	//a_date: Date,
 	start_time: Date,
 	end_time: Date,
@@ -20,18 +21,20 @@ var activitySchema = mongoose.Schema({
 	commentList: [{type: mongoose.Schema.Types.ObjectId, ref: 'comment'}]
 });
 
-var acitivity = activitySchema;
+var activity = activitySchema;
 
 // create indice for search
 activity.index({
 	title: 'text',
 	intro: 'text'
 });
+// TODO: check index
+/*
 activity.index({
-	venue.country: 'location',
-	venue.city: 'location'
+	country: 'location',
+	city: 'location'
 });
-
+*/
 //STATIC METHOD
 
 // 1. take query 2.keywords are a list of keywords

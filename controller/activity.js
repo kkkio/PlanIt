@@ -75,9 +75,29 @@ exports.deleteComment = function deleteComment(req, res, next){
 // add to user's schedule
 exports.addToSchedule = function addToSchedule(req,res,next){
   // new a schedule and the add to user
-  var schedule = {
-    _user_id: req.user._id,
-    
-  }
-  User.
-}
+  Activity.getOneById(req.body.activityId,function(err, doc){
+    var data = {
+      _user_id : req.user._id,
+      _activity_id : doc._id,
+      title : doc._id,
+      venue:{
+        country : doc.venue.country,
+        city : doc.venue.city
+      },
+      content : doc.intro,
+      url : doc.url
+    };
+    var nSchedule = new Schedule(data);
+    nSchedule.save();
+
+    User.findById(req.user._id, function(err, doc){
+      doc.update(
+        {
+          $push: {"scheduleList": id},
+          $inc: {"schedule_num": 1}
+        }
+      ).exec();
+    });
+
+  });
+};
