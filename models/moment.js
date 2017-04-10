@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var user=require('./user');
 
 
 var momentSchema = mongoose.Schema({
@@ -33,10 +34,42 @@ moment.statics.showMyMoment=function(userID,callback){
 	});
 };
 
-/*
-moment.statics.showFriendMoment=function(friend_id){
+
+moment.statics.showFriendMoment=function(ny_id,friend_id,callback){
 	var m_moment=[];
-  	var query=this.find({_user_id:friend_id});
+  	user.getOnebyId({_user_id:friend_id},function(err,obj){
+		if(obj.isFollowerOfId(my_id)){
+			for (var i=0;i<obj.momentlist.length;i++){
+				if(obj.momentlist[i].privacy<4){
+					m_moment.push({
+						m_id :			obj.momentlist[i]._id,
+						m_title :		obj.momentlist[i].title,
+						m_date :		obj.momentlist[i].date,
+						m_posttime :	obj.momentlist[i].post_time,
+						m_location :	obj.momentlist[i].location,
+						m_moment_pic :  obj.momentlist[i].pic,
+						m_text:			obj.momentlist[i].text
+					});
+				}
+			}
+		}
+		else{
+			for (var i=0;i<obj.momentlist.length;i++){
+				if(obj.momentlist[i].privacy<3){
+					m_moment.push({
+						m_id :			obj.momentlist[i]._id,
+						m_title :		obj.momentlist[i].title,
+						m_date :		obj.momentlist[i].date,
+						m_posttime :	obj.momentlist[i].post_time,
+						m_location :	obj.momentlist[i].location,
+						m_moment_pic :  obj.momentlist[i].pic,
+						m_text:			obj.momentlist[i].text
+					});
+				}
+			}	
+		}
+		return callback(m_moment);	
+	});
 	// if friend else not friend(relationship)
 		if (true){
 			for (var i=0;i<query.length;i++){
@@ -70,12 +103,12 @@ moment.statics.showFriendMoment=function(friend_id){
 		}
 	return m_moment;
 };
-*/
+
 
 moment.statics.getOneById = function getOneById(id, callback){
 	this
 	.findById(id)
-	.populate('commentList', '_user_id','commentList')
+	.populate('commentList', '_user_id','likeList')
 	.exec(callback);
 };
 /*INSTANCE METHODS*/
