@@ -28,7 +28,7 @@ exports.addMoment = function addMoment(req,res,next){
 	var date= new Date();
 	var insert_data={
     	title :  	req.body.title,
-      	_user_id :	req.user._id,
+      _user_id :	req.user._id,
     	date :	   	date,
     	location : 	req.body.location,
     	pic : 		req.body.pic,
@@ -36,6 +36,16 @@ exports.addMoment = function addMoment(req,res,next){
     	privacy : 	req.body.privacy
     };
     var data=new moment(insert_data);
+		var newPath = __dirname + "/upload/images/" + req.user._id+"/moment"+data._id;
+		console.log(req.files.momentImage);
+		if(req.files.momentImage){
+			fs.readFile(req.files.momentImage.path, function(err,data){
+				fs.writeFile(newPath,data,function(err){
+					if(err) throw(err);
+				})
+			});
+		}
+		data.pic = newPath;
 		data.save();
 		User.findById(req.user._id,function(err, user){
 			user.postMoment(data._id);
@@ -47,7 +57,20 @@ exports.deleteMoment = function deletemoment(req,res,next){
 	console.log("in delete Moment");
 	var id=req.body.momentId; // TODO: can be change
 	console.log("momentId", id);
-  moment.findByIdAndRemove(id).exec();
+	moment.findById(id, function(err,doc){
+		var path = doc.pic;
+		if(path){
+			fs.stat(path,function(err, stats){
+				if(err) throw(err);
+				fs.unlink(path,function(err){
+					if(err) throw(err);
+					console.log('file deleted successfully');
+				})
+			});
+
+		}
+		moment.findByIdAndRemove(id).exec();
+	});
 	User.findById(req.user._id,function(err, user){
 		user.deleteMoment(req.body.momentId);
 		console.log('delete moment from user done.');
