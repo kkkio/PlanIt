@@ -35,6 +35,7 @@ router.get('/',function(req, res, next){
 
 router.get('/single',function(req, res, next){
   res.render('single_activity',{
+    user : req.user
     isLogin : req.isAuthenticated()
   });
 });
