@@ -80,31 +80,4 @@ moment.statics.getOneById = function getOneById(id, callback){
 
 //module.exports
 module.exports=mongoose.model('moment',momentSchema);
-/*
-var moment= mongoose.model('moment', momentSchema);
-var data={
-	title : "aaaaaaaaa",
-  	_user_id : "58e764b429c4280f4d7a0960",
-  date : Date.now(),
-  post_time : Date.now(),
-  text: "22222222",
-  privacy : 1
-}
 
-var test= new moment(data);
-test.save();
-*/
-/*
-var moment= mongoose.model('moment', momentSchema);
-var data={
-	title : "May Day 2017",
-  	_user_id : "58e764b429c4280f4d7a0960",
-  date : Date.now(),
-  post_time : Date.now(),
-  text: "happy birthday :P",
-  privacy : 1
-}
-
-var test= new moment(data);
-test.save();
-*/
