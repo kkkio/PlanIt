@@ -75,6 +75,7 @@ exports.updateMoment = function updatemoment(req,res,next){
 };
 
 exports.likeMoment = function likeMoment(req,res,next){
+
 	moment.findById(req.body.momentId, function(err, doc){
 		if(err){
 			throw(err);
@@ -82,6 +83,7 @@ exports.likeMoment = function likeMoment(req,res,next){
 		if(!doc){
 			console.error('error, no entry found');
 		}
+
 		if(doc.isLikeBy(req.user._id)){
 			doc.update({
 				$inc : {"like": 1}
@@ -134,5 +136,10 @@ exports.deleteComment = function deleteComment(req, res, next){
 
 exports.friendMoment = function friendmoment(req,res,next){
 	var friend_id=req.params.id;
-	var data=moment.showFriendMoment(friend_id);
+	moment.showFriendMoment(req.user._id,friend_id,function(m_moment){
+		res.render('ttttttt',{
+			isLogin: req.isAuthenticated(),
+			moment: m_moment
+		})
+	});
 };
