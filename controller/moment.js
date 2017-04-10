@@ -136,5 +136,10 @@ exports.deleteComment = function deleteComment(req, res, next){
 
 exports.friendMoment = function friendmoment(req,res,next){
 	var friend_id=req.params.id;
-	var data=moment.showFriendMoment(friend_id);
+	moment.showFriendMoment(req.user._id,friend_id,function(m_moment){
+		res.render('ttttttt',{
+			isLogin: req.isAuthenticated(),
+			moment: m_moment
+		})
+	});
 };

@@ -35,9 +35,9 @@ moment.statics.showMyMoment=function(userID,callback){
 };
 
 
-moment.statics.showFriendMoment=function(ny_id,friend_id,callback){
+moment.statics.showFriendMoment=function showfriendmoment(my_id,friend_id,callback){
 	var m_moment=[];
-  	user.getOnebyId({_user_id:friend_id},function(err,obj){
+  	user.getOneById(friend_id,function(err,obj){
 		if(obj.isFollowerOfId(my_id)){
 			for (var i=0;i<obj.momentlist.length;i++){
 				if(obj.momentlist[i].privacy<4){
@@ -70,38 +70,7 @@ moment.statics.showFriendMoment=function(ny_id,friend_id,callback){
 		}
 		return callback(m_moment);	
 	});
-	// if friend else not friend(relationship)
-		if (true){
-			for (var i=0;i<query.length;i++){
-				if(query[i].privacy<4){
-					m_moment.push({
-						m_id :			query[i]._id,
-						m_title :		query[i].title,
-						m_date :		query[i].date,
-						m_posttime :	query[i].post_time,
-						m_location :	query[i].location,
-						m_moment_pic :  query[i].pic,
-						m_text:			query[i].text
-    				});
-				}
-			}
-		}
-		else{
-			for (var i=0;i<query.length;i++){
-				if(query[i].privacy<3){
-				  	m_moment.push({
-      					m_id :			query[i]._id,
-                		m_title :		query[i].title,
-                		m_date :		query[i].date,
-                		m_posttime :	query[i].post_time,
-                		m_location :	query[i].location,
-                		m_moment_pic : 	query[i].pic,
-                		m_text :		query[i].text
-    				});
-				}
-			}
-		}
-	return m_moment;
+	
 };
 
 
