@@ -75,6 +75,7 @@ exports.updateMoment = function updatemoment(req,res,next){
 };
 
 exports.likeMoment = function likeMoment(req,res,next){
+	var id =req.body.momentId;
 	moment.findById(id, function(err, doc){
 		if(err){
 			throw(err);
@@ -82,6 +83,7 @@ exports.likeMoment = function likeMoment(req,res,next){
 		if(!doc){
 			console.error('error, no entry found');
 		}
+		//need to forbid multiple like
 		doc.like += 1;
 		doc.save();
 	});
