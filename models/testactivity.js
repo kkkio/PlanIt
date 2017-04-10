@@ -46,7 +46,7 @@ var insert_data0={
 	start_time: today,
 	end_time: today,
 	venue: {
-		country : "Japen",
+		country : "Japan",
 		city : "TOKYO"
 	},
 	intro: "lilili is so happy in TOKYO with her boyfriend",
@@ -64,7 +64,7 @@ var insert_data1={
 	start_time: yestoday,
 	end_time: today,
 	venue: {
-		country : "Japen",
+		country : "Japan",
 		city : "shinjuku"
 	},
 	intro: "baoge is so happy in shinjuku with his boyfriend",
@@ -82,7 +82,7 @@ var insert_data2={
 	start_time: today,
 	end_time: today,
 	venue: {
-		country : "Japen",
+		country : "Japan",
 		city : "fujiyama"
 	},
 	intro: "zzc is such a poor guy who travel along....what a pity ",

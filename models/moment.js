@@ -34,7 +34,14 @@ moment.statics.showMyMoment=function(userID,callback){
 	});
 };
 
-
+moment.statics.showRecommendMoment= function showrecommendmoment(callback){
+	this.find().sort({like:1,date:-1})
+		.limit(10)
+		.exec(function(err,r_moment){
+		//maybe wrong 
+		return callback(r_moment);
+	});
+};
 moment.statics.showFriendMoment=function showfriendmoment(my_id,friend_id,callback){
 	var m_moment=[];
   	user.getOneById(friend_id,function(err,obj){
