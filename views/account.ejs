@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="shortcut icon" href="/images/pageBarLogo.png">
 
-	  <title><%= user.username %> - Account Overview - PlanIt</title>
+	  <title>PlanIt - <%= user.username %> - Account Overview</title>
 
 	  <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,6 +34,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/javascripts/account_overview.js"></script>
+    <script src="/javascripts/backToTop.js"></script>
     <script type="text/javascript" src="/javascripts/assets/js/jquery.uploadPreview.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -384,6 +386,12 @@ ul.social-buttons li a:active {
 
 .post-edit{
   color: SteelBlue;
+}
+
+.post-edit-text{
+  color: SteelBlue;
+  font-weight: 700;
+  padding-left:5px;
 }
 
 .post-delete{
@@ -739,7 +747,7 @@ header .intro-text .intro-lead-in {
                                 <div class="col-lg-4">
                                     <div id="image-preview">
                                       <label for="image-upload" id="image-label"></label>
-                                      <input type="file" name="image" id="image-upload" />
+                                      <input type="file" name="momentImage" id="image-upload" />
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
@@ -835,20 +843,20 @@ header .intro-text .intro-lead-in {
 
                     <% for (var i=0; i < moment.length; i++) { %>
                       <div class="post" id=<%= "myMoment"+i %>>
-                          <img class="img-responsive img-border img-full" src="/images/acc_mgnt/slide-1.jpg" alt="My Moment Image" id="myMomentImg">
+                          <img class="img-responsive img-border img-full" src= <%= moment[i].pic %> alt="My Moment Image" id="myMomentImg">
                           <div class="post-text">
                               <h2 class="post-title" id=<%="myMomentTitle"+i%>><%= moment[i].title %></h2>
                               <div class="post-meta">
                                   By <a href="/users/account"><%= user.username %></a><text><%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %></text><text id=<%="myMomentLike"+i%>>127 Likes</text> <a href="#" class="comments" id="myMomentComment">2 Comments</a>
                               </div>
                               <div class="moment-text">
-                                  <textarea disabled id="myMomentText" rows="5" cols="500"><%= moment[i].text %></textarea>
+                                  <textarea id=<%="myMomentText"+i %> rows="5" cols="500" disabled><%= moment[i].text %></textarea>
                               </div>
                               <br>
 
                                   <div class="input-group moment-input-group">
                                       <div class="input-group-btn post-button">
-                                          <a class="btn" id=<%="editBtn"%>><i class="glyphicon glyphicon-edit post-edit"></i></a>
+                                          <a class="btn" id=<%="editBtn"+i%>><i class="glyphicon glyphicon-edit post-edit"></i><strong class="post-edit-text">Re-edit</strong></a>
                                           <a class="btn" data-toggle="modal" data-target="#deleteModal" id=<%="deleteBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-trash post-delete"></i></a>
                                           <a class="btn" id=<%="likeBtn"+i%>><i class="glyphicon glyphicon-heart post-unlike"></i> 127</a>
                                           <a class="btn" id=<%="commentBtn"+i%>><i class="glyphicon glyphicon-comment post-comment"></i></a>
