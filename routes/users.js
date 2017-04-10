@@ -3,7 +3,8 @@ var router = express.Router();
 var passport = require('passport');
 var Schedule = require('../models/schedule');
 var moment = require('../models/moment');
-
+var multer = require('multer');
+var upload = multer({dest : 'public/upload/'});
 /* CONTROLLER */
 var register = require('../controller/register');
 var account = require('../controller/account');
@@ -44,8 +45,8 @@ router.get('/account/profile',isLoggedIn, function(req,res,next){
 
 
 /*Add moment,delete moment and update moment*/
-router.post('/account/addMoment',isLoggedIn,moment.addMoment);
-router.post('/account/deleteMoment', isLoggedIn,function(res,req,next){
+router.post('/account/addMoment',isLoggedIn,upload.single('momentImage'),moment.addMoment);
+router.post('/account/deleteMoment', isLoggedIn,function(req,res,next){
   console.log('FUCK YOU');
   next();
 }, moment.deleteMoment);

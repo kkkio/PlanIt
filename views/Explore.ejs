@@ -6,9 +6,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/images/pageBarLogo.png">
 
-    <title>PlanIt - Explore</title>
+    <title>PlanIt - Explore the Big Big World</title>
 
+    <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -21,7 +24,7 @@
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 
     <!-- Theme CSS -->
-    <link href="/css/agency.min.css" rel="stylesheet">
+    <link href="/vendor/css/agency.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,7 +55,7 @@ h1 {
 }
 
 .slide1{
-  background-image: url('img/explore/band1.jpg');
+  background-image: url('/images/explore/band1.jpg');
   width:100%;
   height:750px;
   background-repeat: no-repeat;
@@ -61,7 +64,7 @@ h1 {
   opacity: 0.78;
 }
 .slide2{
-  background-image: url('img/explore/Movart.jpg');
+  background-image: url('/images/explore/Movart.jpg');
 
   height:750px;
   background-repeat: no-repeat;
@@ -70,7 +73,7 @@ h1 {
   opacity:0.78;
 }
 .slide3{
-  background-image: url('img/explore/band2.jpg');
+  background-image: url('/images/explore/band2.jpg');
 
   height:750px;
   background-repeat: no-repeat;
@@ -102,42 +105,67 @@ h1 {
   background-color: rgba(255,255,255,0.75);
 }
 
+footer {
+  padding: 25px 0;
+  text-align: center;
+  width:100%;
+}
+
+footer span.copyright {
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+}
+
+footer ul.quicklinks {
+  margin-bottom: 0;
+  line-height: 40px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-transform: none;
+}
+
+
+ul.list-inline {
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+ul.list-inline li a{
+      color:orange;
+}
+
+ul.social-buttons {
+  margin-bottom: 0;
+}
+ul.social-buttons li a {
+  display: block;
+  background-color: #222222;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: white;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+ul.social-buttons li a:hover,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:active {
+  background-color: #fed136;
+}
+
 </style>
 
 <body id="page-top" class="index">
 
 
 
-  <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
-      <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header page-scroll">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                  <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-              </button>
-              <a class="navbar-brand page-scroll" href="/" id="back_home" style="color:#083a5b">PlanIt</a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right">
-                  <li class="hidden">
-                      <a href="#page-top"></a>
-                      <li>
-                          <a class="page-scroll" href="#theCarousel" style="color:#fca13f">Explore</a>
-                      </li>
-                      <li>
-                          <a class="page-scroll" href="#contact" style="color:#fca13f">Contact us</a>
-                      </li>
-                      <li>
-                          <a class="page-scroll" href="login.html" style="color:#006699">Login</a>
-                      </li>
-              </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container-fluid -->
-  </nav>
+    <%- include navBar.ejs -%>
 
     <div id="theCarousel" class="carousel slide" data-ride="carousel" >
       <ol class="carousel-indicators">
@@ -237,33 +265,7 @@ h1 {
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Your Website 2016</span>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Terms of Use</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <%- include footer.ejs -%>
 
 
 
