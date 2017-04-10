@@ -29,8 +29,14 @@ var express = require('express');
 var router = express.Router();
 var activity=require('../models/activity');
 
-router.get('/singlge',function(req, res, next){
-  res.render('single_activity',{});
+router.get('/',function(req, res, next){
+  res.redirect('/activity/single');
+});
+
+router.get('/single',function(req, res, next){
+  res.render('single_activity',{
+    isLogin : req.isAuthenticated()
+  });
 });
 
 module.exports = router;
