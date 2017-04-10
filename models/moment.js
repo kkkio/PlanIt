@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var user=require('./user');
 
 
 var momentSchema = mongoose.Schema({
@@ -33,49 +34,50 @@ moment.statics.showMyMoment=function(userID,callback){
 	});
 };
 
-/*
-moment.statics.showFriendMoment=function(friend_id){
+
+moment.statics.showFriendMoment=function showfriendmoment(my_id,friend_id,callback){
 	var m_moment=[];
-  	var query=this.find({_user_id:friend_id});
-	// if friend else not friend(relationship)
-		if (true){
-			for (var i=0;i<query.length;i++){
-				if(query[i].privacy<4){
+  	user.getOneById(friend_id,function(err,obj){
+		if(obj.isFollowerOfId(my_id)){
+			for (var i=0;i<obj.momentlist.length;i++){
+				if(obj.momentlist[i].privacy<4){
 					m_moment.push({
-						m_id :			query[i]._id,
-						m_title :		query[i].title,
-						m_date :		query[i].date,
-						m_posttime :	query[i].post_time,
-						m_location :	query[i].location,
-						m_moment_pic :  query[i].pic,
-						m_text:			query[i].text
-    				});
+						m_id :			obj.momentlist[i]._id,
+						m_title :		obj.momentlist[i].title,
+						m_date :		obj.momentlist[i].date,
+						m_posttime :	obj.momentlist[i].post_time,
+						m_location :	obj.momentlist[i].location,
+						m_moment_pic :  obj.momentlist[i].pic,
+						m_text:			obj.momentlist[i].text
+					});
 				}
 			}
 		}
 		else{
-			for (var i=0;i<query.length;i++){
-				if(query[i].privacy<3){
-				  	m_moment.push({
-      					m_id :			query[i]._id,
-                		m_title :		query[i].title,
-                		m_date :		query[i].date,
-                		m_posttime :	query[i].post_time,
-                		m_location :	query[i].location,
-                		m_moment_pic : 	query[i].pic,
-                		m_text :		query[i].text
-    				});
+			for (var i=0;i<obj.momentlist.length;i++){
+				if(obj.momentlist[i].privacy<3){
+					m_moment.push({
+						m_id :			obj.momentlist[i]._id,
+						m_title :		obj.momentlist[i].title,
+						m_date :		obj.momentlist[i].date,
+						m_posttime :	obj.momentlist[i].post_time,
+						m_location :	obj.momentlist[i].location,
+						m_moment_pic :  obj.momentlist[i].pic,
+						m_text:			obj.momentlist[i].text
+					});
 				}
-			}
+			}	
 		}
-	return m_moment;
+		return callback(m_moment);	
+	});
+	
 };
-*/
+
 
 moment.statics.getOneById = function getOneById(id, callback){
 	this
 	.findById(id)
-	.populate('commentList', '_user_id','commentList')
+	.populate('commentList', '_user_id','likeList')
 	.exec(callback);
 };
 /*INSTANCE METHODS*/
@@ -108,31 +110,4 @@ moment.methods.deleteComment = function deleteComment(id){
 };
 //module.exports
 module.exports=mongoose.model('moment',momentSchema);
-/*
-var moment= mongoose.model('moment', momentSchema);
-var data={
-	title : "aaaaaaaaa",
-  	_user_id : "58e764b429c4280f4d7a0960",
-  date : Date.now(),
-  post_time : Date.now(),
-  text: "22222222",
-  privacy : 1
-}
 
-var test= new moment(data);
-test.save();
-*/
-/*
-var moment= mongoose.model('moment', momentSchema);
-var data={
-	title : "May Day 2017",
-  	_user_id : "58e764b429c4280f4d7a0960",
-  date : Date.now(),
-  post_time : Date.now(),
-  text: "happy birthday :P",
-  privacy : 1
-}
-
-var test= new moment(data);
-test.save();
-*/
