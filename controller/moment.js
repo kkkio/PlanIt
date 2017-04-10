@@ -75,23 +75,15 @@ exports.updateMoment = function updatemoment(req,res,next){
 };
 
 exports.likeMoment = function likeMoment(req,res,next){
-<<<<<<< HEAD
-	var id =req.body.momentId;
-	moment.findById(id, function(err, doc){
-=======
+
 	moment.findById(req.body.momentId, function(err, doc){
->>>>>>> 27b195ee5304edfaa7d1542d61022d2ccc7291ea
 		if(err){
 			throw(err);
 		}
 		if(!doc){
 			console.error('error, no entry found');
 		}
-<<<<<<< HEAD
-		//need to forbid multiple like
-		doc.like += 1;
-		doc.save();
-=======
+
 		if(doc.isLikeBy(req.user._id)){
 			doc.update({
 				$inc : {"like": 1}
@@ -101,7 +93,6 @@ exports.likeMoment = function likeMoment(req,res,next){
 				$inc : {"like": -1}
 			}).exec();
 		}
->>>>>>> 27b195ee5304edfaa7d1542d61022d2ccc7291ea
 	});
 }
 exports.postComment = function postComment(req,res,next){
