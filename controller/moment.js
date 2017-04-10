@@ -58,7 +58,7 @@ exports.deleteMoment = function deletemoment(req,res,next){
 exports.updateMoment = function updatemoment(req,res,next){
 	console.log("in updateMoment");
 	var id = req.body.momentId;
-  	moment.findById(id, function(err, doc) {
+  	moment.findById(req.body.momentId, function(err, doc) {
     if (err) {
       	console.error('error, no entry found');
     }
@@ -75,15 +75,22 @@ exports.updateMoment = function updatemoment(req,res,next){
 };
 
 exports.likeMoment = function likeMoment(req,res,next){
-	moment.findById(id, function(err, doc){
+	moment.findById(req.body.momentId, function(err, doc){
 		if(err){
 			throw(err);
 		}
 		if(!doc){
 			console.error('error, no entry found');
 		}
-		doc.like += 1;
-		doc.save();
+		if(doc.isLikeBy(req.user._id)){
+			doc.update({
+				$inc : {"like": 1}
+			}).exec();
+		}else{
+			doc.update({
+				$inc : {"like": -1}
+			}).exec();
+		}
 	});
 }
 exports.postComment = function postComment(req,res,next){

@@ -7,7 +7,7 @@ var scheduleSchema = mongoose.Schema({
   _activity_id: {type: mongoose.Schema.Types.ObjectId, ref: 'activity'},
   title : String,
   //activity info
-  //s_date : Date,
+  //s_date : Date, 
   start_time : Date,
   end_time : Date,
   venue: {

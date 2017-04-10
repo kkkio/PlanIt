@@ -79,7 +79,9 @@ exports.addToSchedule = function addToSchedule(req,res,next){
     var data = {
       _user_id : req.user._id,
       _activity_id : doc._id,
-      title : doc._id,
+      title : doc.title,
+      start_time : doc.start_time,
+      end_time : doc.end_time,
       venue:{
         country : doc.venue.country,
         city : doc.venue.city
