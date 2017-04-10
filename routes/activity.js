@@ -24,6 +24,15 @@ router.get('/result/keyword=:keyword',function(req,res,next){
 	var activities[]=activity.search(keyword);//activities is the array of the activities found
 	res.render('result',activities);//result is view file.(name maybe change)
 });
+*/
+var router = express.Router();
+var passport = require('passport');
+var activity=require('../models/activity');
+
+router.get('/singlge',function(req, res, next){
+  res.render('single_activity',{});
+})
+
+
 
 //Host to post the activities
-*/
