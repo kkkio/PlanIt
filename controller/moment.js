@@ -32,7 +32,7 @@ exports.addMoment = function addMoment(req,res,next){
     	date :	   	date,
     	location : 	req.body.location,
     	pic : 		req.body.pic,
-     	text : 		req.body.text,
+     	text : 		req.body.momentText,
     	privacy : 	req.body.privacy
     };
     var data=new moment(insert_data);
