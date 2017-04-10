@@ -88,6 +88,24 @@ moment.methods.isLikeBy = function isLikeBy(userid){
   }
   return false;
 };
+
+moment.methods.postComment = function postComment(id){
+  return this.update(
+    {
+      $push: {"commentList": id},
+      $inc: {"comment_num": 1}
+    }
+  ).exec();
+};
+
+moment.methods.deleteComment = function deleteComment(id){
+  return this.update(
+    {
+      $pull: {"commentList": id},
+      $inc: {"comment_num": -1}
+    }
+  ).exec();
+};
 //module.exports
 module.exports=mongoose.model('moment',momentSchema);
 /*

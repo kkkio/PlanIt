@@ -73,4 +73,22 @@ activity.statics.getOneById = function getOneById(id, callback){
 
 //INSTANCED METHOD
 
+activity.methods.postComment = function postComment(id){
+	return this.update(
+    {
+      $push: {"commentList": id},
+      $inc: {"comment_num": 1}
+    }
+  ).exec();
+};
+
+activity.methods.deleteComment = function deleteComment(id){
+  return this.update(
+    {
+      $pull: {"commentList": id},
+      $inc: {"comment_num": -1}
+    }
+  ).exec();
+};
+
 module.exports = mongoose.model('activity', activitySchema);

@@ -7,7 +7,7 @@ var scheduleSchema = mongoose.Schema({
   _activity_id: {type: mongoose.Schema.Types.ObjectId, ref: 'activity'},
   title : String,
   //activity info
-  //s_date : Date, 
+  //s_date : Date,
   start_time : Date,
   end_time : Date,
   venue: {
@@ -20,6 +20,15 @@ var scheduleSchema = mongoose.Schema({
   url : String
   //activityList:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Activity' }]
 });
+
+var schedule = scheduleSchema;
+
+schedule.statics.getOneById = function getOneById(id, callback){
+	this
+	.findById(id)
+	.populate('_user_id','_activity_id')
+	.exec(callback);
+};
 /*
 // add an alias for define method
 var schedule = scheduleSchema;

@@ -95,7 +95,7 @@ exports.likeMoment = function likeMoment(req,res,next){
 }
 exports.postComment = function postComment(req,res,next){
   // add one comment & update comment list in activity & user
-  moment.getOneById(req.body.momentId, function(err, doc){
+  moment.findById(req.body.momentId, function(err, doc){
       // store an comment
       var data = {
         _moment_id : doc._id,
@@ -109,10 +109,7 @@ exports.postComment = function postComment(req,res,next){
       var com = new mComment(data);
       com.save();
       // update commentList of moment
-      doc.update({
-        $push: {"commentList": com._id},
-        $inc: {"comment_num": 1}
-      }).exec();
+			doc.postComment(id);
       User.findById(doc._user_id, function(err, user){
         user
         .update({
@@ -129,7 +126,7 @@ exports.deleteComment = function deleteComment(req, res, next){
   var id = req.body.commentId;
   mComment.findByIdAndRemove(id).exec();
 	moment.findById(req.body.momentId,function(err, doc){
-		doc.deleteMoment(data._id);
+		doc.deleteComment(id);
 	});
 };
 
