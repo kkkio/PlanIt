@@ -37,8 +37,8 @@ body{
 
 
 .btn{
-	background-color: white; 
-    color: black; 
+	background-color: white;
+    color: black;
     border: 2px solid MediumAquaMarine;
 }
 
@@ -118,53 +118,15 @@ ul.social-buttons li a:active {
   top:0;
   left:0;
 }
-	
+
 </style>
-	
+
 </head>
 
 <body>
   <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="/users/account" style="color:#083a5b"><img src="/images/acc_mgnt/PlanIt_logo.jpg" class="logo-container" alt="PlanIt Logo"></a>
-            </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="/"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about" style="color:#fca13f">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#explore" style="color:#f7ba34">Explore</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#schedule" style="color:#487bb4">Schedule</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="moments.html" style="color:#dc4937">Moments</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact" style="color:#3cbc8d">Contact</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="/users/account" title="My Account"><img src=<%= user.propic %> class="img-circle profile-margin" style="height:25px;width:25px" alt="Profile Icon"></a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+  <%- include navBar.ejs -%>
 
 
     <!-- Page Content -->
@@ -281,7 +243,7 @@ ul.social-buttons li a:active {
                         </span>
                     </div>
                     <!-- /.input-group -->
-                </div>               
+                </div>
 
                 <!-- Blog Categories Well -->
                 <div class="well">
@@ -361,7 +323,7 @@ ul.social-buttons li a:active {
 
     </div>
     <!-- /.container -->
-	
+
 
 </body>
 </html>
