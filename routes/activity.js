@@ -25,8 +25,8 @@ router.get('/result/keyword=:keyword',function(req,res,next){
 	res.render('result',activities);//result is view file.(name maybe change)
 });
 */
+var express = require('express');
 var router = express.Router();
-var passport = require('passport');
 var activity=require('../models/activity');
 
 router.get('/singlge',function(req, res, next){
