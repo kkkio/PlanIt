@@ -73,7 +73,7 @@ var user = userSchema;
 // -- LOGIN --
 
 // STATICS METHODS
-schedule.statics.getOneById = function getOneById(id, callback){
+user.statics.getOneById = function getOneById(id, callback){
 	this
 	.findById(id)
 	.populate('followerList','followingList','pastActivityList','momentList','scheduleList')
