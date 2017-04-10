@@ -4,6 +4,7 @@ var User = require('../models/user');
 var Moment = require('../models/moment');
 var Activity = require('../models/acitivity');
 var mComment = require('../models/comment');
+var Schedule = require('../models/schedule');
 exports = module.exports = {};
 
 exports.getSearchResults = function getSearchResults (req, res, next){
@@ -70,3 +71,13 @@ exports.deleteComment = function deleteComment(req, res, next){
   var id = req.body.commentId;
   mComment.findByIdAndRemove(id).exec();
 };
+
+// add to user's schedule
+exports.addToSchedule = function addToSchedule(req,res,next){
+  // new a schedule and the add to user
+  var schedule = {
+    _user_id: req.user._id,
+    
+  }
+  User.
+}

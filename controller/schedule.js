@@ -4,13 +4,23 @@ exports = module.exports = {};
 
 exports.myschedule= function mymoment(req,res,next){
 	var data[];
-	data=Schedule.showMySchedule(req.cookies.u_id);
-	res.render('myschedule',data);
+	data=Schedule.showMySchedule(req.user._id,function(doc){
+		console.log("doc==");
+		//console.log(doc);
+		var test={
+			user : req.user,
+			schedule : doc,
+			isLogin: req.isAuthenticated()
+		};
+		//console.log(test);
+		// TODO: CHNAGE 	res.render('myschedule',data);
+		console.log("finish rendering data");
+	});
 };
 
 exports.insert_our_activity = function insert1(req, res, next){
 	  var insert_data={
-    	user_id :req.cookie.u_id,
+    	user_id :req.user._id,
     	title: req.body.title,
     	activity_id: req.body.activity_id,
     	date:	   req.body.s_date,
@@ -71,13 +81,3 @@ exports.get_friend_schedule = function get_other_sch(req,res,next){
 	var data=Schedule.showFriendSchedule(friend_id);
     res.render('otherschedule',data);
 };
-
-
-
-
-
-
-
-
-
-

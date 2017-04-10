@@ -23,7 +23,7 @@ $(document).ready(function(){
         }, 800);
      	return false;
     });
-        
+
     $('#back-to-top').tooltip('show');
 
 });
@@ -71,6 +71,7 @@ $(document).ready(function(){
         $("#confirmDeleteBtn").click(function(){
           $("#"+momentId).remove();
           $('#tmpMomentId').attr('value', to_be_posted);
+					$('#deleteMomentForm').submit();
         });
     });
 });
@@ -99,7 +100,7 @@ $(document).ready(function(){
     $("a[id^='likeBtn']").click(function(){
         var currentBtnId = $(this).attr('id');
         var num = parseInt(currentBtnId.match(/(\d+)$/)[0], 10);
-        var momentLikeId = "myMomentLike"+num;   
+        var momentLikeId = "myMomentLike"+num;
         var like = document.getElementById(momentLikeId);
         var numOfLike = parseInt($(like).text());
         if(!($(this).find("i").hasClass("post-unlike"))){
@@ -122,7 +123,7 @@ $(document).ready(function(){
     $("a[id^='commentBtn']").click(function(){
         var currentBtnId = $(this).attr('id');
         var num = parseInt(currentBtnId.match(/(\d+)$/)[0], 10);
-        var momentCommentId = "myMomentComment"+num;   
+        var momentCommentId = "myMomentComment"+num;
         var newId = "myNewComment"+num;
         var newComment = "myMomentCommentInput"+num;
         var comment = document.getElementById(momentCommentId);
@@ -134,7 +135,7 @@ $(document).ready(function(){
 
     $("input[id^='myMomentCommentInput']").keypress(function(e) {
         if(e.which == 13) {
-          e.preventDefault(); 
+          e.preventDefault();
         }
     });
 });
@@ -161,6 +162,3 @@ $(document).ready(function () {
     });
 
 });
-
-
-

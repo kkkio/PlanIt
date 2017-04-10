@@ -12,7 +12,7 @@ exports.isCompleted = function isCompleted(req, res, next){
   req.checkBody('email', 'Email is required').notEmpty();
   req.checkBody('email', 'Email is not valid').isEmail();
   req.checkBody('username', 'Username is required').notEmpty();
-  req.checkBody('username', 'Username is not valid').isValidUsername();
+  //req.checkBody('username', 'Username is not valid').isValidUsername();
   req.checkBody('password', 'Password is required').notEmpty();
   req.checkBody('password_confirmation', 'Passwords do not match').equals(req.body.password);
 

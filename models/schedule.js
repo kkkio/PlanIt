@@ -4,12 +4,16 @@ var user=require('./user');
 
 var scheduleSchema = mongoose.Schema({
   _user_id : {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
+  _activity_id: {type: mongoose.Schema.Types.ObjectId, ref: 'activity'},
   title : String,
   //activity info
   //s_date : Date,
   start_time : Date,
   end_time : Date,
-  venue : String,
+  venue: {
+		country : String,
+		city : String
+	},
   // privacy 1: public, 2:followers, 3: friends, 4: private
   privacy : Number,
   url : String,

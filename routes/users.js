@@ -249,7 +249,7 @@ router.get('/:id/profile',isLoggedIn, account.getprofile);
 
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
-
+  console.log('Checking Login');
 	// if user is authenticated in the session, carry on
 	if (req.isAuthenticated())
 		return next();

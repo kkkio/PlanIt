@@ -845,7 +845,7 @@ header .intro-text .intro-lead-in {
                                   <textarea disabled id="myMomentText" rows="5" cols="500"><%= moment[i].text %></textarea>
                               </div>
                               <br>
-                              
+
                                   <div class="input-group moment-input-group">
                                       <div class="input-group-btn post-button">
                                           <a class="btn" id=<%="editBtn"%>><i class="glyphicon glyphicon-edit post-edit"></i></a>
@@ -855,7 +855,7 @@ header .intro-text .intro-lead-in {
                                       </div>
                                       <input type="text" class="form-control" id=<%="myMomentCommentInput1"+i%> placeholder="Add a comment..">
                                   </div>
-                              
+
                               <div class="moment-comment"></div>
                           </div>
                       </div>
@@ -882,7 +882,7 @@ header .intro-text .intro-lead-in {
                           <i class="fa fa-question-circle"></i> Are you sure you want to delete this moment?
                         </div>
                         <div class="modal-footer">
-                          <form method="post" action="/users/account/deleteMoment">
+                          <form method="post" id="deleteMomentForm" action="/users/account/deleteMoment">
                             <input type="hidden" id="tmpMomentId" name="momentId" value="">
                             <button type="submit" class="btn" id="confirmDeleteBtn" data-dismiss="modal">Confirm</button>
                             <button type="button" class="btn" data-dismiss="modal">Close</button>

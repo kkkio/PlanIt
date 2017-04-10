@@ -46,12 +46,14 @@ exports.addMoment = function addMoment(req,res,next){
 
 exports.deleteMoment = function deletemoment(req,res,next){
 	console.log("in delete Moment");
-	var id=req.body.momentid; // TODO: can be change
+	var id=req.body.momentId; // TODO: can be change
 	console.log("momentId", id);
   moment.findByIdAndRemove(id).exec();
 	User.findById(req.user._id,function(err, user){
-		user.deleteMoment(data._id);
+		user.deleteMoment(req.body.momentId);
+		console.log('delete moment from user done.');
 	});
+	res.redirect('/users/account');
 };
 
 exports.updateMoment = function updatemoment(req,res,next){
