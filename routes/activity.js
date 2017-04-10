@@ -31,7 +31,9 @@ var activity=require('../models/activity');
 
 router.get('/singlge',function(req, res, next){
   res.render('single_activity',{});
-})
+});
+
+module.exports = router;
 
 
 
