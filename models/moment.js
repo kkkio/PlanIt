@@ -12,6 +12,7 @@ var momentSchema = mongoose.Schema({
   like : Number,
   comment_num : Number,
   commentList :[{type:mongoose.Schema.Types.ObjectId, ref: 'comment'}],
+  likeList: [{type:mongoose.Schema.Types.ObjectId, ref: 'user'}],
   // privacy 1: public, 2:followers, 3: friends, 4: private
   privacy : Number
 });
@@ -31,6 +32,7 @@ moment.statics.showMyMoment=function(userID,callback){
 		}
 	});
 };
+
 /*
 moment.statics.showFriendMoment=function(friend_id){
 	var m_moment=[];
@@ -77,7 +79,15 @@ moment.statics.getOneById = function getOneById(id, callback){
 	.exec(callback);
 };
 /*INSTANCE METHODS*/
-
+moment.methods.isLikeBy = function isLikeBy(userid){
+  var i;
+  for(i = 0; i<this.likeList.length;i++){
+    if(this.likeList[i] == id){
+      return true;
+    }
+  }
+  return false;
+};
 //module.exports
 module.exports=mongoose.model('moment',momentSchema);
 
