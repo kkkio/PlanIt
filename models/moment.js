@@ -75,7 +75,7 @@ moment.statics.showFriendMoment=function(friend_id){
 moment.statics.getOneById = function getOneById(id, callback){
 	this
 	.findById(id)
-	.populate('commentList')
+	.populate('commentList', '_user_id','commentList')
 	.exec(callback);
 };
 /*INSTANCE METHODS*/
