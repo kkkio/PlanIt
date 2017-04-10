@@ -163,3 +163,11 @@ exports.friendMoment = function friendmoment(req,res,next){
 		})
 	});
 };
+exports.recommendMoment= function recommentmoment(req,res,next){
+	moment.showFriendMoment(function(moment){
+		res.render('recommendMoment',{
+			isLogin: req.isAuthenticated(),
+			moment: r_moment
+		});
+	});
+};
