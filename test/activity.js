@@ -13,11 +13,15 @@ db.once('open',function(){
   console.log('connected');
 });
 
-for(var i = 0; i<100; i++){
+for(var i = 0; i<1000; i++){
   var fake_activity = {
     title: faker.lorem.words(),
     start_time : faker.date.recent(),
     end_time : faker.date.future(),
+    venue: {
+      country : faker.address.country(),
+      city : faker.address.state()
+    },
     intro : faker.lorem.paragraphs(),
     category : faker.random.number()%4 + 1,
     pic : faker.image.image()

@@ -7,10 +7,12 @@ var activitySchema = mongoose.Schema({
 	//a_date: Date,
 	start_time: Date,
 	end_time: Date,
-	venue: {
+
+	venue:{
 		country : String,
 		city : String
 	},
+
 	intro: String,
 	url: String,
 	pic: String,
@@ -26,9 +28,12 @@ var activity = activitySchema;
 
 // create indice for search
 activity.index({
-	//title: 'text',
-	//intro: 'text'
-	'$**' : 'text'
+	title: 'text',
+	intro: 'text'
+});
+activity.index({
+	'venue.country': 1,
+	'venue.city': 1
 });
 // TODO: check index
 
@@ -53,7 +58,7 @@ activity.statics.exactSearchBy = function exactSearchBy (keywords, callback){
 
 activity.statics.searchByLocation = function searchBy (keywords, callback){
 	this
-	.find({$text : {$search : keywords}})
+	.find({$1 : {$search : keywords}})
 	.exec(callback);
 };
 
