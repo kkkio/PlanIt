@@ -2,7 +2,7 @@ var express = require('express');
 var passport = require('passport');
 var User = require('../models/user');
 var Moment = require('../models/moment');
-var Activity = require('../models/acitivity');
+var Activity = require('../models/activity');
 var mComment = require('../models/comment');
 var Schedule = require('../models/schedule');
 exports = module.exports = {};

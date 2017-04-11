@@ -302,7 +302,7 @@ ul.social-buttons li a:active {
             <div class="caption">
               <h3><%= activity[(i*4+j)].title %></h3>
               <p><%= activity[(i*4+j)].intro %></p>
-              <p><a href="/activity/"+<%=activity[(i*4+j)]._id%> class="btn btn-primary" role="button" data-toggle="modal">detail<span class="glyphicon glyphicon-chevron-right"></span></a></p>
+              <p><a href=<%= "/activity/"+activity[(i*4+j)]._id %> class="btn btn-primary" role="button" data-toggle="modal">detail<span class="glyphicon glyphicon-chevron-right"></span></a></p>
             </div>
           </div>
         </div>
