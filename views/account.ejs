@@ -850,13 +850,16 @@ header .intro-text .intro-lead-in {
                                   By <a href="/users/account"><%= user.username %></a><text><%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %></text><text id=<%="myMomentLike"+i%>>127 Likes</text> <a href="#" class="comments" id="myMomentComment">2 Comments</a>
                               </div>
                               <div class="moment-text">
-                                  <textarea id=<%="myMomentText"+i %> rows="5" cols="500" disabled><%= moment[i].text %></textarea>
+                                <form method="post" id="reeditMomentForm" action="/users/account/updateMoment">
+                                  <input type="hidden" id="tmpNewTextId" name="momentId" value="">
+                                  <textarea name="newMomentText" id=<%="myMomentText"+i %> rows="5" cols="500" disabled><%= moment[i].text %></textarea>
+                                </form>
                               </div>
                               <br>
 
                                   <div class="input-group moment-input-group">
                                       <div class="input-group-btn post-button">
-                                          <a class="btn" id=<%="editBtn"+i%>><i class="glyphicon glyphicon-edit post-edit"></i><strong class="post-edit-text">Re-edit</strong></a>
+                                          <a class="btn" id=<%="editBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-edit post-edit"></i><strong class="post-edit-text">Re-edit</strong></a>
                                           <a class="btn" data-toggle="modal" data-target="#deleteModal" id=<%="deleteBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-trash post-delete"></i></a>
                                           <a class="btn" id=<%="likeBtn"+i%>><i class="glyphicon glyphicon-heart post-unlike"></i> 127</a>
                                           <a class="btn" id=<%="commentBtn"+i%>><i class="glyphicon glyphicon-comment post-comment"></i></a>

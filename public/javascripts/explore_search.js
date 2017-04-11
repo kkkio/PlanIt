@@ -1,19 +1,22 @@
 
 $(document).ready(function(){
+  var keywordEle = document.getElementById("search_text");
+  var toBeFilled = document.getElementById("keywordSpan");
 	document.getElementById("search_button").onclick = function() {
-		  var keywordEle = document.getElementById("search_text");
   		window.location.href = '/explore/search?keyword='+$(keywordEle).val();
+      /*
       var keyword = $(keywordEle).val();
-      $(keyword).text()
+      $(toBeFilled).text("testtest");
+      alert(keyword);
+      */
 	};
 
 	$("input[id='search_text']").keypress(function(e) {
        if(e.which == 13) {
           e.preventDefault();
-          var keyword = document.getElementById("search_text");
-  		    window.location.href = '/explore/search?keyword='+$(keyword).val();
-          var insertText = document.getElementById("show_results");
-          $(insertText).append($(keyword).val());
+  		    window.location.href = '/explore/search?keyword='+$(keywordEle).val();
+          //var keyword = $(keywordEle).val();
+          
        }
     });
 
