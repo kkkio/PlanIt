@@ -13,6 +13,7 @@ exports.getSearchResults = function getSearchResults (req, res, next){
         activity : docs,
         isLogin: req.isAuthenticated()
       };
+      console.log(docs.length);
       res.render("explore_search",results);
     });
   }
