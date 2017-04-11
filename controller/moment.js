@@ -2,6 +2,7 @@ var express = require('express');
 var moment = require('../models/moment');
 var User = require('../models/user');
 var mComment = require('../models/comment');
+var fs = require('fs');
 exports = module.exports = {};
 
 exports.mymoment=function mymoment(req,res,next){
@@ -10,7 +11,7 @@ exports.mymoment=function mymoment(req,res,next){
 	moment.showMyMoment(req.user._id,function(doc){
 		//console.log("in callback of mymoment");
 
-		console.log("doc==");
+		//console.log("doc==");
 
 		//console.log(doc);
 		var test={
@@ -20,22 +21,27 @@ exports.mymoment=function mymoment(req,res,next){
 		};
 		//console.log(test);
 		res.render('account', test);
-		console.log("finish rendering data");
+		//console.log("finish rendering data");
 	});
 };
 //add moment
 exports.addMoment = function addMoment(req,res,next){
 	var date= new Date();
+	console.log('req.file :', req.file);
+	console.log('req.body :', req.body);
 	var insert_data={
     	title :  	req.body.title,
-      	_user_id :	req.user._id,
+      _user_id :	req.user._id,
     	date :	   	date,
     	location : 	req.body.location,
     	pic : 		req.body.pic,
      	text : 		req.body.momentText,
-    	privacy : 	req.body.privacy
+    	privacy : 	req.body.privacy,
+			pic : '/upload/'+req.file.filename
     };
+		console.log('true path', req.file.path);
     var data=new moment(insert_data);
+		//console.log('busboy',req.busboy == null);
 		data.save();
 		User.findById(req.user._id,function(err, user){
 			user.postMoment(data._id);
@@ -47,7 +53,21 @@ exports.deleteMoment = function deletemoment(req,res,next){
 	console.log("in delete Moment");
 	var id=req.body.momentId; // TODO: can be change
 	console.log("momentId", id);
-  moment.findByIdAndRemove(id).exec();
+	moment.findById(id, function(err,doc){
+		var path = 'public'+doc.pic;
+		console.log('path :', path);
+		if(fs.existsSync(path)){
+			fs.stat(path,function(err, stats){
+				if(err) return;
+				fs.unlink(path,function(err){
+					if(err) throw(err);
+					console.log('file deleted successfully');
+				})
+			});
+		}
+
+		moment.findByIdAndRemove(id).exec();
+	});
 	User.findById(req.user._id,function(err, user){
 		user.deleteMoment(req.body.momentId);
 		console.log('delete moment from user done.');

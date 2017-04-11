@@ -9,6 +9,13 @@ router.get('/', isLoggedIn,function(req, res, next) {
    });
 });
 
+router.get('/search', isLoggedIn,function(req, res, next) {
+  res.render('explore_search', {
+    isLogin: req.isAuthenticated(),
+    user : req.user
+   });
+});
+
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
 
