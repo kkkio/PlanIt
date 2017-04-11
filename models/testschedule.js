@@ -43,35 +43,30 @@ console.log(longago);
 
 var insert_data0={
 	title : 'Tokyo Sushi Cooking Class',
+  _user_id:"58ec7ede14d89134d1e64db4",
 	// host id
 	//a_date: Date,
 	start_time: today,
 	end_time: today,
 	url: "sorry no url",
 	//1: music concert; 2: movies; 3: art exibition; 4: others
-	
+
 }
 var data=new schedule(insert_data0);
 data.save();
 
 var insert_data1={
-	title : 'shinjuku is fucking cold',
+	title : 'suibian zaisuibian',
 	// host id
 	//a_date: Date,
+  _user_id:"58ec7ede14d89134d1e64db4",
 	start_time: yestoday,
 	end_time: today,
-	venue: {
-		country : "Japan",
-		city : "shinjuku"
-	},
-	intro: "baoge is so happy in shinjuku with his boyfriend",
-	url: "sorry no url,lalala",
+	url: "www.baidu.com"
 	//1: music concert; 2: movies; 3: art exibition; 4: others
-	category: 2,
-	comment_num : 3,
-	// Can I save an array of rating and calculate the average rating?
-	average_rating: 4,
 }
+data = new schedule(insert_data1);
+data.save();
 var insert_data2={
 	title : 'the snow view in fujiyama',
 	// host id

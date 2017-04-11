@@ -43,13 +43,12 @@ schedule.statics.showMySchedule=function(userID,callback){
 			console.log("finish in find");
 			return callback(doc);
 		}
-		
+
   });
 };
 /*
 //TODO
 schedule.statics.showFriendSchedule=function(friend_id){
-
 	var f_schedule=[];
   //TODO test if the function is asynchronous
   	var query=this.find({user_id:friend_id});
@@ -81,7 +80,6 @@ schedule.statics.showFriendSchedule=function(friend_id){
 			}
 		}
 	return f_schedule;
-
 };
 //INSTANCE METHODS
 */

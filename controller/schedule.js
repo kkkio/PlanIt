@@ -16,6 +16,8 @@ exports.myschedule= function mymoment(req,res,next){
 	schedule.showMySchedule(req.user._id,function(doc){
 		console.log("doc==");
 		console.log(doc);
+		console.log("the length of doc");
+		console.log(doc.length);
 		//console.log(test);
 		var data={
 			user : req.user,
@@ -86,4 +88,3 @@ exports.deleteSchedule = function deleteSchedule(req,res,next){
 		});
     res.redirect('/users/account/schedule');
 };
-
