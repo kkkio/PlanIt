@@ -43,7 +43,7 @@ console.log(longago);
 
 var insert_data0={
 	title : 'Tokyo Sushi Cooking Class',
-	// host id
+	_user_id : "58e72eb7a87f904b8a245f90",
 	//a_date: Date,
 	start_time: today,
 	end_time: today,
