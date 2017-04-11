@@ -13,9 +13,9 @@ exports.checkStatus = function checkStatus(req,res,next){
 };
 
 exports.myschedule= function mymoment(req,res,next){
-	Schedule.showMySchedule(req.user._id,function(doc){
+	schedule.showMySchedule(req.user._id,function(doc){
 		console.log("doc==");
-		//console.log(doc);
+		console.log(doc);
 		//console.log(test);
 		var data={
 			user : req.user,
@@ -41,7 +41,7 @@ exports.addMySchedule = function addMySchedule(req, res, next){
 		privacy 		:		req.body.privacy,
 		url				: 		req.body.url //url is the activity url
 	};
-    var data=new Schedule(insert_data);
+    var data=new schedule(insert_data);
     data.save();
 		User.findById(req.user._id, function(err, doc){
 			doc.update(
@@ -56,7 +56,7 @@ exports.addMySchedule = function addMySchedule(req, res, next){
 
 exports.updateSchedule = function updateSchedule(req,res,next){
   var id = req.body.id;
-  Schedule.findById(id, function(err, doc) {
+  schedule.findById(id, function(err, doc) {
     if (err) {
       console.error('error, no entry found');
     }
@@ -75,7 +75,7 @@ exports.updateSchedule = function updateSchedule(req,res,next){
 
 exports.deleteSchedule = function deleteSchedule(req,res,next){
 	var id=req.body.id;
-    Schedule.findByIdAndRemove(id).exec();
+    schedule.findByIdAndRemove(id).exec();
 		User.findById(req.user._id, function(err, doc){
 			doc.update(
 				{

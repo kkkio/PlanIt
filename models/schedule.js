@@ -32,7 +32,9 @@ schedule.statics.getOneById = function getOneById(id, callback){
 
 // add an alias for define method
 var schedule = scheduleSchema;
-schedule.static.showMySchedule=function(userID){
+schedule.statics.showMySchedule=function(userID,callback){
+	console.log("what is the userID");
+	console.log(userID);
   	this.find({_user_id: userID}).exec(function(err,doc){
   		if (err){
 			console.err("error");
@@ -46,7 +48,7 @@ schedule.static.showMySchedule=function(userID){
 };
 /*
 //TODO
-schedule.static.showFriendSchedule=function(friend_id){
+schedule.statics.showFriendSchedule=function(friend_id){
 
 	var f_schedule=[];
   //TODO test if the function is asynchronous
