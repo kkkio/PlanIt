@@ -13,6 +13,7 @@ var activitySchema = mongoose.Schema({
 	},
 	intro: String,
 	url: String,
+	pic: String,
 	//1: music concert; 2: movies; 3: art exibition; 4: others
 	category: Number,
 	comment_num : Number,
@@ -25,16 +26,12 @@ var activity = activitySchema;
 
 // create indice for search
 activity.index({
-	title: 'text',
-	intro: 'text'
+	//title: 'text',
+	//intro: 'text'
+	'$**' : 'text'
 });
 // TODO: check index
-/*
-activity.index({
-	country: 'location',
-	city: 'location'
-});
-*/
+
 //STATIC METHOD
 
 // 1. take query 2.keywords are a list of keywords
@@ -46,6 +43,7 @@ activity.statics.searchBy = function searchBy (keywords, callback){
 
 // NOT USED NOW
 activity.statics.exactSearchBy = function exactSearchBy (keywords, callback){
+
 	this
 	.find({$text: {$search: keywords}})
 	.exec(callback);
@@ -53,7 +51,7 @@ activity.statics.exactSearchBy = function exactSearchBy (keywords, callback){
 
 activity.statics.searchByLocation = function searchBy (keywords, callback){
 	this
-	.find({$location: {$search: keywords}})
+	.find({$text : {$search : keywords}})
 	.exec(callback);
 };
 

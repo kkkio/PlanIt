@@ -21,6 +21,7 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "faker": "^4.1.0",
     "fs": "0.0.1-security",
     "isemail": "^2.2.1",
     "mongodb": "^2.2.24",

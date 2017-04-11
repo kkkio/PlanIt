@@ -12,7 +12,7 @@ db.once('open',function(){
 });
 
 var darkReunion;
-
+/*
 darkReunion = Activity.create({
   	title : 'Tokyo Sushi Cooking Class',
 	// host id
@@ -39,6 +39,7 @@ yestoday.setDate(today.getDate()-1);
 var longago=new Date(yestoday);
 longago.setDate(yestoday.getDate()-1);
 console.log(longago);
+
 var insert_data0={
 	title : 'Tokyo Sushi Cooking Class',
 	// host id
@@ -57,6 +58,9 @@ var insert_data0={
 	// Can I save an array of rating and calculate the average rating?
 	average_rating: 3,
 }
+var data=new Activity(insert_data0);
+data.save();
+
 var insert_data1={
 	title : 'shinjuku is fucking cold',
 	// host id
@@ -99,7 +103,7 @@ data.save();
 data.save();
 data=new Activity(insert_data2);
 data.save();
-/*
+
 User.findOne({username : 'zsb'},function(err, user){
   if(err) return console.log(err);
   if(!user) return console.log('no user');
@@ -125,4 +129,8 @@ User.findOne({username : '123'},function(err, user){
   //user.followedById("58e7c344934af73f430ae238")
 });
 */
+Activity.searchBy('sushi',function(err, doc){
+  if(err) console.log(err);
+  console.log(doc);
+})
 console.log("finish");
