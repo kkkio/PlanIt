@@ -10,10 +10,26 @@ router.get('/', isLoggedIn,function(req, res, next) {
 });
 
 router.get('/search', isLoggedIn,function(req, res, next) {
-  res.render('explore_search', {
+  res.render('Explore_search', {
     isLogin: req.isAuthenticated(),
     user : req.user
    });
+});
+//for lilili test easy router search navBar
+router.get('/explore/sports',isLoggedIn,function(req,res,next){
+	res.render('explore_sports');
+});
+router.get('/explore/tech',isLoggedIn,function(req,res,next){
+	res.render('explore_tech');
+});
+router.get('/explore/movies',isLoggedIn,function(req,res,next){
+	res.render('explore_movies');
+});
+router.get('/explore/other',isLoggedIn,function(req,res,next){
+	res.render('explore_other');
+});
+router.get('/explore/Culture',isLoggedIn,function(req,res,next){
+	res.render('explore_Culture');
 });
 
 // route middleware to make sure
@@ -24,10 +40,7 @@ function isLoggedIn(req, res, next) {
 		return next();
 
 	// if they aren't redirect them to the home page
-  res.render('explore', {
-    isLogin: req.isAuthenticated(),
-    user : req.user
-   });
+  return next();
 
 }
 

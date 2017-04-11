@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/images/pageBarLogo.png">
 
     <title>PlanIt - Explore a Whole New World!</title>
 
@@ -13,23 +14,27 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 
+
     <!-- Theme CSS -->
     <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <link href="/vendor/css/agency.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/javascripts/explore_search.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
     <![endif]$-->
-    <script>
+    <!--<script>
         $(document).ready(function(){
           $("#search_button").click(function(){
             $("#show_results").text("Search results for: \""+$("#search_text").val()+"\"");
@@ -53,12 +58,18 @@
 
         });
 
-    </script>
+    </script>-->
 
-</head>
+
 <style>
+body{
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+
 #searchBG{
-  background-image: url('img/explore/handsInAir.jpg');
+  background-image: url('/images/explore/sky.jpg');
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -85,7 +96,121 @@
 .nav-tabs {
     margin-bottom: 0;
 }
+
+.navbar-search{
+  border:2px solid #487bb4;
+}
+
+.btn{
+    background-color: white;
+    color: #487bb4;
+    border: 2px solid #487bb4;
+}
+
+.btn:hover {
+    background-color: #487bb4;
+    color: white;
+    border: 2px solid #487bb4;
+}
+
+.btn-navBar{
+    background-color: #487bb4;
+    color: white;
+    border: 2px solid #487bb4;
+}
+
+.btn-navBar:hover{
+    background-color: white;
+    color: black;
+}
+
+
+#loadMore {
+    padding: 10px;
+    text-align: center;
+    background-color: #487bb4;
+    color: #fff;
+    border-radius: 8px;
+    border-style: solid;
+    transition: all 600ms ease-in-out;
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    -o-transition: all 600ms ease-in-out;
+    text-decoration: none !important;
+}
+#loadMore:hover {
+    background-color: #fff;
+    color: #487bb4;
+}
+
+.more-moments a, .more-moments a:visited {
+    color: #487bb4;
+    text-decoration: none !important;
+    display: block;
+    margin: 10px 0;
+}
+
+.more-moments a:hover {
+    text-decoration: none !important;
+}
+
+
+footer {
+  padding: 25px 0;
+  text-align: center;
+  width:100%;
+}
+
+footer span.copyright {
+  line-height: 40px;
+  text-transform: uppercase;
+  text-transform: none;
+}
+
+footer ul.quicklinks {
+  margin-bottom: 0;
+  text-transform: uppercase;
+  text-transform: none;
+}
+
+
+ul.list-inline {
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+ul.list-inline li a{
+    color:#487bb4;
+}
+
+ul.social-buttons {
+  margin-bottom: 0;
+}
+ul.social-buttons li a {
+  display: block;
+  background-color: #222222;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  line-height: 40px;
+  color: white;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+ul.social-buttons li a:hover,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:active {
+  background-color: #fed136;
+}
+
 </style>
+
+
+</head>
+
 <body id="searchBG">
   <!-- Collapsible Navigation Bar -->
 <div class="container">
@@ -113,139 +238,203 @@
 
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li ><a href="/Explore" id="back_explore">Explore</a></li>
-        <li class="active"><a href="#">Search</a></li>
-        <li><a href="#">Contact</a><li>
-      </ul>
-      <!-- navbar-left will move the search to the left -->
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" id="search_text" placeholder="Search">
-        </div>
-        <button id="search_button" class="btn" type="submit" >Search</button>
-      </form>
-    </div><!-- /.navbar-collapse -->
+    <%- include search_navBar.ejs -%>
+  
   </div><!-- /.container-fluid -->
 </nav>
+
 </div>
-<br>
+
 <h1 style="text-align:center;" id="show_results"></h1>
 <br><br>
 <div class="container">
-<div class="row">
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-    <div class="thumbnail th-fade">
-      <img src="img/concert/9.jpg" alt="...">
-      <div class="caption">
-        <h3>Concert1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
-      </div>
-      </div>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum2">
-    <div class="thumbnail th-fade">
-      <img src="img/concert/10.jpg" alt="...">
-      <div class="caption">
-        <h3>Concert2</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
+  
+  <div class="row">
+    
+    <div class="activity-list" id="activityList0">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+        <div class="thumbnail">
+          <img src="/images/explore_search/9.jpg" alt="...">
+          <div class="caption">
+            <h3>Concert1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><a href="#modal1" class="btn" role="button" data-toggle="modal">detail<span class="glyphicon glyphicon-chevron-right"></a></p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum3">
-    <div class="thumbnail th-fade">
-      <img src="img/concert/16.png" alt="...">
-      <div class="caption">
-        <h3>Concert3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
+
+    <div class="activity-list" id="activityList1">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+        <div class="thumbnail">
+          <img src="/images/explore_search/9.jpg" alt="...">
+          <div class="caption">
+            <h3>Concert1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum4">
-    <div class="thumbnail th-fade">
-      <img src="img/concert/piano.jpg" alt="...">
-      <div class="caption">
-        <h3>Concert4</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
+
+    <div class="activity-list" id="activityList2">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+        <div class="thumbnail">
+          <img src="/images/explore_search/9.jpg" alt="...">
+          <div class="caption">
+            <h3>Concert1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="activity-list" id="activityList3">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+        <div class="thumbnail">
+          <img src="/images/explore_search/9.jpg" alt="...">
+          <div class="caption">
+            <h3>Concert1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
+          </div>
+        </div>
+      </div>
+    </div>    
+    
   </div>
+
+  <div class="row">
+    
+    <div class="activity-list" id="activityList4">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+        <div class="thumbnail">
+          <img src="/images/explore_search/9.jpg" alt="...">
+          <div class="caption">
+            <h3>Concert1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-list" id="activityList5">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+        <div class="thumbnail">
+          <img src="/images/explore_search/9.jpg" alt="...">
+          <div class="caption">
+            <h3>Concert1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail<span class="glyphicon glyphicon-chevron-right"></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-list" id="activityList6">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+        <div class="thumbnail">
+          <img src="/images/explore_search/9.jpg" alt="...">
+          <div class="caption">
+            <h3>Concert1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-list" id="activityList7">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+        <div class="thumbnail">
+          <img src="/images/explore_search/9.jpg" alt="...">
+          <div class="caption">
+            <h3>Concert1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
+          </div>
+        </div>
+      </div>
+    </div>    
+    
+  </div>
+
+
+    <div class="row">
+    
+    <div class="activity-list" id="activityList8">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+        <div class="thumbnail th-fade">
+          <img src="/images/explore_search/9.jpg" alt="...">
+          <div class="caption">
+            <h3>Concert1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-list" id="activityList9">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+        <div class="thumbnail th-fade">
+          <img src="/images/explore_search/9.jpg" alt="...">
+          <div class="caption">
+            <h3>Concert1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-list" id="activityList10">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+        <div class="thumbnail th-fade">
+          <img src="/images/explore_search/9.jpg" alt="...">
+          <div class="caption">
+            <h3>Concert1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-list" id="activityList11">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
+        <div class="thumbnail th-fade">
+          <img src="/images/explore_search/9.jpg" alt="...">
+          <div class="caption">
+            <h3>Concert1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
+          </div>
+        </div>
+      </div>
+    </div>    
+    
+  </div>  
+  
+
+  <!-- Pagination -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="more-activities">
+        <a href="#" id="loadMore">Load More</a>
+      </div>
+    </div>
+  </div>  
+  <hr>
+  <%- include footer.ejs -%>
 </div>
-<div class="row">
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum5">
-    <div class="thumbnail th-fade">
-      <img src="img/concert/9.jpg" alt="...">
-      <div class="caption">
-        <h3>Concert1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
-      </div>
-      </div>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum6">
-    <div class="thumbnail th-fade">
-      <img src="img/concert/10.jpg" alt="...">
-      <div class="caption">
-        <h3>Concert2</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum7">
-    <div class="thumbnail th-fade">
-      <img src="img/concert/16.png" alt="...">
-      <div class="caption">
-        <h3>Concert3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum8">
-    <div class="thumbnail th-fade">
-      <img src="img/concert/piano.jpg" alt="...">
-      <div class="caption">
-        <h3>Concert4</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p><a href="#" class="btn btn-primary" role="button">detail</a></p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<!-- Pagination -->
-<div class="container">
-<nav style="text-align:center;">
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-</div><br>
+
 <!--  Modals -->
 <!-- Use the modals below to showcase details about concerts  -->
 
-<!-- Modal 1 -->
+<!-- Past (Discard) Modal
 <div class="portfolio-modal modal fade" id="Modal1" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -259,10 +448,10 @@
                 <div class="row">
                     <div class="col-lg-8 ">
                         <div class="modal-body">
-                            <!-- Concert Details Go Here -->
+                            
                             <h2>Concert Title</h2>
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-responsive img-centered" src="img/concert/piano.jpg" alt="">
+                            <img class="img-responsive img-centered" src="/images/explore_search/piano.jpg" alt="">
                             <p> Here is the description </p>
 
                             <ul class="list-inline">
@@ -280,6 +469,7 @@
         </div>
     </div>
 </div>
+End Discard Modal-->
 
 
 
