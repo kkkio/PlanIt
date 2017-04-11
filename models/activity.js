@@ -38,6 +38,7 @@ activity.index({
 activity.statics.searchBy = function searchBy (keywords, callback){
 	this
 	.find({$text: {$search: keywords}})
+	.populate('commentList')
 	.exec(callback);
 };
 

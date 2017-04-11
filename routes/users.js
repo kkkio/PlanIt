@@ -13,6 +13,7 @@ var account = require('../controller/account');
 var login=require('../controller/login');
 var moment=require('../controller/moment');
 var schedule=require('../controller/schedule');
+var explore = require('../controller/explore');
 //build the connection to the database
 
 

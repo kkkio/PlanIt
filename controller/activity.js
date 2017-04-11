@@ -8,7 +8,7 @@ var Schedule = require('../models/schedule');
 exports = module.exports = {};
 
 exports.getSearchResults = function getSearchResults (req, res, next){
-  Activity.searchBy(req.query.text, function(err, docs){
+  Activity.searchBy(req.query.keyword, function(err, docs){
     var results={
       user : req.user,
       activity : docs,
