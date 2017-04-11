@@ -17,10 +17,12 @@ exports.myschedule= function mymoment(req,res,next){
 		console.log("doc==");
 		//console.log(doc);
 		//console.log(test);
-		res.render('schedule',{
+		var data={
 			user : req.user,
 			schedule : doc,
-			isLogin: req.isAuthenticated()});
+			isLogin: req.isAuthenticated()
+		}
+		res.render('schedule',data);
 		console.log("finish rendering data");
 	});
 };
