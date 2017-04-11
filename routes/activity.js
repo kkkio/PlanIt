@@ -30,13 +30,17 @@ var router = express.Router();
 var activity = require('../controller/activity');
 
 router.get('/',function(req, res, next){
-  res.redirect('/activity/single');
+  res.render('explore', {
+    isLogin: req.isAuthenticated(),
+    user : req.user
+   });
 });
 
 router.get('/single',function(req,res,next){
-  res.status(404);
-  res.end();
+  res.redirect('/activity');
 });
+
+router.post('/rate',activity.rateActivity);
 
 router.get('/:id',activity.getActivity);
 
