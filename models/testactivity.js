@@ -129,7 +129,7 @@ User.findOne({username : '123'},function(err, user){
   //user.followedById("58e7c344934af73f430ae238")
 });
 */
-Activity.searchBy('sushi',function(err, doc){
+Activity.searchByLocation('sushi',function(err, doc){
   if(err) console.log(err);
   console.log(doc);
 })
