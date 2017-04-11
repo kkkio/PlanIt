@@ -20,7 +20,7 @@ exports.getSearchResults = function getSearchResults (req, res, next){
 
 // to display an activity
 exports.getActivity =function getActivity(req, res, next){
-  Activity.getOneById(req.body.activityId, function(err, doc){
+  Activity.getOneById(req.params.id, function(err, doc){
     var results={
       user : req.user,
       activity : doc,

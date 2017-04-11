@@ -8,15 +8,25 @@ exports.getSearchResults = function getSearchResults (req, res, next){
   console.log(req.query);
   if(req.query.keyword){
     Activity.searchBy(req.query.keyword, function(err, docs){
-      var results={
-        user : req.user,
-        activity : docs,
-        isLogin: req.isAuthenticated()
-      };
-      console.log(docs.length);
-      res.render("explore_search",results);
+      if(docs){
+        var results={
+          user : req.user,
+          activity : docs,
+          isLogin: req.isAuthenticated()
+        };
+        console.log(docs.length);
+        res.render("explore_search",results);
+      }else {
+        var results={
+          user : req.user,
+          activity : null,
+          isLogin: req.isAuthenticated()
+        };
+        res.render("explore_search",results);
+      }
     });
   }
+  
   else{
     var results={
       user : req.user,
