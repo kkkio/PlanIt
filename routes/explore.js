@@ -16,21 +16,25 @@ router.get('/search', isLoggedIn,function(req, res, next) {
    });
 });
 //for lilili test easy router search navBar
-router.get('/explore/sports',isLoggedIn,function(req,res,next){
+router.get('/sports',isLoggedIn,function(req,res,next){
 	res.render('explore_sports');
 });
-router.get('/explore/tech',isLoggedIn,function(req,res,next){
+router.get('/tech',isLoggedIn,function(req,res,next){
 	res.render('explore_tech');
 });
-router.get('/explore/movies',isLoggedIn,function(req,res,next){
+router.get('/movies',isLoggedIn,function(req,res,next){
 	res.render('explore_movies');
 });
-router.get('/explore/other',isLoggedIn,function(req,res,next){
+router.get('/other',isLoggedIn,function(req,res,next){
 	res.render('explore_other');
 });
-router.get('/explore/Culture',isLoggedIn,function(req,res,next){
+router.get('/Culture',isLoggedIn,function(req,res,next){
 	res.render('explore_Culture');
 });
+router.get('/music',isLoggedIn,function(req,res,next){
+	res.render('explore_music');
+});
+
 
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
