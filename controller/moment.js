@@ -78,6 +78,8 @@ exports.deleteMoment = function deletemoment(req,res,next){
 exports.updateMoment = function updatemoment(req,res,next){
 	console.log("in updateMoment");
 	var id = req.body.momentId;
+	console.log(id);
+	console.log('up id last newMomentText');
 	console.log(req.body.newMomentText);
   	moment.findById(req.body.momentId, function(err, doc) {
     if (err) {
