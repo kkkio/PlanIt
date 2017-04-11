@@ -37,7 +37,8 @@ activity.index({
 // 1. take query 2.keywords are a list of keywords
 activity.statics.searchBy = function searchBy (keywords, callback){
 	this
-	.find({$text: {$search: keywords}})
+	.find({$text: {$search: keywords}}, {score: {$meta: 'textScore'}})
+	.sort({score:{$meta: "textScore"}})
 	.populate('commentList')
 	.exec(callback);
 };
