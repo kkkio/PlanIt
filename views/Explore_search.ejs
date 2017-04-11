@@ -126,7 +126,7 @@ body{
 
 
 #loadMore {
-    padding: 10px;
+    padding:10px;
     text-align: center;
     background-color: #487bb4;
     color: #fff;
@@ -137,6 +137,7 @@ body{
     -moz-transition: all 600ms ease-in-out;
     -o-transition: all 600ms ease-in-out;
     text-decoration: none !important;
+
 }
 #loadMore:hover {
     background-color: #fff;
@@ -221,12 +222,16 @@ ul.social-buttons li a:active {
 
 .search-head h1:before, .search-head h1:after{
   content: "\2605";
-  font-size:60px;
+  font-size:4vw;
   display: inline-block;
   position: relative;
-  top: -25px;
+  top: -1.5vh;
   padding: 0 10px;
-  color:#ffff66;
+  color:#ffe066;
+}
+
+.no-result h4{
+  font-size:1.2vw;
 }
 
 </style>
@@ -262,19 +267,19 @@ ul.social-buttons li a:active {
     </div>
 
     <%- include search_navBar.ejs -%>
-  
+
   </div><!-- /.container-fluid -->
 </nav>
 
 </div>
-<!-- Original
-<h1 style="text-align:center;" id="show_results"></h1>
-<br><br>
--->
+
 <div class="container">
   <div class="search-head">
     <h1><text style="color:#487bb4;">Live</text> <text style="color:#f7ba34">Laugh</text> <text style="color:LightSalmon">Love</text></h1>
   </div>
+
+
+  <h1 style="text-align:center;" id="show_results"></h1>
     
   <% if(activity) {%>  
     <% for (var i=0; i< activity.length/4; i++) {%>
@@ -284,11 +289,11 @@ ul.social-buttons li a:active {
       <div class="activity-list" id=<%= "activityList"+(i*4+j) %>>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
           <div class="thumbnail th-fade">
-            <img src="/images/explore_search/9.jpg" alt="...">
+            <img src="<%= activity[(i*4+j)].pic %>" alt="...">
             <div class="caption">
               <h3><%= activity[(i*4+j)].title %></h3>
               <p><%= activity[(i*4+j)].intro %></p>
-              <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
+              <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail<span class="glyphicon glyphicon-chevron-right"></span></a></p>
             </div>
           </div>
         </div>
@@ -296,17 +301,39 @@ ul.social-buttons li a:active {
       <% } %>
     </div>
     <% } %>
+    <!-- Pagination -->
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="more-activities">
+          <a href="#" id="loadMore"><span class="glyphicon glyphicon-chevron-left"></span> Load More <span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+      </div>
+    </div> 
+  <% } else { %>
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <div class="well text-center no-result">
+        <h4><span class="glyphicon glyphicon-exclamation-sign"></span> Oops...Your search did not match any activities :(</h4>
+        </div>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
   <% } %>
-  
+
 
   <!-- Pagination -->
   <div class="row">
-    <div class="col-lg-12">
-      <div class="more-activities">
-        <a href="#" id="loadMore">Load More</a>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+          <div class="more-activities">
+            <a href="#" id="loadMore">Load More</a>
+          </div>
       </div>
-    </div>
-  </div>  
+      <div class="col-lg-2"></div>
+  </div>
+
+
   <hr>
   <%- include footer.ejs -%>
 </div>
@@ -328,7 +355,7 @@ ul.social-buttons li a:active {
                 <div class="row">
                     <div class="col-lg-8 ">
                         <div class="modal-body">
-                            
+
                             <h2>Concert Title</h2>
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                             <img class="img-responsive img-centered" src="/images/explore_search/piano.jpg" alt="">

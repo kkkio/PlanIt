@@ -1,327 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+<meta charset='utf-8' />
+<title>Event Calendar</title>
+<link href='/css/fullcalendar.min.css' rel='stylesheet' />
+<link href='/css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+<script src='/lib/moment.min.js'></script>
+<script src='/lib/jquery.min.js'></script>
+<script src='/javascripts/fullcalendar.min.js'></script>
+<script>
+var newID=1;//whenever create a new event, newID increase by 1
+$(document).ready(function() {
+  $('input').hide();
+  $('#calendar').fullCalendar({
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay'
+    },
+    defaultDate: '2017-04-13',
+    navLinks: true, // can click day/week names to navigate views
+    selectable: true,
+    selectHelper: true,
+    select: function(start, end) {
+      var title = prompt('Event Title:');
+      var eventData;
+      if (title) {
+        eventData = {
+          title: title,
+          start: start,
+          end: end,
+          id: newID
+        };
+        newID++;
+        $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+      }
+      $('#calendar').fullCalendar('unselect');
+    },
+    eventClick: function(event, element) {
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="css/agency.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="/images/pageBarLogo.png">
+        var update=confirm("Modify this event?");
+        if(update==true){
+          var title=prompt("Please enter the title");
+          event.title=title;
+          var starting=prompt("Please enter its start time");
+          event.start=starting;
+          var ending=prompt("Please enter its end time");
+          event.end=ending;
+        }
+        else{
+          var deleteE=confirm("Do you want to delete this event?");
+          if(deleteE==1){
+            $('#calendar').fullCalendar('removeEvents',event.id);
+          }
 
-    <title>PlanIt - Schedule</title>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
-    <![endif]-->
+        }
 
-</head>
+
+        $('#calendar').fullCalendar('updateEvent', event);
+
+    },
+
+    editable: true,
+    eventLimit: true, // allow "more" link when too many events
+
+    //var eventArr=document.getElementById("event_title0").value;
+    //alert("hey");
+
+  });
+  alert("hey");
+
+});
+
+</script>
 <style>
-
-body{
-  font-family: Tahoma;
-}
-#calender{
-  width:100%;
-}
-#calender a{
-  color:#666;
-  text-decoration: none;
-}
-#calender ul{
-  list-style:none;
-  padding:0;
-  margin:0;
-  clear:both;
-  width:100%;
-}
-#calender li{
-  display: block;
-  float: left;
-  width:14.2857142857%;
-  padding: 5px;
-  box-sizing: border-box;
-  border:1px solid #ccc;
-  margin-right: -1px;
-  margin-bottom: -1px;
-}
-#calender ul.weekdays{
-  height:40px;
-  background: #333;
-}
-#calender ul.weekdays li{
-  text-align:center;
-  text-transform: uppercase;
-  line-height: 20px;
-  border: none !important;
-  padding:10px 6px;
-  color:#fff;
-  font-size: 13px;
-}
-#calender .days li{
-  height:120px;
-}
-#calender .days li:hover{
-  background: #eee;
-}
-#calender .date{
-  text-align: center;
-  margin-bottom: 5px;
-  padding: 5px;
-  background: #333;
-  color:#fff;
-  width:25px;
-  border-radius:50%;
-  float:right;
-}
-#calender .event{
-  clear:both;
-  display:block;
-  font-size: 13px;
-  border-radius: 4px;
-  padding: 5px;
-  margin-top: 40px;
-  margin-bottom: 5px;
-  color:#666;
-  line-height: 14px;
-  background: #e4f2f2;
-  border:1px solid #b5dbdc;
-  color:#009aaf;
-  text-decoration: none;
+body {
+  margin: 40px 10px;
+  padding: 0;
+  font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+  font-size: 14px;
 }
 
-#calender .event-desc{
-  color:#666;
-  margin:3px 0 7px 0;
-  text-decoration: none;
-}
-
-#calender .other-month{
-  background:#f5f5f5;
-  color:#666;
-}
-
-@media(max-width:768px){
-  #calender .weekdays,#calender .other-month{
-    display:none;
-  }
-  #calender li{
-    height:auto !important;
-    border:1px solid #ededed;
-    width:100%;
-    padding:10px;
-    margin-bottom:-1px;
-  }
-
-  #calender .date{
-    float:none;
-  }
+#calendar {
+max-width: 900px;
+margin: 0 auto;
 }
 </style>
+</head>
 <body>
+  <% for (var i=0; i < schedule.length; i++) { %>
+<input type="text" class="form-control" id=<%="event_title"+i%> value= <%= schedule[i].title+" "+schedule[i].title%> >
+<input type="text" class="form-control" id=<%="event_start"+i%> value= <%= schedule[i].start_time.getFullYear()+"-"+schedule[i].start_time.getMonth()+"-"+schedule[i].start_time.getDate()%> >
+<input type="text" class="form-control" id=<%="event_end"+i%> value= <%= schedule[i].end_time%> >
+<input type="text" class="form-control" id=<%="event_url"+i%> value= <%= schedule[i].url%> >
+<% } %>
 
-  <!-- .navbar-fixed-top, or .navbar-fixed-bottom can be added to keep the nav bar fixed on the screen -->
-  <nav class="navbar navbar-default navbar-default navbar-custom ct-nav">
-    <div class="container-fluid ">
-
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-
-        <!-- Button that toggles the navbar on and off on small screens -->
-        <button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#bs-example-navbar-collapse-3" aria-expanded="false">
-
-        <!-- Hides information from screen readers -->
-          <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-        </button>
-
-
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="Explore.html">Schedule</a></li>
-          <li ><a href="Explore.html">Explore</a></li>
-          <li><a href="#">Contact</a><li>
-        </ul>
-        <!-- navbar-left will move the search to the left -->
-        <form class="navbar-form navbar-right" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" id="search_text" placeholder="New activity">
-          </div>
-          <button type="submit" class="btn btn-default" onclick="write_results();">Add</button>
-        </form>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-
-  <div id="calender-wrap">
-    <header>
-      <h1>August 2017</h1>
-    </header>
-    <div id="calender">
-      <ul class="weekdays">
-        <li>Sunday</li>
-        <li>Monday</li>
-        <li>Tuesday</li>
-        <li>Wednesday</li>
-        <li>Thursday</li>
-        <li>Friday</li>
-        <li>Saturday</li>
-      </ul>
-      <ul class="days">
-        <li class="day other-month">
-          <div class="date">27</div>
-        </li>
-        <li class="day other-month">
-          <div class="date">28</div>
-        </li>
-        <li class="day other-month">
-          <div class="date">29</div>
-        </li>
-        <li class="day other-month">
-          <div class="date">30</div>
-        </li>
-        <li class="day other-month">
-          <div class="date">31</div>
-        </li>
-        <li class="day">
-          <div class="date">1</div>
-        </li>
-        <li class="day">
-          <div class="date">2</div>
-        </li>
-      </ul>
-      <ul class="days">
-        <li class="day ">
-          <div class="date">3</div>
-        </li>
-        <li class="day ">
-          <div class="date">4</div>
-        </li>
-        <li class="day ">
-          <div class="date">5</div>
-        </li>
-        <li class="day ">
-          <div class="date">6</div>
-        </li>
-        <li class="day ">
-          <div class="date">7</div>
-        </li>
-        <li class="day ">
-          <div class="date">8</div>
-        </li>
-        <li class="day ">
-          <div class="date">9</div>
-        </li>
-      </ul>
-    </ul>
-    <ul class="days">
-      <li class="day ">
-        <div class="date">10</div>
-      </li>
-      <li class="day ">
-        <div class="date">11</div>
-      </li>
-      <li class="day ">
-        <div class="date">12</div>
-      </li>
-      <li class="day ">
-        <div class="date">13</div>
-      </li>
-      <li class="day ">
-        <div class="date">14</div>
-      </li>
-      <li class="day ">
-        <div class="date">15</div>
-      </li>
-      <li class="day ">
-        <div class="date">16</div>
-      </li>
-    </ul>
-  </ul>
-  <ul class="days">
-    <li class="day ">
-      <div class="date">17</div>
-    </li>
-    <li class="day ">
-      <div class="date">18</div>
-    </li>
-    <li class="day ">
-      <div class="date">19</div>
-    </li>
-    <li class="day ">
-      <div class="date">20</div>
-    </li>
-    <li class="day ">
-      <div class="date">21</div>
-    </li>
-    <li class="day ">
-      <div class="date">22</div>
-    </li>
-    <li class="day ">
-      <div class="date">23</div>
-    </li>
-  </ul>
-</ul>
-<ul class="days">
-  <li class="day ">
-    <div class="date">24</div>
-  </li>
-  <li class="day ">
-    <div class="date">25</div>
-  </li>
-  <li class="day ">
-    <div class="date">26</div>
-  </li>
-  <li class="day ">
-    <div class="date">27</div>
-  </li>
-  <li class="day ">
-    <div class="date">28</div>
-    <div class="event">
-      <div class="event-desc">
-        sdfhgjkhdgsfhs
-      </div>
-      <div class="event-time">
-        1:00pm to 3:00pm
-      </div>
-    </div>
-  </li>
-  <li class="day ">
-    <div class="date">29</div>
-  </li>
-  <li class="day ">
-    <div class="date">30</div>
-  </li>
-</ul>
-<ul class="days">
-  <li class="day ">
-    <div class="date ">31</div>
-  </li>
-  <li class="day  other-month">
-    <div class="date">1</div>
-  </li>
-  <li class="day  other-month">
-    <div class="date">2</div>
-  </li>
-  <li class="day  other-month">
-    <div class="date ">3</div>
-  </li>
-  <li class="day  other-month">
-    <div class="date ">4</div>
-  </li>
-  <li class="day  other-month">
-    <div class="date ">5</div>
-  </li>
-  <li class="day  other-month">
-    <div class="date ">6</div>
-  </li>
-</ul>
-
-    </div>
-  </div>
+  <div id='calendar'></div>
 </body>
+</html>
