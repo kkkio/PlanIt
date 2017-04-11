@@ -68,7 +68,7 @@ body{
 }
 
 #searchBG{
-  background-image: url('/images/explore/sports.jpg');
+  background-image: url('/images/explore/sky.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
@@ -221,13 +221,13 @@ ul.social-buttons li a:active {
 }
 
 .search-head h1:before, .search-head h1:after{
-  content: "\26BE";
+  content: "\2605";
   font-size:4vw;
   display: inline-block;
   position: relative;
   top: -1.5vh;
   padding: 0 10px;
-  color:lightblue;
+  color:#ffe066;
 }
 
 .no-result h4{
@@ -266,7 +266,7 @@ ul.social-buttons li a:active {
 
     </div>
 
-    <%- include search_sports_navBar.ejs -%>
+    <%- include search_navBar.ejs -%>
 
   </div><!-- /.container-fluid -->
 </nav>
@@ -275,41 +275,13 @@ ul.social-buttons li a:active {
 
 <div class="container">
   <div class="search-head">
-    <h1><text style="color:#f7ba34">Energy</text> <text style="color:#487bb4">&amp;</text> <text style="color:#f7ba34">Passion</text></h1>
+    <h1><text style="color:#487bb4;">Music</text> <text style="color:#f7ba34"> &amp; </text> <text style="color:LightSalmon">Art</text></h1>
   </div>
 
 
   <h1 style="text-align:center;" id="show_results"></h1>
     
-  <% if(activity) {%>
-    <!-- Fail to add keyword  
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="well text-center">
-        <h4><span>Activities about "</span><span id="keywordSpan"></span><span>" :)</span></h4>
-        </div>
-      </div>
-    </div>
-    -->
-    <% for (var i=0; i< activity.length/4; i++) {%>
-    <div class="row">
-      <% for (var j=0; j< 4; j++) {%>
-      <% if(i*4+j >= activity.length) { break;} %>
-      <div class="activity-list" id=<%= "activityList"+(i*4+j) %>>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-          <div class="thumbnail">
-            <img src="<%= activity[(i*4+j)].pic %>" alt="...">
-            <div class="caption">
-              <h3><%= activity[(i*4+j)].title %></h3>
-              <p><%= activity[(i*4+j)].intro %></p>
-              <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail<span class="glyphicon glyphicon-chevron-right"></span></a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% } %>
-    </div>
-    <% } %>
+
     <!-- Pagination -->
     <div class="row">
       <div class="col-lg-12 text-center">
