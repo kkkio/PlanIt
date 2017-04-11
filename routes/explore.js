@@ -10,7 +10,7 @@ router.get('/', isLoggedIn,function(req, res, next) {
 });
 
 router.get('/search', isLoggedIn,function(req, res, next) {
-  res.render('explore_search', {
+  res.render('Explore_search', {
     isLogin: req.isAuthenticated(),
     user : req.user
    });
@@ -24,10 +24,7 @@ function isLoggedIn(req, res, next) {
 		return next();
 
 	// if they aren't redirect them to the home page
-  res.render('explore', {
-    isLogin: req.isAuthenticated(),
-    user : req.user
-   });
+  return next();
 
 }
 

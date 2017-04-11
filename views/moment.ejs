@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="/images/pageBarLogo.png">
 
-    <title><%= user.username %> - Explore More Moments with PlanIt!</title>
+    <title>Explore More Moments with PlanIt! - <%= user.username %></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -32,9 +32,9 @@
 
     <!-- Script -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/javascripts/backToTop.js"></script>
+    <script src="/javascripts/moment.js"></script>
     <script type="text/javascript" src="/javascripts/assets/js/jquery.uploadPreview.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -353,18 +353,6 @@ ul.social-buttons li a:active {
   background-color: #fed136;
 }
 
-.back-to-top {
-    cursor: pointer;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display:none;
-    z-index: 9999;
-}
-
-#back-to-top.show {
-    opacity: 1;
-}
 
 	
 .status-box{
@@ -547,13 +535,13 @@ ul.social-buttons li a:active {
           						<div class="col-md-8 col-sm-8 col-xs-8" style="padding-left: 0px">
             						<div class="row blog-masonry">
 
-
+                            <!-- Facebook like textarea -->
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                   <div class="status-box">
                                     <div class="status-box-header" id="momentInput">
                                         <h3>What's New</h3>
                                     </div>
-                                    <form class="form-horizontal col-lg-12" style="background: inherit;" method="post" action="/users/account/addMoment">
+                                    <form class="form-horizontal col-lg-12" style="background: inherit;" method="post" action="/users/account/addMoment" enctype='multipart/form-data'>
                                         <div class="col-lg-4">
                                             <div id="image-preview">
                                               <label for="image-upload" id="image-label"></label>
@@ -762,14 +750,14 @@ ul.social-buttons li a:active {
     				</section>
      				<!--End  Blog List -->
 
-
+            
             <%- include footer.ejs -%>
+            
 
 
             </div>   
       	</div>
 
-      <%- include backToTop.ejs -%>
 
 
      </div>
@@ -777,6 +765,6 @@ ul.social-buttons li a:active {
 
 
 
-
+<%- include backToTop.ejs -%>
 </body>
 </html>
