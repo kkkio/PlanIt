@@ -1,8 +1,10 @@
 
 $(document).ready(function(){
 	document.getElementById("search_button").onclick = function() {
-		  var keyword = document.getElementById("search_text");
-  		window.location.href = '/explore/search?keyword='+$(keyword).val();
+		  var keywordEle = document.getElementById("search_text");
+  		window.location.href = '/explore/search?keyword='+$(keywordEle).val();
+      var keyword = $(keywordEle).val();
+      $(keyword).text()
 	};
 
 	$("input[id='search_text']").keypress(function(e) {
@@ -10,10 +12,14 @@ $(document).ready(function(){
           e.preventDefault();
           var keyword = document.getElementById("search_text");
   		    window.location.href = '/explore/search?keyword='+$(keyword).val();
+          var insertText = document.getElementById("show_results");
+          $(insertText).append($(keyword).val());
        }
     });
 
 });
+
+
 
 // Load more
 $(document).ready(function () {
