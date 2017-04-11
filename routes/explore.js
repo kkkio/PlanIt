@@ -1,6 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
+/* CONTROLLER */
+var register = require('../controller/register');
+var account = require('../controller/account');
+var login=require('../controller/login');
+var moment=require('../controller/moment');
+var schedule=require('../controller/schedule');
+var explore = require('../controller/explore');
+
 /* GET login-homepage. */
 router.get('/', isLoggedIn,function(req, res, next) {
   res.render('explore', {
@@ -9,12 +17,7 @@ router.get('/', isLoggedIn,function(req, res, next) {
    });
 });
 
-router.get('/search', isLoggedIn,function(req, res, next) {
-  res.render('Explore_search', {
-    isLogin: req.isAuthenticated(),
-    user : req.user
-   });
-});
+router.get('/search', isLoggedIn,explore.getSearchResults);
 //for lilili test easy router search navBar
 router.get('/sports',isLoggedIn,function(req,res,next){
 	res.render('explore_sports');

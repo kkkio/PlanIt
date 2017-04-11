@@ -206,6 +206,29 @@ ul.social-buttons li a:active {
   background-color: #fed136;
 }
 
+.active{
+  background-color: red;
+}
+
+.search-head{
+  text-align: center;
+  color:white;
+}
+
+.search-head h1{
+  font-size: 8.6vw;
+}
+
+.search-head h1:before, .search-head h1:after{
+  content: "\2605";
+  font-size:60px;
+  display: inline-block;
+  position: relative;
+  top: -25px;
+  padding: 0 10px;
+  color:#f7ba34;
+}
+
 </style>
 
 
@@ -244,72 +267,21 @@ ul.social-buttons li a:active {
 </nav>
 
 </div>
-
+<!-- Original
 <h1 style="text-align:center;" id="show_results"></h1>
 <br><br>
+-->
 <div class="container">
-  
-  <div class="row">
-    
-    <div class="activity-list" id="activityList0">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-        <div class="thumbnail">
-          <img src="/images/explore_search/9.jpg" alt="...">
-          <div class="caption">
-            <h3>Concert1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p><a href="#modal1" class="btn" role="button" data-toggle="modal">detail<span class="glyphicon glyphicon-chevron-right"></a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="activity-list" id="activityList1">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-        <div class="thumbnail">
-          <img src="/images/explore_search/9.jpg" alt="...">
-          <div class="caption">
-            <h3>Concert1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="activity-list" id="activityList2">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-        <div class="thumbnail">
-          <img src="/images/explore_search/9.jpg" alt="...">
-          <div class="caption">
-            <h3>Concert1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="activity-list" id="activityList3">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-        <div class="thumbnail">
-          <img src="/images/explore_search/9.jpg" alt="...">
-          <div class="caption">
-            <h3>Concert1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
-          </div>
-        </div>
-      </div>
-    </div>    
-    
+  <div class="search-head">
+    <h1><text style="color:#487bb4;">Live</text> <text style="-webkit-text-stroke:7px #f7ba34">Laugh</text> <text style="color:LightSalmon">Love</text></h1>
   </div>
-
+    
+  <%= for (var i=0; i<activity.length; i++) {%>
   <div class="row">
-    
-    <div class="activity-list" id="activityList4">
+    <%= for (var j=0; j<4; j++) {%>
+    <div class="activity-list" id=<%= "activityList"+i %>>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-        <div class="thumbnail">
+        <div class="thumbnail th-fade">
           <img src="/images/explore_search/9.jpg" alt="...">
           <div class="caption">
             <h3>Concert1</h3>
@@ -319,104 +291,9 @@ ul.social-buttons li a:active {
         </div>
       </div>
     </div>
-
-    <div class="activity-list" id="activityList5">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-        <div class="thumbnail">
-          <img src="/images/explore_search/9.jpg" alt="...">
-          <div class="caption">
-            <h3>Concert1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail<span class="glyphicon glyphicon-chevron-right"></a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="activity-list" id="activityList6">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-        <div class="thumbnail">
-          <img src="/images/explore_search/9.jpg" alt="...">
-          <div class="caption">
-            <h3>Concert1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="activity-list" id="activityList7">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-        <div class="thumbnail">
-          <img src="/images/explore_search/9.jpg" alt="...">
-          <div class="caption">
-            <h3>Concert1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
-          </div>
-        </div>
-      </div>
-    </div>    
-    
+    <% } %>
   </div>
-
-
-    <div class="row">
-    
-    <div class="activity-list" id="activityList8">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-        <div class="thumbnail th-fade">
-          <img src="/images/explore_search/9.jpg" alt="...">
-          <div class="caption">
-            <h3>Concert1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="activity-list" id="activityList9">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-        <div class="thumbnail th-fade">
-          <img src="/images/explore_search/9.jpg" alt="...">
-          <div class="caption">
-            <h3>Concert1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="activity-list" id="activityList10">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-        <div class="thumbnail th-fade">
-          <img src="/images/explore_search/9.jpg" alt="...">
-          <div class="caption">
-            <h3>Concert1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="activity-list" id="activityList11">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-        <div class="thumbnail th-fade">
-          <img src="/images/explore_search/9.jpg" alt="...">
-          <div class="caption">
-            <h3>Concert1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail</a></p>
-          </div>
-        </div>
-      </div>
-    </div>    
-    
-  </div>  
+  <% } %>
   
 
   <!-- Pagination -->
