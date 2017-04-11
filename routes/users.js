@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var Schedule = require('../models/schedule');
-var moment = require('../models/moment');
+
+
 
 /* CONTROLLER */
 var register = require('../controller/register');
 var account = require('../controller/account');
 var login=require('../controller/login');
 var moment=require('../controller/moment');
+var schedule=require('../controller/schedule');
 //build the connection to the database
 
 
@@ -97,46 +98,10 @@ router.get('/login/facebook/callback',
 
 /* SCHEDULE*/
 //view my schedule
-router.get('/myschedule',function(req,res,next){
-    res.render('myschedule',Schedule.showMySchedule(req.cookies.u_id));
-});
-//TODO debug insert1,make sure activity_id in the req.body?
+router.get('/account/myschedule',schedule.myschedule);
+
 //insert1 add activities from our website
-router.post('/myschedule/insert1',function(req,res,next){
-  var insert_data={
-    	user_id :req.cookie.u_id,
-    	title: req.body.title,
-    	activity_id: req.body.activity_id,
-    	date:	   req.body.s_date,
-    	start_time: req.body.start_time,
-    	end_time: req.body.end_time ,
-    	venue: req.body.venue,
-    	privacy: req.body.privacy
-    };
-    var data=new Schedule(insert_data);
-    data.save();
-	res.redirect('/myschedule');
-  });
-
-//TODO test if asynchronous
-// insert2 add the activities of user's own activities
-router.post('/myschedule/insert2',function(req,res,next){
-  var insert_data={
-    //TODO the u_id is invalid now.need to set.
-    	user_id :req.cookie.u_id,
-    	title: req.body.title,
-    	activity_id: -1,
-    	date:	   req.body.s_date,
-    	start_time: req.body.start_time,
-    	end_time: req.body.end_time ,
-    	venue: req.body.venue,
-    	privacy: req.body.privacy
-    };
-  var data=new Schedule(insert_data);
-  data.save();
-  res.redirect('/myschedule');
-  });
-
+router.post('/account/myschedule/insert',schedule.addMySchedule);
 // delete one event of schedule
 router.post('/myschedule/delete',function(req,res,next){
     var id=req.body.id;

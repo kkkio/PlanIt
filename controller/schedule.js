@@ -13,31 +13,31 @@ exports.checkStatus = function checkStatus(req,res,next){
 };
 
 exports.myschedule= function mymoment(req,res,next){
-	var data[];
-	data=Schedule.showMySchedule(req.user._id,function(doc){
+	Schedule.showMySchedule(req.user._id,function(doc){
 		console.log("doc==");
 		//console.log(doc);
-		var test={
+		//console.log(test);
+		res.render('schedule',{
 			user : req.user,
 			schedule : doc,
-			isLogin: req.isAuthenticated()
-		};
-		//console.log(test);
-		// TODO: CHNAGE 	res.render('schedule',data);
+			isLogin: req.isAuthenticated()});
 		console.log("finish rendering data");
 	});
 };
 
 exports.addMySchedule = function addMySchedule(req, res, next){
 	var insert_data = {
-		_user_id : req.user._id,
-		title : req.body.title,
+		_user_id 		: 		req.user._id,
+		title 			: 		req.body.title,
 		venue:{
-			country : req.body.country,
-			city : req.body.city
+				country 	: 		req.body.country,
+				city 		: 		req.body.city
 		},
-		content : req.body.content,
-		privacy : req.body.privacy
+		start_time 		: 		req.body.start_time,
+		end_time 		:  		req.body.end_time,
+		content 		:		req.body.content,
+		privacy 		:		req.body.privacy,
+		url				: 		req.body.url //url is the activity url
 	};
     var data=new Schedule(insert_data);
     data.save();
@@ -49,7 +49,7 @@ exports.addMySchedule = function addMySchedule(req, res, next){
 				}
 			).exec();
 		});
-	res.redirect('/users/account/schedule');
+	res.redirect('/users/account/myschedule');
 };
 
 exports.updateSchedule = function updateSchedule(req,res,next){
@@ -59,13 +59,11 @@ exports.updateSchedule = function updateSchedule(req,res,next){
       console.error('error, no entry found');
     }
     doc.title  = req.body.title;
-    doc._activity_id = req.body.activityId;
-    doc.date = req.body.date;
     doc.start_time = req.body.start_time;
     doc.end_time= req.body.end_time
-    doc.venue = 		venue:{
+    doc.venue = {
 					country : req.body.country,
-					city : req.body.city
+					city 	: req.body.city
 				};
     doc.privacy=req.body.privacy;
     doc.save();
@@ -87,9 +85,3 @@ exports.deleteSchedule = function deleteSchedule(req,res,next){
     res.redirect('/users/account/schedule');
 };
 
-//exports.get_friend_schedule = function get_other_sch(req,res,next){
-  	var friend_id=req.params.id;
-  //data[] data is the array of objects
-	var data=Schedule.showFriendSchedule(friend_id);
-    res.render('otherschedule',data);
-};

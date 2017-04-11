@@ -29,23 +29,22 @@ schedule.statics.getOneById = function getOneById(id, callback){
 	.populate('_user_id','_activity_id')
 	.exec(callback);
 };
-/*
+
 // add an alias for define method
 var schedule = scheduleSchema;
 schedule.static.showMySchedule=function(userID){
-  var query=this.find({_user_id: userID});
-  var s_schedule=[];
-  for(var i=0;i<query.length;i++){
-    s_schedule.push({
-      s_id=query[i]._id,
-      s_title:query[i].title,
-      s_date:query[i].date,
-      s_start_time : query[i].start_time,
-      s_end_time : query[i].end_time
-    });
-  }
-  return s_schedule;
+  	this.find({_user_id: userID}).exec(function(err,doc){
+  		if (err){
+			console.err("error");
+		}
+		else{
+			console.log("finish in find");
+			return callback(doc);
+		}
+		
+  });
 };
+/*
 //TODO
 schedule.static.showFriendSchedule=function(friend_id){
 
