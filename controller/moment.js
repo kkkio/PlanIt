@@ -78,6 +78,7 @@ exports.deleteMoment = function deletemoment(req,res,next){
 exports.updateMoment = function updatemoment(req,res,next){
 	console.log("in updateMoment");
 	var id = req.body.momentId;
+	console.log(req.body.newMomentText);
   	moment.findById(req.body.momentId, function(err, doc) {
     if (err) {
       	console.error('error, no entry found');
@@ -86,10 +87,11 @@ exports.updateMoment = function updatemoment(req,res,next){
 			console.error('error, no entry found');
 		}
 		else{
-		doc.title  = req.body.title;
-		doc.text = req.body.text;
+		doc.text = req.body.newMomentText;
 		doc.save();
 	 }
+	console.log(doc.text);
+	console.log("save successful");
 	res.redirect('/users/account');
  });
 };
@@ -164,7 +166,7 @@ exports.friendMoment = function friendmoment(req,res,next){
 	});
 };
 exports.recommendMoment= function recommentmoment(req,res,next){
-	moment.showFriendMoment(function(moment){
+	moment.showRecommendMoment(function(r_moment){
 		res.render('recommendMoment',{
 			isLogin: req.isAuthenticated(),
 			moment: r_moment
