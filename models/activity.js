@@ -72,13 +72,14 @@ activity.statics.exactSearchBy = function exactSearchBy (keywords, callback){
 	.find({$text: {$search: keywords}})
 	.exec(callback);
 };
-/*
+
 activity.statics.searchByLocation = function searchBy (keywords, callback){
+	var ret = new RegExp(keywords, 'i');
 	this
-	.find({$1 : {$search : keywords}})
+	.find({'venue.city': ret})
 	.exec(callback);
 };
-*/
+
 activity.statics.viewByCat = function viewByCat(cat, callback){
 	if(cat == 7){
 		return this
