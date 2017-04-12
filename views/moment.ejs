@@ -508,7 +508,7 @@ ul.social-buttons li a:active {
                                 
                                 <!-- Recommended Moment -->
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                  <div class="col-md-6 col-sm-6 col-xs-6" id="frdMomentList" style="padding: 0">
+                                  <div class="col-md-6 col-sm-6 col-xs-6" id="frdMomentList" style="padding-left: 0">
                                   <% for(var i=0; i < moment.length; i++) {%>						
                                       <% if(i % 2 == 0) {%>
                 							        <div class="post" id=<%= "othersMoment"+i %>>
@@ -521,20 +521,13 @@ ul.social-buttons li a:active {
                                                 <div class="moment-text">
                                                   <textarea name="newMomentText" id=<%="myMomentText"+i %> rows="5" cols="500" disabled><%= moment[i].text %></textarea>
                                                 </div>
-
-                                              <div class="input-group moment-input-group">
-                                                <div class="input-group-btn post-button">
-                                                  <button class="btn"><i class="glyphicon glyphicon-heart post-heart"></i></button><button class="btn"><i class="glyphicon glyphicon-comment post-comment"></i></button>
-                                                </div>
-                                                <input type="text" class="form-control" placeholder="Add a comment..">
-                                              </div>
                   								        </div>
                 							        </div>
                                       <% } %>
                                   <% } %>
                                   </div>
                             
-                                  <div class="col-md-6 col-sm-6 col-xs-6" id="frdMomentList1" style="padding: 0">
+                                  <div class="col-md-6 col-sm-6 col-xs-6" id="frdMomentList1" style="padding-right: 0">
                                   <% for(var i=0; i < moment.length; i++) {%>           
                                       <% if(i % 2 == 1) {%>
                                       <div class="post" id=<%= "othersMoment"+i %>>
@@ -548,12 +541,6 @@ ul.social-buttons li a:active {
                                                   <textarea name="newMomentText" id=<%="myMomentText"+i %> rows="5" cols="500" disabled><%= moment[i].text %></textarea>
                                                 </div>
 
-                                              <div class="input-group moment-input-group">
-                                                <div class="input-group-btn post-button">
-                                                  <button class="btn"><i class="glyphicon glyphicon-heart post-heart"></i></button><button class="btn"><i class="glyphicon glyphicon-comment post-comment"></i></button>
-                                                </div>
-                                                <input type="text" class="form-control" placeholder="Add a comment..">
-                                              </div>
                                           </div>
                                       </div>
                                       <% } %>
