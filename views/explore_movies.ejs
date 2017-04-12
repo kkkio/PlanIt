@@ -68,7 +68,7 @@ body{
 }
 
 #searchBG{
-  background-image: url('/images/explore/sky.jpg');
+  background-image: url('/images/explore/movie.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
@@ -217,17 +217,27 @@ ul.social-buttons li a:active {
 }
 
 .search-head h1{
-  font-size: 8.6vw;
+  font-size: 7.5vw;
 }
 
-.search-head h1:before, .search-head h1:after{
-  content: "\2605";
+.search-head h1:before{
+  content: "\2655";
   font-size:4vw;
   display: inline-block;
   position: relative;
   top: -1.5vh;
   padding: 0 10px;
-  color:#ffe066;
+  color:#4da6ff;
+}
+
+.search-head h1:after{
+  content: "\2655";
+  font-size:4vw;
+  display: inline-block;
+  position: relative;
+  top: -1.5vh;
+  padding: 0 10px;
+  color:#4da6ff;
 }
 
 .no-result h4{
@@ -266,7 +276,7 @@ ul.social-buttons li a:active {
 
     </div>
 
-    <%- include search_navBar.ejs -%>
+    <%- include search_movies_navBar.ejs -%>
 
   </div><!-- /.container-fluid -->
 </nav>
@@ -275,7 +285,7 @@ ul.social-buttons li a:active {
 
 <div class="container">
   <div class="search-head">
-    <h1><text style="color:#487bb4;">Live</text> <text style="color:#f7ba34">Laugh</text> <text style="color:LightSalmon">Love</text></h1>
+    <h1><text style="color: lightcoral">Day Dream</text></h1>
   </div>
 
 

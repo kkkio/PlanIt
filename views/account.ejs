@@ -296,7 +296,7 @@ ul.social-buttons li a:active {
    margin-right:auto;
 }
 
-#feedbackModal .modal-body textarea{
+#feedbackModal .modal-body textarea, #updateModal .modal-body textarea, #updateModal .modal-body input{
   border-radius:6px;
   resize:none;
   padding:12px;
@@ -850,16 +850,14 @@ header .intro-text .intro-lead-in {
                                   By <a href="/users/account"><%= user.username %></a><text><%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %></text><text id=<%="myMomentLike"+i%>>127 Likes</text> <a href="#" class="comments" id="myMomentComment">2 Comments</a>
                               </div>
                               <div class="moment-text">
-                                <form method="post" id="reeditMomentForm" action="/users/account/updateMoment">
                                   <input type="hidden" id="tmpNewTextId" name="momentId" value="">
                                   <textarea name="newMomentText" id=<%="myMomentText"+i %> rows="5" cols="500" disabled><%= moment[i].text %></textarea>
-                                </form>
                               </div>
                               <br>
 
                                   <div class="input-group moment-input-group">
                                       <div class="input-group-btn post-button">
-                                          <a class="btn" id=<%="editBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-edit post-edit"></i><strong class="post-edit-text">Re-edit</strong></a>
+                                          <a class="btn" data-toggle="modal" data-target="#updateModal" id=<%="editBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-edit post-edit"></i><strong class="post-edit-text">Re-edit</strong></a>
                                           <a class="btn" data-toggle="modal" data-target="#deleteModal" id=<%="deleteBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-trash post-delete"></i></a>
                                           <a class="btn" id=<%="likeBtn"+i%>><i class="glyphicon glyphicon-heart post-unlike"></i> 127</a>
                                           <a class="btn" id=<%="commentBtn"+i%>><i class="glyphicon glyphicon-comment post-comment"></i></a>
@@ -902,6 +900,33 @@ header .intro-text .intro-lead-in {
                     </div>
                   </div>
                 </div>
+
+
+                <!-- Update Moment Modal -->
+                <div class="modal fade" id="updateModal" role="dialog">
+                  <div class="modal-dialog modal-md">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4>Re-edit This Moment <i class="glyphicon glyphicon-edit post-edit" style="color:white"></i></h4>
+                        </div>
+                        <div class="modal-body" style="text-align: left;">
+                          <input class="form-control" name="newMomentTitle" type="text" id="updateMomentTitle" placeholder="Update your title here...">
+                          <br>
+                          <textarea class="form-control" name="newMomentText" type="text" id="updateMomentText" cols="40" rows="5" style="width:100%" placeholder="Update your moment here..."></textarea>
+                        </div>
+                        <div class="modal-footer">
+                          <form method="post" id="updateMomentForm" action="/users/account/updateMoment">
+                            <input type="hidden" id="tmpMomentId2" name="momentId" value="">
+                            <button type="submit" class="btn" id="confirmUpdateBtn" data-dismiss="modal">Confirm</button>
+                            <button type="button" class="btn" data-dismiss="modal">Close</button>
+                          </form>
+                        </div>
+                    </div>
+                  </div>
+                </div>    
+
 
                   <div class="col-lg-1"></div>
                 </div>

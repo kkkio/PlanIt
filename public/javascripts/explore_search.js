@@ -1,25 +1,28 @@
 
 $(document).ready(function(){
   var keywordEle = document.getElementById("search_text");
-  var toBeFilled = document.getElementById("keywordSpan");
 	document.getElementById("search_button").onclick = function() {
-  		window.location.href = '/explore/search?keyword='+$(keywordEle).val();
-      /*
       var keyword = $(keywordEle).val();
-      $(toBeFilled).text("testtest");
-      alert(keyword);
-      */
+  		window.location.href = '/explore/search?keyword='+keyword;
 	};
 
 	$("input[id='search_text']").keypress(function(e) {
        if(e.which == 13) {
           e.preventDefault();
+          var keyword = $(keywordEle).val();
   		    window.location.href = '/explore/search?keyword='+$(keywordEle).val();
-          //var keyword = $(keywordEle).val();
-          
        }
     });
 
+});
+
+$(document).ready(function () {
+  var toBeFilled = document.getElementById("search_text");
+  var tmp = $(location).attr('search');
+  var keyword = tmp.substring(9);
+  if(keyword){
+    $(toBeFilled).val(keyword);
+  }
 });
 
 

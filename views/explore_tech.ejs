@@ -68,7 +68,7 @@ body{
 }
 
 #searchBG{
-  background-image: url('/images/explore/sports.jpg');
+  background-image: url('/images/explore/tech.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
@@ -220,14 +220,24 @@ ul.social-buttons li a:active {
   font-size: 7.5vw;
 }
 
-.search-head h1:before, .search-head h1:after{
-  content: "\26BE";
+.search-head h1:before{
+  content: "\1F31F";
   font-size:4vw;
   display: inline-block;
   position: relative;
   top: -1.5vh;
   padding: 0 10px;
-  color:lightblue;
+  color:red;
+}
+
+.search-head h1:after{
+  content: "\1F31F";
+  font-size:4vw;
+  display: inline-block;
+  position: relative;
+  top: -1.5vh;
+  padding: 0 10px;
+  color:#ffe066;
 }
 
 .no-result h4{
@@ -266,7 +276,7 @@ ul.social-buttons li a:active {
 
     </div>
 
-    <%- include search_sports_navBar.ejs -%>
+    <%- include search_tech_navBar.ejs -%>
 
   </div><!-- /.container-fluid -->
 </nav>
@@ -275,7 +285,7 @@ ul.social-buttons li a:active {
 
 <div class="container">
   <div class="search-head">
-    <h1><text style="color:#f7ba34">Energy</text> <text style="color:#487bb4">&amp;</text> <text style="color:#f7ba34">Passion</text></h1>
+    <h1><text style="color:#487bb4">Imagination</text></h1>
   </div>
 
 
