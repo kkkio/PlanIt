@@ -17,53 +17,12 @@ router.get('/', isLoggedIn,function(req, res, next) {
    });
 });
 
-router.get('/search', isLoggedIn,explore.getSearchResults);
+router.get('/:cat',checkid, explore.checker, explore.getResults);
 
-//router.get('/location', isLoggedIn,explore.getLocationResults);
-//for lilili test easy router search navBar
-router.get('/sports',isLoggedIn,function(req,res,next){
-	res.render('explore_sports',{
-		user : req.user,
-      	activity : null,
-      	isLogin: req.isAuthenticated()
-	});
-});
-router.get('/tech',isLoggedIn,function(req,res,next){
-	res.render('explore_tech',{
-		user : req.user,
-      	activity : null,
-      	isLogin: req.isAuthenticated()
-	});
-});
-router.get('/movies',isLoggedIn,function(req,res,next){
-	res.render('explore_movies',{
-		user : req.user,
-      	activity : null,
-      	isLogin: req.isAuthenticated()
-	});
-});
-router.get('/other',isLoggedIn,function(req,res,next){
-	res.render('explore_others',{
-		user : req.user,
-      	activity : null,
-      	isLogin: req.isAuthenticated()
-	});
-});
-router.get('/Culture',isLoggedIn,function(req,res,next){
-	res.render('explore_culture',{
-		user : req.user,
-      	activity : null,
-      	isLogin: req.isAuthenticated()
-	});
-});
-router.get('/music',isLoggedIn,function(req,res,next){
-	res.render('explore_music',{
-		user : req.user,
-      	activity : null,
-      	isLogin: req.isAuthenticated()
-	});
-});
-
+function checkid(req,res,next){
+  console.log('CHECKING ID ' + req.params.cat);
+  next();
+}
 
 // route middleware to make sure
 function isLoggedIn(req, res, next) {

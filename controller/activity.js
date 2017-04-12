@@ -24,6 +24,7 @@ exports.getSearchResults = function getSearchResults (req, res, next){
 */
 // to display an activity
 exports.getActivity =function getActivity(req, res, next){
+  console.log(req.params.id);
   Activity.getOneById(req.params.id, function(err, doc){
     if(err) {
       res.status(404);
