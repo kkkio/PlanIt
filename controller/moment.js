@@ -32,6 +32,7 @@ exports.addMoment = function addMoment(req,res,next){
 	var insert_data={
     	title :  	req.body.title,
       _user_id :	req.user._id,
+		username: 	req.user.username,
     	date :	   	date,
     	location : 	req.body.location,
     	pic : 		req.body.pic,
@@ -40,6 +41,7 @@ exports.addMoment = function addMoment(req,res,next){
 			pic : '/upload/'+req.file.filename
     };
 		console.log('true path', req.file.path);
+	console.log(req.user.username);
     var data=new moment(insert_data);
 		//console.log('busboy',req.busboy == null);
 		data.save();
@@ -79,8 +81,8 @@ exports.updateMoment = function updatemoment(req,res,next){
 	console.log("in updateMoment");
 	var id = req.body.momentId;
 	console.log(id);
-	console.log('up id last newMomentText');
-	console.log(req.body.newMomentText);
+	console.log('up id last updateMomentText');
+	console.log(req.body.updateMomentText);
   	moment.findById(req.body.momentId, function(err, doc) {
     if (err) {
       	console.error('error, no entry found');
@@ -89,7 +91,8 @@ exports.updateMoment = function updatemoment(req,res,next){
 			console.error('error, no entry found');
 		}
 		else{
-		doc.text = req.body.newMomentText;
+		doc.title=	req.body.updateMomentTitle;
+		doc.text =	req.body.updateMomentText;
 		doc.save();
 	 }
 	console.log(doc.text);
@@ -169,7 +172,7 @@ exports.friendMoment = function friendmoment(req,res,next){
 };
 exports.recommendMoment= function recommentmoment(req,res,next){
 	moment.showRecommendMoment(function(r_moment){
-		res.render('recommendMoment',{
+		res.render('Moment',{
 			isLogin: req.isAuthenticated(),
 			moment: r_moment
 		});
