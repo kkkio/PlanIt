@@ -21,7 +21,10 @@ exports.getSearchResults = function getSearchResults (req, res, next){
 // to display an activity
 exports.getActivity =function getActivity(req, res, next){
   Activity.getOneById(req.params.id, function(err, doc){
-    if(err) throw(err);
+    if(err) {
+      res.status(404);
+      res.end();
+    }
     if(!doc){
       res.status(404);
       res.end();
@@ -68,6 +71,7 @@ exports.postComment = function postComment(req,res,next){
         activity : doc,
         isLogin: req.isAuthenticated()
       };
+      // use send for ajax
       res.render("single_activity",results);
     });
 };
@@ -81,9 +85,27 @@ exports.deleteComment = function deleteComment(req, res, next){
 exports.rateActivity =function rateActivity(req, res, next){
   if(req.isAuthenticated()){
     Activity.getOneById(req.body.activityId, function(err, doc){
+      if(!doc) return next();
       var tmprate = (doc.rate + req.body.rate)/doc.rate_num;
       doc.rate = tmprate;
       doc.save();
+    });
+    next();
+  }
+};
+
+// next - get activity
+exports.rateComment =function rateComment(req, res, next){
+  if(req.isAuthenticated()){
+    mComment.findById(req.query.commentId,function(err,doc){
+      if(!doc) return res.redirect('/activity'+req.query.activityId);
+      if(req.query.isUseful){
+        doc.useful_num += 1;
+      }else{
+        doc.nonuseful_num += 1;
+      }
+      doc.save();
+      return next();
     });
   }
 };
