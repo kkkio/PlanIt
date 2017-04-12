@@ -88,12 +88,10 @@ exports.rateActivity =function rateActivity(req, res, next){
   if(req.isAuthenticated()){
     Activity.getOneById(req.body.activityId, function(err, doc){
       if(!doc) return next();
-      console.log('before doing ', doc.rate_num, doc.rate);
-      var tmprate = (doc.rate*doc.rate_num + req.body.rate)/(1+doc.rate_num);
+      var rate_num = Number(req.body.rate);
+      var tmprate = (doc.rate * doc.rate_num + rate_num)/(1+doc.rate_num);
       doc.rate = tmprate;
       doc.rate_num += 1;
-      console.log('doc.rate: '+ doc.rate);
-      console.log('tmprate',tmprate);
       doc.save();
     });
     next();
