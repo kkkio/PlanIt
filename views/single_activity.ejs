@@ -364,12 +364,6 @@ ul.social-buttons li a:active {
                 <!-- Title -->
                 <h1><%= activity.title %></h1>
 
-                <!-- Author -->
-                <p class="lead">
-                    Posted by <a href="#"><%= activity.title %></a>
-                </p>
-
-                <hr>
 
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
@@ -381,7 +375,24 @@ ul.social-buttons li a:active {
                 <p class="activityInfo">
 
                   <i class="material-icons" style="margin: 2pt 0pt 0pt 0pt;font-size:16px">loyalty</i>
-                  Category: <%= activity.category %>
+                  <% if(activity.category == 1){%>
+                  Category: Music and Arts
+                  <% } %>
+                  <% if(activity.category == 2){%>
+                  Category: Sports
+                  <% } %>
+                  <% if(activity.category == 3){%>
+                  Category: Tech
+                  <% } %>
+                  <% if(activity.category == 4){%>
+                  Category: Culture
+                  <% } %>
+                  <% if(activity.category == 5){%>
+                  Category: Movies
+                  <% } %>
+                  <% if(activity.category == 6){%>
+                  Category: Others
+                  <% } %>
                   <br>
                   <i class="material-icons" style="margin: 2pt 0pt 0pt 0pt;font-size:16px">&#xe855;</i>
                   Start Time: <%= activity.start_time %>
@@ -390,11 +401,12 @@ ul.social-buttons li a:active {
                   End Time: <%= activity.end_time %>
                   <br>
                   <i class="material-icons" style="margin: 2pt 0pt 0pt 0pt;font-size:16px">room</i>
-                  Location: <%= activity.venue %>
+                  Location: <%=activity.venue.city%>, <%= activity.venue.country %>
+                  
                   <br>
                   <span class="glyphicon glyphicon-star-empty" style="margin: 0pt 1pt"></span>
                   Average Rating:
-                  <input id="input-1-xs" name="input-1-xs" value= "<%= activity.rate %>" class="rating-loading" data-size = "xs" >
+                  <input id="input-1-xs" name="input-1-xs" value= <%= activity.rate %> class="rating-loading" data-size = "xs" >
                   <i class="material-icons" style="margin: 2pt 0pt 0pt 0pt;font-size:16px">share</i>
                   Link: <%= activity.url %>
                 </p>
