@@ -33,16 +33,12 @@ exports.myschedule= function mymoment(req,res,next){
 exports.addMySchedule = function addMySchedule(req, res, next){
 	var insert_data = {
 		_user_id 		: 		req.user._id,
-		title 			: 		req.body.title,
-		venue:{
-				country 	: 		req.body.country,
-				city 		: 		req.body.city
-		},
-		start_time 		: 		req.body.start_time,
-		end_time 		:  		req.body.end_time,
-		content 		:		req.body.content,
-		privacy 		:		req.body.privacy,
-		url				: 		req.body.url //url is the activity url
+		title 			: 		req.body.new_title,
+		start_time 		: 		req.body.new_start,
+		end_time 		:  		req.body.new_end,
+		//content 		:		req.body.content,
+		//privacy 		:		req.body.privacy,
+		url				: 		req.body.new_url //url is the activity url, for users own schedule, url is 'myschedule'
 	};
     var data=new schedule(insert_data);
     data.save();
