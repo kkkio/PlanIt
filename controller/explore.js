@@ -21,9 +21,26 @@ exports.checker = function checker(req, res, next){
 exports.getResults = function getResults (req, res, next){
   // if there is a query
   console.log("CHECKING KEYWORD: "+ req.query.keyword);
+  //console.log("CHECKING LOCATION: "+ req.query.location);
+  /*if(req.query.location){
+    Activity.searchByLocation(req.query.location, function(err, docs){
+      if(docs){
+        var results={
+          user : req.user,
+          activity : docs,
+          keyword : req.query.location, // can be buggy
+          isLogin: req.isAuthenticated()
+        };
+        console.log('how many data: ' + docs.length);
+        res.render('explore_location',results);
+      }
+    });
+    return ;
+  }*/
   if(req.query.keyword){
     exports.getSearchResults(req,res,next);
-  }else{
+  }
+  else{
     var cat;
     for(cat = category.length-1; cat > 0; cat--){
       if(req.params.cat == category[cat])
