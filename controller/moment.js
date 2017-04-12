@@ -3,6 +3,7 @@ var moment = require('../models/moment');
 var User = require('../models/user');
 var mComment = require('../models/comment');
 var fs = require('fs');
+var faker = require('faker');
 exports = module.exports = {};
 
 exports.mymoment=function mymoment(req,res,next){
@@ -36,6 +37,7 @@ exports.addMoment = function addMoment(req,res,next){
     	date :	   	date,
     	location : 	req.body.location,
     	pic : 		req.body.pic,
+			//like : faker.random.number()| 0,
      	text : 		req.body.momentText,
     	privacy : 	req.body.privacy,
 			pic : '/upload/'+req.file.filename

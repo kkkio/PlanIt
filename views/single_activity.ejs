@@ -15,17 +15,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
     <link href="/javascripts/star_rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
-     
+
     <!-- optionally if you need to use a theme, then include the theme file as mentioned below -->
     <link href="/javascripts/star_rating/themes/krajee-svg/theme.css" media="all" rel="stylesheet" type="text/css" />
-     
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
     <script src="/javascripts/star_rating/js/star-rating.js" type="text/javascript"></script>
     <script src="/javascripts/single_activity.js"></script>>
-     
+
     <!-- optionally if you need to use a theme, then include the theme file as mentioned below -->
     <script src="/javascripts/star_rating/themes/krajee-svg/theme.js"></script>
-     
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <title>PlanIt - <%= activity.title %></title>
@@ -163,8 +163,8 @@ h1{
 
 
 .btn{
-      background-color: white; 
-    color: black; 
+      background-color: white;
+    color: black;
     border: 2px solid MediumAquaMarine;
 }
 
@@ -180,8 +180,8 @@ h1{
 }
 
 .btn-past:hover{
-    background-color: white; 
-    color: black; 
+    background-color: white;
+    color: black;
     border: 2px solid MediumAquaMarine;
 }
 
@@ -341,9 +341,9 @@ ul.social-buttons li a:active {
 
 
 
-    
+
 </style>
-    
+
 </head>
 
 <body>
@@ -375,7 +375,7 @@ ul.social-buttons li a:active {
                 <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
 
                 <hr>
-                
+
                 <!-- Activity Info -->
 
                 <p class="activityInfo">
@@ -416,7 +416,7 @@ ul.social-buttons li a:active {
                 <!-- Comments Form -->
                 <div class="well">
                     <h4><strong>Leave a Comment:</strong></h4>
-                    <form role="form">
+                    <form role="form" method="post" action= "/activity/postComment">
                         <div class="form-group">
                             <textarea class="form-control" rows="3"></textarea>
                         </div>
@@ -439,12 +439,12 @@ ul.social-buttons li a:active {
                     <div class="media-body">
                             <h4 class="media-heading">Start Bootstrap
                                 <small>August 25, 2014 at 9:30 PM</small>
-                            </h4>          
+                            </h4>
                         Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.<br>
                         <button type="button" class="useful">Useful</button>
                         <button type="button" class="notuseful">Not Useful</button>
                     </div>
-                    
+
                 </div>
 
                 <!-- Comment -->
@@ -499,7 +499,7 @@ ul.social-buttons li a:active {
 
     </div>
     <!-- /.container -->
-    
+
 
 </body>
 </html>

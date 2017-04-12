@@ -8,8 +8,8 @@ var commentSchema = mongoose.Schema({
 	// type : acitivity - 1; moment - 2
 	content: String,
 	post_time: Date,
-	num_of_useful: Number,
-	num_of_nonuseful: Number
+	useful_num: Number,
+	nonuseful_num: Number
 });
 
 module.exports = mongoose.model('comment', commentSchema);
