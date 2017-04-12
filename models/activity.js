@@ -91,7 +91,10 @@ activity.statics.viewByCat = function viewByCat(cat, callback){
 activity.statics.getOneById = function getOneById(id, callback){
 	this
 	.findById(id)
-	.populate('commentList')
+	.populate({
+		path: 'commentList',
+		populate: {path: '_user_id'}
+	})
 	.exec(callback);
 };
 
