@@ -93,7 +93,8 @@ activity.statics.getOneById = function getOneById(id, callback){
 	.findById(id)
 	.populate({
 		path: 'commentList',
-		populate: {path: '_user_id'}
+		populate: {path: '_user_id'},
+		options: {sort: {'post_time' : -1}}
 	})
 	.exec(callback);
 };
