@@ -22,7 +22,7 @@ var activitySchema = mongoose.Schema({
 	// rating
 	rate: {type: Number, default: 0},
 	rate_num : {type: Number, default: 0},
-	// 0: all; 1: music  & art ; 2: Sports; 3: Tech; 4: Movies 5: Others
+	// 0: all; 1: music  & art ; 2: Sports; 3: Tech; 4: Culture 5: Movies 6:Others
 	category: Number,
 	comment_num : Number,
 
