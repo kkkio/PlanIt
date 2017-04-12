@@ -12,7 +12,7 @@ $(document).ready(function(){
     	$(this).prop('Counter',0).animate({
         	Counter: $(this).text()
     	}, {
-        	duration: 1000,
+        	duration: 500,
         	easing: 'swing',
         	step: function (now) {
         	$(this).text(Math.ceil(now));
@@ -72,8 +72,8 @@ $(document).ready(function(){
         // Update
         $("#confirmUpdateBtn").click(function(){
           $('#tmpMomentId2').attr('value', to_be_posted);
-          $('update-MomentTitle').attr('value', $(newTitle).val());
-          $('update-MomentText').attr('value', $(newText).val());
+          $('#updateTitle').attr('value', $(newTitle).val());
+          $('#updateText').attr('value', $(newText).val());
           $('#updateMomentForm').submit();
         });        
 

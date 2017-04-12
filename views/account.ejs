@@ -319,8 +319,7 @@ ul.social-buttons li a:active {
   clear:both;
   display:table;
   width:100%
-  padding-top:10px;
-  padding: 20px;
+
   font-size:14px;
   line-height: 28px;
   font-weight: 400;
@@ -807,7 +806,7 @@ header .intro-text .intro-lead-in {
                                 </a>
 
                                 <a href="#" class="list-group-item" style="background-color: Orange; height:17vh;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 3vw;"><%= user.mement_num %></p>
+                                    <p class="list-group-item-heading acc-count" style="font-size: 3vw;"><%= user.moment_num %></p>
                                     <p class="list-group-item-text">moments</p>
                                 </a>
                             </ul>
@@ -919,8 +918,8 @@ header .intro-text .intro-lead-in {
                         <div class="modal-footer">
                           <form method="post" id="updateMomentForm" action="/users/account/updateMoment">
                             <input type="hidden" id="tmpMomentId2" name="momentId" value="">
-                            <input type="hidden" id="update-MomentTitle" name="updateMomentTitle" value="">
-                            <input type="hidden" id="update-MomentText" name="updateMomentText" value="">
+                            <input type="hidden" id="updateTitle" name="updateMomentTitle" value="">
+                            <input type="hidden" id="updateText" name="updateMomentText" value="">
                             <button type="submit" class="btn" id="confirmUpdateBtn" data-dismiss="modal">Confirm</button>
                             <button type="button" class="btn" data-dismiss="modal">Close</button>
                           </form>
