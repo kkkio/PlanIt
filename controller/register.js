@@ -34,7 +34,12 @@ exports.isCompleted = function isCompleted(req, res, next){
   });
 };
 
-exports.redirect = function redirect(req, res, next){
+exports.redirect = passport.authenticate('local-login', {
+  successRedirect: '/users/account',
+  failureRedirect: '/users/register',
+  failureFlash: true
+});
+/*function redirect(req, res, next){
   passport.authenticate('local-signup', function(err, user, info){
     if(err) return next(err);
     if(!user) return res.redirect('/register');
@@ -44,7 +49,7 @@ exports.redirect = function redirect(req, res, next){
     });
   }) (req, res, next);
 };
-
+*/
 
 exports.getregpage = function getregpage (req, res, next) {
   var signupMessage = req.flash('signupMessage');
