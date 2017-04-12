@@ -636,10 +636,10 @@ hr.heart-hr-bottom{
       <div class="col-lg-1"></div>
       <div class="col-lg-10" style="background-color: LightYellow; border-radius: 15px;">
 
-        <form class="form-horizontal" role="form" method="post" action="/users/account/profile">
+        <form class="form-horizontal" role="form" method="post" action="/users/account/profile" enctype='multipart/form-data'>
           <div class="text-center">
             <div id="image-preview">
-                <label for="image-upload" id="image-label">Upload Icon</label>
+                <label for="image-upload" id="image-label" src=<%= user.propic %>>Upload Icon</label>
                 <input type="file" name="image" id="image-upload">
             </div>
           </div>
@@ -662,9 +662,9 @@ hr.heart-hr-bottom{
             <label class="col-lg-4 control-label"><i class="fa fa-phone fa-fw"></i>Telephone:</label>
             <div class="col-lg-5">
               <% if (user.phone_number) { %>
-              <input class="form-control" type="text" value=<%= user.phone_number %> >
+              <input class="form-control" type="text" name="telephone" value=<%= user.phone_number %> >
               <% }else {%>
-              <input class="form-control" type="text" value=<%= 'null' %> >
+              <input class="form-control" type="text" name="telephone" value=<%= 'null' %> >
               <% }%>
 
             </div>
