@@ -9,7 +9,12 @@ exports.logget=function loginget(req,res,next){
   	});
 };
 
-exports.logpost= function redirect(req, res, next){
+exports.logpost= passport.authenticate('local-login', {
+  successRedirect: '/users/account',
+  failureRedirect: '/users/login',
+  failureFlash: true
+});
+/*function redirect(req, res, next){
    passport.authenticate('local-login', function(err, user, info){
 		 if(err) return next(err);
 		 if(!user) return res.redirect('/login');
@@ -18,7 +23,7 @@ exports.logpost= function redirect(req, res, next){
 			 return res.redirect('/users/'+user._id);
 		 });
 	 }) (req, res, next);
-};
+};*/
 /*
 passport.authenticate('local-login', {
   successRedirect: '/users/account',

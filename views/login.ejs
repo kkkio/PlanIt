@@ -256,6 +256,11 @@ ul.social-buttons li a:active {
   <form class="login-form" method="post" action="/users/login">
     <input type="text" name="username" placeholder="username/email"/>
     <input type="password" name="password" placeholder="password"/>
+    <% if(message.length) {%>
+      <div class = "alert-danger">
+          <strong><%= message %></strong> Please try again!
+      </div>
+    <% } %>
     <button type="submit">login</button>
     <button type="button" onclick="location.href='/users/login/facebook';" style="margin-top:2px;background-color: #3b5998"><i class="fa fa-facebook fa-md fa-fw"></i>login with Facebook</button>
     <p class="message">Not registered? <a href="/users/register">Create an account</a></p>

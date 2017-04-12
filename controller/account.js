@@ -75,6 +75,23 @@ exports.updateInfo = function updateInfo (req, res, next){
     tmpdate.setMonth(req.body.month);
     tmpdate.setDate(req.body.date);
     doc.birth = tmpdate;
+		if(req.file){
+			if(doc.pic && doc.pic != '/images/acc_mgnt/not_upload.png'){
+				var path = 'public'+doc.pic;
+				console.log('path :', path);
+				if(fs.existsSync(path)){
+					fs.stat(path,function(err, stats){
+						if(err) return;
+						fs.unlink(path,function(err){
+							if(err) throw(err);
+							console.log('file deleted successfully');
+						})
+					});
+				}
+			}
+			data.pic = '/upload/'+req.file.filename;
+			console.log('true path', req.file.path);
+		}
     doc.save();
     //console.log(tmpdate);
     //console.log(doc);

@@ -7,21 +7,6 @@ var mComment = require('../models/comment');
 var Schedule = require('../models/schedule');
 exports = module.exports = {};
 
-// get searchby category
-/*
-exports.getSearchResults = function getSearchResults (req, res, next){
-  console.log(req.query.cat);
-  //var cat = Number(req.query.cat);
-  Activity.searchBy(req.query.keyword,cat, function(err, docs){
-    var results={
-      user : req.user,
-      activity : docs,
-      isLogin: req.isAuthenticated()
-    };
-    res.render("explore_results",results);
-  });
-};
-*/
 // to display an activity
 exports.getActivity =function getActivity(req, res, next){
   console.log(req.params.id);
@@ -45,9 +30,12 @@ exports.getActivity =function getActivity(req, res, next){
 
 
 exports.postComment = function postComment(req,res,next){
-  if(!req.body.content) return res.render("single_activity",results);
   // add one comment & update comment list in activity & user
+  console.log('GOOD IS NOT ', req.body.content);
+  var content = 'This guy is so lazy and left no comment.'
+  if(req.body.content.length) content = req.body.content;
   Activity.getOneById(req.body.activityId, function(err, doc){
+    var date= new Date();
     if(err) throw(err);
     if(!doc){
       console.log('bad activityId');
@@ -58,13 +46,14 @@ exports.postComment = function postComment(req,res,next){
         _activity_id : doc._id,
         _user_id : req.user._id,
         // type : acitivity - 1; moment - 2
-        content: req.body.content,
-        post_time: Date.now,
+        content: content,
+        post_time: date,
         num_of_useful: 0,
         num_of_nonuseful: 0
       };
       var com = new mComment(data);
       com.save();
+      console.log('com is',com);
       // update commentList
       doc.update({
         $push: {"commentList": com._id},
@@ -100,7 +89,8 @@ exports.rateActivity =function rateActivity(req, res, next){
   if(req.isAuthenticated()){
     Activity.getOneById(req.body.activityId, function(err, doc){
       if(!doc) return next();
-      var tmprate = (doc.rate*doc.rate_num + req.body.rate)/(1+doc.rate_num);
+      var rate_num = Number(req.body.rate);
+      var tmprate = (doc.rate * doc.rate_num + rate_num)/(1+doc.rate_num);
       doc.rate = tmprate;
       doc.rate_num += 1;
       doc.save();
@@ -111,17 +101,21 @@ exports.rateActivity =function rateActivity(req, res, next){
 
 // next - get activity
 exports.rateComment =function rateComment(req, res, next){
+  console.log(req.body.commentId);
   if(req.isAuthenticated()){
     mComment.findById(req.body.commentId,function(err,doc){
-      if(!doc) return res.redirect('/activity'+req.params.activityId);
-      if(req.body.isUseful){
+      if(!doc) return res.redirect('/activity/'+req.body.activityId);
+      if(req.body.isUseful === 'true'){
         doc.useful_num += 1;
       }else{
         doc.nonuseful_num += 1;
       }
       doc.save();
-      return next();
+      res.redirect('/activity/'+req.body.activityId);
     });
+  }
+  else{
+    res.status(500).end();
   }
 };
 

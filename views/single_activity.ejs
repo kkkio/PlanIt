@@ -21,7 +21,7 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
     <script src="/javascripts/star_rating/js/star-rating.js" type="text/javascript"></script>
-    <script src="/javascripts/single_activity.js"></script>>
+    <script src="/javascripts/single_activity.js"></script>
 
     <!-- optionally if you need to use a theme, then include the theme file as mentioned below -->
     <script src="/javascripts/star_rating/themes/krajee-svg/theme.js"></script>
@@ -99,7 +99,10 @@ body{
   width:100%;
   overflow: hidden;
 }
-
+.propic{
+  height: 100px;
+  width: 130px;
+}
 h1{
   color:GoldenRod;
   z-index:1;
@@ -348,9 +351,7 @@ ul.social-buttons li a:active {
 
 <body>
   <!-- Navigation -->
-  <form id="use_form" method="post" action= <%= "/activity/rateComment/"+ activity._id %> >
-  <input text="hidden" id="useful_not" name="isUseful" value="true">
-  </form>
+
   <%- include navBar.ejs -%>
 
 
@@ -405,11 +406,11 @@ ul.social-buttons li a:active {
                   <br>
                   <i class="material-icons" style="margin: 2pt 0pt 0pt 0pt;font-size:16px">room</i>
                   Location: <%=activity.venue.city%>, <%= activity.venue.country %>
-                  
+
                   <br>
                   <span class="glyphicon glyphicon-star-empty" style="margin: 0pt 1pt"></span>
                   Average Rating:
-                  <input id="input-1-xs" name="input-1-xs" value= <%= activity.rate %> class="rating-loading" data-size = "xs" >
+                   <input id="input-1-xs" name="input-1-xs"  value=<%=activity.rate %> class="rating-loading" data-size = "xs" >
                   <i class="material-icons" style="margin: 2pt 0pt 0pt 0pt;font-size:16px">share</i>
                   Link: <%= activity.url %>
                 </p>
@@ -454,7 +455,7 @@ ul.social-buttons li a:active {
                         <button type="submit" class="btn btn-primary" disabled>Submit</button>
                     </form>
                 </div>
-                <% } %>                
+                <% } %>
 
                 <hr>
 
@@ -464,29 +465,40 @@ ul.social-buttons li a:active {
                 <% for(var i = 0; i < activity.commentList.length; i++){ %>
 
                 <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src=<%=activity.commentList[i]._user_id.propic%> alt="">
-                    </a>
+                    <div class="pull-left" href="#">
+                        <img class="col-lg-2 propic" src=<%=activity.commentList[i]._user_id.propic%> alt="">
+
                     <div class="media-body">
                             <h4 class="media-heading"><%=activity.commentList[i]._user_id.username%>
                                 <small><%=activity.commentList[i].post_time%></small>
                             </h4>
                        <%=activity.commentList[i].content%>
                        <br>
+                       <br>
                        <script>
-                       $('#useful_1').click(function(){
-                          document.getElementById('useful_not').value="true";
+                       $(document).ready(function(){
+                         $('#useful_1').click(function(){
+                          var useful = document.getElementById('useful_not');
+                          $(useful).attr('value', 'true');
+                          //alert($(useful).attr('value'));
                           document.getElementById('use_form').submit();
+                        });
+                        $('#useful_0').click(function(){
+                          var notUseful = document.getElementById('useful_not').attr('value',"false");
+                          $('#use_form').submit();
                        });
-                       $('#useful_0').click(function(){
-                          document.getElementById('useful_not').value="false";
-                          document.getElementById('use_form').submit();
                        });
                        </script>
                         <button type="button" class="useful" id="useful_1">Useful(<%=activity.commentList[i].useful_num%>)</button>
                         <button type="button" class="notuseful" id="useful_0">Not Useful(<%=activity.commentList[i].nonuseful_num%>)</button>
-                    </div>
+                        <form id="use_form" method="post" action= "/activity/rateComment">
+                          <input type="hidden" id="useful_not" name="isUseful">
+                          <input type="hidden" name="activityId" value=<%= activity._id%>>
+                          <input type="hidden" name="commentId" value=<%= activity.commentList[i]._id%>>
+                        </form>
 
+                    </div>
+                    </div>
                 </div>
                 <% } %>
 

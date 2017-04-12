@@ -10,11 +10,6 @@ exports.mymoment=function mymoment(req,res,next){
 	console.log("in my moment");
 
 	moment.showMyMoment(req.user._id,function(doc){
-		//console.log("in callback of mymoment");
-
-		//console.log("doc==");
-
-		//console.log(doc);
 		var test={
 			user : req.user,
 			moment : doc,
@@ -28,8 +23,8 @@ exports.mymoment=function mymoment(req,res,next){
 //add moment
 exports.addMoment = function addMoment(req,res,next){
 	var date= new Date();
-	console.log('req.file :', req.file);
-	console.log('req.body :', req.body);
+	// console.log('req.file :', req.file);
+	// console.log('req.body :', req.body);
 	var insert_data={
     	title :  	req.body.title,
       _user_id :	req.user._id,
@@ -108,7 +103,6 @@ exports.updateMoment = function updatemoment(req,res,next){
 };
 
 exports.likeMoment = function likeMoment(req,res,next){
-
 	moment.findById(req.body.momentId, function(err, doc){
 		if(err){
 			throw(err);
@@ -132,12 +126,13 @@ exports.postComment = function postComment(req,res,next){
   // add one comment & update comment list in activity & user
   moment.findById(req.body.momentId, function(err, doc){
       // store an comment
+			var date =new Date();
       var data = {
         _moment_id : doc._id,
         _user_id : doc._user_id,
         // type : acitivity - 1; moment - 2
         content: comment,
-        post_time: Date.now,
+        post_time: date,
         num_of_useful: 0,
         num_of_nonuseful: 0
       };
@@ -164,7 +159,6 @@ exports.deleteComment = function deleteComment(req, res, next){
 		doc.deleteComment(id);
 	});
 };
-
 
 
 exports.friendMoment = function friendmoment(req,res,next){
