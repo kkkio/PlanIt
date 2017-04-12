@@ -29,7 +29,7 @@ for(var i = 0; i<1000; i++){
     },
     briefIntro : faker.lorem.paragraph(),
     detailIntro : tmp,
-    category : faker.random.number()%5 + 1,
+    category : faker.random.number()%6 + 1,
     pic : faker.image.image()
   };
   var data = new Activity(fake_activity);

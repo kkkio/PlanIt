@@ -91,7 +91,7 @@ activity.statics.getOneById = function getOneById(id, callback){
 	this
 	.findById(id)
 	.populate('commentList')
-	.exec(callback);
+	.exec();
 };
 
 //INSTANCED METHOD
