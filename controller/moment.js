@@ -170,7 +170,7 @@ exports.friendMoment = function friendmoment(req,res,next){
 };
 exports.recommendMoment= function recommentmoment(req,res,next){
 	moment.showRecommendMoment(function(r_moment){
-		res.render('recommendMoment',{
+		res.render('Moment',{
 			isLogin: req.isAuthenticated(),
 			moment: r_moment
 		});
