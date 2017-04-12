@@ -6,6 +6,7 @@ var momentSchema = mongoose.Schema({
   //user_id : Number,
   title : String,
   _user_id : {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
+  username: String,
   date : Date,
   location : String,
   pic : String,

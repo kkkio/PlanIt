@@ -32,6 +32,7 @@ exports.addMoment = function addMoment(req,res,next){
 	var insert_data={
     	title :  	req.body.title,
       _user_id :	req.user._id,
+		username: 	req.user.username,
     	date :	   	date,
     	location : 	req.body.location,
     	pic : 		req.body.pic,
@@ -40,6 +41,7 @@ exports.addMoment = function addMoment(req,res,next){
 			pic : '/upload/'+req.file.filename
     };
 		console.log('true path', req.file.path);
+	console.log(req.user.username);
     var data=new moment(insert_data);
 		//console.log('busboy',req.busboy == null);
 		data.save();
