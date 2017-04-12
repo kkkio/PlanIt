@@ -3,10 +3,15 @@
 <head>
 <meta charset='utf-8' />
 <title>Event Calendar</title>
+
+
 <link href='/css/fullcalendar.min.css' rel='stylesheet' />
 <link href='/css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+
 <!-- Theme CSS -->
 <link href="/vendor/css/agency.min.css" rel="stylesheet">
 
@@ -15,16 +20,27 @@
 <script src='/lib/moment.min.js'></script>
 
 <script src='/lib/jquery.min.js'></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script src='/javascripts/fullcalendar.min.js'></script>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+  $( function() {
+
+    $( "#StartTime" ).datepicker();
+    $( "#EndTime" ).datepicker();
+    $( "#newStartTime" ).datepicker();
+    $( "#newEndTime" ).datepicker();
+  } );
+  </script>
 
 <script>
 var newID=1;//whenever create a new event, newID increase by 1
 $(document).ready(function() {
 
-  
+  //$('#StartTime').datepicker();
   var evenNum=document.getElementById("eventNumber").value;// number of existing event
   var title=new Array();
   var startTime=new Array();
@@ -55,25 +71,42 @@ $(document).ready(function() {
     select: function(start, end) {
 
       $("#dialogModal2").modal();
-      $("#newStartTime").val(start);
-      $("#newEndTime").val(end);
+      $("#StartTime").val(start);
+      $("#EndTime").val(end);
     },
 
     eventClick: function(event, element) {
 
         //$('#detailModal').modal('show');
+
         var update=confirm("Do you want to modify this event?");
         //#####################################       modify old event ##########################################
         if(update==true){
           $("#dialogModal").modal();
           $("#new_id").val(event.id);
-          $("#new_start").val(event.start);
-          $("#new_end").val(event.end);
+          $("#newStartTime").val(event.start);
+          $("#newEndTime").val(event.end);
+          $("#delete_btn1").click(function(){
+            //alert("hey"+event.id);
+            $('#calendar').fullCalendar('removeEvents',event.id);
+            document.getElementById("storeDelete").value=event.id;
+            //alert(document.getElementById("storeDelete").value);
+
+
+            //post the deleted event
+            //alert("hey there");
+            document.getElementById("delete_submit").submit();
+            $('#calendar').fullCalendar('updateEvent', event);
+            //alert("hey there kk");
+            //$('#calendar').fullCalendar('updateEvent', event);
+            //alert("hey there end");
+          });
         }
         else{
           //#########################################  delete old event ###########################################
           var deleteE=confirm("Do you want to delete this event?");
           if(deleteE==1){
+
             $('#calendar').fullCalendar('removeEvents',event.id);
             document.getElementById("storeDelete").value=event.id;
             //post the deleted event
@@ -190,8 +223,8 @@ margin: 0 auto;
 
                 <form role="form" action="/users/account/myschedule/update" method="post">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">id</label>
-                      <input type="text" class="form-control" id="new_id" name="changed_id" placeholder=""/>
+
+                      <input type="hidden" class="form-control" id="new_id" name="changed_id" placeholder=""/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">New title</label>
@@ -207,7 +240,7 @@ margin: 0 auto;
                       <input name="changed_end"type="text" class="form-control"
                           id="newEndTime" placeholder=""/>
                   </div>
-                  <button  id="delete_btn" class="btn btn-danger">Delete Event</button>
+                  <button  id="delete_btn1" class="btn btn-danger">Delete Event</button>
                   <button id="modify_btn" type="submit" class="btn btn-primary">Save changes</button>
                 </form>
 
@@ -276,7 +309,7 @@ margin: 0 auto;
                        <span class="sr-only">Close</span>
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                    Modify event
+                    New event
                 </h4>
             </div>
 
@@ -286,7 +319,7 @@ margin: 0 auto;
                 <form role="form" action="/users/account/myschedule/insert" method="post">
 
                   <div class="form-group">
-                    <label for="exampleInputEmail1">New title</label>
+                    <label for="exampleInputEmail1">Event title</label>
                       <input type="text" class="form-control" id="new_title" name="new_title" placeholder=""/>
                   </div>
                   <div class="form-group">
@@ -299,8 +332,8 @@ margin: 0 auto;
                       <input name="new_end"type="text" class="form-control"
                           id="EndTime" placeholder=""/>
                   </div>
-                  <button  id="delete_btn" class="btn btn-danger">Delete Event</button>
-                  <button id="modify_btn" type="submit" class="btn btn-primary">Save changes</button>
+
+                  <button id="modify_btn" type="submit" class="btn btn-primary">Add to schedule</button>
                 </form>
 
 
