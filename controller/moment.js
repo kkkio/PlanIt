@@ -80,7 +80,7 @@ exports.updateMoment = function updatemoment(req,res,next){
 	var id = req.body.momentId;
 	console.log(id);
 	console.log('up id last updateMomentText');
-	console.log(req.body.newMomentText);
+	console.log(req.body.updateMomentText);
   	moment.findById(req.body.momentId, function(err, doc) {
     if (err) {
       	console.error('error, no entry found');
