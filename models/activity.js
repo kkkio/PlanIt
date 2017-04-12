@@ -13,7 +13,8 @@ var activitySchema = mongoose.Schema({
 		city : String
 	},
 
-	intro: String,
+	briefIntro: String,
+	detailIntro: [String],
 	url: String,
 	pic: String,
 
