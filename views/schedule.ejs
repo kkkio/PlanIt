@@ -9,16 +9,22 @@
 <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <!-- Theme CSS -->
 <link href="/vendor/css/agency.min.css" rel="stylesheet">
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script src='/lib/moment.min.js'></script>
+
 <script src='/lib/jquery.min.js'></script>
+
 <script src='/javascripts/fullcalendar.min.js'></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script>
 var newID=1;//whenever create a new event, newID increase by 1
 $(document).ready(function() {
-
-  $("#h-btn").hide();
+  $("#h-btn1").hide();
+  $("#h-btn2").hide();
   var evenNum=document.getElementById("eventNumber").value;// number of existing event
   var title=new Array();
   var startTime=new Array();
@@ -57,11 +63,15 @@ $(document).ready(function() {
           end: end,
           id: newID
         };
-        document.getElementById('newEvent_id').value=eventData.id;
+
         document.getElementById('newEvent_title').value=eventData.title;
+
         document.getElementById('newEvent_start').value=eventData.start;
+
         document.getElementById('newEvent_end').value=eventData.end;
-        //document.getElementById("newEvent_submit").submit();
+
+        document.getElementById("newEvent_submit").submit();
+
         newID++;
         $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
       }
@@ -70,8 +80,8 @@ $(document).ready(function() {
 
     eventClick: function(event, element) {
 
-        //$("#h-btn").click();
-        var update=confirm("Modify this event?");
+        //$('#detailModal').modal('show');
+        var update=confirm("Do you want to modify this event?");
         //#####################################       modify old event ##########################################
         if(update==true){
           var title=prompt("Please enter the title");
@@ -85,7 +95,7 @@ $(document).ready(function() {
           document.getElementById("changeEvent_start").value=event.start;
           document.getElementById("changeEvent_end").value=event.end;
           //post the modified event
-          //document.getElementById("modify_submit").submit();
+          document.getElementById("modify_submit").submit();
         }
         else{
           //#########################################  delete old event ###########################################
@@ -94,7 +104,7 @@ $(document).ready(function() {
             $('#calendar').fullCalendar('removeEvents',event.id);
             document.getElementById("storeDelete").value=event.id;
             //post the deleted event
-            //document.getElementById("delete_submit").submit();
+            document.getElementById("delete_submit").submit();
           }
 
         }
@@ -169,20 +179,23 @@ margin: 0 auto;
 
 </form>
 <!--  ##############################    Store modified event  ##############################  -->
-<form id="modify_submit" action="" method="post" >
+<form id="modify_submit" action="/users/account/myschedule/update" method="post" >
 <input id="changeEvent_id" name="changed_id"type="hidden" class="form-control" value="">
 <input id="changeEvent_title" name="changed_title" type="hidden" class="form-control" value="">
 <input id="changeEvent_start" name="changed_start" type="hidden" class="form-control" value="">
 <input id="changeEvent_end" name="changed_end" type="hidden" class="form-control" value="">
+</form>
 <!-- ##############################   Store new event ################################################ -->
-<form id="newEvent_submit" action="" method="post" >
-<input id="newEvent_id" name="new_id"type="hidden" class="form-control" value="">
+<form id="newEvent_submit" action="/users/account/myschedule/insert" method="post" >
+
 <input id="newEvent_title" name="new_title" type="hidden" class="form-control" value="">
 <input id="newEvent_start" name="new_start" type="hidden" class="form-control" value="">
 <input id="newEvent_end" name="new_end" type="hidden" class="form-control" value="">
+<input id="newEvent_url" name="new_url" type="hidden" class="form-control" value="myschedule">
 </form>
 <br> <br>
-<button  id="h-btn" class="btn btn-lg btn-info" href="#dialogModal" data-toggle="modal">hey there</button>
+<button  type="hidden" id="h-btn1" class="btn btn-lg btn-info" href="#dialogModal" data-toggle="modal">hey there</button>
+<button  type="hidden" id="h-btn2" class="btn btn-lg btn-info" href="#detailModal" data-toggle="modal">hey there</button>
 <!-- Modal -->
 <div class="modal fade" id="dialogModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true" >
@@ -233,6 +246,41 @@ margin: 0 auto;
                             Close
                 </button>
 
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Portfolio Modal 1 -->
+<div class="portfolio-modal modal fade" id="detailModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 ">
+                        <div class="modal-body">
+                            <!-- Concert Details Go Here -->
+                            <h2>Concert Title</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-responsive img-centered" src="img/concert/piano.jpg" alt="">
+                            <p> Here is the description </p>
+
+                            <ul class="list-inline">
+                                <li><strong>Date:</strong> April 2017</li>
+                                <li><strong>Location:</strong> Royal opera house
+                                <li><strong>Performer:</strong> Tuna</li>
+                                <li><strong>Category:</strong> Classic</li>
+
+                            </ul>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
