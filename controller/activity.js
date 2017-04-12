@@ -7,21 +7,6 @@ var mComment = require('../models/comment');
 var Schedule = require('../models/schedule');
 exports = module.exports = {};
 
-// get searchby category
-/*
-exports.getSearchResults = function getSearchResults (req, res, next){
-  console.log(req.query.cat);
-  //var cat = Number(req.query.cat);
-  Activity.searchBy(req.query.keyword,cat, function(err, docs){
-    var results={
-      user : req.user,
-      activity : docs,
-      isLogin: req.isAuthenticated()
-    };
-    res.render("explore_results",results);
-  });
-};
-*/
 // to display an activity
 exports.getActivity =function getActivity(req, res, next){
   console.log(req.params.id);
@@ -103,9 +88,12 @@ exports.rateActivity =function rateActivity(req, res, next){
   if(req.isAuthenticated()){
     Activity.getOneById(req.body.activityId, function(err, doc){
       if(!doc) return next();
+      console.log('before doing ', doc.rate_num, doc.rate);
       var tmprate = (doc.rate*doc.rate_num + req.body.rate)/(1+doc.rate_num);
       doc.rate = tmprate;
       doc.rate_num += 1;
+      console.log('doc.rate: '+ doc.rate);
+      console.log('tmprate',tmprate);
       doc.save();
     });
     next();
