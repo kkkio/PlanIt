@@ -319,11 +319,13 @@ ul.social-buttons li a:active {
   clear:both;
   display:table;
   width:100%
-
+  padding: 20px;
   font-size:14px;
   line-height: 28px;
   font-weight: 400;
 }
+
+
 
 
 .post-title{
@@ -415,6 +417,9 @@ ul.social-buttons li a:active {
 }
 
 .moment-input-group{
+  padding-left:20px;
+  padding-right:20px;
+  padding-bottom: 20px;
   width:100%;
 }
 
@@ -532,6 +537,8 @@ ul.social-buttons li a:active {
   border:none;
   overflow: hidden;
   display: block;
+  padding-left: 20px;
+  padding-right:20px;
 }
 
 body{
@@ -784,7 +791,7 @@ header .intro-text .intro-lead-in {
                                       <div class="col-lg-6 col-md-2 col-sm-2">
                                       </div>
                                       <div class="col-lg-3 col-md-5 col-sm-5">
-                                          <button type="submit" class="btn">Submit</button>
+                                          <button type="submit" class="btn" id="submitNewMoment">Submit</button>
                                       </div>
 
                                       <div class="col-lg-3 col-md-5 col-sm-5">
@@ -811,7 +818,7 @@ header .intro-text .intro-lead-in {
                                 </a>
 
                                 <a href="#" class="list-group-item" style="background-color: Orange; height:17vh;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 3vw;"><%= user.moment_num %></p>
+                                    <p class="list-group-item-heading acc-count" style="font-size: 3vw;"><%= moment.length %></p>
                                     <p class="list-group-item-text">moments</p>
                                 </a>
                             </ul>

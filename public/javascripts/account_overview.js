@@ -148,69 +148,39 @@ $(document).ready(function () {
 
 });
 
+
 // Avoid invalid input
-$(function() {
-
-    $("#newMomentForm input,#newMomentForm textarea,#newMomentForm select").jqBootstrapValidation({
-        preventSubmit: true,
-        submitError: function($form, event, errors) {
-            // additional error messages or events
-        },
-        submitSuccess: function($form, event) {
-            event.preventDefault(); // prevent default submit behaviour
-            // get values from FORM
-            var image = $("input#image-upload").val();
-            var title = $("input#newMomentTitle").val();
-            var text = $("textarea#newMomentText").val();
-            var location = $("input#newLocation").val();
-            var privacy = $("select#newPricacy").val();
-            var firstName = name; // For Success/Failure Message
-            // Check for white space in name for Success/Fail message
-            if (firstName.indexOf(' ') >= 0) {
-                firstName = name.split(' ').slice(0, -1).join(' ');
-            }
-            $.ajax({
-                url: "././mail/contact_me.php",
-                type: "POST",
-                data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message
-                },
-                cache: false,
-                success: function() {
-                    // Success message
-                    $('#success').html("<div class='alert alert-success'>");
-                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
-                    $('#success > .alert-success')
-                        .append("<strong>Your message has been sent. </strong>");
-                    $('#success > .alert-success')
-                        .append('</div>');
-
-                    //clear all fields
-                    $('#contactForm').trigger("reset");
-                },
-                error: function() {
-                    // Fail message
-                    $('#success').html("<div class='alert alert-danger'>");
-                    $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
-                    $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
-                    $('#success > .alert-danger').append('</div>');
-                    //clear all fields
-                    $('#contactForm').trigger("reset");
-                },
-            });
-        },
-        filter: function() {
-            return $(this).is(":visible");
-        },
-    });
-
-    $("a[data-toggle=\"tab\"]").click(function(e) {
-        e.preventDefault();
-        $(this).tab("show");
+$(document).ready(function(){
+    $("#submitNewMoment").click(function(event){
+        var image = $("input#image-upload").val();
+        var title = $("input#newMomentTitle").val();
+        var text = $("textarea#newMomentText").val();
+        var location = $("input#newLocation").val();
+        var privacy = $("select#newPricacy").val();
+        if(!image){
+            event.preventDefault();
+            alert("Please upload an image :)");
+        }
+        else if(!title){
+            event.preventDefault();
+            alert("Please input a title :)");            
+        }
+        else if(!text){
+            event.preventDefault();
+            alert("Please input a text :)");            
+        }   
+        else if(!location){
+            event.preventDefault();
+            alert("Please input a location :)");            
+        } 
+        else if(!privacy){
+            event.preventDefault();
+            alert("Please select a privacy :)");            
+        } 
+        else{
+            $('#newMomentForm').submit();
+        }                     
     });
 });
+
+

@@ -43,7 +43,7 @@ exports.addMoment = function addMoment(req,res,next){
     };
     var data=new moment(insert_data);
 		if(req.file){
-			doc.pic = '/upload/'+req.file.filename;
+			data.pic = '/upload/'+req.file.filename;
 			console.log('true path', req.file.path);
 		}
 		console.log(req.user.username);
