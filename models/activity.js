@@ -80,11 +80,20 @@ activity.statics.searchByLocation = function searchBy (keywords, callback){
 };
 */
 activity.statics.viewByCat = function viewByCat(cat, callback){
-	this
-	.find({category: cat})
-	.populate('commentList')
-	.sort({rate : 1})
-	.exec(callback);
+	if(cat == 7){
+		return this
+		.find()
+		.populate('commentList')
+		.limit(1000)
+		.sort({rate : 1})
+		.exec(callback);
+	}else{
+		return this
+		.find({category: cat})
+		.populate('commentList')
+		.sort({rate : 1})
+		.exec(callback);
+	}
 }
 
 // get an activity by id
