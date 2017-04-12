@@ -17,8 +17,12 @@ router.get('/', isLoggedIn,function(req, res, next) {
    });
 });
 
-router.get('/:cat', explore.checker, explore.getSearchResults);
+router.get('/:cat',checkid, explore.checker, explore.getResults);
 
+function checkid(req,res,next){
+  console.log('CHECKING ID ' + req.params.cat);
+  next();
+}
 
 // route middleware to make sure
 function isLoggedIn(req, res, next) {

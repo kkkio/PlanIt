@@ -82,6 +82,7 @@ activity.statics.searchByLocation = function searchBy (keywords, callback){
 activity.statics.viewByCat = function viewByCat(cat, callback){
 	this
 	.find({category: cat})
+	.populate('commentList')
 	.sort({rate : 1})
 	.exec(callback);
 }
@@ -91,7 +92,7 @@ activity.statics.getOneById = function getOneById(id, callback){
 	this
 	.findById(id)
 	.populate('commentList')
-	.exec();
+	.exec(callback);
 };
 
 //INSTANCED METHOD
