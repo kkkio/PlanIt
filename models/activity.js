@@ -25,8 +25,7 @@ var activitySchema = mongoose.Schema({
 	// 0: all; 1: music  & art ; 2: Sports; 3: Tech; 4: Movies 5: Others
 	category: Number,
 	comment_num : Number,
-	// Can I save an array of rating and calculate the average rating?
-	average_rating: Number,
+
 	commentList: [{type: mongoose.Schema.Types.ObjectId, ref: 'comment'}]
 });
 
