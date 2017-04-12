@@ -1,5 +1,5 @@
 $(document).on('ready', function(){
-    $('#input-7-xs').rating({displayOnly: true, step: 0.5});
+    $('#input-1-xs').rating({displayOnly: true, step: 0.5});
 });
 
 
@@ -21,6 +21,7 @@ ratingApp.controller("colourController", [ "$scope", function($scope) {
         cssHover		: "rating-star-hover-blue"
     };
 }]);
+
 
 // submit comment
 $(document).ready(function(){
