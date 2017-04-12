@@ -4,7 +4,7 @@ var User = require('../models/user');
 
 exports = module.exports = {};
 
-exports.categor = category = ['all','music','sports','tech','culture','movies','others','recommendation'];
+exports.categor = category = ['search','music','sports','tech','culture','movies','others','recommendation'];
 
 
 exports.checker = function checker(req, res, next){
@@ -65,7 +65,7 @@ exports.getSearchResults = function getSearchResults(req,res,next){
           isLogin: req.isAuthenticated()
         };
         console.log('how many data: ' + docs.length);
-        res.render("explore_search",results);
+        exports.renderByCat(req,res,results);
       }else {
         var results={
           user : req.user,

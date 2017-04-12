@@ -47,7 +47,7 @@ activity.index({
 
 // 1. take query 2.keywords are a list of keywords
 activity.statics.searchBy = function searchBy (keywords, cat, callback){
-	console.log(cat);
+	console.log('IN MODEL SEARCHING BY: ',cat);
 	if(cat == 0){
 		this
 		.find({$text: {$search: keywords}}, {score: {$meta: 'textScore'}})
@@ -57,8 +57,8 @@ activity.statics.searchBy = function searchBy (keywords, cat, callback){
 	}else{
 		this
 		.find({$text: {$search: keywords}}, {score: {$meta: 'textScore'}})
+		.find({category : cat})
 		.sort({score:{$meta: "textScore"}})
-		.select({category : cat})
 		.populate('commentList')
 		.exec(callback);
 	}
