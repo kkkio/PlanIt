@@ -484,11 +484,15 @@ ul.social-buttons li a:active {
                           document.getElementById('use_form').submit();
                         });
                         $('#useful_0').click(function(){
-                          var notUseful = document.getElementById('useful_not').attr('value',"false");
-                          $('#use_form').submit();
+                          var notUseful = document.getElementById('useful_not')
+                          $(notUseful).attr('value',"false");
+                          document.getElementById('use_form').submit();
                        });
                        });
                        </script>
+                        
+                        
+                        <% if(String(user._id).valueOf() != String(activity.commentList[i]._user_id._id).valueOf()){ %>
                         <button type="button" class="useful" id="useful_1">Useful(<%=activity.commentList[i].useful_num%>)</button>
                         <button type="button" class="notuseful" id="useful_0">Not Useful(<%=activity.commentList[i].nonuseful_num%>)</button>
                         <form id="use_form" method="post" action= "/activity/rateComment">
@@ -496,7 +500,12 @@ ul.social-buttons li a:active {
                           <input type="hidden" name="activityId" value=<%= activity._id%>>
                           <input type="hidden" name="commentId" value=<%= activity.commentList[i]._id%>>
                         </form>
+                        <% } else{ %>
+                        <button type="button" class="useful" id="useful_1" disabled>Useful(<%=activity.commentList[i].useful_num%>)</button>
+                        <button type="button" class="notuseful" id="useful_0" disabled="">Not Useful(<%=activity.commentList[i].nonuseful_num%>)</button>
+                        <% } %>
 
+ 
                     </div>
                     </div>
                 </div>

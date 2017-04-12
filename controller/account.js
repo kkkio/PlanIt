@@ -70,14 +70,16 @@ exports.updateInfo = function updateInfo (req, res, next){
       console.log('No user found');
     }
     doc.intro = req.body.intro;
+		doc.phone_number = req.body.telephone;
     var tmpdate = new Date();
     tmpdate.setFullYear(req.body.year);
     tmpdate.setMonth(req.body.month);
     tmpdate.setDate(req.body.date);
     doc.birth = tmpdate;
+		console.log('before save file', doc.propic);
 		if(req.file){
-			if(doc.pic && doc.pic != '/images/acc_mgnt/not_upload.png'){
-				var path = 'public'+doc.pic;
+			if(doc.propic && doc.propic != '/images/acc_mgnt/not_upload.png'){
+				var path = 'public'+doc.propic;
 				console.log('path :', path);
 				if(fs.existsSync(path)){
 					fs.stat(path,function(err, stats){
@@ -89,8 +91,9 @@ exports.updateInfo = function updateInfo (req, res, next){
 					});
 				}
 			}
-			data.pic = '/upload/'+req.file.filename;
+			doc.propic = '/upload/'+req.file.filename;
 			console.log('true path', req.file.path);
+			console.log('doc.pic', doc.propic);
 		}
     doc.save();
     //console.log(tmpdate);
@@ -105,6 +108,7 @@ exports.validatePasswordForm = function validatePasswordForm(req,res,next){
 	var old_password = req.body.old_password;
 	var new_password = req.body.new_password;
 	var new_password_confirmation = req.body.new_password_confirmation;
+
 
 	req.checkBody('new_password','Passwords do not match').equals(req.body.new_password_confirmation);
 	req.getValidationResult().then(function(result){

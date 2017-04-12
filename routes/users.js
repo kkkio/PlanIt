@@ -78,7 +78,7 @@ router.get('/activity',isLoggedIn,function(req,res,next){
 
 
 /* GET account management page. */
-router.post('/account/profile',isLoggedIn, account.updateInfo);
+router.post('/account/profile',isLoggedIn, upload.single('image'),account.updateInfo);
 
 /* GET account management page. */
 router.post('/account/editPassword',isLoggedIn, account.validatePasswordForm, account.updatePassword);
