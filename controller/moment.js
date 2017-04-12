@@ -132,12 +132,13 @@ exports.postComment = function postComment(req,res,next){
   // add one comment & update comment list in activity & user
   moment.findById(req.body.momentId, function(err, doc){
       // store an comment
+			var date =new Date();
       var data = {
         _moment_id : doc._id,
         _user_id : doc._user_id,
         // type : acitivity - 1; moment - 2
         content: comment,
-        post_time: Date.now,
+        post_time: date,
         num_of_useful: 0,
         num_of_nonuseful: 0
       };

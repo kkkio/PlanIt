@@ -47,7 +47,9 @@ exports.getActivity =function getActivity(req, res, next){
 exports.postComment = function postComment(req,res,next){
   if(!req.body.content) return res.render("single_activity",results);
   // add one comment & update comment list in activity & user
+  console.log('GOOD IS NOT ', req.body.content);
   Activity.getOneById(req.body.activityId, function(err, doc){
+    var date= new Date();
     if(err) throw(err);
     if(!doc){
       console.log('bad activityId');
@@ -59,12 +61,13 @@ exports.postComment = function postComment(req,res,next){
         _user_id : req.user._id,
         // type : acitivity - 1; moment - 2
         content: req.body.content,
-        post_time: Date.now,
+        post_time: date,
         num_of_useful: 0,
         num_of_nonuseful: 0
       };
       var com = new mComment(data);
       com.save();
+      console.log('com is',com);
       // update commentList
       doc.update({
         $push: {"commentList": com._id},
