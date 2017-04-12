@@ -79,7 +79,7 @@ exports.updateMoment = function updatemoment(req,res,next){
 	console.log("in updateMoment");
 	var id = req.body.momentId;
 	console.log(id);
-	console.log('up id last newMomentText');
+	console.log('up id last updateMomentText');
 	console.log(req.body.newMomentText);
   	moment.findById(req.body.momentId, function(err, doc) {
     if (err) {
@@ -89,7 +89,8 @@ exports.updateMoment = function updatemoment(req,res,next){
 			console.error('error, no entry found');
 		}
 		else{
-		doc.text = req.body.newMomentText;
+		doc.title=	req.body.updateMomentTitle;
+		doc.text =	req.body.updateMomentText;
 		doc.save();
 	 }
 	console.log(doc.text);
