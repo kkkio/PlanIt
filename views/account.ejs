@@ -841,8 +841,10 @@ header .intro-text .intro-lead-in {
                   <div class="col-lg-10" id="myMomentList">
 
                     <% for (var i=0; i < moment.length; i++) { %>
-                      <div class="post" id=<%= "myMoment"+i %>>
+                      <div class="post" id= <%= "myMoment"+i %> >
+                        <% if(moment[i].pic) { %>
                           <img class="img-responsive img-border img-full" src= <%= moment[i].pic %> alt="My Moment Image" id="myMomentImg">
+                        <% } %>
                           <div class="post-text">
                               <h2 class="post-title" id=<%="myMomentTitle"+i%>><%= moment[i].title %></h2>
                               <div class="post-meta">
@@ -926,7 +928,7 @@ header .intro-text .intro-lead-in {
                         </div>
                     </div>
                   </div>
-                </div>    
+                </div>
 
 
                   <div class="col-lg-1"></div>

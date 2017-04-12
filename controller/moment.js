@@ -40,11 +40,13 @@ exports.addMoment = function addMoment(req,res,next){
 			//like : faker.random.number()| 0,
      	text : 		req.body.momentText,
     	privacy : 	req.body.privacy,
-			pic : '/upload/'+req.file.filename
     };
-		console.log('true path', req.file.path);
-	console.log(req.user.username);
     var data=new moment(insert_data);
+		if(req.file){
+			doc.pic = '/upload/'+req.file.filename;
+			console.log('true path', req.file.path);
+		}
+		console.log(req.user.username);
 		//console.log('busboy',req.busboy == null);
 		data.save();
 		User.findById(req.user._id,function(err, user){
@@ -58,18 +60,20 @@ exports.deleteMoment = function deletemoment(req,res,next){
 	var id=req.body.momentId; // TODO: can be change
 	console.log("momentId", id);
 	moment.findById(id, function(err,doc){
-		var path = 'public'+doc.pic;
-		console.log('path :', path);
-		if(fs.existsSync(path)){
-			fs.stat(path,function(err, stats){
-				if(err) return;
-				fs.unlink(path,function(err){
-					if(err) throw(err);
-					console.log('file deleted successfully');
-				})
-			});
+		// add logic for delete path
+		if(doc.pic){
+			var path = 'public'+doc.pic;
+			console.log('path :', path);
+			if(fs.existsSync(path)){
+				fs.stat(path,function(err, stats){
+					if(err) return;
+					fs.unlink(path,function(err){
+						if(err) throw(err);
+						console.log('file deleted successfully');
+					})
+				});
+			}
 		}
-
 		moment.findByIdAndRemove(id).exec();
 	});
 	User.findById(req.user._id,function(err, user){

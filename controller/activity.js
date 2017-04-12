@@ -7,8 +7,12 @@ var mComment = require('../models/comment');
 var Schedule = require('../models/schedule');
 exports = module.exports = {};
 
+// get searchby category
+/*
 exports.getSearchResults = function getSearchResults (req, res, next){
-  Activity.searchBy(req.query.keyword, function(err, docs){
+  console.log(req.query.cat);
+  //var cat = Number(req.query.cat);
+  Activity.searchBy(req.query.keyword,cat, function(err, docs){
     var results={
       user : req.user,
       activity : docs,
@@ -17,7 +21,7 @@ exports.getSearchResults = function getSearchResults (req, res, next){
     res.render("explore_results",results);
   });
 };
-
+*/
 // to display an activity
 exports.getActivity =function getActivity(req, res, next){
   Activity.getOneById(req.params.id, function(err, doc){
@@ -37,6 +41,7 @@ exports.getActivity =function getActivity(req, res, next){
     res.render("single_activity",results);
   });
 };
+
 
 exports.postComment = function postComment(req,res,next){
   // add one comment & update comment list in activity & user
@@ -86,8 +91,9 @@ exports.rateActivity =function rateActivity(req, res, next){
   if(req.isAuthenticated()){
     Activity.getOneById(req.body.activityId, function(err, doc){
       if(!doc) return next();
-      var tmprate = (doc.rate + req.body.rate)/doc.rate_num;
+      var tmprate = (doc.rate*doc.rate_num + req.body.rate)/(1+doc.rate_num);
       doc.rate = tmprate;
+      doc.rate_num += 1;
       doc.save();
     });
     next();

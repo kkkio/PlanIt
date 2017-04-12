@@ -13,7 +13,12 @@ db.once('open',function(){
   console.log('connected');
 });
 
+
 for(var i = 0; i<1000; i++){
+  var tmp = [faker.lorem.paragraph()];
+  for(var j = 0; j < faker.random.number()%5 + 1; j++){
+    tmp.push(faker.lorem.paragraph());
+  }
   var fake_activity = {
     title: faker.lorem.words(),
     start_time : faker.date.recent(),
@@ -22,8 +27,9 @@ for(var i = 0; i<1000; i++){
       country : faker.address.country(),
       city : faker.address.state()
     },
-    intro : faker.lorem.paragraphs(),
-    category : faker.random.number()%4 + 1,
+    briefIntro : faker.lorem.paragraph(),
+    detailIntro : tmp,
+    category : faker.random.number()%5 + 1,
     pic : faker.image.image()
   };
   var data = new Activity(fake_activity);
