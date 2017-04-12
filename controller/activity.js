@@ -103,14 +103,14 @@ exports.rateActivity =function rateActivity(req, res, next){
 exports.rateComment =function rateComment(req, res, next){
   if(req.isAuthenticated()){
     mComment.findById(req.body.commentId,function(err,doc){
-      if(!doc) return res.redirect('/activity'+req.params.activityId);
+      if(!doc) return res.redirect('/activity'+req.body.activityId);
       if(req.body.isUseful === 'true'){
         doc.useful_num += 1;
       }else{
         doc.nonuseful_num += 1;
       }
       doc.save();
-      return next();
+      res.redirect('/activity'+req.body.activityId);
     });
   }
 };
