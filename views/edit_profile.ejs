@@ -571,12 +571,12 @@ hr.heart-hr-bottom{
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                   <h4>Send Feedback <i class="fa fa-send"></i></h4>
               </div>
-              <form method="post" action="/users/account/feedback">
+              <form id="feedbackForm">
                 <div class="modal-body">
-                    <textarea type="text" cols="40" rows="5" style="width:100%" placeholder="Describe your issue or share your idea"></textarea>
+                    <textarea type="text" cols="40" rows="5" style="width:100%" id="feedbackText" placeholder="Describe your issue or share your idea"></textarea>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn">Submit</button>
+                  <button type="submit" class="btn" id="sendFeedback">Submit</button>
                   <button type="button" class="btn" data-dismiss="modal">Close</button>
                 </div>
               </form>
