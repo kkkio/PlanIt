@@ -2,3 +2,4 @@ node_modules
 .DS_*
 node-express-passport-mysql
 upload
+/public/upload

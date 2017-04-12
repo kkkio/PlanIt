@@ -8,7 +8,7 @@ exports.categor = category = ['search','music','sports','tech','culture','movies
 
 
 exports.checker = function checker(req, res, next){
-  if(req.params.cat == 'search'|| req.params.cat == 'recommendation') return next();
+  if(req.params.cat == 'search') return next();
   var cat;
   for(cat = category.length-1; cat > 0; cat--){
     if(req.params.cat == category[cat])
