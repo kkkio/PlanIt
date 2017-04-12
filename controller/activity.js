@@ -45,14 +45,20 @@ exports.getActivity =function getActivity(req, res, next){
 
 
 exports.postComment = function postComment(req,res,next){
+  if(!req.body.content) return res.render("single_activity",results);
   // add one comment & update comment list in activity & user
   Activity.getOneById(req.body.activityId, function(err, doc){
+    if(err) throw(err);
+    if(!doc){
+      console.log('bad activityId');
+      res.status(505).end();
+    }
       // store an comment
       var data = {
         _activity_id : doc._id,
-        _user_id : doc._user_id,
+        _user_id : req.user._id,
         // type : acitivity - 1; moment - 2
-        content: comment,
+        content: req.body.content,
         post_time: Date.now,
         num_of_useful: 0,
         num_of_nonuseful: 0
@@ -64,7 +70,7 @@ exports.postComment = function postComment(req,res,next){
         $push: {"commentList": com._id},
         $inc: {"comment_num": 1}
       }).exec();
-      User.findById(doc._user_id, function(err, user){
+      User.findById(req.user._id, function(err, user){
         user
         .update({
           $push: {"commentList": com._id},
@@ -78,7 +84,8 @@ exports.postComment = function postComment(req,res,next){
         isLogin: req.isAuthenticated()
       };
       // use send for ajax
-      res.render("single_activity",results);
+      //res.render("single_activity",results);
+      res.redirect('/activity/'+req.body.activityId);
     });
 };
 
@@ -87,8 +94,9 @@ exports.deleteComment = function deleteComment(req, res, next){
   mComment.findByIdAndRemove(id).exec();
 };
 
-// to display an activity
+// to rate an activity
 exports.rateActivity =function rateActivity(req, res, next){
+  console.log("in rateActivity: checking activityId "+ req.body.activityId);
   if(req.isAuthenticated()){
     Activity.getOneById(req.body.activityId, function(err, doc){
       if(!doc) return next();
@@ -104,9 +112,9 @@ exports.rateActivity =function rateActivity(req, res, next){
 // next - get activity
 exports.rateComment =function rateComment(req, res, next){
   if(req.isAuthenticated()){
-    mComment.findById(req.query.commentId,function(err,doc){
-      if(!doc) return res.redirect('/activity'+req.query.activityId);
-      if(req.query.isUseful){
+    mComment.findById(req.body.commentId,function(err,doc){
+      if(!doc) return res.redirect('/activity'+req.params.activityId);
+      if(req.body.isUseful){
         doc.useful_num += 1;
       }else{
         doc.nonuseful_num += 1;

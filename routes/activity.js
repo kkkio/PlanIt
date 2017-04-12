@@ -12,7 +12,7 @@ router.get('/single',function(req,res,next){
 
 router.post('/postComment',activity.rateActivity,activity.postComment);
 
-router.post('/rateComment',activity.rateComment,activity.postComment);
+router.post('/rateComment/:id',activity.rateComment,activity.postComment);
 
 router.get('/:id',activity.getActivity);
 
