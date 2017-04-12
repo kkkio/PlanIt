@@ -27,18 +27,32 @@ router.get('/result/keyword=:keyword',function(req,res,next){
 */
 var express = require('express');
 var router = express.Router();
-var activity=require('../models/activity');
+var activity = require('../controller/activity');
 
 router.get('/',function(req, res, next){
-  res.redirect('/activity/single');
+  res.redirect('/explore');
 });
 
-router.get('/single',function(req, res, next){
-  res.render('single_activity',{
-    user : req.user,
-    isLogin : req.isAuthenticated()
-  });
+router.get('/single',function(req,res,next){
+  res.redirect('/activity');
 });
+
+router.post('/postComment',activity.rateActivity,activity.postComment);
+
+router.post('/rateComment',activity.rateComment,activity.postComment);
+
+router.get('/:id',activity.getActivity);
+
+// route middleware only for homepage
+function isLoggedIn(req, res, next) {
+
+	// if user is authenticated in the session, carry on
+	if (req.isAuthenticated())
+		return next();
+
+	// if they aren't redirect them to the home page
+  return next();
+}
 
 module.exports = router;
 

@@ -12,7 +12,7 @@ $(document).ready(function(){
     	$(this).prop('Counter',0).animate({
         	Counter: $(this).text()
     	}, {
-        	duration: 1000,
+        	duration: 500,
         	easing: 'swing',
         	step: function (now) {
         	$(this).text(Math.ceil(now));
@@ -59,19 +59,24 @@ $(document).ready(function(){
     $("a[id^='editBtn']").click(function(){
         var currentBtnId = $(this).attr('id');
         var num = parseInt(currentBtnId.match(/(\d+)$/)[0], 10);
-        var momentTextId = "myMomentText"+num;
-        var text = document.getElementById(momentTextId);
-        if (!($(text).is(':disabled'))) {
-          $(this).find('strong').text('Re-edit');
-          $(this).find('i').toggleClass('glyphicon-ok').toggleClass('glyphicon-edit');
-          $(text).prop('disabled', true);
-          $(text).blur();
-        } else {
-          $(this).find('strong').text('Confirm');
-          $(this).find('i').toggleClass('glyphicon-edit').toggleClass('glyphicon-ok');         
-          $(text).prop('disabled', false);
-          $(text).focus();
-        }
+        var to_be_posted = $(this).attr('name'); //momentId
+        var oldTitleId = "myMomentTitle" + num;
+        var oldTextId = "myMomentText" + num;
+        var oldTitle = document.getElementById(oldTitleId);
+        var oldText = document.getElementById(oldTextId);
+        var newTitle = document.getElementById("tmpMomentTitle");
+        var newText = document.getElementById("tmpMomentText");
+        // Keep original title and text
+        $(newTitle).val(($(oldTitle).text()));
+        $(newText).val(($(oldText).val()));
+        // Update
+        $("#confirmUpdateBtn").click(function(){
+          $('#tmpMomentId2').attr('value', to_be_posted);
+          $('#updateTitle').attr('value', $(newTitle).val());
+          $('#updateText').attr('value', $(newText).val());
+          $('#updateMomentForm').submit();
+        });        
+
     });
 });
 

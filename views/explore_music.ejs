@@ -68,7 +68,7 @@ body{
 }
 
 #searchBG{
-  background-image: url('/images/explore/sky.jpg');
+  background-image: url('/images/explore/band3.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
@@ -217,17 +217,16 @@ ul.social-buttons li a:active {
 }
 
 .search-head h1{
-  font-size: 8.6vw;
+  font-size: 7.5vw;
 }
 
-.search-head h1:before, .search-head h1:after{
-  content: "\2605";
-  font-size:4vw;
-  display: inline-block;
-  position: relative;
-  top: -1.5vh;
-  padding: 0 10px;
-  color:#ffe066;
+.no-result h4{
+  font-size:1.2vw;
+}
+
+.music-note{
+  font-size: 5vw;
+  color:#487bb4;
 }
 
 </style>
@@ -262,8 +261,8 @@ ul.social-buttons li a:active {
 
     </div>
 
-    <%- include search_navBar.ejs -%>
-  
+    <%- include search_music_navBar.ejs -%>
+
   </div><!-- /.container-fluid -->
 </nav>
 
@@ -271,13 +270,22 @@ ul.social-buttons li a:active {
 
 <div class="container">
   <div class="search-head">
-    <h1><text style="color:#487bb4;">Live</text> <text style="color:#f7ba34">Laugh</text> <text style="color:LightSalmon">Love</text></h1>
+    <h1> <span class="glyphicon glyphicon-music music-note" style="font-size: 5vw;"></span><text style="color:LightCoral;"> Dance</text> <text style="color:#487bb4">With</text> <text style="color:LightCoral">Life </text><span class="glyphicon glyphicon-music music-note" style="font-size: 5vw;"></span></h1>
   </div>
 
 
   <h1 style="text-align:center;" id="show_results"></h1>
     
-  <% if(activity) {%>  
+  <% if(activity) {%>
+    <!-- Fail to add keyword  
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="well text-center">
+        <h4><span>Activities about "</span><span id="keywordSpan"></span><span>" :)</span></h4>
+        </div>
+      </div>
+    </div>
+    -->
     <% for (var i=0; i< activity.length/4; i++) {%>
     <div class="row">
       <% for (var j=0; j< 4; j++) {%>
@@ -285,7 +293,7 @@ ul.social-buttons li a:active {
       <div class="activity-list" id=<%= "activityList"+(i*4+j) %>>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
           <div class="thumbnail">
-            <img src="/images/explore_search/9.jpg" alt="...">
+            <img src="<%= activity[(i*4+j)].pic %>" alt="...">
             <div class="caption">
               <h3><%= activity[(i*4+j)].title %></h3>
               <p><%= activity[(i*4+j)].intro %></p>
@@ -305,9 +313,18 @@ ul.social-buttons li a:active {
         </div>
       </div>
     </div> 
+  <% } else { %>
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <div class="well text-center no-result">
+        <h4><span class="glyphicon glyphicon-exclamation-sign"></span> Oops...Your search did not match any activities :(</h4>
+        </div>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
   <% } %>
-  
- 
+
   <hr>
   <%- include footer.ejs -%>
 </div>
@@ -329,7 +346,7 @@ ul.social-buttons li a:active {
                 <div class="row">
                     <div class="col-lg-8 ">
                         <div class="modal-body">
-                            
+
                             <h2>Concert Title</h2>
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                             <img class="img-responsive img-centered" src="/images/explore_search/piano.jpg" alt="">

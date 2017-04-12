@@ -1,22 +1,28 @@
 
 $(document).ready(function(){
+  var keywordEle = document.getElementById("search_text");
 	document.getElementById("search_button").onclick = function() {
-		  var keywordEle = document.getElementById("search_text");
-  		window.location.href = '/explore/search?keyword='+$(keywordEle).val();
       var keyword = $(keywordEle).val();
-      $(keyword).text()
+  		window.location.href = '/explore/search?keyword='+keyword;
 	};
 
 	$("input[id='search_text']").keypress(function(e) {
        if(e.which == 13) {
           e.preventDefault();
-          var keyword = document.getElementById("search_text");
-  		    window.location.href = '/explore/search?keyword='+$(keyword).val();
-          var insertText = document.getElementById("show_results");
-          $(insertText).append($(keyword).val());
+          var keyword = $(keywordEle).val();
+  		    window.location.href = '/explore/search?keyword='+$(keywordEle).val();
        }
     });
 
+});
+
+$(document).ready(function () {
+  var toBeFilled = document.getElementById("search_text");
+  var tmp = $(location).attr('search');
+  var keyword = tmp.substring(9);
+  if(keyword){
+    $(toBeFilled).val(keyword);
+  }
 });
 
 

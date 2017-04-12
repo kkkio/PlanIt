@@ -217,7 +217,7 @@ ul.social-buttons li a:active {
 }
 
 .search-head h1{
-  font-size: 8.6vw;
+  font-size: 7.5vw;
 }
 
 .search-head h1:before, .search-head h1:after{
@@ -281,19 +281,28 @@ ul.social-buttons li a:active {
 
   <h1 style="text-align:center;" id="show_results"></h1>
     
-  <% if(activity) {%>  
+  <% if(activity) {%>
+    <!-- Fail to add keyword  
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="well text-center">
+        <h4><span>Activities about "</span><span id="keywordSpan"></span><span>" :)</span></h4>
+        </div>
+      </div>
+    </div>
+    -->
     <% for (var i=0; i< activity.length/4; i++) {%>
     <div class="row">
       <% for (var j=0; j< 4; j++) {%>
       <% if(i*4+j >= activity.length) { break;} %>
       <div class="activity-list" id=<%= "activityList"+(i*4+j) %>>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="thum1">
-          <div class="thumbnail th-fade">
+          <div class="thumbnail">
             <img src="<%= activity[(i*4+j)].pic %>" alt="...">
             <div class="caption">
               <h3><%= activity[(i*4+j)].title %></h3>
               <p><%= activity[(i*4+j)].intro %></p>
-              <p><a href="#modal1" class="btn btn-primary" role="button" data-toggle="modal">detail<span class="glyphicon glyphicon-chevron-right"></span></a></p>
+              <p><a href=<%= "/activity/"+activity[(i*4+j)]._id %> class="btn btn-primary" role="button" data-toggle="modal">detail<span class="glyphicon glyphicon-chevron-right"></span></a></p>
             </div>
           </div>
         </div>
@@ -320,19 +329,6 @@ ul.social-buttons li a:active {
       <div class="col-lg-2"></div>
     </div>
   <% } %>
-
-
-  <!-- Pagination -->
-  <div class="row">
-      <div class="col-lg-2"></div>
-      <div class="col-lg-8">
-          <div class="more-activities">
-            <a href="#" id="loadMore">Load More</a>
-          </div>
-      </div>
-      <div class="col-lg-2"></div>
-  </div>
-
 
   <hr>
   <%- include footer.ejs -%>

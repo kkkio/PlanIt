@@ -13,9 +13,14 @@ var activitySchema = mongoose.Schema({
 		city : String
 	},
 
-	intro: String,
+	briefIntro: String,
+	detailIntro: [String],
 	url: String,
 	pic: String,
+
+	// rating
+	rate: {type: Number, default: 0},
+	rate_num : {type: Number, default: 0},
 	//1: music concert; 2: movies; 3: art exibition; 4: others
 	category: Number,
 	comment_num : Number,

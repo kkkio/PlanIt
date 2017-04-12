@@ -2,7 +2,7 @@ var express = require('express');
 var passport = require('passport');
 var User = require('../models/user');
 var Moment = require('../models/moment');
-var Activity = require('../models/acitivity');
+var Activity = require('../models/activity');
 var mComment = require('../models/comment');
 var Schedule = require('../models/schedule');
 exports = module.exports = {};
@@ -20,7 +20,15 @@ exports.getSearchResults = function getSearchResults (req, res, next){
 
 // to display an activity
 exports.getActivity =function getActivity(req, res, next){
-  Activity.getOneById(req.body.activityId, function(err, doc){
+  Activity.getOneById(req.params.id, function(err, doc){
+    if(err) {
+      res.status(404);
+      res.end();
+    }
+    if(!doc){
+      res.status(404);
+      res.end();
+    }
     var results={
       user : req.user,
       activity : doc,
@@ -63,6 +71,7 @@ exports.postComment = function postComment(req,res,next){
         activity : doc,
         isLogin: req.isAuthenticated()
       };
+      // use send for ajax
       res.render("single_activity",results);
     });
 };
@@ -70,6 +79,35 @@ exports.postComment = function postComment(req,res,next){
 exports.deleteComment = function deleteComment(req, res, next){
   var id = req.body.commentId;
   mComment.findByIdAndRemove(id).exec();
+};
+
+// to display an activity
+exports.rateActivity =function rateActivity(req, res, next){
+  if(req.isAuthenticated()){
+    Activity.getOneById(req.body.activityId, function(err, doc){
+      if(!doc) return next();
+      var tmprate = (doc.rate + req.body.rate)/doc.rate_num;
+      doc.rate = tmprate;
+      doc.save();
+    });
+    next();
+  }
+};
+
+// next - get activity
+exports.rateComment =function rateComment(req, res, next){
+  if(req.isAuthenticated()){
+    mComment.findById(req.query.commentId,function(err,doc){
+      if(!doc) return res.redirect('/activity'+req.query.activityId);
+      if(req.query.isUseful){
+        doc.useful_num += 1;
+      }else{
+        doc.nonuseful_num += 1;
+      }
+      doc.save();
+      return next();
+    });
+  }
 };
 
 // add to user's schedule

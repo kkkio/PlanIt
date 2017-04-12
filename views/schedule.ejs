@@ -151,6 +151,7 @@ margin: 0 auto;
 </style>
 </head>
 <body>
+
   <%- include navBar.ejs -%>
 <!--  ##############################    Get event data from database   ##############################   -->
 <input type="hidden" class="form-control" id="eventNumber" value=<%=schedule.length %> >
@@ -160,6 +161,7 @@ margin: 0 auto;
 <input type="hidden" class="form-control" id=<%="event_start"+i%> value= <%= schedule[i].start_time.getFullYear()+"."+(schedule[i].start_time.getMonth()+1)+"."+schedule[i].start_time.getDate()%> >
 <input type="hidden" class="form-control" id=<%="event_end"+i%> value= <%= schedule[i].end_time.getFullYear()+"."+(schedule[i].end_time.getMonth()+1)+"."+schedule[i].end_time.getDate()%> >
 <input type="hidden" class="form-control" id=<%="event_url"+i%> value= <%= schedule[i].url%> >
+
 <% } %>
 <!--  ##############################   Store deleted event   ##############################  -->
 <form id="delete_submit" action="/users/account/myschedule/delete" method="post" >
