@@ -866,7 +866,7 @@ header .intro-text .intro-lead-in {
                           <div class="post-text">
                               <h2 class="post-title" id=<%="myMomentTitle"+i%>><%= moment[i].title %></h2>
                               <div class="post-meta">
-                                  By <a href="/users/account"><%= user.username %></a><text><%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %></text><text class="likes" id=<%="myMomentLike"+i%>>127 Likes</text>
+                                  By <a href="/users/account"><%= user.username %></a><text class="likes"><%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %></text>
                               </div>
                               <div class="moment-text">
                                   <input type="hidden" id="tmpNewTextId" name="momentId" value="">
@@ -878,7 +878,6 @@ header .intro-text .intro-lead-in {
                                       <div class="input-group-btn post-button">
                                           <a class="btn" data-toggle="modal" data-target="#updateModal" id=<%="editBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-edit post-edit"></i><strong class="post-edit-text">Re-edit</strong></a>
                                           <a class="btn" data-toggle="modal" data-target="#deleteModal" id=<%="deleteBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-trash post-delete"></i><strong class="post-delete-text">Delete</strong></a>
-                                          <a class="btn" id=<%="likeBtn"+i%>><i class="glyphicon glyphicon-heart post-unlike"></i> Like</a>
                                       </div>
                                   </div>
 

@@ -4,6 +4,8 @@ $(document).ready(function(){
 	document.getElementById("search_button").onclick = function() {
       var keyword = $(keywordEle).val();
   		window.location.href = '/explore/sports?keyword='+keyword;
+      var insertText = document.getElementById("show_results");
+      $(insertText).append($(keyword).val()); 
 	};
 
 	$("input[id='search_text']").keypress(function(e) {
@@ -11,21 +13,12 @@ $(document).ready(function(){
           e.preventDefault();
           var keyword = $(keywordEle).val();
   		    window.location.href = '/explore/sports?keyword='+$(keywordEle).val();
+          var insertText = document.getElementById("show_results");
+          $(insertText).append($(keyword).val()); 
        }
     });
 
 });
-
-$(document).ready(function () {
-  var toBeFilled = document.getElementById("search_text");
-  var tmp = $(location).attr('search');
-  var tmp_keyword = tmp.substring(9);
-  var keyword = tmp_keyword.slice(0,-6);
-  if(keyword){
-    $(toBeFilled).val(keyword);
-  }
-});
-
 
 
 // Load more
