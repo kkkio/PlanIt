@@ -101,17 +101,21 @@ exports.rateActivity =function rateActivity(req, res, next){
 
 // next - get activity
 exports.rateComment =function rateComment(req, res, next){
+  console.log(req.body.commentId);
   if(req.isAuthenticated()){
     mComment.findById(req.body.commentId,function(err,doc){
-      if(!doc) return res.redirect('/activity'+req.body.activityId);
+      if(!doc) return res.redirect('/activity/'+req.body.activityId);
       if(req.body.isUseful === 'true'){
         doc.useful_num += 1;
       }else{
         doc.nonuseful_num += 1;
       }
       doc.save();
-      res.redirect('/activity'+req.body.activityId);
+      res.redirect('/activity/'+req.body.activityId);
     });
+  }
+  else{
+    res.status(500).end();
   }
 };
 

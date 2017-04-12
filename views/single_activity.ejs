@@ -406,7 +406,7 @@ ul.social-buttons li a:active {
                   <br>
                   <i class="material-icons" style="margin: 2pt 0pt 0pt 0pt;font-size:16px">room</i>
                   Location: <%=activity.venue.city%>, <%= activity.venue.country %>
-                  
+
                   <br>
                   <span class="glyphicon glyphicon-star-empty" style="margin: 0pt 1pt"></span>
                   Average Rating:
@@ -455,7 +455,7 @@ ul.social-buttons li a:active {
                         <button type="submit" class="btn btn-primary" disabled>Submit</button>
                     </form>
                 </div>
-                <% } %>                
+                <% } %>
 
                 <hr>
 
@@ -467,7 +467,7 @@ ul.social-buttons li a:active {
                 <div class="media">
                     <div class="pull-left" href="#">
                         <img class="col-lg-2 propic" src=<%=activity.commentList[i]._user_id.propic%> alt="">
-                  
+
                     <div class="media-body">
                             <h4 class="media-heading"><%=activity.commentList[i]._user_id.username%>
                                 <small><%=activity.commentList[i].post_time%></small>
@@ -477,21 +477,24 @@ ul.social-buttons li a:active {
                        <br>
                        <script>
                        $(document).ready(function(){
-                       $('#useful_1').click(function(){
-                          document.getElementById('useful_not').attr('value',"true");
+                         $('#useful_1').click(function(){
+                          var useful = document.getElementById('useful_not');
+                          $(useful).attr('value', 'true');
+                          //alert($(useful).attr('value'));
                           document.getElementById('use_form').submit();
-                       });
-                       $('#useful_0').click(function(){
-                          document.getElementById('useful_not').attr('value',"false");
-                          document.getElementById('use_form').submit();
+                        });
+                        $('#useful_0').click(function(){
+                          var notUseful = document.getElementById('useful_not').attr('value',"false");
+                          $('#use_form').submit();
                        });
                        });
                        </script>
                         <button type="button" class="useful" id="useful_1">Useful(<%=activity.commentList[i].useful_num%>)</button>
                         <button type="button" class="notuseful" id="useful_0">Not Useful(<%=activity.commentList[i].nonuseful_num%>)</button>
-                        <form id="use_form" method="post" action= "/activity/rateComment/">
-                          <input type="hidden" id="useful_not" name="isUseful" value="true">
+                        <form id="use_form" method="post" action= "/activity/rateComment">
+                          <input type="hidden" id="useful_not" name="isUseful">
                           <input type="hidden" name="activityId" value=<%= activity._id%>>
+                          <input type="hidden" name="commentId" value=<%= activity.commentList[i]._id%>>
                         </form>
 
                     </div>
