@@ -53,7 +53,7 @@ activity.statics.searchBy = function searchBy (keywords, cat, callback){
 		.find({$text: {$search: keywords}}, {score: {$meta: 'textScore'}})
 		.sort({score:{$meta: "textScore"}})
 		.limit(50)
-		.sort({rate : -1})
+		//.sort({rate : -1})
 		//.populate('commentList')
 		.exec(callback);
 	}else{
@@ -62,7 +62,7 @@ activity.statics.searchBy = function searchBy (keywords, cat, callback){
 		.find({category : cat})
 		.sort({score:{$meta: "textScore"}})
 		.limit(50)
-		.sort({rate : -1})
+		//.sort({rate : -1})
 		//.populate('commentList')
 		.exec(callback);
 	}
@@ -99,7 +99,7 @@ activity.statics.viewByCat = function viewByCat(cat, callback){
 		return this
 		.find({category: cat})
 		//.populate('commentList')
-		//.sort({rate_num: -1})
+		.sort({start_time: -1})
 		.limit(1000)
 		.exec(callback);
 	}

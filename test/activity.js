@@ -32,7 +32,8 @@ for(var i = 0; i<10000; i++){
     rate: faker.random.number()%500/100,
     rate_num: faker.random.number()%1000,
     category : faker.random.number()%6 + 1,
-    pic : faker.image.image()
+    pic : faker.image.image(),
+    url : faker.internet.url()
   };
   var data = new Activity(fake_activity);
   data.save();

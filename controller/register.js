@@ -34,7 +34,7 @@ exports.isCompleted = function isCompleted(req, res, next){
   });
 };
 
-exports.redirect = passport.authenticate('local-login', {
+exports.redirect = passport.authenticate('local-singup', {
   successRedirect: '/users/account',
   failureRedirect: '/users/register',
   failureFlash: true
