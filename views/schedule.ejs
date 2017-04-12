@@ -5,13 +5,36 @@
 <title>Event Calendar</title>
 <link href='/css/fullcalendar.min.css' rel='stylesheet' />
 <link href='/css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- Theme CSS -->
+<link href="/vendor/css/agency.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src='/lib/moment.min.js'></script>
 <script src='/lib/jquery.min.js'></script>
 <script src='/javascripts/fullcalendar.min.js'></script>
 <script>
 var newID=1;//whenever create a new event, newID increase by 1
 $(document).ready(function() {
-  $('input').hide();
+
+  $("#h-btn").hide();
+  var evenNum=document.getElementById("eventNumber").value;// number of existing event
+  var title=new Array();
+  var startTime=new Array();
+  var endTime=new Array();
+  var Url=new Array();
+  var id_Arr=new Array();
+  // store all information to Array :title,start,end,url,and ID
+  for(var i=0;i<evenNum;i++){
+    title.push(document.getElementById("event_title"+i).value);
+    startTime.push(document.getElementById("event_start"+i).value);
+    endTime.push(document.getElementById("event_end"+i).value);
+    Url.push(document.getElementById("event_url"+i).value);
+    id_Arr.push(document.getElementById("event_id"+i).value);
+  }
+
+
   $('#calendar').fullCalendar({
     header: {
       left: 'prev,next today',
@@ -22,7 +45,9 @@ $(document).ready(function() {
     navLinks: true, // can click day/week names to navigate views
     selectable: true,
     selectHelper: true,
+    //##################################     add new event  #########################################
     select: function(start, end) {
+
       var title = prompt('Event Title:');
       var eventData;
       if (title) {
@@ -32,14 +57,22 @@ $(document).ready(function() {
           end: end,
           id: newID
         };
+        document.getElementById('newEvent_id').value=eventData.id;
+        document.getElementById('newEvent_title').value=eventData.title;
+        document.getElementById('newEvent_start').value=eventData.start;
+        document.getElementById('newEvent_end').value=eventData.end;
+        //document.getElementById("newEvent_submit").submit();
         newID++;
         $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
       }
       $('#calendar').fullCalendar('unselect');
     },
+
     eventClick: function(event, element) {
 
+        //$("#h-btn").click();
         var update=confirm("Modify this event?");
+        //#####################################       modify old event ##########################################
         if(update==true){
           var title=prompt("Please enter the title");
           event.title=title;
@@ -47,11 +80,21 @@ $(document).ready(function() {
           event.start=starting;
           var ending=prompt("Please enter its end time");
           event.end=ending;
+          document.getElementById("changeEvent_id").value=event.id;
+          document.getElementById("changeEvent_title").value=event.title;
+          document.getElementById("changeEvent_start").value=event.start;
+          document.getElementById("changeEvent_end").value=event.end;
+          //post the modified event
+          //document.getElementById("modify_submit").submit();
         }
         else{
+          //#########################################  delete old event ###########################################
           var deleteE=confirm("Do you want to delete this event?");
           if(deleteE==1){
             $('#calendar').fullCalendar('removeEvents',event.id);
+            document.getElementById("storeDelete").value=event.id;
+            //post the deleted event
+            //document.getElementById("delete_submit").submit();
           }
 
         }
@@ -63,12 +106,21 @@ $(document).ready(function() {
 
     editable: true,
     eventLimit: true, // allow "more" link when too many events
+    //for(var i=0;i<evenNum;i++)
 
-    //var eventArr=document.getElementById("event_title0").value;
-    //alert("hey");
 
   });
-  alert("hey");
+
+
+
+  //initialize all existing events in database
+
+  for(var i=0;i<evenNum;i++){
+
+      $('#calendar').fullCalendar('renderEvent', {title:title[i],start:startTime[i],end:endTime[i],id:id_Arr[i]}, true);
+
+  }
+
 
 });
 
@@ -85,15 +137,104 @@ body {
 max-width: 900px;
 margin: 0 auto;
 }
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
 </style>
 </head>
 <body>
-  <% for (var i=0; i < schedule.length; i++) { %>
-<input type="text" class="form-control" id=<%="event_title"+i%> value= <%= schedule[i].title+" "+schedule[i].title%> >
-<input type="text" class="form-control" id=<%="event_start"+i%> value= <%= schedule[i].start_time.getFullYear()+"-"+schedule[i].start_time.getMonth()+"-"+schedule[i].start_time.getDate()%> >
-<input type="text" class="form-control" id=<%="event_end"+i%> value= <%= schedule[i].end_time%> >
-<input type="text" class="form-control" id=<%="event_url"+i%> value= <%= schedule[i].url%> >
+  <%- include navBar.ejs -%>
+<!--  ##############################    Get event data from database   ##############################   -->
+<input type="hidden" class="form-control" id="eventNumber" value=<%=schedule.length %> >
+<% for (var i=0; i < schedule.length; i++) { %>
+<input type="hidden" class="form-control" id=<%="event_title"+i%> value= <%= schedule[i].title%> >
+<input type="hidden" class="form-control" id=<%="event_id"+i%> value= <%= schedule[i]._id%> >
+<input type="hidden" class="form-control" id=<%="event_start"+i%> value= <%= schedule[i].start_time.getFullYear()+"."+(schedule[i].start_time.getMonth()+1)+"."+schedule[i].start_time.getDate()%> >
+<input type="hidden" class="form-control" id=<%="event_end"+i%> value= <%= schedule[i].end_time.getFullYear()+"."+(schedule[i].end_time.getMonth()+1)+"."+schedule[i].end_time.getDate()%> >
+<input type="hidden" class="form-control" id=<%="event_url"+i%> value= <%= schedule[i].url%> >
 <% } %>
+<!--  ##############################   Store deleted event   ##############################  -->
+<form id="delete_submit" action="/users/account/myschedule/delete" method="post" >
+<input type="hidden" id="storeDelete" name="id" value="">
+
+</form>
+<!--  ##############################    Store modified event  ##############################  -->
+<form id="modify_submit" action="" method="post" >
+<input id="changeEvent_id" name="changed_id"type="hidden" class="form-control" value="">
+<input id="changeEvent_title" name="changed_title" type="hidden" class="form-control" value="">
+<input id="changeEvent_start" name="changed_start" type="hidden" class="form-control" value="">
+<input id="changeEvent_end" name="changed_end" type="hidden" class="form-control" value="">
+<!-- ##############################   Store new event ################################################ -->
+<form id="newEvent_submit" action="" method="post" >
+<input id="newEvent_id" name="new_id"type="hidden" class="form-control" value="">
+<input id="newEvent_title" name="new_title" type="hidden" class="form-control" value="">
+<input id="newEvent_start" name="new_start" type="hidden" class="form-control" value="">
+<input id="newEvent_end" name="new_end" type="hidden" class="form-control" value="">
+</form>
+<br> <br>
+<button  id="h-btn" class="btn btn-lg btn-info" href="#dialogModal" data-toggle="modal">hey there</button>
+<!-- Modal -->
+<div class="modal fade" id="dialogModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close"
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Modify event
+                </h4>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+
+                <form role="form">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">New title</label>
+                      <input type="text" class="form-control"
+                      id="new_title" placeholder=""/>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Start time</label>
+                      <input type="text" class="form-control"
+                          id="newStartTime" placeholder=""/>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">End time</label>
+                      <input type="text" class="form-control"
+                          id="newEndTime" placeholder=""/>
+                  </div>
+                  <button  id="delete_btn" class="btn btn-danger">Delete Event</button>
+                  <button id="modify_btn" type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                            Close
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
 
   <div id='calendar'></div>
 </body>

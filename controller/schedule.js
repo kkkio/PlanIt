@@ -1,5 +1,6 @@
 var express = require('express');
 var schedule = require('../models/schedule');
+var User=require('../models/user');
 exports = module.exports = {};
 
 // if update or add new
@@ -72,7 +73,7 @@ exports.updateSchedule = function updateSchedule(req,res,next){
     doc.privacy=req.body.privacy;
     doc.save();
   })
-  res.redirect('/users/account/schedule');
+  res.redirect('/users/account/myschedule');
 };
 
 exports.deleteSchedule = function deleteSchedule(req,res,next){
@@ -86,5 +87,5 @@ exports.deleteSchedule = function deleteSchedule(req,res,next){
 				}
 			).exec();
 		});
-    res.redirect('/users/account/schedule');
+    res.redirect('/users/account/myschedule');
 };
