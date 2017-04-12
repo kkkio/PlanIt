@@ -16,4 +16,21 @@ $(document).ready(function(){
        }
     });
 
+  document.getElementById("map_button").onclick = function() {
+      var keyword = document.getElementById("search_location");
+      window.location.href = '/explore/search?location='+$(keyword).val();
+      var insertText = document.getElementById("show_results");
+      $(insertText).append($(keyword).val());
+  };
+
+  $("input[id='search_location']").keypress(function(e) {
+       if(e.which == 13) {
+          e.preventDefault();
+          var keyword = document.getElementById("search_location");
+          window.location.href = '/explore/search?location='+$(keyword).val();
+          var insertText = document.getElementById("show_results");
+          $(insertText).append($(keyword).val());
+       }
+    });
+
 });

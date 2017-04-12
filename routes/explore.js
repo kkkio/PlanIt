@@ -18,6 +18,8 @@ router.get('/', isLoggedIn,function(req, res, next) {
 });
 
 router.get('/search', isLoggedIn,explore.getSearchResults);
+
+//router.get('/location', isLoggedIn,explore.getLocationResults);
 //for lilili test easy router search navBar
 router.get('/sports',isLoggedIn,function(req,res,next){
 	res.render('explore_sports',{

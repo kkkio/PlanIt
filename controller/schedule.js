@@ -55,7 +55,7 @@ exports.addMySchedule = function addMySchedule(req, res, next){
 };
 
 exports.updateSchedule = function updateSchedule(req,res,next){
-  var id = req.body.id;
+  var id = req.body.changed_id;
   schedule.findById(id, function(err, doc) {
     if (err) {
       console.error('error, no entry found');
@@ -63,7 +63,8 @@ exports.updateSchedule = function updateSchedule(req,res,next){
     doc.title  = req.body.changed_title;
     doc.start_time = req.body.changed_start;
     doc.end_time= req.body.changed_end;
-    doc.privacy=req.body.privacy;
+    //doc.privacy=req.body.privacy;
+
     doc.save();
   })
   res.redirect('/users/account/myschedule');
