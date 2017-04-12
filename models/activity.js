@@ -73,12 +73,13 @@ activity.statics.exactSearchBy = function exactSearchBy (keywords, callback){
 	.exec(callback);
 };
 
-activity.statics.searchByLocation = function searchBy (keywords, callback){
+/*activity.statics.searchByLocation = function searchBy (keywords, callback){
 	var ret = new RegExp(keywords, 'i');
+	console.log('ret',ret);
 	this
-	.find({'venue.city': ret})
+	.find({'title': ret})
 	.exec(callback);
-};
+};*/
 
 activity.statics.viewByCat = function viewByCat(cat, callback){
 	if(cat == 7){
