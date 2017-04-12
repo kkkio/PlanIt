@@ -31,6 +31,7 @@ exports.myschedule= function mymoment(req,res,next){
 };
 
 exports.addMySchedule = function addMySchedule(req, res, next){
+	console.log('in add my schedule');
 	var insert_data = {
 		_user_id 		: 		req.user._id,
 		title 			: 		req.body.new_title,
@@ -45,7 +46,7 @@ exports.addMySchedule = function addMySchedule(req, res, next){
 		User.findById(req.user._id, function(err, doc){
 			doc.update(
 				{
-					$push: {"scheduleList": id},
+					$push: {"scheduleList": data._id},
 					$inc: {"schedule_num": 1}
 				}
 			).exec();
@@ -54,19 +55,16 @@ exports.addMySchedule = function addMySchedule(req, res, next){
 };
 
 exports.updateSchedule = function updateSchedule(req,res,next){
-  var id = req.body.id;
+  var id = req.body.changed_id;
   schedule.findById(id, function(err, doc) {
     if (err) {
       console.error('error, no entry found');
     }
-    doc.title  = req.body.title;
-    doc.start_time = req.body.start_time;
-    doc.end_time= req.body.end_time
-    doc.venue = {
-					country : req.body.country,
-					city 	: req.body.city
-				};
-    doc.privacy=req.body.privacy;
+    doc.title  = req.body.changed_title;
+    doc.start_time = req.body.changed_start;
+    doc.end_time= req.body.changed_end;
+    //doc.privacy=req.body.privacy;
+
     doc.save();
   })
   res.redirect('/users/account/myschedule');
