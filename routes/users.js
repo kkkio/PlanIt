@@ -107,23 +107,7 @@ router.post('/account/myschedule/insert',schedule.addMySchedule);
 router.post('/account/myschedule/delete',schedule.deleteSchedule);
 
 //change one event of schedule
-router.post('/myschedule/update', function(req, res, next) {
-  var id = req.body.id;
-  Schedule.findById(id, function(err, doc) {
-    if (err) {
-      console.error('error, no entry found');
-    }
-    doc.title  = req.body.title;
-    doc.activity_id = req.body.activity_id;
-    doc.date = req.body.date;
-    doc.start_time = req.body.start_time;
-    doc.end_time= req.body.end_time;
-    doc.venue = req.body.venue;
-    doc.privacy=req.body.privacy;
-    doc.save();
-  })
-  res.redirect('/myschedule');
-});
+router.post('/account/myschedule/update', schedule.updateSchedule);
 
 //view others schedules
 router.get('/schedule/:id', function(req, res, next) {
