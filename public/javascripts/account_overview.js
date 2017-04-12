@@ -64,15 +64,17 @@ $(document).ready(function(){
         var oldTextId = "myMomentText" + num;
         var oldTitle = document.getElementById(oldTitleId);
         var oldText = document.getElementById(oldTextId);
-        var newTitle = document.getElementById("updateMomentTitle");
-        var newText = document.getElementById("updateMomentText");
+        var newTitle = document.getElementById("tmpMomentTitle");
+        var newText = document.getElementById("tmpMomentText");
         // Keep original title and text
         $(newTitle).val(($(oldTitle).text()));
         $(newText).val(($(oldText).val()));
         // Update
         $("#confirmUpdateBtn").click(function(){
           $('#tmpMomentId2').attr('value', to_be_posted);
-                    $('#deleteMomentForm').submit();
+          $('update-MomentTitle').attr('value', $(newTitle).val());
+          $('update-MomentText').attr('value', $(newText).val());
+          $('#updateMomentForm').submit();
         });        
 
     });

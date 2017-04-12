@@ -912,13 +912,15 @@ header .intro-text .intro-lead-in {
                           <h4>Re-edit This Moment <i class="glyphicon glyphicon-edit post-edit" style="color:white"></i></h4>
                         </div>
                         <div class="modal-body" style="text-align: left;">
-                          <input class="form-control" name="newMomentTitle" type="text" id="updateMomentTitle" placeholder="Update your title here...">
+                          <input class="form-control" name="newMomentTitle" type="text" id="tmpMomentTitle" placeholder="Update your title here...">
                           <br>
-                          <textarea class="form-control" name="newMomentText" type="text" id="updateMomentText" cols="40" rows="5" style="width:100%" placeholder="Update your moment here..."></textarea>
+                          <textarea class="form-control" name="newMomentText" type="text" id="tmpMomentText" cols="40" rows="5" style="width:100%" placeholder="Update your moment here..."></textarea>
                         </div>
                         <div class="modal-footer">
                           <form method="post" id="updateMomentForm" action="/users/account/updateMoment">
                             <input type="hidden" id="tmpMomentId2" name="momentId" value="">
+                            <input type="hidden" id="update-MomentTitle" name="updateMomentTitle" value="">
+                            <input type="hidden" id="update-MomentText" name="updateMomentText" value="">
                             <button type="submit" class="btn" id="confirmUpdateBtn" data-dismiss="modal">Confirm</button>
                             <button type="button" class="btn" data-dismiss="modal">Close</button>
                           </form>
