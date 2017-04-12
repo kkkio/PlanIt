@@ -30,9 +30,10 @@ exports.getActivity =function getActivity(req, res, next){
 
 
 exports.postComment = function postComment(req,res,next){
-  if(!req.body.content) return res.render("single_activity",results);
   // add one comment & update comment list in activity & user
   console.log('GOOD IS NOT ', req.body.content);
+  var content = 'This guy is so lazy and left no comment.'
+  if(req.body.content.length) content = req.body.content;
   Activity.getOneById(req.body.activityId, function(err, doc){
     var date= new Date();
     if(err) throw(err);
@@ -45,7 +46,7 @@ exports.postComment = function postComment(req,res,next){
         _activity_id : doc._id,
         _user_id : req.user._id,
         // type : acitivity - 1; moment - 2
-        content: req.body.content,
+        content: content,
         post_time: date,
         num_of_useful: 0,
         num_of_nonuseful: 0
@@ -103,7 +104,7 @@ exports.rateComment =function rateComment(req, res, next){
   if(req.isAuthenticated()){
     mComment.findById(req.body.commentId,function(err,doc){
       if(!doc) return res.redirect('/activity'+req.params.activityId);
-      if(req.body.isUseful){
+      if(req.body.isUseful === 'true'){
         doc.useful_num += 1;
       }else{
         doc.nonuseful_num += 1;
