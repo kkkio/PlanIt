@@ -23,8 +23,8 @@
 <script>
 var newID=1;//whenever create a new event, newID increase by 1
 $(document).ready(function() {
-  $("#h-btn1").hide();
-  $("#h-btn2").hide();
+
+  
   var evenNum=document.getElementById("eventNumber").value;// number of existing event
   var title=new Array();
   var startTime=new Array();
@@ -54,28 +54,9 @@ $(document).ready(function() {
     //##################################     add new event  #########################################
     select: function(start, end) {
 
-      var title = prompt('Event Title:');
-      var eventData;
-      if (title) {
-        eventData = {
-          title: title,
-          start: start,
-          end: end,
-          id: newID
-        };
-
-        document.getElementById('newEvent_title').value=eventData.title;
-
-        document.getElementById('newEvent_start').value=eventData.start;
-
-        document.getElementById('newEvent_end').value=eventData.end;
-
-        document.getElementById("newEvent_submit").submit();
-
-        newID++;
-        $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-      }
-      $('#calendar').fullCalendar('unselect');
+      $("#dialogModal2").modal();
+      $("#newStartTime").val(start);
+      $("#newEndTime").val(end);
     },
 
     eventClick: function(event, element) {
@@ -84,18 +65,10 @@ $(document).ready(function() {
         var update=confirm("Do you want to modify this event?");
         //#####################################       modify old event ##########################################
         if(update==true){
-          var title=prompt("Please enter the title");
-          event.title=title;
-          var starting=prompt("Please enter its start time");
-          event.start=starting;
-          var ending=prompt("Please enter its end time");
-          event.end=ending;
-          document.getElementById("changeEvent_id").value=event.id;
-          document.getElementById("changeEvent_title").value=event.title;
-          document.getElementById("changeEvent_start").value=event.start;
-          document.getElementById("changeEvent_end").value=event.end;
-          //post the modified event
-          document.getElementById("modify_submit").submit();
+          $("#dialogModal").modal();
+          $("#new_id").val(event.id);
+          $("#new_start").val(event.start);
+          $("#new_end").val(event.end);
         }
         else{
           //#########################################  delete old event ###########################################
@@ -194,8 +167,7 @@ margin: 0 auto;
 <input id="newEvent_url" name="new_url" type="hidden" class="form-control" value="myschedule">
 </form>
 <br> <br>
-<button  type="hidden" id="h-btn1" class="btn btn-lg btn-info" href="#dialogModal" data-toggle="modal">hey there</button>
-<button  type="hidden" id="h-btn2" class="btn btn-lg btn-info" href="#detailModal" data-toggle="modal">hey there</button>
+
 <!-- Modal -->
 <div class="modal fade" id="dialogModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true" >
@@ -216,20 +188,23 @@ margin: 0 auto;
             <!-- Modal Body -->
             <div class="modal-body">
 
-                <form role="form">
+                <form role="form" action="/users/account/myschedule/update" method="post">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">id</label>
+                      <input type="text" class="form-control" id="new_id" name="changed_id" placeholder=""/>
+                  </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">New title</label>
-                      <input type="text" class="form-control"
-                      id="new_title" placeholder=""/>
+                      <input type="text" class="form-control" id="new_title" name="changed_title" placeholder=""/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Start time</label>
-                      <input type="text" class="form-control"
+                      <input name="changed_start" type="text" class="form-control"
                           id="newStartTime" placeholder=""/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">End time</label>
-                      <input type="text" class="form-control"
+                      <input name="changed_end"type="text" class="form-control"
                           id="newEndTime" placeholder=""/>
                   </div>
                   <button  id="delete_btn" class="btn btn-danger">Delete Event</button>
@@ -286,6 +261,62 @@ margin: 0 auto;
     </div>
 </div>
 
+
+
+
+<div class="modal fade" id="dialogModal2" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close"
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Modify event
+                </h4>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+
+                <form role="form" action="/users/account/myschedule/insert" method="post">
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">New title</label>
+                      <input type="text" class="form-control" id="new_title" name="new_title" placeholder=""/>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Start time</label>
+                      <input name="new_start" type="text" class="form-control"
+                          id="StartTime" placeholder=""/>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">End time</label>
+                      <input name="new_end"type="text" class="form-control"
+                          id="EndTime" placeholder=""/>
+                  </div>
+                  <button  id="delete_btn" class="btn btn-danger">Delete Event</button>
+                  <button id="modify_btn" type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                            Close
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
   <div id='calendar'></div>
 </body>
 </html>

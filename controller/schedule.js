@@ -56,6 +56,8 @@ exports.addMySchedule = function addMySchedule(req, res, next){
 
 exports.updateSchedule = function updateSchedule(req,res,next){
   var id = req.body.changed_id;
+	console.log("req.body.changed_title");
+	console.log(req.body.changed_title);
   schedule.findById(id, function(err, doc) {
     if (err) {
       console.error('error, no entry found');
