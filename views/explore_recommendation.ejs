@@ -72,7 +72,7 @@ body{
 }
 
 #searchBG{
-  background-image: url('/images/explore/sky.jpg');
+  background-image: url('/images/explore/surprise2.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
@@ -224,14 +224,9 @@ ul.social-buttons li a:active {
   font-size: 7.5vw;
 }
 
-.search-head h1:before, .search-head h1:after{
-  content: "\2605";
-  font-size:4vw;
-  display: inline-block;
-  position: relative;
-  top: -1.5vh;
-  padding: 0 10px;
-  color:#ffe066;
+.gift-graph{
+  font-size: 5vw;
+  color:LightSalmon;
 }
 
 .no-result h4{
@@ -270,11 +265,8 @@ ul.social-buttons li a:active {
 
     </div>
 
-<<<<<<< HEAD
     <%- include explore_recommendation_navBar.ejs -%>
-=======
-    <%- include recommendation_navBar.ejs -%>
->>>>>>> 99d3429069d3084ed621d1d1f01182b68047933d
+
 
   </div><!-- /.container-fluid -->
 </nav>
@@ -283,13 +275,13 @@ ul.social-buttons li a:active {
 
 <div class="container">
   <div class="search-head">
-    <h1><text style="color:#487bb4;">Live</text> <text style="color:#f7ba34">Laugh</text> <text style="color:LightSalmon">Love</text></h1>
+    <h1><span class="glyphicon glyphicon-gift gift-graph" style="font-size: 5vw;"></span><text style="color:#487bb4;"> Today Is</text> <text style="color:LightSalmon">A</text> <text style="color:#487bb4">Gift </text><span class="glyphicon glyphicon-gift gift-graph" style="font-size: 5vw;"></span></h1>
   </div>
 
 
   <h1 style="text-align:center;" id="show_results"></h1>
 
-  <% if(activity) {%>
+  <% if(activity.length) {%>
     <!-- Fail to add keyword
     <div class="row">
       <div class="col-lg-12">

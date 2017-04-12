@@ -489,22 +489,22 @@ hr{
 
         <!-- Help and Feedback Modal -->
         <div class="modal fade" id="feedbackModal" role="dialog">
-          <div class="modal-dialog modal-md">  
+          <div class="modal-dialog modal-md">
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                   <h4>Send Feedback <i class="fa fa-send"></i></h4>
               </div>
-              <div class="modal-body">
-                  <form method="post">
-                    <textarea type="text" cols="40" rows="5" style="width:100%" placeholder="Describe your issue or share your idea"></textarea>
-                  </form>
-              </div>
-              <div class="modal-footer">
-                  <button type="submit" class="btn">Submit</button>
+              <form id="feedbackForm">
+                <div class="modal-body">
+                    <textarea type="text" cols="40" rows="5" style="width:100%" id="feedbackText" placeholder="Describe your issue or share your idea"></textarea>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn" id="sendFeedback">Submit</button>
                   <button type="button" class="btn" data-dismiss="modal">Close</button>
-              </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
