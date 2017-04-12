@@ -348,6 +348,9 @@ ul.social-buttons li a:active {
 
 <body>
   <!-- Navigation -->
+  <form id="use_form">
+  <input text="hidden" id="useful_not" name=" " value="true">
+  </form>
   <%- include navBar.ejs -%>
 
 
@@ -429,7 +432,7 @@ ul.social-buttons li a:active {
                     <h4><strong>Leave a Comment:</strong></h4>
                     <form role="form" method="post" action= "/activity/postComment">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea name=" " class="form-control" rows="3"></textarea>
                         </div>
                          <h4><strong>Rate the activity</strong></h4>
                         <input id="input-7-xs" class="rating rating-loading" data-min="0" data-max="5" data-step="0.5" data-size="xs">
@@ -447,15 +450,26 @@ ul.social-buttons li a:active {
 
                 <div class="media">
                     <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                        <img class="media-object" src=<%=activity.commentList[i].propic%> alt="">
                     </a>
                     <div class="media-body">
-                            <h4 class="media-heading">Start Bootstrap
-                                <small>August 25, 2014 at 9:30 PM</small>
+                            <h4 class="media-heading"><%=activity.commentList[i].username%>
+                                <small><%=activity.commentList[i].posttime%></small>
                             </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.<br>
-                        <button type="button" class="useful">Useful</button>
-                        <button type="button" class="notuseful">Not Useful</button>
+                       <%=activity.commentList[i].content>
+                       <br>
+                       <script>
+                       $('#useful_1').click(function(){
+                          document.getElementById('useful_not').value="true";
+                          document.getElementById('use_form').submit();
+                       });
+                       $('#useful_0').click(function(){
+                          document.getElementById('useful_not').value="false";
+                          document.getElementById('use_form').submit();
+                       });
+                       </script>
+                        <button type="button" class="useful" id="useful_1">Useful(<%=activity.commentList[i].num_of_useful%>)</button>
+                        <button type="button" class="notuseful" id="useful_0">Not Useful(<%=activity.commentList[i].num_of_notuseful%>)</button>
                     </div>
 
                 </div>
