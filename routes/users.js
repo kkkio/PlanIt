@@ -104,11 +104,7 @@ router.get('/account/myschedule',schedule.myschedule);
 //insert1 add activities from our website
 router.post('/account/myschedule/insert',schedule.addMySchedule);
 // delete one event of schedule
-router.post('/myschedule/delete',function(req,res,next){
-    var id=req.body.id;
-    Schedule.findByIdAndRemove(id).exec();
-    res.redirect('/myschedule');
-});
+router.post('/account/myschedule/delete',schedule.deleteSchedule);
 
 //change one event of schedule
 router.post('/myschedule/update', function(req, res, next) {
