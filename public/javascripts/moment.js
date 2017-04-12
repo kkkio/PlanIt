@@ -55,3 +55,37 @@ $(document).ready(function () {
     });
 
 });
+
+// Avoid invalid input
+$(document).ready(function(){
+    $("#submitNewMoment").click(function(event){
+        var image = $("input#image-upload").val();
+        var title = $("input#newMomentTitle").val();
+        var text = $("textarea#newMomentText").val();
+        var location = $("input#newLocation").val();
+        var privacy = $("select#newPricacy").val();
+        if(!image){
+            event.preventDefault();
+            alert("Please upload an image :)");
+        }
+        else if(!title){
+            event.preventDefault();
+            alert("Please input a title :)");            
+        }
+        else if(!text){
+            event.preventDefault();
+            alert("Please input a text :)");            
+        }   
+        else if(!location){
+            event.preventDefault();
+            alert("Please input a location :)");            
+        } 
+        else if(!privacy){
+            event.preventDefault();
+            alert("Please select a privacy :)");            
+        } 
+        else{
+            $('#newMomentForm').submit();
+        }                     
+    });
+});

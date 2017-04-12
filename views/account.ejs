@@ -381,7 +381,7 @@ ul.social-buttons li a:active {
     color: #C1C1C1;
 }
 
-.post-meta a.comments::after{
+.post-meta text.likes::after{
   content: "" !important;
 }
 
@@ -391,6 +391,12 @@ ul.social-buttons li a:active {
 
 .post-edit-text{
   color: SteelBlue;
+  font-weight: 700;
+  padding-left:5px;
+}
+
+.post-delete-text{
+  color: Gray;
   font-weight: 700;
   padding-left:5px;
 }
@@ -697,12 +703,12 @@ header .intro-text .intro-lead-in {
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                   <h4>Send Feedback <i class="fa fa-send"></i></h4>
               </div>
-              <form method="post" action="/users/account/feedback">
+              <form id="feedbackForm">
                 <div class="modal-body">
-                    <textarea type="text" cols="40" rows="5" style="width:100%" placeholder="Describe your issue or share your idea"></textarea>
+                    <textarea type="text" cols="40" rows="5" style="width:100%" id="feedbackText" placeholder="Describe your issue or share your idea"></textarea>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn">Submit</button>
+                  <button type="submit" class="btn" id="sendFeedback">Submit</button>
                   <button type="button" class="btn" data-dismiss="modal">Close</button>
                 </div>
               </form>
@@ -807,19 +813,19 @@ header .intro-text .intro-lead-in {
                     <div class="col-lg-3 col-md-4 col-sm-4">
                         <div class="statistics-box">
                             <ul class="list-group">
-                                <a href="#" class="list-group-item" style="background-color: Khaki ; height:17vh;">
+                                <a href="#" class="list-group-item" style="background-color: Khaki ; height:18vh;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 3vw;"><%= user.followers_num %></p>
-                                    <p class="list-group-item-text">followers</p>
+                                    <p class="list-group-item-text">Past Activities</p>
                                 </a>
 
-                                <a href="#" class="list-group-item" style="background-color: Gold; height:17vh;">
+                                <a href="#" class="list-group-item" style="background-color: Gold; height:18vh;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 3vw;"><%= user.followings_num %></p>
-                                    <p class="list-group-item-text">following</p>
+                                    <p class="list-group-item-text">Schedules</p>
                                 </a>
 
-                                <a href="#" class="list-group-item" style="background-color: Orange; height:17vh;">
+                                <a href="#" class="list-group-item" style="background-color: Orange; height:18vh;">
                                     <p class="list-group-item-heading acc-count" style="font-size: 3vw;"><%= moment.length %></p>
-                                    <p class="list-group-item-text">moments</p>
+                                    <p class="list-group-item-text">Moments</p>
                                 </a>
                             </ul>
                         </div>
@@ -855,12 +861,12 @@ header .intro-text .intro-lead-in {
                     <% for (var i=0; i < moment.length; i++) { %>
                       <div class="post" id= <%= "myMoment"+i %> >
                         <% if(moment[i].pic) { %>
-                          <img class="img-responsive img-border img-full" src= <%= moment[i].pic %> alt="My Moment Image" id="myMomentImg">
+                          <img class="img-responsive img-border img-full" src= <%= moment[i].pic %> alt="MyMomentImage" id="myMomentImg">
                         <% } %>
                           <div class="post-text">
                               <h2 class="post-title" id=<%="myMomentTitle"+i%>><%= moment[i].title %></h2>
                               <div class="post-meta">
-                                  By <a href="/users/account"><%= user.username %></a><text><%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %></text><text id=<%="myMomentLike"+i%>>127 Likes</text> <a href="#" class="comments" id="myMomentComment">2 Comments</a>
+                                  By <a href="/users/account"><%= user.username %></a><text><%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %></text><text class="likes" id=<%="myMomentLike"+i%>>127 Likes</text>
                               </div>
                               <div class="moment-text">
                                   <input type="hidden" id="tmpNewTextId" name="momentId" value="">
@@ -871,11 +877,9 @@ header .intro-text .intro-lead-in {
                                   <div class="input-group moment-input-group">
                                       <div class="input-group-btn post-button">
                                           <a class="btn" data-toggle="modal" data-target="#updateModal" id=<%="editBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-edit post-edit"></i><strong class="post-edit-text">Re-edit</strong></a>
-                                          <a class="btn" data-toggle="modal" data-target="#deleteModal" id=<%="deleteBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-trash post-delete"></i></a>
-                                          <a class="btn" id=<%="likeBtn"+i%>><i class="glyphicon glyphicon-heart post-unlike"></i> 127</a>
-                                          <a class="btn" id=<%="commentBtn"+i%>><i class="glyphicon glyphicon-comment post-comment"></i></a>
+                                          <a class="btn" data-toggle="modal" data-target="#deleteModal" id=<%="deleteBtn"+i%> name=<%= moment[i]._id %>><i class="glyphicon glyphicon-trash post-delete"></i><strong class="post-delete-text">Delete</strong></a>
+                                          <a class="btn" id=<%="likeBtn"+i%>><i class="glyphicon glyphicon-heart post-unlike"></i> Like</a>
                                       </div>
-                                      <input type="text" class="form-control" id=<%="myMomentCommentInput1"+i%> placeholder="Add a comment..">
                                   </div>
 
                               <div class="moment-comment"></div>

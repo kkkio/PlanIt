@@ -28,5 +28,18 @@ $(document).ready(function(){
 
 });
 
+$(document).ready(function(){
+    $("#sendFeedback").click(function(event){
+        var feedback = $("textarea#feedbackText").val();
+        if(!feedback){
+            event.preventDefault();
+            alert("Please describe your issue or share your idea :)");
+        }
+        else{
+            alert("We have received your feedback successfully :)");
+            $('#feedbackModal').modal('hide');
+        }
+    });        
+});
 
 

@@ -456,7 +456,7 @@ ul.social-buttons li a:active {
                                     <div class="status-box-header" id="momentInput1">
                                         <h3>What's New</h3>
                                     </div>
-                                    <form class="form-horizontal col-lg-12" style="background: inherit;" method="post" action="/users/account/addMoment" enctype='multipart/form-data'>
+                                    <form class="form-horizontal col-lg-12" style="background: inherit;" method="post" action="/users/account/addMoment" enctype='multipart/form-data' id="newMomentForm">
                                         <div class="col-lg-6">
                                             <div id="image-preview">
                                               <label for="image-upload" id="image-label"></label>
@@ -466,12 +466,12 @@ ul.social-buttons li a:active {
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <div class="col-lg-12">
-                                                  <input type="text" id="newMomentTitle1" name="title" placeholder="Title" style="margin-top:14px; ">
+                                                  <input type="text" id="newMomentTitle" name="title" placeholder="Title" style="margin-top:14px; ">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-lg-12">
-                                                  <textarea class="form-element form-control" name="momentText" cols="50" rows="5" placeholder="What's your favorite moment today...?"></textarea>
+                                                  <textarea class="form-element form-control" id="newMomentText" name="momentText" cols="50" rows="5" placeholder="What's your favorite moment today...?"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -508,7 +508,7 @@ ul.social-buttons li a:active {
                                 
                                 <!-- Recommended Moment -->
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                  <div class="col-md-6 col-sm-5 col-xs-5" id="frdMomentList">
+                                  <div class="col-md-6 col-sm-6 col-xs-6" id="frdMomentList" style="padding: 0">
                                   <% for(var i=0; i < moment.length; i++) {%>						
                                       <% if(i % 2 == 0) {%>
                 							        <div class="post" id=<%= "othersMoment"+i %>>
@@ -534,7 +534,7 @@ ul.social-buttons li a:active {
                                   <% } %>
                                   </div>
                             
-                                  <div class="col-md-6 col-sm-5 col-xs-5" id="frdMomentList">
+                                  <div class="col-md-6 col-sm-6 col-xs-6" id="frdMomentList1" style="padding: 0">
                                   <% for(var i=0; i < moment.length; i++) {%>           
                                       <% if(i % 2 == 1) {%>
                                       <div class="post" id=<%= "othersMoment"+i %>>
