@@ -49,9 +49,10 @@ $(document).ready(function() {
   var id_Arr=new Array();
   // store all information to Array :title,start,end,url,and ID
   for(var i=0;i<evenNum;i++){
-    title.push(document.getElementById("event_title"+i).value);
-    startTime.push(document.getElementById("event_start"+i).value);
-    endTime.push(document.getElementById("event_end"+i).value);
+    //alert("title is "+document.getElementById("event_title"+i).innerHTML);
+    title.push(document.getElementById("event_title"+i).innerHTML);
+    startTime.push(document.getElementById("event_start"+i).innerHTML);
+    endTime.push(document.getElementById("event_end"+i).innerHTML);
     Url.push(document.getElementById("event_url"+i).value);
     id_Arr.push(document.getElementById("event_id"+i).value);
   }
@@ -84,23 +85,10 @@ $(document).ready(function() {
         if(update==true){
           $("#dialogModal").modal();
           $("#new_id").val(event.id);
+          $("#new_title").val(event.title);
           $("#newStartTime").val(event.start);
           $("#newEndTime").val(event.end);
-          $("#delete_btn1").click(function(){
-            //alert("hey"+event.id);
-            $('#calendar').fullCalendar('removeEvents',event.id);
-            document.getElementById("storeDelete").value=event.id;
-            //alert(document.getElementById("storeDelete").value);
 
-
-            //post the deleted event
-            //alert("hey there");
-            document.getElementById("delete_submit").submit();
-            $('#calendar').fullCalendar('updateEvent', event);
-            //alert("hey there kk");
-            //$('#calendar').fullCalendar('updateEvent', event);
-            //alert("hey there end");
-          });
         }
         else{
           //#########################################  delete old event ###########################################
@@ -131,9 +119,15 @@ $(document).ready(function() {
 
   //initialize all existing events in database
 
+
   for(var i=0;i<evenNum;i++){
 
       $('#calendar').fullCalendar('renderEvent', {title:title[i],start:startTime[i],end:endTime[i],id:id_Arr[i]}, true);
+      /*alert(title[i].toString());
+      alert(startTime[i].toString());
+      alert(endTime[i].toString());*/
+
+
 
   }
 
@@ -147,6 +141,7 @@ body {
   padding: 0;
   font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
   font-size: 14px;
+
 }
 
 #calendar {
@@ -166,16 +161,19 @@ margin: 0 auto;
 }
 </style>
 </head>
-<body>
+<body >
 
   <%- include navBar.ejs -%>
 <!--  ##############################    Get event data from database   ##############################   -->
 <input type="hidden" class="form-control" id="eventNumber" value=<%=schedule.length %> >
 <% for (var i=0; i < schedule.length; i++) { %>
-<input type="hidden" class="form-control" id=<%="event_title"+i%> value= <%= schedule[i].title%> >
+<h1 hidden id=<%="event_title"+i%>> <%=schedule[i].title%> </h1>
+
+<h1 hidden id=<%="event_start"+i%>><%=schedule[i].start_time%></h1>
+<h1 hidden id=<%="event_end"+i%>><%=schedule[i].end_time%></h1>
 <input type="hidden" class="form-control" id=<%="event_id"+i%> value= <%= schedule[i]._id%> >
-<input type="hidden" class="form-control" id=<%="event_start"+i%> value= <%= schedule[i].start_time.getFullYear()+"."+(schedule[i].start_time.getMonth()+1)+"."+schedule[i].start_time.getDate()%> >
-<input type="hidden" class="form-control" id=<%="event_end"+i%> value= <%= schedule[i].end_time.getFullYear()+"."+(schedule[i].end_time.getMonth()+1)+"."+schedule[i].end_time.getDate()%> >
+
+
 <input type="hidden" class="form-control" id=<%="event_url"+i%> value= <%= schedule[i].url%> >
 
 <% } %>
@@ -240,7 +238,7 @@ margin: 0 auto;
                       <input name="changed_end"type="text" class="form-control"
                           id="newEndTime" placeholder=""/>
                   </div>
-                  <button  id="delete_btn1" class="btn btn-danger">Delete Event</button>
+
                   <button id="modify_btn" type="submit" class="btn btn-primary">Save changes</button>
                 </form>
 
