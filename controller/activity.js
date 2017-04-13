@@ -48,8 +48,8 @@ exports.postComment = function postComment(req,res,next){
         // type : acitivity - 1; moment - 2
         content: content,
         post_time: date,
-        num_of_useful: 0,
-        num_of_nonuseful: 0
+        useful_num: 0,
+        nonuseful_num: 0
       };
       var com = new mComment(data);
       com.save();
