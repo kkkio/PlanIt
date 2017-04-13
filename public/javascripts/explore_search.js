@@ -4,6 +4,8 @@ $(document).ready(function(){
 	document.getElementById("search_button").onclick = function() {
       var keyword = $(keywordEle).val();
   		window.location.href = '/explore/search?keyword='+keyword;
+      var insertText = document.getElementById("show_results");
+      $(insertText).append($(keyword).val()); 
 	};
 
 	$("input[id='search_text']").keypress(function(e) {
@@ -11,18 +13,11 @@ $(document).ready(function(){
           e.preventDefault();
           var keyword = $(keywordEle).val();
   		    window.location.href = '/explore/search?keyword='+$(keywordEle).val();
+          var insertText = document.getElementById("show_results");
+          $(insertText).append($(keyword).val()); 
        }
     });
 
-});
-
-$(document).ready(function () {
-  var toBeFilled = document.getElementById("search_text");
-  var tmp = $(location).attr('search');
-  var keyword = tmp.substring(9);
-  if(keyword){
-    $(toBeFilled).val(keyword);
-  }
 });
 
 
@@ -48,6 +43,16 @@ $(document).ready(function () {
         }, 1500);
     });
 
+});
+
+
+//Make sure that the dom is ready
+$(function () {
+ 
+  $("#rateYo").rateYo({
+    rating: 3.6
+  });
+ 
 });
 
 //highlight

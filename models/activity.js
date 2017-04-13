@@ -34,8 +34,8 @@ var activity = activitySchema;
 // create indice for search
 activity.index({
 	title: 'text',
-	briefIntro: 'text',
-	detailIntro: 'text'
+	briefIntro: 'text'
+	//detailIntro: 'text'
 });
 activity.index({
 	'venue.country': 1,
@@ -52,14 +52,18 @@ activity.statics.searchBy = function searchBy (keywords, cat, callback){
 		this
 		.find({$text: {$search: keywords}}, {score: {$meta: 'textScore'}})
 		.sort({score:{$meta: "textScore"}})
-		.populate('commentList')
+		.limit(50)
+		//.sort({rate : -1})
+		//.populate('commentList')
 		.exec(callback);
 	}else{
 		this
 		.find({$text: {$search: keywords}}, {score: {$meta: 'textScore'}})
 		.find({category : cat})
 		.sort({score:{$meta: "textScore"}})
-		.populate('commentList')
+		.limit(50)
+		//.sort({rate : -1})
+		//.populate('commentList')
 		.exec(callback);
 	}
 
@@ -72,19 +76,33 @@ activity.statics.exactSearchBy = function exactSearchBy (keywords, callback){
 	.find({$text: {$search: keywords}})
 	.exec(callback);
 };
-/*
-activity.statics.searchByLocation = function searchBy (keywords, callback){
+
+/*activity.statics.searchByLocation = function searchBy (keywords, callback){
+	var ret = new RegExp(keywords, 'i');
+	console.log('ret',ret);
 	this
-	.find({$1 : {$search : keywords}})
+	.find({'title': ret})
 	.exec(callback);
-};
-*/
+};*/
+
 activity.statics.viewByCat = function viewByCat(cat, callback){
-	this
-	.find({category: cat})
-	.populate('commentList')
-	.sort({rate : 1})
-	.exec(callback);
+	console.log('SUPRRIIIIIISE', cat);
+	if(cat == 7){
+		return this
+		.find()
+		//.populate('commentList')
+		.sort({rate : -1})
+		.limit(1000)
+		.sort({rate_num: -1})
+		.exec(callback);
+	}else{
+		return this
+		.find({category: cat})
+		//.populate('commentList')
+		.sort({start_time: -1})
+		.limit(1000)
+		.exec(callback);
+	}
 }
 
 // get an activity by id

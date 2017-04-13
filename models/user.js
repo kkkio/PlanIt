@@ -30,7 +30,7 @@ var userSchema = mongoose.Schema({
   username : {type: String, sparse: true},
   email : {type: String, sparse: true},
   password : String,
-  phone_number : {type: String, sparse: true},
+  phone_number : {type: String},
   intro : {type: String, default: 'Hello World:)'},
 
   // for login safety
