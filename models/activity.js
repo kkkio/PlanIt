@@ -53,7 +53,7 @@ activity.statics.searchBy = function searchBy (keywords, cat, callback){
 		.find({$text: {$search: keywords}}, {score: {$meta: 'textScore'}})
 		.sort({score:{$meta: "textScore"}})
 		.limit(50)
-		//.sort({rate : -1})
+		.sort({start_time : -1})
 		//.populate('commentList')
 		.exec(callback);
 	}else{
@@ -62,7 +62,7 @@ activity.statics.searchBy = function searchBy (keywords, cat, callback){
 		.find({category : cat})
 		.sort({score:{$meta: "textScore"}})
 		.limit(50)
-		//.sort({rate : -1})
+		.sort({start_time : -1})
 		//.populate('commentList')
 		.exec(callback);
 	}

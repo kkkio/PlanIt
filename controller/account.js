@@ -1,5 +1,6 @@
 var User = require('../models/user');
 var moment = require('./moment');
+var fs = require('fs');
 
 
 exports = module.exports = {};
