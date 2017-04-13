@@ -351,22 +351,13 @@ ul.social-buttons li a:active {
         zoom:5,
       };
       var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-      var numberOfEvent=data.length;
-      var lat=new Array();
-      var lng=new Array();
-      var eventName=new Array();
-      for(var i=0;i<numberOfEvent;i++){
-        lat.push(document.getElementById('get_lat'+i).value);
-        lng.push(document.getElementById('get_lng'+i).value);
-        eventName.push(document.getElementById('get_name'+i).value)
 
-        var activityLatLng = {lat: lat[i], lng: lng[i]}
+        var activityLatLng = {lat:22.18 , lng: 114.11]}
 
         var marker = new google.maps.Marker({
           position: activityLatLng,
           map: map,
-          title: eventName[i]
-        });
+          title: "test"       });
 
       }
      
@@ -422,11 +413,6 @@ ul.social-buttons li a:active {
         });
     </script>
 
-    <% for(var i=0;i<data.length;i++){ %>
-    <input id=<%="get_lat"+0> type="hidden" value=<%= data[i].lat %>>
-    <input id=<%="get_lng"+0> type="hidden" value=<%= data[i].lng %>>
-    <input id=<%="get_name"+0> type="hidden" value=<%= data[i].eventName %>>
-    <% } %>
 
 
 </body>
