@@ -33,13 +33,10 @@ var activity = activitySchema;
 
 // create indice for search
 activity.index({
-	title: 'text',
-	briefIntro: 'text'
+	//title: 'text',
+	//briefIntro: 'text',
+	'$**': 'text'
 	//detailIntro: 'text'
-});
-activity.index({
-	'venue.country': 1,
-	'venue.city': 1
 });
 // TODO: check index
 
