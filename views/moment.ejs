@@ -511,12 +511,12 @@ ul.social-buttons li a:active {
                                   <div class="col-md-6 col-sm-6 col-xs-6" id="frdMomentList" style="padding-left: 0">
                                   <% for(var i=0; i < moment.length; i++) {%>						
                                       <% if(i % 2 == 0) {%>
-                							        <div class="post" id=<%= "othersMoment"+i %>>
+                							        <div class="post post1" id=<%= "othersMoment"+i %>>
                   								        <img class="img-responsive img-border img-full" src= <%= moment[i].pic %> alt="Moment Image" id="myMomentImg">                  								      
                   								        <div class="post-text">
                     								            <h2 class="post-title" id=<%="myMomentTitle"+i%>><%= moment[i].title %></h2>
                     								            <div class="post-meta">
-                      									           By <a href="#"><%= moment[i].username %></a>  <%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %> <a href="#" class="comments">3 Comments</a>
+                      									           By <a href="#"><%= moment[i].username %></a>  <%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear()+" "+moment[i].date.getHours()+":"+(moment[i].date.getMinutes()<10?'0':'') + moment[i].date.getMinutes()%>
                     								            </div>
                                                 <div class="moment-text">
                                                   <textarea name="newMomentText" id=<%="myMomentText"+i %> rows="5" cols="500" disabled><%= moment[i].text %></textarea>
@@ -530,12 +530,12 @@ ul.social-buttons li a:active {
                                   <div class="col-md-6 col-sm-6 col-xs-6" id="frdMomentList1" style="padding-right: 0">
                                   <% for(var i=0; i < moment.length; i++) {%>           
                                       <% if(i % 2 == 1) {%>
-                                      <div class="post" id=<%= "othersMoment"+i %>>
+                                      <div class="post post2" id=<%= "othersMoment"+i %>>
                                           <img class="img-responsive img-border img-full" src= <%= moment[i].pic %> alt="Moment Image" id="myMomentImg">                                        
                                           <div class="post-text">
                                                 <h2 class="post-title" id=<%="myMomentTitle"+i%>><%= moment[i].title %></h2>
                                                 <div class="post-meta">
-                                                   By <a href="#"><%= moment[i].username %></a>  <%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %> <a href="#" class="comments">3 Comments</a>
+                                                   By <a href="#"><%= moment[i].username %></a>  <%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear()+" "+moment[i].date.getHours()+":"+(moment[i].date.getMinutes()<10?'0':'') + moment[i].date.getMinutes()%>
                                                 </div>
                                                 <div class="moment-text">
                                                   <textarea name="newMomentText" id=<%="myMomentText"+i %> rows="5" cols="500" disabled><%= moment[i].text %></textarea>

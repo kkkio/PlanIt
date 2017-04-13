@@ -33,13 +33,10 @@ var activity = activitySchema;
 
 // create indice for search
 activity.index({
-	title: 'text',
-	briefIntro: 'text'
+	//title: 'text',
+	//briefIntro: 'text',
+	'$**': 'text'
 	//detailIntro: 'text'
-});
-activity.index({
-	'venue.country': 1,
-	'venue.city': 1
 });
 // TODO: check index
 
@@ -53,7 +50,7 @@ activity.statics.searchBy = function searchBy (keywords, cat, callback){
 		.find({$text: {$search: keywords}}, {score: {$meta: 'textScore'}})
 		.sort({score:{$meta: "textScore"}})
 		.limit(50)
-		//.sort({rate : -1})
+		.sort({start_time : -1})
 		//.populate('commentList')
 		.exec(callback);
 	}else{
@@ -62,7 +59,7 @@ activity.statics.searchBy = function searchBy (keywords, cat, callback){
 		.find({category : cat})
 		.sort({score:{$meta: "textScore"}})
 		.limit(50)
-		//.sort({rate : -1})
+		.sort({start_time : -1})
 		//.populate('commentList')
 		.exec(callback);
 	}
