@@ -684,8 +684,9 @@ header .intro-text .intro-lead-in {
             	<li style="margin-left:10px">My Account</li>
                 <li style="background-color: LightSkyBlue"><a href="/users/account"><i class="fa fa-home fa-fw"></i> Account Overview</a></li>
                 <li><a href="/users/account/profile"><i class="fa fa-pencil fa-fw"></i> Edit Profile and Settings</a></li>
-                <li><a href="/users/account/past"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
                 <!-- Future Dev
+                <li><a href="/users/account/past"><i class="fa fa-diamond fa-fw"></i> Past Activities</a></li>
+                
                 <li><a href="#news"><i class="fa fa-bell fa-fw"></i> News</a></li>
                 <li><a href="settings.html"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
                 End Future Dev -->
@@ -784,8 +785,10 @@ header .intro-text .intro-lead-in {
                                       <div class="col-lg-4 col-md-4 col-sm-4">
                                           <select id="newPricacy" name="privacy">
                                               <option value="1">Public</option>
+                                              <!-- Hidden 
                                               <option value="2">Followers</option>
                                               <option value="3">Friends</option>
+                                              End hidden -->
                                               <option value="4">Private</option>
                                               <p class="help-block text-danger"></p>
                                           </select>
@@ -814,13 +817,13 @@ header .intro-text .intro-lead-in {
                         <div class="statistics-box">
                             <ul class="list-group">
                                 <a href="#" class="list-group-item" style="background-color: Khaki ; height:18vh;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 3vw;"><%= user.followers_num %></p>
-                                    <p class="list-group-item-text">Past Activities</p>
+                                    <p class="list-group-item-heading acc-count" style="font-size: 3vw;"><%= schedule %></p>
+                                    <p class="list-group-item-text">Schedules</p>
                                 </a>
 
                                 <a href="#" class="list-group-item" style="background-color: Gold; height:18vh;">
-                                    <p class="list-group-item-heading acc-count" style="font-size: 3vw;"><%= user.followings_num %></p>
-                                    <p class="list-group-item-text">Schedules</p>
+                                    <span class="glyphicon glyphicon-heart" style="color:white;font-size: 4vw;padding-top: 4vh"></span>
+               
                                 </a>
 
                                 <a href="#" class="list-group-item" style="background-color: Orange; height:18vh;">
@@ -866,7 +869,7 @@ header .intro-text .intro-lead-in {
                           <div class="post-text">
                               <h2 class="post-title" id=<%="myMomentTitle"+i%>><%= moment[i].title %></h2>
                               <div class="post-meta">
-                                  By <a href="/users/account"><%= user.username %></a><text class="likes"><%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear() %></text>
+                                  By <a href="/users/account"><%= user.username %></a><text class="likes"><%= "Posted on "+moment[i].date.getDate()+"/"+(moment[i].date.getMonth() +1)+"/"+moment[i].date.getFullYear()+" "+moment[i].date.getHours()+":"+(moment[i].date.getMinutes()<10?'0':'') + moment[i].date.getMinutes()%></text>
                               </div>
                               <div class="moment-text">
                                   <input type="hidden" id="tmpNewTextId" name="momentId" value="">
@@ -969,7 +972,6 @@ header .intro-text .intro-lead-in {
    </div>
 
 
-   <%- include backToTop.ejs -%>
 
 
 </body>

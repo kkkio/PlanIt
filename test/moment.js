@@ -20,8 +20,8 @@ for(var i = 0; i<5; i++){
 		username: faker.name.findName(),
 		email:	faker.internet.email(),
 	};
-	console.log(fake_user);
-	console.log('finish user');
+	//console.log(fake_user);
+	//console.log('finish user');
 	var user_data=new user(fake_user);
 	user_data.save();
 		/*
@@ -41,18 +41,21 @@ for(var i = 0; i<5; i++){
 	*/
 	
 }
-for(var i=0;i<5;i++){
+for(var i=0;i<500;i++){
 	var rand=Math.floor(Math.random()*3)+1;
-	
+		var name=faker.name.findName();
+		var title=faker.lorem.sentence().slice(1,25);
+		var text=faker.lorem.words().slice(1,120);
+		console.log(text);
 		var fake_moment={
 			username: faker.name.findName(),
-			title: faker.lorem.sentence(),
-			text: faker.lorem.words(),
+			title: faker.lorem.sentence().slice(1,25),
+			text: faker.lorem.words().slice(1,120),
 			 pic : faker.image.image(),
 			date : faker.date.recent(),
 		}
 		var user_moment=new moment(fake_moment);
-		console.log(user_moment);
+		//console.log(user_moment);
 		user_moment.save();
 }
 
