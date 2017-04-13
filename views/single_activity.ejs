@@ -490,8 +490,8 @@ ul.social-buttons li a:active {
                        });
                        });
                        </script>
-                        
-                        
+
+                        <% if(isLogin) {%>
                         <% if(String(user._id).valueOf() != String(activity.commentList[i]._user_id._id).valueOf()){ %>
                         <button type="button" class="useful" id="useful_1">Useful(<%=activity.commentList[i].useful_num%>)</button>
                         <button type="button" class="notuseful" id="useful_0">Not Useful(<%=activity.commentList[i].nonuseful_num%>)</button>
@@ -501,11 +501,14 @@ ul.social-buttons li a:active {
                           <input type="hidden" name="commentId" value=<%= activity.commentList[i]._id%>>
                         </form>
                         <% } else{ %>
+                          <button type="button" class="useful" id="useful_1" disabled>Useful(<%=activity.commentList[i].useful_num%>)</button>
+                          <button type="button" class="notuseful" id="useful_0" disabled="">Not Useful(<%=activity.commentList[i].nonuseful_num%>)</button>
+                        <% }} else{ %>
                         <button type="button" class="useful" id="useful_1" disabled>Useful(<%=activity.commentList[i].useful_num%>)</button>
                         <button type="button" class="notuseful" id="useful_0" disabled="">Not Useful(<%=activity.commentList[i].nonuseful_num%>)</button>
                         <% } %>
 
- 
+
                     </div>
                     </div>
                 </div>
