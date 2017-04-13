@@ -93,3 +93,25 @@ $(document).ready(function(){
         }
     });        
 });
+
+
+$(document).ready(function(){
+    $("#savePasswordChange").click(function(event){
+        var password = $("#old-password").val();
+        var newPassword = $("#old-password").val();
+        var confirmPassword = $("#confirm-password").val();
+        if(!(password === "1234")){
+            alert("Incorrect old password! Please input again!");
+            //event.preventDefault();
+        }
+        else if(!(newPassword)){
+            alert("Please input the new password:)");
+            event.preventDefault();            
+        }
+        else if(!(confirmPassword)){
+            alert("Please confirm the new password:)");
+            event.preventDefault();            
+        }
+        else{}        
+    });
+});
