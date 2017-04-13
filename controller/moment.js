@@ -10,13 +10,20 @@ exports.mymoment=function mymoment(req,res,next){
 	console.log("in my moment");
 
 	moment.showMyMoment(req.user._id,function(doc){
-		var test={
+		User.findOne({_id:req.user._id}).exec(function(err,doc1){
+			var test={
 			user : req.user,
 			moment : doc,
+			schedule: doc1.schedule_num,
 			isLogin: req.isAuthenticated()
 		};
+		console.log("schedule num");	
+		console.log(test.schedule);
 		//console.log(test);
 		res.render('account', test);
+		
+		});
+		
 		//console.log("finish rendering data");
 	});
 };
@@ -172,7 +179,7 @@ exports.friendMoment = function friendmoment(req,res,next){
 };
 exports.recommendMoment= function recommentmoment(req,res,next){
 	moment.showRecommendMoment(function(r_moment){
-		res.render('Moment',{
+		res.render('moment',{
 			isLogin: req.isAuthenticated(),
 			moment: r_moment
 		});

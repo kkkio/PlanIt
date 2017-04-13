@@ -36,8 +36,8 @@ moment.statics.showMyMoment=function(userID,callback){
 };
 
 moment.statics.showRecommendMoment= function showrecommendmoment(callback){
-	this.find().sort({like:1,date:-1})
-		.limit(10)
+	this.find().sort({date:-1})
+		.limit(100)
 		.exec(function(err,r_moment){
 		//maybe wrong 
 		return callback(r_moment);
