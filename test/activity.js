@@ -15,9 +15,19 @@ db.once('open',function(){
 
 
 for(var i = 0; i<10000; i++){
-  var tmp = [faker.lorem.paragraph()];
+  var paragraph = faker.commerce.department()+' ' +faker.commerce.productName();
+  for(var j = 0 ; j < faker.random.number()%10+5; j++){
+    paragraph += faker.commerce.department()+' ' +faker.commerce.productName();
+  }
+  //var tmp = [faker.lorem.paragraph()];
+  var tmp = [paragraph]
+  var brief = paragraph;
   for(var j = 0; j < faker.random.number()%5 + 1; j++){
-    tmp.push(faker.lorem.paragraph());
+    paragraph = '';
+    for(var k = 0 ; k < faker.random.number()%10+5; k++){
+      paragraph += faker.commerce.department()+' ' +faker.commerce.productName();
+    }
+    tmp.push(paragraph);
   }
   var fake_activity = {
     title: faker.commerce.productName(),
@@ -27,7 +37,7 @@ for(var i = 0; i<10000; i++){
       country : faker.address.country(),
       city : faker.address.state()
     },
-    briefIntro : faker.lorem.paragraph(),
+    briefIntro : brief,//faker.lorem.paragraph(),
     detailIntro : tmp,
     rate: faker.random.number()%500/100,
     rate_num: faker.random.number()%1000,
