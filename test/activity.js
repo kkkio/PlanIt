@@ -1,6 +1,8 @@
 // For creating fake activity
 var config = require('../config/config');
 var Activity = require('../models/activity');
+var User = require('../models/user');
+var mComment = require('../models/comment');
 var mongoose = require('mongoose');
 var mongodb = require('mongodb');
 var faker = require('faker');
@@ -14,7 +16,7 @@ db.once('open',function(){
 });
 
 
-for(var i = 0; i<10000; i++){
+for(var i = 0; i<1000; i++){
   var paragraph = faker.commerce.department()+' ' +faker.commerce.productName();
   for(var j = 0 ; j < faker.random.number()%10+5; j++){
     paragraph += faker.commerce.department()+' ' +faker.commerce.productName();
@@ -47,6 +49,23 @@ for(var i = 0; i<10000; i++){
   };
   var data = new Activity(fake_activity);
   data.save();
+    // add comment
+  for(var k = 0; k< faker.random.number()%6 + 1; k++){
+    var fake_comment = {
+      _activity_id : data._id,
+      _user_id : "58ef21eaacfb888a45996e55",
+      // type : acitivity - 1; moment - 2
+      content: faker.company.catchPhrase(),
+      post_time: faker.date.recent(),
+      num_of_useful: faker.random.number()%150,
+      num_of_nonuseful: faker.random.number()%100
+    };
+    var com = new mComment(fake_comment);
+    com.save();
+    data.commentList.push(com._id);
+    data.comment_num += 1;
+    data.save();
+  }
 }
 
 db.close();

@@ -4,6 +4,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var User = require('../models/user');
 var nodemailer = require('nodemailer');
+//var path = require('path');
+//require(path.join('config'));
 
   module.exports = function (passport, config) {
 
@@ -52,7 +54,12 @@ var nodemailer = require('nodemailer');
                 var mailOptions = {
                   to: req.body.email,
                   subject: "Welcome to PlanIt",
-                  html:'FUCK YOU!'
+                  html:'<img style="width:100%" src="cid:planitgroup4@gmail.com"/>',
+                  attachments:[{
+                    filename: 'welcome_email.png',
+                    path: __dirname+'/welcome_email.png',
+                    cid : 'planitgroup4@gmail.com'
+                  }]
                 };
                 smtpTransport.sendMail(mailOptions,function(err, res){
                   if(err){
