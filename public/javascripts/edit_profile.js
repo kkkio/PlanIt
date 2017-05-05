@@ -102,7 +102,7 @@ $(document).ready(function(){
         var confirmPassword = $("#confirm-password").val();
         if(!(password === "1234")){
             alert("Incorrect old password! Please input again!");
-            //event.preventDefault();
+            event.preventDefault();
         }
         else if(!(newPassword)){
             alert("Please input the new password:)");
